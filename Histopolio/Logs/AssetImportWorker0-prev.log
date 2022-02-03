@@ -1,0 +1,897 @@
+Using pre-set license
+Desktop is 1920 x 1080 @ 60 Hz
+
+ COMMAND LINE ARGUMENTS:
+Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/home/andre/Desktop/Histopólio/histopolio/Histopolio
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+35825
+Successfully changed project path to: /home/andre/Desktop/Histopólio/histopolio/Histopolio
+/home/andre/Desktop/Histopólio/histopolio/Histopolio
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 43.55 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.4f1 (becced5a802b)
+[Subsystems] Discovering subsystems at path /home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /home/andre/Desktop/Histopólio/histopolio/Histopolio/Assets
+GLX Extensions: GLX_EXT_visual_info GLX_EXT_visual_rating GLX_EXT_import_context GLX_SGIX_fbconfig GLX_SGIX_pbuffer GLX_SGI_video_sync GLX_SGI_swap_control GLX_EXT_swap_control GLX_EXT_swap_control_tear GLX_EXT_texture_from_pixmap GLX_EXT_buffer_age GLX_ARB_create_context GLX_ARB_create_context_profile GLX_EXT_create_context_es_profile GLX_EXT_create_context_es2_profile GLX_ARB_create_context_no_error GLX_ARB_create_context_robustness GLX_NV_delay_before_swap GLX_EXT_stereo_tree GLX_ARB_context_flush_control GLX_NV_robustness_video_memory_purge GLX_ARB_multisample GLX_NV_float_buffer GLX_ARB_fbconfig_float GLX_EXT_framebuffer_sRGB GLX_NV_copy_image GLX_ARB_get_proc_address 
+Renderer: GeForce GTX 950M/PCIe/SSE2
+Vendor:   NVIDIA Corporation
+Version:  4.5.0 NVIDIA 396.54
+GLES:     0
+ GL_AMD_multi_draw_indirect GL_AMD_seamless_cubemap_per_texture GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_bindless_texture GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_color_buffer_float GL_ARB_compressed_texture_pixel_storage GL_ARB_conservative_depth GL_ARB_compute_shader GL_ARB_compute_variable_group_size GL_ARB_conditional_render_inverted GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB_depth_clamp GL_ARB_depth_texture GL_ARB_derivative_control GL_ARB_direct_state_access GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_indirect GL_ARB_draw_elements_base_vertex GL_ARB_draw_instanced GL_ARB_enhanced_layouts GL_ARB_ES2_compatibility GL_ARB_ES3_compatibility GL_ARB_ES3_1_compatibility GL_ARB_ES3_2_compatibility GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragment_coord_conventions GL_ARB_fragment_layer_viewport GL_ARB_fragm
+ent_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_framebuffer_no_attachments GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_geometry_shader4 GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_gl_spirv GL_ARB_gpu_shader5 GL_ARB_gpu_shader_fp64 GL_ARB_gpu_shader_int64 GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_imaging GL_ARB_indirect_parameters GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multi_draw_indirect GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_occlusion_query2 GL_ARB_parallel_shader_compile GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_polygon_offset_clamp GL_ARB_program_interface_query GL_ARB_provoking_vertex GL_ARB_query_buffer_object GL_ARB_robust_buffer_access_behavior GL_ARB_robustness GL_ARB_sample_shading GL_ARB_sa
+mpler_objects GL_ARB_seamless_cube_map GL_ARB_seamless_cubemap_per_texture GL_ARB_separate_shader_objects GL_ARB_shader_atomic_counter_ops GL_ARB_shader_atomic_counters GL_ARB_shader_ballot GL_ARB_shader_bit_encoding GL_ARB_shader_clock GL_ARB_shader_draw_parameters GL_ARB_shader_group_vote GL_ARB_shader_image_load_store GL_ARB_shader_image_size GL_ARB_shader_objects GL_ARB_shader_precision GL_ARB_shader_storage_buffer_object GL_ARB_shader_subroutine GL_ARB_shader_texture_image_samples GL_ARB_shader_texture_lod GL_ARB_shading_language_100 GL_ARB_shading_language_420pack GL_ARB_shading_language_include GL_ARB_shading_language_packing GL_ARB_shadow GL_ARB_sparse_buffer GL_ARB_sparse_texture GL_ARB_spirv_extensions GL_ARB_stencil_texturing GL_ARB_sync GL_ARB_tessellation_shader GL_ARB_texture_barrier GL_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_
+ARB_texture_cube_map GL_ARB_texture_cube_map_array GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_filter_anisotropic GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_mirrored_repeat GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_transpose_matrix GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_
+ARB_vertex_type_2_10_10_10_rev GL_ARB_viewport_array GL_ARB_window_pos GL_ATI_draw_buffers GL_ATI_texture_float GL_ATI_texture_mirror_once GL_S3_s3tc GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_bindable_uniform GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_Cg_shader GL_EXT_depth_bounds_test GL_EXT_direct_state_access GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXTX_framebuffer_mixed_formats GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_geometry_shader4 GL_EXT_gpu_program_parameters GL_EXT_gpu_shader4 GL_EXT_multi_draw_arrays GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_packed_pixels GL_EXT_pixel_buffer_object GL_EXT_point_parameters GL_EXT_polygon_offset_clamp GL_EXT_provoking_vertex GL_EXT_rescale_normal GL_EXT_secondary_color G
+L_EXT_separate_shader_objects GL_EXT_separate_specular_color GL_EXT_shader_image_load_formatted GL_EXT_shader_image_load_store GL_EXT_shader_integer_mix GL_EXT_shadow_funcs GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_texture3D GL_EXT_texture_array GL_EXT_texture_buffer_object GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_latc GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_integer GL_EXT_texture_lod GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_shared_exponent GL_EXT_texture_sRGB GL_EXT_texture_sRGB_decode GL_EXT_texture_storage GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback2 GL_EXT_vertex_array GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_EXT_window_rectangles GL_EXT_x11_sync_object GL_EXT_import_sync_object GL_NV_robustness_video_memory_purge GL_IBM_r
+asterpos_clip GL_IBM_texture_mirrored_repeat GL_KHR_context_flush_control GL_KHR_debug GL_EXT_memory_object GL_EXT_memory_object_fd GL_KHR_parallel_shader_compile GL_KHR_no_error GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_EXT_semaphore GL_EXT_semaphore_fd GL_KTX_buffer_region GL_NV_alpha_to_coverage_dither_control GL_NV_bindless_multi_draw_indirect GL_NV_bindless_multi_draw_indirect_count GL_NV_bindless_texture GL_NV_blend_equation_advanced GL_NV_blend_equation_advanced_coherent GL_NV_blend_minmax_factor GL_NV_blend_square GL_NV_command_list GL_NV_compute_program5 GL_NV_conditional_render GL_NV_copy_depth_to_color GL_NV_copy_image GL_NV_depth_buffer_float GL_NV_depth_clamp GL_NV_draw_texture GL_NV_draw_vulkan_image GL_NV_ES1_1_compatibility GL_NV_ES3_1_compatibility GL_NV_explicit_multisample GL_NV_feature_query GL_NV_fence GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_framebuffer_multisample_coverage GL_NV_geometry_sha
+der4 GL_NV_gpu_program4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_NV_gpu_program_fp64 GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_atomic_int64 GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_
+buffer_unified_memory GL_NV_vdpau_interop GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NVX_conditional_render GL_NVX_gpu_memory_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle 1225768264
+Initialize mono
+Mono path[0] = '/home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed'
+Mono path[1] = '/home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56390
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.001693 seconds.
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 39.62 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.384 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001004 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 43.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.074 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.46 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1797 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.5 MB.
+System memory in use after: 78.5 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2238.
+Total: 3.561439 ms (FindLiveObjects: 0.194234 ms CreateObjectMapping: 0.090042 ms MarkObjects: 2.933475 ms  DeleteObjects: 0.338220 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets
+  artifactKey: Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edc3feb264a98656617d3c2cb59c8f16') in 0.004529 seconds
+  Import took 0.008761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000344 seconds.
+  path: Assets/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24acaa9758c7e49fa6125ee61ad577d6') in 0.139694 seconds
+  Import took 0.142920 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.980715 seconds.
+  path: Assets/Prefabs
+  artifactKey: Guid(ba299fd33b8bcb156a3ffe422fd4f261) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs using Guid(ba299fd33b8bcb156a3ffe422fd4f261) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce1cfda4300cbbdac5c6b34e10a11e19') in 0.001134 seconds
+  Import took 0.004491 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 86.784895 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b376a7093ad3bc8658154cba6fea97a1') in 0.008485 seconds
+  Import took 0.012038 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.813956 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '416f354699f6d8498d8842e1e06964f9') in 0.008859 seconds
+  Import took 0.012708 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.382476 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c78563c4773a27728ca02ddb3d16283') in 0.008448 seconds
+  Import took 0.012216 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.713445 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0540613f5209d3ff404ca124277a6e32') in 0.007341 seconds
+  Import took 0.010853 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.397923 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e949e3b7ac280248efcddfc220d78a1e') in 0.009764 seconds
+  Import took 0.013219 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.074596 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd1dd810da7d8cf09e8a41befc35406a') in 0.008132 seconds
+  Import took 0.011686 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.849115 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '438358fcee69ea2f31f982c07d40c36f') in 0.008202 seconds
+  Import took 0.011760 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.688514 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '621b3752737384d6a5250ca17a59f5ca') in 0.007668 seconds
+  Import took 0.011350 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.650969 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebbef81a303f970649598438c9ec7e29') in 0.009131 seconds
+  Import took 0.012579 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.933268 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85c66cb2c0f9ae4dda5bfa5cfca9ddd5') in 0.007668 seconds
+  Import took 0.011211 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.034210 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e37b2c4bffb490878623be8131f9b3db') in 0.008413 seconds
+  Import took 0.012126 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.642051 seconds.
+  path: Assets/Prefabs/Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2131f88df5f73945e5f71f64b00f3206') in 0.008617 seconds
+  Import took 0.012154 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 371.443913 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01666b338487fa130827a28391fab14f') in 0.020518 seconds
+  Import took 0.024031 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.484374 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b8e8ebbfdc201e485956540f932e958') in 0.039422 seconds
+  Import took 0.043218 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.067024 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcbabc4098f27b45bbffc64e09962002') in 0.008404 seconds
+  Import took 0.012061 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.626443 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df6b8409077233c96d94fd3af8e78a4f') in 0.019883 seconds
+  Import took 0.023461 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032352 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df6b8409077233c96d94fd3af8e78a4f') in 0.011849 seconds
+  Import took 0.015602 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.334718 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6562ee75ba3952bd8572b88a89b47d7') in 0.009729 seconds
+  Import took 0.013381 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.739174 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47f5bdf155e2f419ceff257ae145ce32') in 0.013563 seconds
+  Import took 0.017146 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.571671 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efa6c30c3221bdfa79883fba90ae0356') in 0.006977 seconds
+  Import took 0.010624 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.892255 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1027a16d9e7c0a69de75cfa802d383d1') in 0.007992 seconds
+  Import took 0.011694 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.104586 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52771a66106857555463f1773dac9b7a') in 0.007447 seconds
+  Import took 0.011027 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.015768 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2815f27489b71b8a7668f9b9976201ab') in 0.008816 seconds
+  Import took 0.012324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.190460 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d6ceba23c830447472d15cf92f0341c') in 0.012465 seconds
+  Import took 0.016213 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.288084 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f37941c300ba895e304dbc9f62edda33') in 0.009573 seconds
+  Import took 0.013078 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.531594 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf7445ea4e3b880f53f68b3deed01c7b') in 0.010233 seconds
+  Import took 0.013824 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.659018 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb8470d89a823bdce77654811e9c9af6') in 0.008290 seconds
+  Import took 0.012541 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.229973 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '606843868afbf3ddd56a225500862c96') in 0.008031 seconds
+  Import took 0.011904 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.614611 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '450537af2bd857e78561571976523e85') in 0.009805 seconds
+  Import took 0.013378 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.001916 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b77ecef8b5c29bc9b6f0f3eb5775791') in 0.007075 seconds
+  Import took 0.010673 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.713976 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb130b86f13c0ff75ddf47a2157dccba') in 0.008522 seconds
+  Import took 0.012209 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.249299 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78f60987a21cff25ac64ee4dd77b9511') in 0.007904 seconds
+  Import took 0.011726 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.188574 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bb2ccbeb35d7ced5bed130553ad0f7b') in 0.012227 seconds
+  Import took 0.016221 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.917888 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4ffa8215d226b2c55ef0162bb110d3c') in 0.011782 seconds
+  Import took 0.015440 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.010835 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdd4c82bdee76d558d8c22c4f3cc3c52') in 0.008669 seconds
+  Import took 0.012459 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.365902 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f5ee7d08cafe7be366a4d2cb2de0616') in 0.007271 seconds
+  Import took 0.011627 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.896601 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cde3655a9f37f428bee7edcb37e11276') in 0.009111 seconds
+  Import took 0.012718 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.708626 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcdf2ddf577b5fc292c6ea1334bc7649') in 0.007654 seconds
+  Import took 0.011236 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.865919 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3dcc8e274788e0b55393c86d5b920aa') in 0.008706 seconds
+  Import took 0.012654 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.591503 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a420cc244058db02065ec47186d79545') in 0.007510 seconds
+  Import took 0.011239 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.183066 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86ef1ca1bd78242210565bb7b904c848') in 0.008324 seconds
+  Import took 0.012107 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.122577 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '785f26f12ff3945fd9685a5d5edd99e4') in 0.007987 seconds
+  Import took 0.011611 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.970913 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd60472e97443887b4b16688bd30e3354') in 0.013053 seconds
+  Import took 0.016677 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.497107 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e25300fb71558ac8113125d301adca45') in 0.007204 seconds
+  Import took 0.010748 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.435296 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c3ad768689e2f7786b156f64731b6ea') in 0.039546 seconds
+  Import took 0.043361 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.738134 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa43af0538a28d4c62be05671919cd95') in 0.007379 seconds
+  Import took 0.011152 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.435728 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3775c2b2e5c5fa985edf87a9c19dd387') in 0.009038 seconds
+  Import took 0.012776 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.732444 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85b5752b75f3a61c4aebbcbc15a50253') in 0.007482 seconds
+  Import took 0.011233 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.803083 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3dd3de71b2c0a303c78764d13a5726e') in 0.008079 seconds
+  Import took 0.011775 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.956768 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41ba2e8ebe61736649a83c9b5f347937') in 0.016689 seconds
+  Import took 0.020351 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 53.073418 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81c7d46c8a43ebeac4397c721e0c4d81') in 0.009029 seconds
+  Import took 0.012794 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.821313 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '275d1b87fa271249bae05e0ae894e2db') in 0.008461 seconds
+  Import took 0.012234 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.920051 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90a5b14ed058ed03c7a0e1b415d1eb20') in 0.008250 seconds
+  Import took 0.011947 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.407220 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b894e3704202870913add55b504c3b47') in 0.008347 seconds
+  Import took 0.012027 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.255789 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dbacbdae9d19dfa8b0eaef036d295e5') in 0.009129 seconds
+  Import took 0.012716 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.013661 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f805f6f6618213688d963a9aedee0cdb') in 0.008420 seconds
+  Import took 0.012041 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.613205 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) ./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformImageForIconForExtension
+./Editor/Platform/Linux/TempStubs.cpp:PlatformIma -> (artifact id: 'a1f2276539664ff8f3082db949815447') in 0.008440 seconds
+  Import took 0.012099 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.358218 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0a82b957b91959b8688bb200840ccc8') in 0.007930 seconds
+  Import took 0.011571 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.593616 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '022b46fb558d85f9a7648fe296f5589c') in 0.008695 seconds
+  Import took 0.012259 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.268630 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b0157c5566fe003feaeb7b199ccaa31') in 0.008417 seconds
+  Import took 0.012119 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.396967 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2cefc84147ed51befa6df42b8eb3f0f1') in 0.008245 seconds
+  Import took 0.011872 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.756627 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e81448aaa3c49e1327f02a4353b3bfd6') in 0.007051 seconds
+  Import took 0.010789 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.876455 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58056b48352904be23308248a87a77d5') in 0.009340 seconds
+  Import took 0.012813 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.484553 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '797db44f9057d875a902a76688f4c352') in 0.007844 seconds
+  Import took 0.011506 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 214.740919 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51d0193b1e7d268d1acd8af42b2ed055') in 0.008423 seconds
+  Import took 0.012342 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.051166 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53695e40fb22cc42c2fcfa182c7334ed') in 0.012017 seconds
+  Import took 0.015852 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.397125 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e1e7c0c63f259c0e46ed2831e0ba9e3') in 0.011387 seconds
+  Import took 0.014949 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007224 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e1e7c0c63f259c0e46ed2831e0ba9e3') in 0.011105 seconds
+  Import took 0.014919 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.079831 seconds.
+  path: Assets/Prefabs/Normal Tile.prefab
+  artifactKey: Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Normal Tile.prefab using Guid(6e0cc5235d18df11e9d296593c4bb77a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e5b322ec8704842f3d02da69a72e60b') in 0.009385 seconds
+  Import took 0.013653 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 82.169137 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b5d058396074457af6c429af3596b9a') in 0.054826 seconds
+  Import took 0.058375 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.275783 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'baccebadced7a947b091e5b5ac4194f0') in 0.009657 seconds
+  Import took 0.013155 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.063198 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4253c40f732b720862665cc7d7818f35') in 0.009723 seconds
+  Import took 0.014725 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.299988 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e80f004aafb2f50b4f5be1c6ee0ad410') in 0.010000 seconds
+  Import took 0.013617 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.758426 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db2de92ba19a87e3bdfec6778c2fc784') in 0.009772 seconds
+  Import took 0.013495 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.853471 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ce9663027d61953d38f2f50bb4c3946') in 0.008083 seconds
+  Import took 0.011631 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.265855 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9d1f15fe1ec89099071136f98f4ed91') in 0.006980 seconds
+  Import took 0.010498 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.344531 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdc86e4eb5caa763da20f883ca00068a') in 0.008422 seconds
+  Import took 0.012012 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.917283 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52d8f796aaf2d31a99ef27a37f440e20') in 0.007396 seconds
+  Import took 0.011670 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016886 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.010 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1839 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 82.9 MB.
+System memory in use after: 82.4 MB.
+
+Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 2284.
+Total: 3.381936 ms (FindLiveObjects: 0.200553 ms CreateObjectMapping: 0.077083 ms MarkObjects: 2.683329 ms  DeleteObjects: 0.415856 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 241.962781 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8586b6781d6b8ffc5fc9c137b2eb7e0') in 0.077462 seconds
+  Import took 0.081216 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 238.332603 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat
+  artifactKey: Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat using Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '923580263a342e6401f6307fe262bd3a') in 0.493812 seconds
+  Import took 0.498632 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000340 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
+  artifactKey: Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat using Guid(79459efec17a4d00a321bdcc27bbc385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b79c5471f37031f9c6cf664112b39177') in 0.115277 seconds
+  Import took 0.118684 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000290 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+  artifactKey: Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e508781f2e466c38bc1f4a18cf1e8324') in 0.095720 seconds
+  Import took 0.099322 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000310 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat
+  artifactKey: Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat using Guid(e73a58f6e2794ae7b1b7e50b7fb811b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '923580263a342e6401f6307fe262bd3a') in 0.022595 seconds
+  Import took 0.026248 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+  artifactKey: Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e508781f2e466c38bc1f4a18cf1e8324') in 0.013809 seconds
+  Import took 0.017558 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+  artifactKey: Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset using Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aae0b1d0111703fb6434370378addb45') in 0.035994 seconds
+  Import took 0.039919 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005945 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+  artifactKey: Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset using Guid(8f586378b4e144a9851e7b34d9b748ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aae0b1d0111703fb6434370378addb45') in 0.027718 seconds
+  Import took 0.031434 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 173.201776 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34abc21a26c38890c6848e139d7d038a') in 0.080206 seconds
+  Import took 0.086441 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 59.386370 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3d5ad119022aeb4ef9a6f43017522f2') in 0.009382 seconds
+  Import took 0.013187 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.039349 seconds.
+  path: Assets/Prefabs/NormalTile.prefab
+  artifactKey: Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/NormalTile.prefab using Guid(2896c14e1ffa845948a9be900d357752) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c96a5597a75964f01e5f104c792602f4') in 0.009676 seconds
+  Import took 0.013365 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
