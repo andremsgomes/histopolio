@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 615705950}
   - component: {fileID: 615705949}
   m_Layer: 0
-  m_Name: GridManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   groupPropertyTilePrefab: {fileID: 4785936635320994099, guid: 43299b9e7316a917f84a1fd4ebdbf942, type: 3}
   cornerTilePrefab: {fileID: 4543324732152273150, guid: 89c69969f18ae8f7a9574d609b1f7179, type: 3}
   camera: {fileID: 519420031}
+  playerPrefab: {fileID: 4520254274414789984, guid: 058191a7231db1537be4a452b2f2fc86, type: 3}
 --- !u!4 &615705950
 Transform:
   m_ObjectHideFlags: 0
