@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera camera;
     [SerializeField] private Player playerPrefab;
 
+    private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
         GenerateGrid();
         SpawnPlayer();
+        SetCamera();
     }
 
     // Generate all tiles
@@ -54,16 +57,22 @@ public class GameManager : MonoBehaviour
 
         var spawnedCornerTile4 = Instantiate(cornerTilePrefab, new Vector3(8.3f, 0), Quaternion.Euler(0,0,90));
         spawnedCornerTile4.name = $"Tile 9 0";
-
-        // Change camera settings
-        camera.transform.position = new Vector3(3.5f, 4.8f, -10);
-        camera.orthographicSize = 6;
     }
 
     
     // Spawn player on GO Tile
     void SpawnPlayer() {
-        var spawnedPlayer = Instantiate(playerPrefab, new Vector3(8.3f, 0, -3), Quaternion.identity);
-        spawnedPlayer.name = "Player";
+        player = Instantiate(playerPrefab, new Vector3(8.3f, 0, -3), Quaternion.identity);
+        player.name = "Player";
+    }
+
+
+    // Change camera settings
+    void SetCamera() {
+        // camera.transform.position = new Vector3(3.5f, 4.8f, -10);
+        // camera.orthographicSize = 6;
+
+        camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
+        camera.orthographicSize = 3.4f;
     }
 }
