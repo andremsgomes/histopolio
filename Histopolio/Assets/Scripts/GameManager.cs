@@ -6,7 +6,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Tile groupPropertyTilePrefab;
     [SerializeField] private Tile cornerTilePrefab;
-    [SerializeField] private Camera camera;
     [SerializeField] private Player playerPrefab;
 
     private Player player;
@@ -16,7 +15,6 @@ public class GameManager : MonoBehaviour
     {
         GenerateGrid();
         SpawnPlayer();
-        SetCamera();
     }
 
     // Generate all tiles
@@ -64,15 +62,5 @@ public class GameManager : MonoBehaviour
     void SpawnPlayer() {
         player = Instantiate(playerPrefab, new Vector3(8.3f, 0, -3), Quaternion.identity);
         player.name = "Player";
-    }
-
-
-    // Change camera settings
-    void SetCamera() {
-        // camera.transform.position = new Vector3(3.5f, 4.8f, -10);
-        // camera.orthographicSize = 6;
-
-        camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
-        camera.orthographicSize = 3.4f;
     }
 }

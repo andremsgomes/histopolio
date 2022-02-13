@@ -281,6 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 615705950}
+  - component: {fileID: 615705951}
   - component: {fileID: 615705949}
   m_Layer: 0
   m_Name: GameManager
@@ -303,7 +304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupPropertyTilePrefab: {fileID: 4785936635320994099, guid: 43299b9e7316a917f84a1fd4ebdbf942, type: 3}
   cornerTilePrefab: {fileID: 4543324732152273150, guid: 89c69969f18ae8f7a9574d609b1f7179, type: 3}
-  camera: {fileID: 519420031}
   playerPrefab: {fileID: 4520254274414789984, guid: 058191a7231db1537be4a452b2f2fc86, type: 3}
 --- !u!4 &615705950
 Transform:
@@ -319,6 +319,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615705951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615705948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae16c61a0d382d09b61e84f103139af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 519420031}
 --- !u!1 &751151920
 GameObject:
   m_ObjectHideFlags: 0
