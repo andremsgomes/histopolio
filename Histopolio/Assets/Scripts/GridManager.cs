@@ -11,7 +11,7 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGrid();
+
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class GridManager : MonoBehaviour
     }
 
     // Generate all tiles
-    void GenerateGrid() {
+    public void GenerateGrid() {
         // Bottom tiles
         for (int i = 0; i < 8; i++) {
             var spawnedTile = Instantiate(groupPropertyTilePrefab, new Vector3(i, 0), Quaternion.Euler(0,0,0));
