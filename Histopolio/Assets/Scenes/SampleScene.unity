@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 615705950}
   - component: {fileID: 615705951}
   - component: {fileID: 615705949}
+  - component: {fileID: 615705952}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -302,8 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eeb33f4ce0373f00983200f40470a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groupPropertyTilePrefab: {fileID: 4785936635320994099, guid: 43299b9e7316a917f84a1fd4ebdbf942, type: 3}
-  cornerTilePrefab: {fileID: 4543324732152273150, guid: 89c69969f18ae8f7a9574d609b1f7179, type: 3}
   playerPrefab: {fileID: 4520254274414789984, guid: 058191a7231db1537be4a452b2f2fc86, type: 3}
 --- !u!4 &615705950
 Transform:
@@ -332,6 +331,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 519420031}
+--- !u!114 &615705952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615705948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5426f7199d541973f81a207761d2b621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupPropertyTilePrefab: {fileID: 4785936635320994099, guid: 43299b9e7316a917f84a1fd4ebdbf942, type: 3}
+  cornerTilePrefab: {fileID: 4543324732152273150, guid: 89c69969f18ae8f7a9574d609b1f7179, type: 3}
 --- !u!1 &751151920
 GameObject:
   m_ObjectHideFlags: 0
