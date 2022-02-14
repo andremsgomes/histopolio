@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private Player player;
     private GridManager gridManager;
+    private CameraManager cameraManager;
 
     [SerializeField] private Player playerPrefab;
 
@@ -14,8 +15,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gridManager = this.GetComponent<GridManager>();
+        cameraManager = this.GetComponent<CameraManager>();
 
         gridManager.GenerateGrid();
+        cameraManager.SetCamera();
+        
         SpawnPlayer();
     }
     
