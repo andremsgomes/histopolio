@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
         cameraManager = this.GetComponent<CameraManager>();
 
         gridManager.GenerateGrid();
-        cameraManager.SetCamera();
-        
+        cameraManager.SetBoardCamera();
+
         SpawnPlayer();
     }
     

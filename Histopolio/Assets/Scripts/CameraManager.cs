@@ -18,12 +18,15 @@ public class CameraManager : MonoBehaviour
 
     }
 
-    // Change camera settings
-    void SetCamera() {
+    // Set camera to show all board
+    public void SetBoardCamera() {
         camera.transform.position = new Vector3(3.5f, 4.8f, -10);
         camera.orthographicSize = 6;
+    }
 
-        // camera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10);
-        // camera.orthographicSize = 3.4f;
+    // Set camera to player
+    public void setPlayerCamera(Vector3 playerPosition) {
+        camera.transform.position = new Vector3(playerPosition.x, playerPosition.y, -10);
+        camera.orthographicSize = 3.4f;
     }
 }
