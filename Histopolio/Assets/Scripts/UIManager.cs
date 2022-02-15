@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,11 @@ public class UIManager : MonoBehaviour
     // OnCameraChangeClick is called when camera change button is clicked
     public void OnCameraChangeClick()
     {
-        Debug.Log("Click");
+        gameManager.ChangeCamera();
+    }
+
+    // Set game manager
+    public void SetGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 }
