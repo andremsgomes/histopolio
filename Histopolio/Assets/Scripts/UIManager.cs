@@ -28,4 +28,9 @@ public class UIManager : MonoBehaviour
     public void SetGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
     }
+
+    // OnRollDiceClick is called when roll dice button is clicked
+    public void OnRollDiceClick() {
+        Debug.Log("Click");
+    }
 }
