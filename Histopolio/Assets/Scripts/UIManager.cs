@@ -15,4 +15,10 @@ public class UIManager : MonoBehaviour
     {
         
     }
+
+    // OnCameraChangeClick is called when camera change button is clicked
+    public void OnCameraChangeClick()
+    {
+        Debug.Log("Click");
+    }
 }
