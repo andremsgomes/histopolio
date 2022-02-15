@@ -20,7 +20,10 @@ public class GameManager : MonoBehaviour
         uiManager = this.GetComponent<UIManager>();
 
         gridManager.GenerateGrid();
+
+        cameraManager.SetGameManager(this);
         cameraManager.SetBoardCamera();
+
         uiManager.SetGameManager(this);
 
         SpawnPlayer();
@@ -34,6 +37,11 @@ public class GameManager : MonoBehaviour
 
     // Change camera
     public void ChangeCamera() {
-        Debug.Log("Camera changed");
+        cameraManager.ToggleCamera();
+    }
+
+    // Get player position
+    public Vector3 GetPlayerPosition() {
+        return player.transform.position;
     }
 }
