@@ -44,4 +44,9 @@ public class GameManager : MonoBehaviour
     public Vector3 GetPlayerPosition() {
         return player.transform.position;
     }
+
+    // Move player after rolled dice
+    public void MovePlayer() {
+        player.Move(1);
+    }
 }

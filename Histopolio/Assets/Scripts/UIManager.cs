@@ -31,6 +31,6 @@ public class UIManager : MonoBehaviour
 
     // OnRollDiceClick is called when roll dice button is clicked
     public void OnRollDiceClick() {
-        Debug.Log("Click");
+        gameManager.MovePlayer();
     }
 }
