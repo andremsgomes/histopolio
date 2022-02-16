@@ -31,8 +31,12 @@ public class GameManager : MonoBehaviour
     
     // Spawn player on GO Tile
     void SpawnPlayer() {
-        player = Instantiate(playerPrefab, new Vector3(8.3f, 0, -3), Quaternion.identity);
+        Tile firstTile = gridManager.GetTile(0);
+
+        player = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
         player.name = "Player";
+        player.SetGameManager(this);
+        player.SetTile(firstTile);
     }
 
     // Change camera
@@ -48,5 +52,10 @@ public class GameManager : MonoBehaviour
     // Move player after rolled dice
     public void MovePlayer() {
         player.Move(1);
+    }
+
+    // Get tile with tile id
+    public Tile GetTile(int tileId) {
+        return gridManager.GetTile(tileId);
     }
 }

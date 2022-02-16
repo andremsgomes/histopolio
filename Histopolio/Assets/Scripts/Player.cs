@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Vector2 boardPosition;    
+    private Tile tile;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        boardPosition = new Vector2(0,0);
+        
     }
 
     // Update is called once per frame
@@ -20,7 +21,17 @@ public class Player : MonoBehaviour
 
     // Move is called after a dice is rolled
     public void Move(int spaces) {
-        boardPosition.x += spaces;
-        transform.position = new Vector3(transform.position.x-spaces, transform.position.y, transform.position.z);
+        SetTile(gameManager.GetTile(tile.GetId()+spaces));
+        transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, transform.position.z);
+    }
+
+    // Set tile
+    public void SetTile(Tile tile) {
+        this.tile = tile;
+    }
+
+    // Set game manager
+    public void SetGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 }
