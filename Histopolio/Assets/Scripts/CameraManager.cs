@@ -28,8 +28,8 @@ public class CameraManager : MonoBehaviour
 
     // Set camera to show all board
     public void SetBoardCamera() {
-        camera.transform.position = new Vector3(3.5f, 4.8f, -10);
-        camera.orthographicSize = 6;
+        camera.transform.position = new Vector3(4, 5.3f, -10);
+        camera.orthographicSize = 7;
 
         playerCamera = false;
     }
