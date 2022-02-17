@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
 
     // Get tile with tile id
     public Tile GetTile(int tileId) {
+        if (tileId >= 40)
+            tileId = tileId-40;
+
         return gridManager.GetTile(tileId);
     }
 }
