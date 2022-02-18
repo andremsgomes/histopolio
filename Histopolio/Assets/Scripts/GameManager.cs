@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
             newId = 0;
 
         currentPlayer = players[newId];
+
+        cameraManager.ChangePlayerCamera(currentPlayer.transform.position);
     }
 
     void SetColors() {

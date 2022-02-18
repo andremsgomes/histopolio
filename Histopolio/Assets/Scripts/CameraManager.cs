@@ -35,7 +35,7 @@ public class CameraManager : MonoBehaviour
     }
 
     // Set camera to player
-    private void setPlayerCamera(Vector3 playerPosition) {
+    void SetPlayerCamera(Vector3 playerPosition) {
         camera.transform.position = new Vector3(playerPosition.x, playerPosition.y, -10);
         camera.orthographicSize = 3.4f;
 
@@ -48,6 +48,12 @@ public class CameraManager : MonoBehaviour
         if (playerCamera)
             SetBoardCamera();
         else
-            setPlayerCamera(gameManager.GetPlayerPosition());
+            SetPlayerCamera(gameManager.GetPlayerPosition());
+    }
+
+    // Change player camera if active
+    public void ChangePlayerCamera(Vector3 playerPosition) {
+        if (playerCamera)
+            SetPlayerCamera(playerPosition);
     }
 }
