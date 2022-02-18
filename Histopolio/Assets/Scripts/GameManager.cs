@@ -51,7 +51,9 @@ public class GameManager : MonoBehaviour
 
     // Move player after rolled dice
     public void MovePlayer() {
-        player.Move(1);
+        int diceResult = Random.Range(1,7);
+        Debug.Log(diceResult);
+        player.Move(diceResult);
     }
 
     // Get tile with tile id
