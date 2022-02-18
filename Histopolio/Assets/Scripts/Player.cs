@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     private Tile tile;
     private GameManager gameManager;
+    private int id;
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +34,15 @@ public class Player : MonoBehaviour
     // Set game manager
     public void SetGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
+    }
+
+    // Set Player id
+    public void SetId(int id) {
+        this.id = id;
+    }
+
+    // Get player id
+    public int GetId() {
+        return id;
     }
 }

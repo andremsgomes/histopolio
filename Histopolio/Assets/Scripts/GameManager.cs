@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private Player player;
+    private Player[] players;
     private GridManager gridManager;
     private CameraManager cameraManager;
     private UIManager uiManager;
+    private Player currentPlayer;
 
     [SerializeField] private Player playerPrefab;
+    [SerializeField] private int numPlayers;
 
 
     // Start is called before the first frame update
@@ -26,17 +28,25 @@ public class GameManager : MonoBehaviour
 
         uiManager.SetGameManager(this);
 
-        SpawnPlayer();
+        SpawnPlayers();
     }
     
-    // Spawn player on GO Tile
-    void SpawnPlayer() {
+    // Spawn players on GO Tile
+    void SpawnPlayers() {
+        players = new Player[numPlayers];
+
         Tile firstTile = gridManager.GetTile(0);
 
-        player = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
-        player.name = "Player";
-        player.SetGameManager(this);
-        player.SetTile(firstTile);
+        for (int i = 0; i < numPlayers; i++) {
+            players[i] = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
+            players[i].name = $"Player {i+1}";
+            players[i].SetGameManager(this);
+            players[i].SetTile(firstTile);
+            players[i].SetId(i);
+            // TODO: change players colors
+        }
+
+        currentPlayer = players[0];
     }
 
     // Change camera
@@ -46,14 +56,16 @@ public class GameManager : MonoBehaviour
 
     // Get player position
     public Vector3 GetPlayerPosition() {
-        return player.transform.position;
+        return currentPlayer.transform.position;
     }
 
     // Move player after rolled dice
     public void MovePlayer() {
         int diceResult = Random.Range(1,7);
         Debug.Log(diceResult);
-        player.Move(diceResult);
+        currentPlayer.Move(diceResult);
+
+        changeCurrentPlayer();
     }
 
     // Get tile with tile id
@@ -62,5 +74,15 @@ public class GameManager : MonoBehaviour
             tileId = tileId-40;
 
         return gridManager.GetTile(tileId);
+    }
+
+    // Change current player
+    void changeCurrentPlayer() {
+        int newId = currentPlayer.GetId()+1;
+
+        if (newId >= numPlayers)
+            newId = 0;
+
+        currentPlayer = players[newId];
     }
 }

@@ -28,7 +28,7 @@ public class GridManager : MonoBehaviour
 
         // 1st corner tile
         tiles[0] = Instantiate(cornerTilePrefab, new Vector3(9.3f, 0), Quaternion.Euler(0,0,90));
-        tiles[0].name = $"Tile 0";
+        tiles[0].name = "Tile 0";
         tiles[0].SetId(0);
 
         // Bottom tiles
@@ -40,7 +40,7 @@ public class GridManager : MonoBehaviour
 
         // 2nd corner tile
         tiles[10] = Instantiate(cornerTilePrefab, new Vector3(-1.3f, 0), Quaternion.Euler(0,0,0));
-        tiles[10].name = $"Tile 10";
+        tiles[10].name = "Tile 10";
         tiles[10].SetId(10);
 
         // Left tiles
@@ -52,7 +52,7 @@ public class GridManager : MonoBehaviour
 
         // 3rd corner tile
         tiles[20] = Instantiate(cornerTilePrefab, new Vector3(-1.3f, 10.6f), Quaternion.Euler(0,0,-90));
-        tiles[20].name = $"Tile 20";
+        tiles[20].name = "Tile 20";
         tiles[20].SetId(20);
 
         // Top tiles
@@ -64,7 +64,7 @@ public class GridManager : MonoBehaviour
 
         // 4th corner tile
         tiles[30]= Instantiate(cornerTilePrefab, new Vector3(9.3f, 10.6f), Quaternion.Euler(0,0,180));
-        tiles[30].name = $"Tile 30";
+        tiles[30].name = "Tile 30";
         tiles[30].SetId(30);
 
         // Right tiles
