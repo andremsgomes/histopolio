@@ -45,4 +45,9 @@ public class Player : MonoBehaviour
     public int GetId() {
         return id;
     }
+
+    // Set player color
+    public void SetColor(Color color) {
+        GetComponent<SpriteRenderer>().color = color;
+    }
 }
