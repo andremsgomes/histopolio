@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
+
+    [SerializeField] private Text playerNameText;
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +35,10 @@ public class UIManager : MonoBehaviour
     // OnRollDiceClick is called when roll dice button is clicked
     public void OnRollDiceClick() {
         gameManager.MovePlayer();
+    }
+
+    // Set current player name text
+    public void SetPlayerNameText(string name) {
+        playerNameText.text = name;
     }
 }

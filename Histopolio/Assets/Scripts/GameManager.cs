@@ -57,9 +57,10 @@ public class GameManager : MonoBehaviour
             players[i].SetTile(firstTile);
             players[i].SetId(i);
             players[i].SetColor(playerColors[i]);
+            players[i].SetName($"Player {i+1}");    // TODO: nome será introduzido pelo utilizador
         }
 
-        currentPlayer = players[0];
+        SetCurrentPlayer(players[0]);
     }
 
     // Change camera
@@ -96,11 +97,10 @@ public class GameManager : MonoBehaviour
         if (newId >= numPlayers)
             newId = 0;
 
-        currentPlayer = players[newId];
-
-        cameraManager.ChangePlayerCamera(currentPlayer.transform.position);
+        SetCurrentPlayer(players[newId]);
     }
 
+    // Set colors array
     void SetColors() {
         playerColors = new Color[6];
 
@@ -110,5 +110,14 @@ public class GameManager : MonoBehaviour
         playerColors[3] = player4Color;
         playerColors[4] = player5Color;
         playerColors[5] = player6Color;
+        // TODO: add more colors
+    }
+
+    // Set current player
+    void SetCurrentPlayer(Player player) {
+        currentPlayer = player;
+
+        cameraManager.ChangePlayerCamera(currentPlayer.transform.position);
+        uiManager.SetPlayerNameText(currentPlayer.GetName());
     }
 }

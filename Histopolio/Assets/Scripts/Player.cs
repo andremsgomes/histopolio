@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private Tile tile;
     private GameManager gameManager;
     private int id;
+    private string name;
 
     // Start is called before the first frame update
     void Start()
@@ -49,5 +50,15 @@ public class Player : MonoBehaviour
     // Set player color
     public void SetColor(Color color) {
         GetComponent<SpriteRenderer>().color = color;
+    }
+
+    // Set player name
+    public void SetName(string name) {
+        this.name = name;
+    }
+
+    // Get player name
+    public string GetName() {
+        return name;
     }
 }
