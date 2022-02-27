@@ -61,4 +61,9 @@ public class Player : MonoBehaviour
     public string GetName() {
         return name;
     }
+
+    // Get player color
+    public Color GetColor() {
+        return GetComponent<SpriteRenderer>().color;
+    }
 }

@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField] private Text playerNameText;
+    [SerializeField] private Image playerColor;
 
     // Start is called before the first frame update
     void Start()
@@ -40,5 +41,10 @@ public class UIManager : MonoBehaviour
     // Set current player name text
     public void SetPlayerNameText(string name) {
         playerNameText.text = name;
+    }
+
+    // Set current player color
+    public void SetPlayerColor(Color color) {
+        playerColor.color = color;
     }
 }

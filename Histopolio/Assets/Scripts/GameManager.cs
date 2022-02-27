@@ -119,5 +119,6 @@ public class GameManager : MonoBehaviour
 
         cameraManager.ChangePlayerCamera(currentPlayer.transform.position);
         uiManager.SetPlayerNameText(currentPlayer.GetName());
+        uiManager.SetPlayerColor(currentPlayer.GetColor());
     }
 }
