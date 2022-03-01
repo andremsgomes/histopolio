@@ -6,8 +6,8 @@ public class GridManager : MonoBehaviour
 {
     private Tile[] tiles;
 
-    [SerializeField] private Tile groupPropertyTilePrefab;
-    [SerializeField] private Tile cornerTilePrefab;
+    [SerializeField] private GroupPropertyTile groupPropertyTilePrefab;
+    [SerializeField] private CornerTile cornerTilePrefab;
     
 
     // Start is called before the first frame update

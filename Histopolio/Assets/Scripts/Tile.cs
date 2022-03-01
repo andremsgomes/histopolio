@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public abstract class Tile : MonoBehaviour
 {
     private int id;
 
@@ -27,4 +27,7 @@ public class Tile : MonoBehaviour
     public int GetId() {
         return id;
     }
+
+    // Perform tile action when player arrives at tile
+    public abstract void PerformAction();
 }

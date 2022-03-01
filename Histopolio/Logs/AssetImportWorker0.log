@@ -13,11 +13,11 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-41931
+36317
 Successfully changed project path to: /home/andre/Desktop/Histopólio/histopolio/Histopolio
 /home/andre/Desktop/Histopólio/histopolio/Histopolio
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 49.83 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 43.95 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.4f1 (becced5a802b)
 [Subsystems] Discovering subsystems at path /home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Resources/UnitySubsystems
@@ -36,78 +36,163 @@ L_EXT_separate_shader_objects GL_EXT_separate_specular_color GL_EXT_shader_image
 asterpos_clip GL_IBM_texture_mirrored_repeat GL_KHR_context_flush_control GL_KHR_debug GL_EXT_memory_object GL_EXT_memory_object_fd GL_KHR_parallel_shader_compile GL_KHR_no_error GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_EXT_semaphore GL_EXT_semaphore_fd GL_KTX_buffer_region GL_NV_alpha_to_coverage_dither_control GL_NV_bindless_multi_draw_indirect GL_NV_bindless_multi_draw_indirect_count GL_NV_bindless_texture GL_NV_blend_equation_advanced GL_NV_blend_equation_advanced_coherent GL_NV_blend_minmax_factor GL_NV_blend_square GL_NV_command_list GL_NV_compute_program5 GL_NV_conditional_render GL_NV_copy_depth_to_color GL_NV_copy_image GL_NV_depth_buffer_float GL_NV_depth_clamp GL_NV_draw_texture GL_NV_draw_vulkan_image GL_NV_ES1_1_compatibility GL_NV_ES3_1_compatibility GL_NV_explicit_multisample GL_NV_feature_query GL_NV_fence GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_framebuffer_multisample_coverage GL_NV_geometry_sha
 der4 GL_NV_gpu_program4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_NV_gpu_program_fp64 GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_atomic_int64 GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_
 buffer_unified_memory GL_NV_vdpau_interop GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NVX_conditional_render GL_NVX_gpu_memory_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
-OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle 178319688
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle -545082040
 Initialize mono
 Mono path[0] = '/home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/Managed'
 Mono path[1] = '/home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56224
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56118
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /home/andre/Unity/Hub/Editor/2020.2.4f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.001697 seconds.
+Registered in 0.001936 seconds.
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 43.23 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 41.17 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.436 seconds
+- Completed reload, in  1.482 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000862 seconds.
+Registered in 0.000850 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
-Refreshing native plugins compatible for Editor in 43.29 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 47.72 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.105 seconds
+- Completed reload, in  1.113 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
 Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1803 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 97.7 MB.
-System memory in use after: 97.7 MB.
+Unloading 1805 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.8 MB.
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2269.
-Total: 4.082813 ms (FindLiveObjects: 0.227921 ms CreateObjectMapping: 0.101358 ms MarkObjects: 3.278875 ms  DeleteObjects: 0.469050 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Prefabs/CardTile.prefab
-  artifactKey: Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CardTile.prefab using Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ba7cfa2dabcfdadb2cea2e73356c59e') in 0.114032 seconds
-  Import took 0.118340 seconds .
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2271.
+Total: 4.342361 ms (FindLiveObjects: 0.267691 ms CreateObjectMapping: 0.107176 ms MarkObjects: 3.631735 ms  DeleteObjects: 0.330621 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.811217 seconds.
-  path: Assets/Prefabs/CardTile.prefab
-  artifactKey: Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CardTile.prefab using Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbebd0cb9e3ab73c3a1528171ff6825e') in 0.009053 seconds
-  Import took 0.012675 seconds .
+  path: Assets/Scripts/Player.cs
+  artifactKey: Guid(f4100e8cc6e9406929da352496be6986) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Player.cs using Guid(f4100e8cc6e9406929da352496be6986) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84b3eddd3c14ac42bb4757c4cba0c4e1') in 0.004079 seconds
+  Import took 0.008467 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 7.777211 seconds.
-  path: Assets/Prefabs/CardTile.prefab
-  artifactKey: Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CardTile.prefab using Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ffa1f244979b89aed069eb2e80fca12') in 0.008202 seconds
-  Import took 0.011939 seconds .
+  Time since last request: 0.000277 seconds.
+  path: Assets/Scripts/GroupPropertyTile.cs
+  artifactKey: Guid(6f5433ad20f4f1332b0dbd4d3b75a183) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GroupPropertyTile.cs using Guid(6f5433ad20f4f1332b0dbd4d3b75a183) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99838e5620d288836699fef402f67e37') in 0.000718 seconds
+  Import took 0.003771 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000849 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.982 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1800 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.8 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2274.
+Total: 3.087033 ms (FindLiveObjects: 0.205797 ms CreateObjectMapping: 0.075739 ms MarkObjects: 2.668359 ms  DeleteObjects: 0.131512 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 7.227300 seconds.
-  path: Assets/Prefabs/CardTile.prefab
-  artifactKey: Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/CardTile.prefab using Guid(47dbcf545c6ddbce7897a2fc8257cdcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e44eef7767a23f8ffe6b6869c957fed') in 0.008442 seconds
-  Import took 0.012127 seconds .
+  Time since last request: 128.565408 seconds.
+  path: Assets/Scripts/Tile.cs
+  artifactKey: Guid(d0221556943c491f99fabfe2d9786b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Tile.cs using Guid(d0221556943c491f99fabfe2d9786b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7428462117d3a03da2849bbdbb9a7db3') in 0.003529 seconds
+  Import took 0.006859 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005696 seconds.
+  path: Assets/Scripts/Tile.cs
+  artifactKey: Guid(d0221556943c491f99fabfe2d9786b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Tile.cs using Guid(d0221556943c491f99fabfe2d9786b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7428462117d3a03da2849bbdbb9a7db3') in 0.000746 seconds
+  Import took 0.004186 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000938 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.029 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.85 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1800 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.8 MB.
+System memory in use after: 97.8 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2277.
+Total: 7.709866 ms (FindLiveObjects: 0.443196 ms CreateObjectMapping: 0.204653 ms MarkObjects: 6.739103 ms  DeleteObjects: 0.309270 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 43.540006 seconds.
+  path: Assets/Prefabs/CornerTile.prefab
+  artifactKey: Guid(89c69969f18ae8f7a9574d609b1f7179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/CornerTile.prefab using Guid(89c69969f18ae8f7a9574d609b1f7179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '693b4ce378a396ca0868781fd9b59fb5') in 0.157581 seconds
+  Import took 0.163925 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001431 seconds.
+  path: Assets/Prefabs/CornerTile.prefab
+  artifactKey: Guid(89c69969f18ae8f7a9574d609b1f7179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/CornerTile.prefab using Guid(89c69969f18ae8f7a9574d609b1f7179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '693b4ce378a396ca0868781fd9b59fb5') in 0.007947 seconds
+  Import took 0.011722 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016298 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.947 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1800 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.3 MB.
+System memory in use after: 99.3 MB.
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 2289.
+Total: 3.200733 ms (FindLiveObjects: 0.248017 ms CreateObjectMapping: 0.085167 ms MarkObjects: 2.724869 ms  DeleteObjects: 0.137393 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
