@@ -24,7 +24,9 @@ public class SaveBoard : MonoBehaviour
             
             tileData.id = tiles[i].GetId();
             tileData.tileType = tiles[i].GetTileType();
-            tileData.tileName = "testName";
+            tileData.tileName = "Property Name";
+            tileData.position = tiles[i].transform.position;
+            tileData.rotation = tiles[i].transform.rotation;
 
             boardData.tiles[i] = tileData;
         }
@@ -44,8 +46,8 @@ public class TileData {
     public int id;
     public string tileType;
     public string tileName;
-    // public Vector3 position;
-    // public Quaternion rotation;
+    public Vector3 position;
+    public Quaternion rotation;
 }
 
 [System.Serializable]

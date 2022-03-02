@@ -1,1 +1,644 @@
-{"tiles":[{"id":0,"tileType":"cornerTile","tileName":"testName"},{"id":1,"tileType":"groupPropertyTile","tileName":"testName"},{"id":2,"tileType":"groupPropertyTile","tileName":"testName"},{"id":3,"tileType":"groupPropertyTile","tileName":"testName"},{"id":4,"tileType":"groupPropertyTile","tileName":"testName"},{"id":5,"tileType":"groupPropertyTile","tileName":"testName"},{"id":6,"tileType":"groupPropertyTile","tileName":"testName"},{"id":7,"tileType":"groupPropertyTile","tileName":"testName"},{"id":8,"tileType":"groupPropertyTile","tileName":"testName"},{"id":9,"tileType":"groupPropertyTile","tileName":"testName"},{"id":10,"tileType":"cornerTile","tileName":"testName"},{"id":11,"tileType":"groupPropertyTile","tileName":"testName"},{"id":12,"tileType":"groupPropertyTile","tileName":"testName"},{"id":13,"tileType":"groupPropertyTile","tileName":"testName"},{"id":14,"tileType":"groupPropertyTile","tileName":"testName"},{"id":15,"tileType":"groupPropertyTile","tileName":"testName"},{"id":16,"tileType":"groupPropertyTile","tileName":"testName"},{"id":17,"tileType":"groupPropertyTile","tileName":"testName"},{"id":18,"tileType":"groupPropertyTile","tileName":"testName"},{"id":19,"tileType":"groupPropertyTile","tileName":"testName"},{"id":20,"tileType":"cornerTile","tileName":"testName"},{"id":21,"tileType":"groupPropertyTile","tileName":"testName"},{"id":22,"tileType":"groupPropertyTile","tileName":"testName"},{"id":23,"tileType":"groupPropertyTile","tileName":"testName"},{"id":24,"tileType":"groupPropertyTile","tileName":"testName"},{"id":25,"tileType":"groupPropertyTile","tileName":"testName"},{"id":26,"tileType":"groupPropertyTile","tileName":"testName"},{"id":27,"tileType":"groupPropertyTile","tileName":"testName"},{"id":28,"tileType":"groupPropertyTile","tileName":"testName"},{"id":29,"tileType":"groupPropertyTile","tileName":"testName"},{"id":30,"tileType":"cornerTile","tileName":"testName"},{"id":31,"tileType":"groupPropertyTile","tileName":"testName"},{"id":32,"tileType":"groupPropertyTile","tileName":"testName"},{"id":33,"tileType":"groupPropertyTile","tileName":"testName"},{"id":34,"tileType":"groupPropertyTile","tileName":"testName"},{"id":35,"tileType":"groupPropertyTile","tileName":"testName"},{"id":36,"tileType":"groupPropertyTile","tileName":"testName"},{"id":37,"tileType":"groupPropertyTile","tileName":"testName"},{"id":38,"tileType":"groupPropertyTile","tileName":"testName"},{"id":39,"tileType":"groupPropertyTile","tileName":"testName"}]}
+{
+    "tiles": [
+        {
+            "id": 0,
+            "tileType": "cornerTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 1,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 8,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 2,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 7,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 3,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 6,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 4,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 5,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 4,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 6,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 3,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 7,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 2,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 8,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 9,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 10,
+            "tileType": "cornerTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            }
+        },
+        {
+            "id": 11,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 1.2999999523162842,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 12,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 2.299999952316284,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 13,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 3.299999952316284,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 14,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 4.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 15,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 5.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 16,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 6.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 17,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 7.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 18,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 8.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 19,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 9.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 20,
+            "tileType": "cornerTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 21,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 0,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 22,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 1,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 23,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 2,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 24,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 3,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 25,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 4,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 26,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 5,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 27,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 6,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 28,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 7,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 29,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 8,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 30,
+            "tileType": "cornerTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            }
+        },
+        {
+            "id": 31,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 9.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 32,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 8.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 33,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 7.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 34,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 6.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 35,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 5.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 36,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 4.300000190734863,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 37,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 3.3000001907348633,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 38,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 2.3000001907348633,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        },
+        {
+            "id": 39,
+            "tileType": "groupPropertyTile",
+            "tileName": "Property Name",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 1.3000001907348633,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            }
+        }
+    ]
+}
