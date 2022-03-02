@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private GridManager gridManager;
     private CameraManager cameraManager;
     private UIManager uiManager;
+    private SaveBoard saveBoard;
     private Player currentPlayer;
 
     [SerializeField] private Player playerPrefab;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         gridManager = this.GetComponent<GridManager>();
         cameraManager = this.GetComponent<CameraManager>();
         uiManager = this.GetComponent<UIManager>();
+        saveBoard = this.GetComponent<SaveBoard>();
 
         gridManager.GenerateGrid();
 
@@ -75,6 +77,8 @@ public class GameManager : MonoBehaviour
 
     // Move player after rolled dice
     public void MovePlayer() {
+        saveBoard.SaveIntoJson(gridManager.GetTiles());
+
         int diceResult = Random.Range(1,7);
         Debug.Log(diceResult);
         currentPlayer.Move(diceResult);
