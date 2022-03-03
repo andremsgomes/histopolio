@@ -19,16 +19,11 @@ public class SaveBoard : MonoBehaviour
     public void SaveIntoJson(Tile[] tiles) {
         BoardData boardData = new BoardData();
 
-        for (int i = 0; i < boardData.tiles.Length; i++) {
-            TileData tileData = new TileData();
-            
-            tileData.id = tiles[i].GetId();
-            tileData.tileType = tiles[i].GetTileType();
-            tileData.tileName = "Property Name";
-            tileData.position = tiles[i].transform.position;
-            tileData.rotation = tiles[i].transform.rotation;
-
-            boardData.tiles[i] = tileData;
+        for (int i = 0; i < tiles.Length; i++) {
+            if (tiles[i].GetTileType().Equals("groupPropertyTile"))
+                boardData.groupPropertyTiles.Add(new GroupPropertyTileData(tiles[i].GetId(), tiles[i].GetTileType(), "Property Name", tiles[i].transform.position, tiles[i].transform.rotation, 20, new Color()));
+            else
+                boardData.cornerTiles.Add(new CornerTileData(tiles[i].GetId(), tiles[i].GetTileType(), "Property Name", tiles[i].transform.position, tiles[i].transform.rotation));
         }
 
         string board = JsonUtility.ToJson(boardData);
@@ -38,7 +33,8 @@ public class SaveBoard : MonoBehaviour
 
 [System.Serializable]
 public class BoardData {
-    public TileData[] tiles = new TileData[40];
+    public List<GroupPropertyTileData> groupPropertyTiles = new List<GroupPropertyTileData>();
+    public List<CornerTileData> cornerTiles = new List<CornerTileData>();
 }
 
 [System.Serializable]
@@ -48,10 +44,32 @@ public class TileData {
     public string tileName;
     public Vector3 position;
     public Quaternion rotation;
+
+
+    public TileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) {
+        this.id = id;
+        this.tileType = tileType;
+        this.tileName = tileName;
+        this.position = position;
+        this.rotation = rotation;
+    }
 }
 
 [System.Serializable]
 public class GroupPropertyTileData : TileData {
     public int points;
     public Color groupColor;
+
+    
+    public GroupPropertyTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation, int points, Color groupColor) : base(id, tileType, tileName, position, rotation) {
+        this.points = points;
+        this.groupColor = groupColor;
+    }
+}
+
+[System.Serializable]
+public class CornerTileData : TileData {
+    public CornerTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+
+    }
 }
