@@ -20,10 +20,12 @@ public class SaveBoard : MonoBehaviour
         BoardData boardData = new BoardData();
 
         for (int i = 0; i < tiles.Length; i++) {
-            if (tiles[i].GetTileType().Equals("groupPropertyTile"))
-                boardData.groupPropertyTiles.Add(new GroupPropertyTileData(tiles[i].GetId(), tiles[i].GetTileType(), "Property Name", tiles[i].transform.position, tiles[i].transform.rotation, 20, new Color()));
+            if (tiles[i].GetTileType().Equals("groupPropertyTile")) {
+                GroupPropertyTile groupPropertyTile = (GroupPropertyTile)tiles[i];
+                boardData.groupPropertyTiles.Add(new GroupPropertyTileData(groupPropertyTile.GetId(), groupPropertyTile.GetTileType(), groupPropertyTile.GetTileName(), groupPropertyTile.transform.position, groupPropertyTile.transform.rotation, groupPropertyTile.GetPoints(), groupPropertyTile.GetGroupColor()));
+            }
             else
-                boardData.cornerTiles.Add(new CornerTileData(tiles[i].GetId(), tiles[i].GetTileType(), "Property Name", tiles[i].transform.position, tiles[i].transform.rotation));
+                boardData.cornerTiles.Add(new CornerTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation));
         }
 
         string board = JsonUtility.ToJson(boardData);
