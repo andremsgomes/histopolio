@@ -32,9 +32,8 @@ public class GameManager : MonoBehaviour
         gridManager = this.GetComponent<GridManager>();
         cameraManager = this.GetComponent<CameraManager>();
         uiManager = this.GetComponent<UIManager>();
-        saveBoard = this.GetComponent<SaveBoard>();
 
-        gridManager.GenerateGrid();
+        gridManager.LoadBoard();
 
         cameraManager.SetGameManager(this);
         cameraManager.SetBoardCamera();
@@ -77,8 +76,6 @@ public class GameManager : MonoBehaviour
 
     // Move player after rolled dice
     public void MovePlayer() {
-        saveBoard.SaveIntoJson(gridManager.GetTiles());
-
         int diceResult = Random.Range(1,7);
         Debug.Log(diceResult);
         currentPlayer.Move(diceResult);
