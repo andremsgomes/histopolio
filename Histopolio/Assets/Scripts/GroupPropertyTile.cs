@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GroupPropertyTile : Tile
 {
     private int points;
     private Color groupColor;
+    [SerializeField] private Text pointsText;
 
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class GroupPropertyTile : Tile
     // Set points
     public void SetPoints(int points) {
         this.points = points;
+        pointsText.text = "+ " + points;
     }
 
     // Get points

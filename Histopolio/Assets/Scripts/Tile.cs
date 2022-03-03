@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Tile : MonoBehaviour
 {
     private int id;
     private string tileType;
     private string tileName;
+
+    [SerializeField] private Text tileNameText;
 
     // Start is called before the first frame update
     void Start()
@@ -51,5 +54,6 @@ public abstract class Tile : MonoBehaviour
     // Set name
     public void SetTileName(string tileName) {
         this.tileName = tileName;
+        tileNameText.text = tileName;
     }
 }

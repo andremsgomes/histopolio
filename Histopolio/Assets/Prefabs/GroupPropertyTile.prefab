@@ -424,6 +424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5433ad20f4f1332b0dbd4d3b75a183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileNameText: {fileID: 5480676692244194875}
+  pointsText: {fileID: 5343707600229911550}
 --- !u!1 &7758751292682676750
 GameObject:
   m_ObjectHideFlags: 0
