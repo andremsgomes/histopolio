@@ -426,6 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileNameText: {fileID: 5480676692244194875}
   pointsText: {fileID: 5343707600229911550}
+  group: {fileID: 6550795022735196913}
 --- !u!1 &7758751292682676750
 GameObject:
   m_ObjectHideFlags: 0

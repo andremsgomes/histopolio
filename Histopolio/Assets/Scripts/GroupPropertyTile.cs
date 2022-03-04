@@ -8,6 +8,7 @@ public class GroupPropertyTile : Tile
     private int points;
     private Color groupColor;
     [SerializeField] private Text pointsText;
+    [SerializeField] private GameObject group;
 
 
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class GroupPropertyTile : Tile
     // Set group color
     public void SetGroupColor(Color color) {
         this.groupColor = color;
+        group.GetComponent<SpriteRenderer>().color = color;
     }
 
     // Get group color
