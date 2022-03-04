@@ -24,8 +24,14 @@ public class SaveBoard : MonoBehaviour
                 GroupPropertyTile groupPropertyTile = (GroupPropertyTile)tiles[i];
                 boardData.groupPropertyTiles.Add(new GroupPropertyTileData(groupPropertyTile.GetId(), groupPropertyTile.GetTileType(), groupPropertyTile.GetTileName(), groupPropertyTile.transform.position, groupPropertyTile.transform.rotation, groupPropertyTile.GetPoints(), groupPropertyTile.GetGroupColor()));
             }
-            else
-                boardData.cornerTiles.Add(new CornerTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation));
+            else if (tiles[i].GetTileType().Equals("goTile"))
+                boardData.goTileData = new GoTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetTileType().Equals("prisonTile"))
+                boardData.prisonTileData = new PrisonTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetTileType().Equals("parkingTile"))
+                boardData.parkingTileData = new ParkingTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetTileType().Equals("goToPrison"))
+                boardData.goToPrisonTileData = new GoToPrisonTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
         }
 
         string board = JsonUtility.ToJson(boardData);
@@ -36,7 +42,10 @@ public class SaveBoard : MonoBehaviour
 [System.Serializable]
 public class BoardData {
     public List<GroupPropertyTileData> groupPropertyTiles = new List<GroupPropertyTileData>();
-    public List<CornerTileData> cornerTiles = new List<CornerTileData>();
+    public GoTileData goTileData;
+    public PrisonTileData prisonTileData;
+    public ParkingTileData parkingTileData;
+    public GoToPrisonTileData goToPrisonTileData;
 }
 
 [System.Serializable]
@@ -70,8 +79,29 @@ public class GroupPropertyTileData : TileData {
 }
 
 [System.Serializable]
-public class CornerTileData : TileData {
-    public CornerTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+public class GoTileData : TileData {
+    public GoTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+
+    }
+}
+
+[System.Serializable]
+public class PrisonTileData : TileData {
+    public PrisonTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+
+    }
+}
+
+[System.Serializable]
+public class ParkingTileData : TileData {
+    public ParkingTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+
+    }
+}
+
+[System.Serializable]
+public class GoToPrisonTileData : TileData {
+    public GoToPrisonTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
 
     }
 }

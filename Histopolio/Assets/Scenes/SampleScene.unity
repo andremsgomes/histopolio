@@ -432,7 +432,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groupPropertyTilePrefab: {fileID: 4785936635320994099, guid: 43299b9e7316a917f84a1fd4ebdbf942, type: 3}
-  cornerTilePrefab: {fileID: 4543324732152273150, guid: 89c69969f18ae8f7a9574d609b1f7179, type: 3}
+  goTilePrefab: {fileID: 3806025737634555257, guid: 091fe099d8261a0e7b4dd82fafa7cbd0, type: 3}
+  prisonTilePrefab: {fileID: 4543324732152273150, guid: 89c69969f18ae8f7a9574d609b1f7179, type: 3}
+  parkingTilePrefab: {fileID: 8488870320282815924, guid: 943df27a2d48d1f37b53dfbe46d3fe79, type: 3}
+  goToPrisonTilePrefab: {fileID: 3057428716405905586, guid: 9ed90e6c6c96cc581a2b0016cf23de99, type: 3}
 --- !u!114 &615705953
 MonoBehaviour:
   m_ObjectHideFlags: 0

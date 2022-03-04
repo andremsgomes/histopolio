@@ -47,4 +47,10 @@ public class GroupPropertyTile : Tile
     public Color GetGroupColor() {
         return groupColor;
     }
+
+    // Get type
+    public override string GetTileType()
+    {
+        return "groupPropertyTile";
+    }
 }

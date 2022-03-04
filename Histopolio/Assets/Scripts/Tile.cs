@@ -37,14 +37,7 @@ public abstract class Tile : MonoBehaviour
     public abstract void PerformAction();
 
     // Get type
-    public string GetTileType() {
-        return tileType;
-    }
-
-    // Set type
-    public void SetTileType(string tileType) {
-        this.tileType = tileType;
-    }
+    public abstract string GetTileType();
 
     // Get name
     public string GetTileName() {

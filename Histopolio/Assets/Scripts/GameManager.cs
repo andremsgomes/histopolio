@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         gridManager = this.GetComponent<GridManager>();
         cameraManager = this.GetComponent<CameraManager>();
         uiManager = this.GetComponent<UIManager>();
+        saveBoard = this.GetComponent<SaveBoard>();
 
         gridManager.LoadBoard();
 

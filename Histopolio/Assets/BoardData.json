@@ -829,70 +829,68 @@
             }
         }
     ],
-    "cornerTiles": [
-        {
-            "id": 0,
-            "tileType": "cornerTile",
-            "tileName": "Partida",
-            "position": {
-                "x": 9.300000190734863,
-                "y": 0,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0.7071068286895752,
-                "w": 0.7071068286895752
-            }
+    "goTileData": {
+        "id": 0,
+        "tileType": "goTile",
+        "tileName": "Partida",
+        "position": {
+            "x": 9.300000190734863,
+            "y": 0,
+            "z": 0
         },
-        {
-            "id": 10,
-            "tileType": "cornerTile",
-            "tileName": "Passagem Pela Biblioteca",
-            "position": {
-                "x": -1.2999999523162842,
-                "y": 0,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
-            }
+        "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0.7071068286895752,
+            "w": 0.7071068286895752
+        }        
+    },
+    "prisonTileData": {
+        "id": 10,
+        "tileType": "prisonTile",
+        "tileName": "Passagem Pela Biblioteca",
+        "position": {
+            "x": -1.2999999523162842,
+            "y": 0,
+            "z": 0
         },
-        {
-            "id": 20,
-            "tileType": "cornerTile",
-            "tileName": "Associação De Estudantes",
-            "position": {
-                "x": -1.2999999523162842,
-                "y": 10.600000381469727,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": -0.7071068286895752,
-                "w": 0.7071068286895752
-            }
-        },
-        {
-            "id": 30,
-            "tileType": "cornerTile",
-            "tileName": "Vá Para A Biblioteca",
-            "position": {
-                "x": 9.300000190734863,
-                "y": 10.600000381469727,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 1,
-                "w": -4.371138828673793e-8
-            }
+        "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
         }
-    ]
+    },
+    "parkingTileData": {
+        "id": 20,
+        "tileType": "parkingTile",
+        "tileName": "Associação De Estudantes",
+        "position": {
+            "x": -1.2999999523162842,
+            "y": 10.600000381469727,
+            "z": 0
+        },
+        "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": -0.7071068286895752,
+            "w": 0.7071068286895752
+        }
+    },
+    "goToPrisonTileData": {
+        "id": 30,
+        "tileType": "goToPrisonTile",
+        "tileName": "Vá Para A Biblioteca",
+        "position": {
+            "x": 9.300000190734863,
+            "y": 10.600000381469727,
+            "z": 0
+        },
+        "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 1,
+            "w": -4.371138828673793e-8
+        }
+    }
 }
