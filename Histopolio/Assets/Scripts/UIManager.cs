@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Text playerNameText;
     [SerializeField] private Image playerColor;
+    [SerializeField] private Text playerScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -46,5 +47,10 @@ public class UIManager : MonoBehaviour
     // Set current player color
     public void SetPlayerColor(Color color) {
         playerColor.color = color;
+    }
+
+    // Set current player score
+    public void SetPlayerScore(int score) {
+        playerScoreText.text = score.ToString() + " Pontos";
     }
 }

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
     private int id;
     private string name;
+    private int score;
 
     // Start is called before the first frame update
     void Start()
@@ -65,5 +66,15 @@ public class Player : MonoBehaviour
     // Get player color
     public Color GetColor() {
         return GetComponent<SpriteRenderer>().color;
+    }
+
+    // Add points to score
+    public void addPoints(int points) {
+        score += points;
+    }
+
+    // Get score
+    public int getScore() {
+        return score;
     }
 }
