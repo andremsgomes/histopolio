@@ -12,6 +12,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private PrisonTile prisonTilePrefab;
     [SerializeField] private ParkingTile parkingTilePrefab;
     [SerializeField] private GoToPrisonTile goToPrisonTilePrefab;
+    [SerializeField] private CommunityTile communityTilePrefab;
     
 
     // Start is called before the first frame update
@@ -51,6 +52,13 @@ public class GridManager : MonoBehaviour
             
             ((GroupPropertyTile)tiles[groupPropertyTileData.id]).SetPoints(groupPropertyTileData.points);
             ((GroupPropertyTile)tiles[groupPropertyTileData.id]).SetGroupColor(groupPropertyTileData.groupColor);
+        }
+
+        foreach(CommunityTileData communityTileData in boardData.communityTiles) {
+            tiles[communityTileData.id] = Instantiate(communityTilePrefab, communityTileData.position, communityTileData.rotation);
+            tiles[communityTileData.id].name = $"Tile {communityTileData.id}";
+            tiles[communityTileData.id].SetId(communityTileData.id);
+            tiles[communityTileData.id].SetTileName(communityTileData.tileName);
         }
 
         tiles[boardData.goTileData.id] = Instantiate(goTilePrefab, boardData.goTileData.position, boardData.goTileData.rotation);

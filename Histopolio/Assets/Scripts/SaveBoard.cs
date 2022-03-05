@@ -30,8 +30,10 @@ public class SaveBoard : MonoBehaviour
                 boardData.prisonTileData = new PrisonTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
             else if (tiles[i].GetTileType().Equals("parkingTile"))
                 boardData.parkingTileData = new ParkingTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
-            else if (tiles[i].GetTileType().Equals("goToPrison"))
+            else if (tiles[i].GetTileType().Equals("goToPrisonTile"))
                 boardData.goToPrisonTileData = new GoToPrisonTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetTileType().Equals("communityTile"))
+                boardData.communityTiles.Add(new CommunityTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation));
         }
 
         string board = JsonUtility.ToJson(boardData);
@@ -42,10 +44,12 @@ public class SaveBoard : MonoBehaviour
 [System.Serializable]
 public class BoardData {
     public List<GroupPropertyTileData> groupPropertyTiles = new List<GroupPropertyTileData>();
+    public List<CommunityTileData> communityTiles = new List<CommunityTileData>();
     public GoTileData goTileData;
     public PrisonTileData prisonTileData;
     public ParkingTileData parkingTileData;
     public GoToPrisonTileData goToPrisonTileData;
+    // TODO: meter tiles iguais ao tile original numa lista de others
 }
 
 [System.Serializable]
@@ -102,6 +106,13 @@ public class ParkingTileData : TileData {
 [System.Serializable]
 public class GoToPrisonTileData : TileData {
     public GoToPrisonTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+
+    }
+}
+
+[System.Serializable]
+public class CommunityTileData : TileData {
+    public CommunityTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
 
     }
 }

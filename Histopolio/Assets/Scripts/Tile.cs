@@ -9,7 +9,7 @@ public abstract class Tile : MonoBehaviour
     private string tileType;
     private string tileName;
 
-    [SerializeField] private Text tileNameText;
+    [SerializeField] private Text tileNameText;     // TODO: meter só no group
 
     // Start is called before the first frame update
     void Start()
