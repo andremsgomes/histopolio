@@ -2,7 +2,6 @@
     "groupPropertyTiles": [
         {
             "id": 1,
-            "tileType": "groupPropertyTile",
             "tileName": "Rua Malpighi",
             "position": {
                 "x": 8,
@@ -18,14 +17,13 @@
             "points": 6,
             "groupColor": {
                 "r": 1,
-                "g": 0.85,
-                "b": 0.72,
+                "g": 0.8500000238418579,
+                "b": 0.7200000286102295,
                 "a": 1
             }
         },
         {
             "id": 3,
-            "tileType": "groupPropertyTile",
             "tileName": "Avenida Epitélio Transição",
             "position": {
                 "x": 6,
@@ -41,14 +39,13 @@
             "points": 8,
             "groupColor": {
                 "r": 1,
-                "g": 0.85,
-                "b": 0.72,
+                "g": 0.8500000238418579,
+                "b": 0.7200000286102295,
                 "a": 1
             }
         },
         {
             "id": 4,
-            "tileType": "groupPropertyTile",
             "tileName": "Pague Seguro Escolar",
             "position": {
                 "x": 5,
@@ -71,7 +68,6 @@
         },
         {
             "id": 5,
-            "tileType": "groupPropertyTile",
             "tileName": "Tecido Epitelial",
             "position": {
                 "x": 4,
@@ -94,7 +90,6 @@
         },
         {
             "id": 6,
-            "tileType": "groupPropertyTile",
             "tileName": "Sorte",
             "position": {
                 "x": 3,
@@ -117,7 +112,6 @@
         },
         {
             "id": 7,
-            "tileType": "groupPropertyTile",
             "tileName": "Travessa Prato Estriado",
             "position": {
                 "x": 2,
@@ -133,14 +127,13 @@
             "points": 8,
             "groupColor": {
                 "r": 1,
-                "g": 0.85,
-                "b": 0.72,
+                "g": 0.8500000238418579,
+                "b": 0.7200000286102295,
                 "a": 1
             }
         },
         {
             "id": 8,
-            "tileType": "groupPropertyTile",
             "tileName": "Travessa Célula Caliciforme",
             "position": {
                 "x": 1,
@@ -156,14 +149,13 @@
             "points": 10,
             "groupColor": {
                 "r": 1,
-                "g": 0.85,
-                "b": 0.72,
+                "g": 0.8500000238418579,
+                "b": 0.7200000286102295,
                 "a": 1
             }
         },
         {
             "id": 9,
-            "tileType": "groupPropertyTile",
             "tileName": "Rua Ácinos Serosos",
             "position": {
                 "x": 0,
@@ -179,14 +171,13 @@
             "points": 12,
             "groupColor": {
                 "r": 1,
-                "g": 0.85,
-                "b": 0.72,
+                "g": 0.8500000238418579,
+                "b": 0.7200000286102295,
                 "a": 1
             }
         },
         {
             "id": 11,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Dos Mastócitos",
             "position": {
                 "x": -1.2999999523162842,
@@ -201,15 +192,14 @@
             },
             "points": 14,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 12,
-            "tileType": "groupPropertyTile",
             "tileName": "Pague Prestação Propinas",
             "position": {
                 "x": -1.2999999523162842,
@@ -232,7 +222,6 @@
         },
         {
             "id": 13,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Dos Fibrócitos",
             "position": {
                 "x": -1.2999999523162842,
@@ -247,15 +236,14 @@
             },
             "points": 14,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 14,
-            "tileType": "groupPropertyTile",
             "tileName": "Rua Fibras Elásticas",
             "position": {
                 "x": -1.2999999523162842,
@@ -270,15 +258,14 @@
             },
             "points": 15,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 15,
-            "tileType": "groupPropertyTile",
             "tileName": "Tecido Conjuntivo",
             "position": {
                 "x": -1.2999999523162842,
@@ -301,7 +288,6 @@
         },
         {
             "id": 16,
-            "tileType": "groupPropertyTile",
             "tileName": "Avenida Tecido Adiposo",
             "position": {
                 "x": -1.2999999523162842,
@@ -316,15 +302,14 @@
             },
             "points": 20,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 18,
-            "tileType": "groupPropertyTile",
             "tileName": "Avenida Da Cartilagem",
             "position": {
                 "x": -1.2999999523162842,
@@ -339,15 +324,14 @@
             },
             "points": 20,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 19,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Dos Condrócitos",
             "position": {
                 "x": -1.2999999523162842,
@@ -362,15 +346,14 @@
             },
             "points": 14,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 21,
-            "tileType": "groupPropertyTile",
             "tileName": "Avenida Do Osso Compacto",
             "position": {
                 "x": 0,
@@ -385,15 +368,14 @@
             },
             "points": 20,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 22,
-            "tileType": "groupPropertyTile",
             "tileName": "Sorte",
             "position": {
                 "x": 1,
@@ -416,7 +398,6 @@
         },
         {
             "id": 23,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Dos Osteócitos",
             "position": {
                 "x": 2,
@@ -431,15 +412,14 @@
             },
             "points": 20,
             "groupColor": {
-                "r": 0.47,
-                "g": 0.63,
-                "b": 0.84,
+                "r": 0.4699999988079071,
+                "g": 0.6299999952316284,
+                "b": 0.8399999737739563,
                 "a": 1
             }
         },
         {
             "id": 24,
-            "tileType": "groupPropertyTile",
             "tileName": "Avenida Músculo Liso",
             "position": {
                 "x": 3,
@@ -462,7 +442,6 @@
         },
         {
             "id": 25,
-            "tileType": "groupPropertyTile",
             "tileName": "Tecido Muscular",
             "position": {
                 "x": 4,
@@ -485,7 +464,6 @@
         },
         {
             "id": 26,
-            "tileType": "groupPropertyTile",
             "tileName": "Avenida Músculo Cardíaco",
             "position": {
                 "x": 5,
@@ -508,7 +486,6 @@
         },
         {
             "id": 27,
-            "tileType": "groupPropertyTile",
             "tileName": "Rua Dos Discos Intercalares",
             "position": {
                 "x": 6,
@@ -531,7 +508,6 @@
         },
         {
             "id": 28,
-            "tileType": "groupPropertyTile",
             "tileName": "Pague Prestação Propinas",
             "position": {
                 "x": 7,
@@ -554,7 +530,6 @@
         },
         {
             "id": 29,
-            "tileType": "groupPropertyTile",
             "tileName": "Avenida Músculo Esquelético",
             "position": {
                 "x": 8,
@@ -577,7 +552,6 @@
         },
         {
             "id": 31,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Dos Neurónios",
             "position": {
                 "x": 9.300000190734863,
@@ -592,15 +566,14 @@
             },
             "points": 20,
             "groupColor": {
-                "r": 0.37,
-                "g": 0.45,
-                "b": 0.23,
+                "r": 0.3700000047683716,
+                "g": 0.44999998807907104,
+                "b": 0.23000000417232513,
                 "a": 1
             }
         },
         {
             "id": 32,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Da Glia",
             "position": {
                 "x": 9.300000190734863,
@@ -615,15 +588,14 @@
             },
             "points": 20,
             "groupColor": {
-                "r": 0.37,
-                "g": 0.45,
-                "b": 0.23,
+                "r": 0.3700000047683716,
+                "g": 0.44999998807907104,
+                "b": 0.23000000417232513,
                 "a": 1
             }
         },
         {
             "id": 34,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Dos Astrócitos",
             "position": {
                 "x": 9.300000190734863,
@@ -638,15 +610,14 @@
             },
             "points": 20,
             "groupColor": {
-                "r": 0.37,
-                "g": 0.45,
-                "b": 0.23,
+                "r": 0.3700000047683716,
+                "g": 0.44999998807907104,
+                "b": 0.23000000417232513,
                 "a": 1
             }
         },
         {
             "id": 35,
-            "tileType": "groupPropertyTile",
             "tileName": "Tecido Nervoso",
             "position": {
                 "x": 9.300000190734863,
@@ -669,7 +640,6 @@
         },
         {
             "id": 36,
-            "tileType": "groupPropertyTile",
             "tileName": "Sorte",
             "position": {
                 "x": 9.300000190734863,
@@ -692,7 +662,6 @@
         },
         {
             "id": 37,
-            "tileType": "groupPropertyTile",
             "tileName": "Praça Das Células De Schwan",
             "position": {
                 "x": 9.300000190734863,
@@ -707,15 +676,14 @@
             },
             "points": 14,
             "groupColor": {
-                "r": 0.37,
-                "g": 0.45,
-                "b": 0.23,
+                "r": 0.3700000047683716,
+                "g": 0.44999998807907104,
+                "b": 0.23000000417232513,
                 "a": 1
             }
         },
         {
             "id": 38,
-            "tileType": "groupPropertyTile",
             "tileName": "Pague Prestação Propinas",
             "position": {
                 "x": 9.300000190734863,
@@ -738,7 +706,6 @@
         },
         {
             "id": 39,
-            "tileType": "groupPropertyTile",
             "tileName": "Rua Das Fibras Nervosas",
             "position": {
                 "x": 9.300000190734863,
@@ -753,9 +720,9 @@
             },
             "points": 14,
             "groupColor": {
-                "r": 0.37,
-                "g": 0.45,
-                "b": 0.23,
+                "r": 0.3700000047683716,
+                "g": 0.44999998807907104,
+                "b": 0.23000000417232513,
                 "a": 1
             }
         }
@@ -763,7 +730,6 @@
     "communityTiles": [
         {
             "id": 2,
-            "tileType": "communityTile",
             "tileName": "Decisões Do Senado",
             "position": {
                 "x": 7,
@@ -779,7 +745,6 @@
         },
         {
             "id": 17,
-            "tileType": "communityTile",
             "tileName": "Decisões Do Senado",
             "position": {
                 "x": -1.2999999523162842,
@@ -795,7 +760,6 @@
         },
         {
             "id": 33,
-            "tileType": "communityTile",
             "tileName": "Decisões do Senado",
             "position": {
                 "x": 9.300000190734863,
@@ -812,7 +776,6 @@
     ],
     "goTileData": {
         "id": 0,
-        "tileType": "goTile",
         "tileName": "Partida",
         "position": {
             "x": 9.300000190734863,
@@ -824,11 +787,10 @@
             "y": 0,
             "z": 0.7071068286895752,
             "w": 0.7071068286895752
-        }        
+        }
     },
     "prisonTileData": {
         "id": 10,
-        "tileType": "prisonTile",
         "tileName": "Passagem Pela Biblioteca",
         "position": {
             "x": -1.2999999523162842,
@@ -844,7 +806,6 @@
     },
     "parkingTileData": {
         "id": 20,
-        "tileType": "parkingTile",
         "tileName": "Associação De Estudantes",
         "position": {
             "x": -1.2999999523162842,
@@ -860,7 +821,6 @@
     },
     "goToPrisonTileData": {
         "id": 30,
-        "tileType": "goToPrisonTile",
         "tileName": "Vá Para A Biblioteca",
         "position": {
             "x": 9.300000190734863,

@@ -20,20 +20,20 @@ public class SaveBoard : MonoBehaviour
         BoardData boardData = new BoardData();
 
         for (int i = 0; i < tiles.Length; i++) {
-            if (tiles[i].GetTileType().Equals("groupPropertyTile")) {
+            if (tiles[i].GetType().Name.Equals("GroupPropertyTile")) {
                 GroupPropertyTile groupPropertyTile = (GroupPropertyTile)tiles[i];
-                boardData.groupPropertyTiles.Add(new GroupPropertyTileData(groupPropertyTile.GetId(), groupPropertyTile.GetTileType(), groupPropertyTile.GetTileName(), groupPropertyTile.transform.position, groupPropertyTile.transform.rotation, groupPropertyTile.GetPoints(), groupPropertyTile.GetGroupColor()));
+                boardData.groupPropertyTiles.Add(new GroupPropertyTileData(groupPropertyTile.GetId(), groupPropertyTile.GetTileName(), groupPropertyTile.transform.position, groupPropertyTile.transform.rotation, groupPropertyTile.GetPoints(), groupPropertyTile.GetGroupColor()));
             }
-            else if (tiles[i].GetTileType().Equals("goTile"))
-                boardData.goTileData = new GoTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
-            else if (tiles[i].GetTileType().Equals("prisonTile"))
-                boardData.prisonTileData = new PrisonTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
-            else if (tiles[i].GetTileType().Equals("parkingTile"))
-                boardData.parkingTileData = new ParkingTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
-            else if (tiles[i].GetTileType().Equals("goToPrisonTile"))
-                boardData.goToPrisonTileData = new GoToPrisonTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
-            else if (tiles[i].GetTileType().Equals("communityTile"))
-                boardData.communityTiles.Add(new CommunityTileData(tiles[i].GetId(), tiles[i].GetTileType(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation));
+            else if (tiles[i].GetType().Name.Equals("GoTile"))
+                boardData.goTileData = new GoTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetType().Name.Equals("PrisonTile"))
+                boardData.prisonTileData = new PrisonTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetType().Name.Equals("ParkingTile"))
+                boardData.parkingTileData = new ParkingTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetType().Name.Equals("GoToPrisonTile"))
+                boardData.goToPrisonTileData = new GoToPrisonTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
+            else if (tiles[i].GetType().Name.Equals("CommunityTile"))
+                boardData.communityTiles.Add(new CommunityTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation));
         }
 
         string board = JsonUtility.ToJson(boardData);
@@ -55,15 +55,13 @@ public class BoardData {
 [System.Serializable]
 public class TileData {
     public int id;
-    public string tileType;
     public string tileName;
     public Vector3 position;
     public Quaternion rotation;
 
 
-    public TileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) {
+    public TileData(int id, string tileName, Vector3 position, Quaternion rotation) {
         this.id = id;
-        this.tileType = tileType;
         this.tileName = tileName;
         this.position = position;
         this.rotation = rotation;
@@ -76,7 +74,7 @@ public class GroupPropertyTileData : TileData {
     public Color groupColor;
 
     
-    public GroupPropertyTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation, int points, Color groupColor) : base(id, tileType, tileName, position, rotation) {
+    public GroupPropertyTileData(int id, string tileName, Vector3 position, Quaternion rotation, int points, Color groupColor) : base(id, tileName, position, rotation) {
         this.points = points;
         this.groupColor = groupColor;
     }
@@ -84,35 +82,35 @@ public class GroupPropertyTileData : TileData {
 
 [System.Serializable]
 public class GoTileData : TileData {
-    public GoTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+    public GoTileData(int id, string tileName, Vector3 position, Quaternion rotation) : base(id, tileName, position, rotation) {
 
     }
 }
 
 [System.Serializable]
 public class PrisonTileData : TileData {
-    public PrisonTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+    public PrisonTileData(int id, string tileName, Vector3 position, Quaternion rotation) : base(id, tileName, position, rotation) {
 
     }
 }
 
 [System.Serializable]
 public class ParkingTileData : TileData {
-    public ParkingTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+    public ParkingTileData(int id, string tileName, Vector3 position, Quaternion rotation) : base(id, tileName, position, rotation) {
 
     }
 }
 
 [System.Serializable]
 public class GoToPrisonTileData : TileData {
-    public GoToPrisonTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+    public GoToPrisonTileData(int id, string tileName, Vector3 position, Quaternion rotation) : base(id, tileName, position, rotation) {
 
     }
 }
 
 [System.Serializable]
 public class CommunityTileData : TileData {
-    public CommunityTileData(int id, string tileType, string tileName, Vector3 position, Quaternion rotation) : base(id, tileType, tileName, position, rotation) {
+    public CommunityTileData(int id, string tileName, Vector3 position, Quaternion rotation) : base(id, tileName, position, rotation) {
 
     }
 }
