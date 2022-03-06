@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public abstract class Tile : MonoBehaviour
 {
     private int id;
-    private string tileType;
     private string tileName;
     protected GameManager gameManager;
 
@@ -36,9 +35,6 @@ public abstract class Tile : MonoBehaviour
 
     // Perform tile action when player arrives at tile
     public abstract void PerformAction();
-
-    // Get type
-    public abstract string GetTileType();
 
     // Get name
     public string GetTileName() {

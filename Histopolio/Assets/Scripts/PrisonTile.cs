@@ -20,10 +20,4 @@ public class PrisonTile : Tile
     public override void PerformAction() {
         return;
     }
-
-    // Get type
-    public override string GetTileType()
-    {
-        return "prisonTile";
-    }
 }
