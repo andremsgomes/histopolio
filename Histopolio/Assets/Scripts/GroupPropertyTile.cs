@@ -25,7 +25,7 @@ public class GroupPropertyTile : Tile
 
     // Add points when player arrives to tile
     public override void PerformAction() {
-        return;
+        gameManager.GiveCurrentPlayerPoints(points);
     }
 
     // Set points

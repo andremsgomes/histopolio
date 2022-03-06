@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     public void Move(int spaces) {
         SetTile(gameManager.GetTile(tile.GetId()+spaces));
         transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, transform.position.z);
+
+        tile.PerformAction();
     }
 
     // Set tile
@@ -69,12 +71,12 @@ public class Player : MonoBehaviour
     }
 
     // Add points to score
-    public void addPoints(int points) {
+    public void AddPoints(int points) {
         score += points;
     }
 
     // Get score
-    public int getScore() {
+    public int GetScore() {
         return score;
     }
 }

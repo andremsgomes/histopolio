@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         uiManager = this.GetComponent<UIManager>();
         saveBoard = this.GetComponent<SaveBoard>();
 
+        gridManager.SetGameManager(this);
         gridManager.LoadBoard();
 
         cameraManager.SetGameManager(this);
@@ -122,6 +123,11 @@ public class GameManager : MonoBehaviour
         cameraManager.ChangePlayerCamera(currentPlayer.transform.position);
         uiManager.SetPlayerNameText(currentPlayer.GetName());
         uiManager.SetPlayerColor(currentPlayer.GetColor());
-        uiManager.SetPlayerScore(currentPlayer.getScore());
+        uiManager.SetPlayerScore(currentPlayer.GetScore());
+    }
+
+    // Give current player points
+    public void GiveCurrentPlayerPoints(int points) {
+        currentPlayer.AddPoints(points);
     }
 }

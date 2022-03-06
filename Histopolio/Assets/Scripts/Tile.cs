@@ -8,6 +8,7 @@ public abstract class Tile : MonoBehaviour
     private int id;
     private string tileType;
     private string tileName;
+    protected GameManager gameManager;
 
     [SerializeField] private Text tileNameText;     // TODO: meter só no group
 
@@ -48,5 +49,10 @@ public abstract class Tile : MonoBehaviour
     public void SetTileName(string tileName) {
         this.tileName = tileName;
         tileNameText.text = tileName;
+    }
+
+    // Set game manager
+    public void SetGameManager(GameManager gameManager) {
+        this.gameManager = gameManager;
     }
 }
