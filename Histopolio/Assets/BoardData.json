@@ -45,28 +45,6 @@
             }
         },
         {
-            "id": 4,
-            "tileName": "Pague Seguro Escolar",
-            "position": {
-                "x": 5,
-                "y": 0,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0,
-                "w": 1
-            },
-            "points": 0,
-            "groupColor": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 1
-            }
-        },
-        {
             "id": 5,
             "tileName": "Tecido Epitelial",
             "position": {
@@ -195,28 +173,6 @@
                 "r": 0.4699999988079071,
                 "g": 0.6299999952316284,
                 "b": 0.8399999737739563,
-                "a": 1
-            }
-        },
-        {
-            "id": 12,
-            "tileName": "Pague Prestação Propinas",
-            "position": {
-                "x": -1.2999999523162842,
-                "y": 2.299999952316284,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": -0.7071068286895752,
-                "w": 0.7071068286895752
-            },
-            "points": 0,
-            "groupColor": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
                 "a": 1
             }
         },
@@ -507,28 +463,6 @@
             }
         },
         {
-            "id": 28,
-            "tileName": "Pague Prestação Propinas",
-            "position": {
-                "x": 7,
-                "y": 10.600000381469727,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 1,
-                "w": -4.371138828673793e-8
-            },
-            "points": 0,
-            "groupColor": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 1
-            }
-        },
-        {
             "id": 29,
             "tileName": "Avenida Músculo Esquelético",
             "position": {
@@ -683,28 +617,6 @@
             }
         },
         {
-            "id": 38,
-            "tileName": "Pague Prestação Propinas",
-            "position": {
-                "x": 9.300000190734863,
-                "y": 2.3000001907348633,
-                "z": 0
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0.7071068286895752,
-                "w": 0.7071068286895752
-            },
-            "points": 0,
-            "groupColor": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 1
-            }
-        },
-        {
             "id": 39,
             "tileName": "Rua Das Fibras Nervosas",
             "position": {
@@ -772,6 +684,72 @@
                 "z": 0.7071068286895752,
                 "w": 0.7071068286895752
             }
+        }
+    ],
+    "payTiles": [
+        {
+            "id": 4,
+            "tileName": "Pague Seguro Escolar",
+            "position": {
+                "x": 5,
+                "y": 0,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0,
+                "w": 1
+            },
+            "points": 10
+        },
+        {
+            "id": 12,
+            "tileName": "Pague Prestação Propinas",
+            "position": {
+                "x": -1.2999999523162842,
+                "y": 2.299999952316284,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": -0.7071068286895752,
+                "w": 0.7071068286895752
+            },
+            "points": 10
+        },
+        {
+            "id": 28,
+            "tileName": "Pague Prestação Propinas",
+            "position": {
+                "x": 7,
+                "y": 10.600000381469727,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 1,
+                "w": -4.371138828673793e-8
+            },
+            "points": 15
+        },
+        {
+            "id": 38,
+            "tileName": "Pague Prestação Propinas",
+            "position": {
+                "x": 9.300000190734863,
+                "y": 2.3000001907348633,
+                "z": 0
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0.7071068286895752,
+                "w": 0.7071068286895752
+            },
+            "points": 10
         }
     ],
     "goTileData": {

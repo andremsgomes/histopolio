@@ -14,6 +14,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private ParkingTile parkingTilePrefab;
     [SerializeField] private GoToPrisonTile goToPrisonTilePrefab;
     [SerializeField] private CommunityTile communityTilePrefab;
+    [SerializeField] private PayTile payTilePrefab;
     
 
     // Start is called before the first frame update
@@ -62,6 +63,16 @@ public class GridManager : MonoBehaviour
             tiles[communityTileData.id].SetId(communityTileData.id);
             tiles[communityTileData.id].SetTileName(communityTileData.tileName);
             tiles[communityTileData.id].SetGameManager(gameManager);
+        }
+
+        foreach(PayTileData payTileData in boardData.payTiles) {
+            tiles[payTileData.id] = Instantiate(payTilePrefab, payTileData.position, payTileData.rotation);
+            tiles[payTileData.id].name = $"Tile {payTileData.id}";
+            tiles[payTileData.id].SetId(payTileData.id);
+            tiles[payTileData.id].SetTileName(payTileData.tileName);
+            tiles[payTileData.id].SetGameManager(gameManager);
+
+            ((PayTile)tiles[payTileData.id]).SetPoints(payTileData.points);
         }
 
         tiles[boardData.goTileData.id] = Instantiate(goTilePrefab, boardData.goTileData.position, boardData.goTileData.rotation);

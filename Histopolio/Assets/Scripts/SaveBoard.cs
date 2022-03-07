@@ -34,6 +34,8 @@ public class SaveBoard : MonoBehaviour
                 boardData.goToPrisonTileData = new GoToPrisonTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation);
             else if (tiles[i].GetType().Name.Equals("CommunityTile"))
                 boardData.communityTiles.Add(new CommunityTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation));
+            else if (tiles[i].GetType().Name.Equals("PayTile"))
+                boardData.payTiles.Add(new PayTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation, ((PayTile)tiles[i]).GetPoints()));
         }
 
         string board = JsonUtility.ToJson(boardData);
@@ -45,11 +47,11 @@ public class SaveBoard : MonoBehaviour
 public class BoardData {
     public List<GroupPropertyTileData> groupPropertyTiles = new List<GroupPropertyTileData>();
     public List<CommunityTileData> communityTiles = new List<CommunityTileData>();
+    public List<PayTileData> payTiles = new List<PayTileData>();
     public GoTileData goTileData;
     public PrisonTileData prisonTileData;
     public ParkingTileData parkingTileData;
     public GoToPrisonTileData goToPrisonTileData;
-    // TODO: meter tiles iguais ao tile original numa lista de others
 }
 
 [System.Serializable]
@@ -112,5 +114,15 @@ public class GoToPrisonTileData : TileData {
 public class CommunityTileData : TileData {
     public CommunityTileData(int id, string tileName, Vector3 position, Quaternion rotation) : base(id, tileName, position, rotation) {
 
+    }
+}
+
+[System.Serializable]
+public class PayTileData : TileData {
+    public int points;
+
+    
+    public PayTileData(int id, string tileName, Vector3 position, Quaternion rotation, int points) : base(id, tileName, position, rotation) {
+        this.points = points;
     }
 }
