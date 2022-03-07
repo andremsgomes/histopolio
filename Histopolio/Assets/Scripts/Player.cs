@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private Tile tile;
     private GameManager gameManager;
     private int id;
-    private string name;
+    private string playerName;
     private int score;
 
     // Start is called before the first frame update
@@ -56,13 +56,13 @@ public class Player : MonoBehaviour
     }
 
     // Set player name
-    public void SetName(string name) {
-        this.name = name;
+    public void SetName(string playerName) {
+        this.playerName = playerName;
     }
 
     // Get player name
-    public string GetName() {
-        return name;
+    public string GetPlayerName() {
+        return playerName;
     }
 
     // Get player color

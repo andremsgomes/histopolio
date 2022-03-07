@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     private bool playerCamera;
     private GameManager gameManager;
 
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera gameCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -28,16 +28,16 @@ public class CameraManager : MonoBehaviour
 
     // Set camera to show all board
     public void SetBoardCamera() {
-        camera.transform.position = new Vector3(4, 5.3f, -10);
-        camera.orthographicSize = 7;
+        gameCamera.transform.position = new Vector3(4, 5.3f, -10);
+        gameCamera.orthographicSize = 7;
 
         playerCamera = false;
     }
 
     // Set camera to player
     void SetPlayerCamera(Vector3 playerPosition) {
-        camera.transform.position = new Vector3(playerPosition.x, playerPosition.y, -10);
-        camera.orthographicSize = 3.4f;
+        gameCamera.transform.position = new Vector3(playerPosition.x, playerPosition.y, -10);
+        gameCamera.orthographicSize = 3.4f;
 
         playerCamera = true;
     }
