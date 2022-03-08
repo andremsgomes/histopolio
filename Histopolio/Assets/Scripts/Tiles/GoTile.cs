@@ -20,4 +20,9 @@ public class GoTile : Tile
     public override void PerformAction() {
         return;
     }
+
+    // Get rotation for the camera
+    public override Quaternion GetCameraRotation() {
+        return Quaternion.Euler(0, 0, 45);
+    }
 }

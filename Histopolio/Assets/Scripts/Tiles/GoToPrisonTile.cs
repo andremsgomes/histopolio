@@ -20,4 +20,9 @@ public class GoToPrisonTile : Tile
     public override void PerformAction() {
         return;
     }
+
+    // Get rotation for the tile
+    public override Quaternion GetCameraRotation() {
+        return Quaternion.Euler(0, 0, 135);
+    }
 }

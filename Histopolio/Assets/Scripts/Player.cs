@@ -79,4 +79,9 @@ public class Player : MonoBehaviour
     public int GetScore() {
         return score;
     }
+
+    // Get tile
+    public Tile GetTile() {
+        return tile;
+    }
 }

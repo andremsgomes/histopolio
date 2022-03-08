@@ -51,4 +51,9 @@ public abstract class Tile : MonoBehaviour
     public void SetGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
     }
+
+    // Get rotation for the camera
+    public virtual Quaternion GetCameraRotation() {
+        return transform.rotation;
+    }
 }

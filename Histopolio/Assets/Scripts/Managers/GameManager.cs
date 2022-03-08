@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
         return currentPlayer.transform.position;
     }
 
+    // Get current tile
+    public Tile GetCurrentTile() {
+        return currentPlayer.GetTile();
+    }
+
     // Move player after rolled dice
     public void MovePlayer() {
         int diceResult = Random.Range(1,7);
@@ -120,7 +125,7 @@ public class GameManager : MonoBehaviour
     void SetCurrentPlayer(Player player) {
         currentPlayer = player;
 
-        cameraManager.ChangePlayerCamera(currentPlayer.transform.position);
+        cameraManager.ChangePlayerCamera(currentPlayer.transform.position, currentPlayer.GetTile().GetCameraRotation());
         uiManager.SetPlayerNameText(currentPlayer.GetPlayerName());
         uiManager.SetPlayerColor(currentPlayer.GetColor());
         uiManager.SetPlayerScore(currentPlayer.GetScore());

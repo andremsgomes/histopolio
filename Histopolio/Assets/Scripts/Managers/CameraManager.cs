@@ -29,14 +29,16 @@ public class CameraManager : MonoBehaviour
     // Set camera to show all board
     public void SetBoardCamera() {
         gameCamera.transform.position = new Vector3(4, 5.3f, -10);
+        gameCamera.transform.rotation = Quaternion.Euler(0,0,0);
         gameCamera.orthographicSize = 7;
 
         playerCamera = false;
     }
 
     // Set camera to player
-    void SetPlayerCamera(Vector3 playerPosition) {
+    void SetPlayerCamera(Vector3 playerPosition, Quaternion tileRotation) {
         gameCamera.transform.position = new Vector3(playerPosition.x, playerPosition.y, -10);
+        gameCamera.transform.rotation = tileRotation;
         gameCamera.orthographicSize = 3.4f;
 
         playerCamera = true;
@@ -48,12 +50,12 @@ public class CameraManager : MonoBehaviour
         if (playerCamera)
             SetBoardCamera();
         else
-            SetPlayerCamera(gameManager.GetPlayerPosition());
+            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile().GetCameraRotation());
     }
 
     // Change player camera if active
-    public void ChangePlayerCamera(Vector3 playerPosition) {
+    public void ChangePlayerCamera(Vector3 playerPosition, Quaternion tileRotation) {
         if (playerCamera)
-            SetPlayerCamera(playerPosition);
+            SetPlayerCamera(playerPosition, tileRotation);
     }
 }
