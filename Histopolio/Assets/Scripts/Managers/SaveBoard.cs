@@ -38,6 +38,8 @@ public class SaveBoard : MonoBehaviour
                 boardData.payTiles.Add(new PayTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation, ((PayTile)tiles[i]).GetPoints()));
             else if (tiles[i].GetType().Name.Equals("StationTile"))
                 boardData.stationTiles.Add(new StationTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation, ((StationTile)tiles[i]).GetPoints()));
+            else if (tiles[i].GetType().Name.Equals("ChanceTile"))
+                boardData.chanceTiles.Add(new ChanceTileData(tiles[i].GetId(), tiles[i].GetTileName(), tiles[i].transform.position, tiles[i].transform.rotation));
         }
 
         string board = JsonUtility.ToJson(boardData);
@@ -51,6 +53,7 @@ public class BoardData {
     public List<CommunityTileData> communityTiles = new List<CommunityTileData>();
     public List<PayTileData> payTiles = new List<PayTileData>();
     public List<StationTileData> stationTiles = new List<StationTileData>();
+    public List<ChanceTileData> chanceTiles = new List<ChanceTileData>();
     public GoTileData goTileData;
     public PrisonTileData prisonTileData;
     public ParkingTileData parkingTileData;
@@ -137,5 +140,12 @@ public class StationTileData : TileData {
     
     public StationTileData(int id, string tileName, Vector3 position, Quaternion rotation, int points) : base(id, tileName, position, rotation) {
         this.points = points;
+    }
+}
+
+[System.Serializable]
+public class ChanceTileData : TileData {
+    public ChanceTileData(int id, string tileName, Vector3 position, Quaternion rotation) : base(id, tileName, position, rotation) {
+
     }
 }
