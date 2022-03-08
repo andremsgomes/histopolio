@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         Tile firstTile = gridManager.GetTile(0);
 
         for (int i = 0; i < numPlayers; i++) {
-            players[i] = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -2), Quaternion.identity);
+            players[i] = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
             players[i].name = $"Player {i+1}";
             players[i].SetGameManager(this);
             players[i].SetTile(firstTile);

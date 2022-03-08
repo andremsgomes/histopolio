@@ -517,6 +517,7 @@ MonoBehaviour:
   goToPrisonTilePrefab: {fileID: 3057428716405905586, guid: 9ed90e6c6c96cc581a2b0016cf23de99, type: 3}
   communityTilePrefab: {fileID: -7164498424185566311, guid: 81f273871c4dce269874666bef0f27e5, type: 3}
   payTilePrefab: {fileID: 4803450788975961803, guid: 30af6d16fd2b7ec42a68d76977aea22b, type: 3}
+  stationTilePrefab: {fileID: 7721246418509950000, guid: fbf5d54fc6a62d0ff8d84da32a67dfc4, type: 3}
 --- !u!114 &615705953
 MonoBehaviour:
   m_ObjectHideFlags: 0
