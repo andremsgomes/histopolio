@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text playerNameText;
     [SerializeField] private Image playerColor;
     [SerializeField] private Text playerScoreText;
+    [SerializeField] private GameObject diceButton;
+    [SerializeField] private GameObject turnButton;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,9 @@ public class UIManager : MonoBehaviour
 
     // OnRollDiceClick is called when roll dice button is clicked
     public void OnRollDiceClick() {
+        diceButton.SetActive(false);
         gameManager.MovePlayer();
+        turnButton.SetActive(true);
     }
 
     // Set current player name text
@@ -52,5 +56,12 @@ public class UIManager : MonoBehaviour
     // Set current player score
     public void SetPlayerScore(int score) {
         playerScoreText.text = score.ToString() + " Pontos";
+    }
+
+    // OnFinishTurnClick is called when finish turn button is clicked
+    public void OnFinishTurnClick() {
+        turnButton.SetActive(false);
+        gameManager.ChangeCurrentPlayer();
+        diceButton.SetActive(true);
     }
 }

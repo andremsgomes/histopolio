@@ -86,8 +86,6 @@ public class GameManager : MonoBehaviour
         int diceResult = Random.Range(1,7);
         Debug.Log(diceResult);
         currentPlayer.Move(diceResult);
-
-        ChangeCurrentPlayer();
     }
 
     // Get tile with tile id
@@ -99,7 +97,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Change current player
-    void ChangeCurrentPlayer() {
+    public void ChangeCurrentPlayer() {
         int newId = currentPlayer.GetId()+1;
 
         if (newId >= numPlayers)
