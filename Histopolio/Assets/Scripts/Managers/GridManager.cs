@@ -17,6 +17,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private PayTile payTilePrefab;
     [SerializeField] private StationTile stationTilePrefab;
     [SerializeField] private ChanceTile chanceTilePrefab;
+    [SerializeField] private BoardBase boardBasePrefab;
     
 
     // Start is called before the first frame update
@@ -119,6 +120,9 @@ public class GridManager : MonoBehaviour
         tiles[boardData.goToPrisonTileData.id].SetId(boardData.goToPrisonTileData.id);
         tiles[boardData.goToPrisonTileData.id].SetTileName(boardData.goToPrisonTileData.tileName);
         tiles[boardData.goToPrisonTileData.id].SetGameManager(gameManager);
+
+        BoardBase boardBase = Instantiate(boardBasePrefab, new Vector3(4, 5.3f), Quaternion.identity);
+        boardBase.name = "Board base";
     }
 
     // Set game manager

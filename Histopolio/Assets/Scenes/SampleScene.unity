@@ -519,6 +519,7 @@ MonoBehaviour:
   payTilePrefab: {fileID: 4803450788975961803, guid: 30af6d16fd2b7ec42a68d76977aea22b, type: 3}
   stationTilePrefab: {fileID: 7721246418509950000, guid: fbf5d54fc6a62d0ff8d84da32a67dfc4, type: 3}
   chanceTilePrefab: {fileID: 1798655325185251817, guid: 29495baa35d23865b9e0b2e45009e307, type: 3}
+  boardBasePrefab: {fileID: 7545333972481097741, guid: 0538086d8849f132890e9131c7fb70c3, type: 3}
 --- !u!114 &615705953
 MonoBehaviour:
   m_ObjectHideFlags: 0
