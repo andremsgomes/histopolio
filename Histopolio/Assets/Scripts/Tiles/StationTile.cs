@@ -28,7 +28,7 @@ public class StationTile : Tile
     // Set points
     public void SetPoints(int points) {
         this.points = points;
-        pointsText.text = "- " + points;
+        pointsText.text = "+ " + points;
     }
 
     // Get points
