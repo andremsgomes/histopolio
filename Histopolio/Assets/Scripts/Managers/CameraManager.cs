@@ -18,7 +18,8 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (playerCamera)
+            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile().GetCameraRotation());
     }
 
     // Set game manager
@@ -51,11 +52,5 @@ public class CameraManager : MonoBehaviour
             SetBoardCamera();
         else
             SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile().GetCameraRotation());
-    }
-
-    // Change player camera if active
-    public void ChangePlayerCamera(Vector3 playerPosition, Quaternion tileRotation) {
-        if (playerCamera)
-            SetPlayerCamera(playerPosition, tileRotation);
     }
 }

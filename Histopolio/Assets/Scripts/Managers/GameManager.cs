@@ -123,7 +123,6 @@ public class GameManager : MonoBehaviour
     void SetCurrentPlayer(Player player) {
         currentPlayer = player;
 
-        cameraManager.ChangePlayerCamera(currentPlayer.transform.position, currentPlayer.GetTile().GetCameraRotation());
         uiManager.SetPlayerNameText(currentPlayer.GetPlayerName());
         uiManager.SetPlayerColor(currentPlayer.GetColor());
         uiManager.SetPlayerScore(currentPlayer.GetScore());
