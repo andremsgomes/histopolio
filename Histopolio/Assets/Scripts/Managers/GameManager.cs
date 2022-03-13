@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
     private SaveBoard saveBoard;
     private Player currentPlayer;
+    private Dice dice;
 
     [SerializeField] private Player playerPrefab;
 
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         cameraManager = this.GetComponent<CameraManager>();
         uiManager = this.GetComponent<UIManager>();
         saveBoard = this.GetComponent<SaveBoard>();
+        dice = this.GetComponent<Dice>();
 
         gridManager.SetGameManager(this);
         gridManager.LoadBoard();
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
         cameraManager.SetBoardCamera();
 
         uiManager.SetGameManager(this);
+
+        dice.SetGameManager(this);
 
         SetColors();
 
@@ -82,10 +86,9 @@ public class GameManager : MonoBehaviour
     }
 
     // Move player after rolled dice
-    public void MovePlayer() {
-        int diceResult = Random.Range(1,7);
-        Debug.Log(diceResult);
+    public void MovePlayer(int diceResult) {
         currentPlayer.Move(diceResult);
+        uiManager.DisplayFinishTurn();
     }
 
     // Get tile with tile id
@@ -131,5 +134,15 @@ public class GameManager : MonoBehaviour
     // Give current player points
     public void GiveCurrentPlayerPoints(int points) {
         currentPlayer.AddPoints(points);
+    }
+
+    // Play current player's turn
+    public void PlayTurn() {
+        dice.RollDice();
+    }
+
+    // Change dice side
+    public void ChangeDiceSide(int side) {
+        uiManager.ChangeDiceSide(side);
     }
 }
