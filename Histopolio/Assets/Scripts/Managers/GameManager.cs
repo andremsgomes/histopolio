@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour
     // Move player after rolled dice
     public void MovePlayer(int diceResult) {
         currentPlayer.Move(diceResult);
-        uiManager.DisplayFinishTurn();
     }
 
     // Get tile with tile id
@@ -144,5 +143,11 @@ public class GameManager : MonoBehaviour
     // Change dice side
     public void ChangeDiceSide(int side) {
         uiManager.ChangeDiceSide(side);
+    }
+
+    // Display finish turn button and hide dice button
+    public void FinishTurn() {
+        uiManager.DisplayFinishTurn();
+        dice.AllowCoroutine();
     }
 }

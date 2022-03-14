@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     private int id;
     private string playerName;
     private int score;
+    private int moveSpaces;
+
+    [SerializeField] private float speed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +23,29 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (moveSpaces > 0) {
+            MoveTo(gameManager.GetTile(tile.GetId()+1));
+
+            if (moveSpaces == 0)
+                gameManager.FinishTurn();
+        }
+    }
+
+    private void MoveTo(Tile tile) {
+        float step = speed * Time.deltaTime;
+        Vector3 target = new Vector3(tile.transform.position.x, tile.transform.position.y, -3);
+
+        this.transform.position = Vector3.MoveTowards(transform.position, target, step);
+
+        if (transform.position == target) {
+            SetTile(tile);
+            moveSpaces--;
+        }
     }
 
     // Move is called after a dice is rolled
     public void Move(int spaces) {
-        SetTile(gameManager.GetTile(tile.GetId()+spaces));
-        transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, transform.position.z);
-
-        tile.PerformAction();
+        moveSpaces = spaces;
     }
 
     // Set tile

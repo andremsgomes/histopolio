@@ -38,12 +38,15 @@ public class Dice : MonoBehaviour
         }
 
         gameManager.MovePlayer(randomDiceSide);
-
-        coroutineAllowed = true;
     }
 
     // Set game manager
     public void SetGameManager(GameManager gameManager) {
         this.gameManager = gameManager;
+    }
+
+    // Allow coroutine
+    public void AllowCoroutine() {
+        coroutineAllowed = true;
     }
 }
