@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
             MoveTo(gameManager.GetTile(tile.GetId()+1));
 
             if (moveSpaces == 0)
-                gameManager.FinishTurn();
+                tile.PerformAction();
         }
     }
 
@@ -101,5 +101,10 @@ public class Player : MonoBehaviour
     // Get tile
     public Tile GetTile() {
         return tile;
+    }
+
+    // Receive points from current tile
+    public void ReceivePointsFromTile() {
+        score += ((GroupPropertyTile)tile).GetPoints();
     }
 }

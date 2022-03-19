@@ -18,7 +18,7 @@ public class GoToPrisonTile : Tile
 
     // Perform action when player arrives to tile
     public override void PerformAction() {
-        return;
+        gameManager.FinishTurn();
     }
 
     // Get rotation for the tile

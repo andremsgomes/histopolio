@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private Dice dice;
 
     [SerializeField] private Player playerPrefab;
+    [SerializeField] private QuestionController questionController;
 
     [Header("Number of Players")]
     [SerializeField] private int numPlayers;
@@ -38,6 +39,10 @@ public class GameManager : MonoBehaviour
 
         gridManager.SetGameManager(this);
         gridManager.LoadBoard();
+
+        questionController.SetGameManager(this);
+        questionController.SetUI();
+        questionController.LoadQuestions("TestQuestions.json");
 
         cameraManager.SetGameManager(this);
         cameraManager.SetBoardCamera();
@@ -149,5 +154,26 @@ public class GameManager : MonoBehaviour
     public void FinishTurn() {
         uiManager.DisplayFinishTurn();
         dice.AllowCoroutine();
+    }
+
+    // FinishQuestion is called after player answers question
+    public void FinishQuestion(bool receivePoints) {
+        if (receivePoints) {
+            currentPlayer.ReceivePointsFromTile();
+            uiManager.SetPlayerScore(currentPlayer.GetScore());
+        }
+
+        FinishTurn();
+    }
+
+    // Add question to tile
+    public void AddQuestion(QuestionData question) {
+        ((GroupPropertyTile)gridManager.GetTile(question.tileId)).AddQuestion(question);
+    }
+
+    // Show question menu
+    public void PrepareQuestion(QuestionData question) {
+        questionController.LoadQuestion(question);
+        questionController.ShowQuestionMenu();
     }
 }

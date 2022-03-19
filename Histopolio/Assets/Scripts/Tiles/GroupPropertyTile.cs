@@ -7,6 +7,7 @@ public class GroupPropertyTile : Tile
 {
     private int points;
     private Color groupColor;
+    private List<QuestionData> questions = new List<QuestionData>();
     [SerializeField] private Text pointsText;
     [SerializeField] private GameObject group;
 
@@ -25,7 +26,11 @@ public class GroupPropertyTile : Tile
 
     // Add points when player arrives to tile
     public override void PerformAction() {
-        gameManager.GiveCurrentPlayerPoints(points);
+        int index = Random.Range(0,questions.Count);
+        
+        gameManager.PrepareQuestion(questions[index]);
+        
+        questions.RemoveAt(index);
     }
 
     // Set points
@@ -48,5 +53,10 @@ public class GroupPropertyTile : Tile
     // Get group color
     public Color GetGroupColor() {
         return groupColor;
+    }
+
+    // Add question
+    public void AddQuestion(QuestionData question) {
+        questions.Add(question);
     }
 }

@@ -22,7 +22,7 @@ public class PayTile : Tile
 
     // Perform action when player arrives to tile
     public override void PerformAction() {
-        return;
+        gameManager.FinishTurn();
     }
 
     // Set points

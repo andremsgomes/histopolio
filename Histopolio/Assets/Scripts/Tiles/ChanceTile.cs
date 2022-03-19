@@ -18,6 +18,6 @@ public class ChanceTile : Tile
 
     // Perform action when player arrives to tile
     public override void PerformAction() {
-        return;
+        gameManager.FinishTurn();
     }
 }
