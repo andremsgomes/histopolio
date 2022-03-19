@@ -11,10 +11,13 @@ public class GameManager : MonoBehaviour
     private UIManager uiManager;
     private SaveBoard saveBoard;
     private Player currentPlayer;
-    private Dice dice;
 
-    [SerializeField] private Player playerPrefab;
+    [Header("Controllers")]
     [SerializeField] private QuestionController questionController;
+    [SerializeField] private DiceController dice;
+
+    [Header("Prefabs")]
+    [SerializeField] private Player playerPrefab;
 
     [Header("Number of Players")]
     [SerializeField] private int numPlayers;
@@ -35,13 +38,12 @@ public class GameManager : MonoBehaviour
         cameraManager = this.GetComponent<CameraManager>();
         uiManager = this.GetComponent<UIManager>();
         saveBoard = this.GetComponent<SaveBoard>();
-        dice = this.GetComponent<Dice>();
 
         gridManager.SetGameManager(this);
         gridManager.LoadBoard();
 
         questionController.SetGameManager(this);
-        questionController.SetUI();
+        questionController.SetQuestionComponents();
         questionController.LoadQuestions("TestQuestions.json");
 
         cameraManager.SetGameManager(this);
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
         uiManager.SetGameManager(this);
 
         dice.SetGameManager(this);
+        dice.SetDiceComponents();
 
         SetColors();
 
@@ -140,16 +143,6 @@ public class GameManager : MonoBehaviour
         currentPlayer.AddPoints(points);
     }
 
-    // Play current player's turn
-    public void PlayTurn() {
-        dice.RollDice();
-    }
-
-    // Change dice side
-    public void ChangeDiceSide(int side) {
-        uiManager.ChangeDiceSide(side);
-    }
-
     // Display finish turn button and hide dice button
     public void FinishTurn() {
         uiManager.DisplayFinishTurn();
@@ -175,5 +168,15 @@ public class GameManager : MonoBehaviour
     public void PrepareQuestion(QuestionData question) {
         questionController.LoadQuestion(question);
         questionController.ShowQuestionMenu();
+    }
+
+    // Show dice
+    public void ShowDice() {
+        dice.ShowDice();
+    }
+
+    // Hide dice
+    public void HideDice() {
+        dice.HideDice();
     }
 }

@@ -50,7 +50,7 @@ public class QuestionController : MonoBehaviour
     }
 
     // Connect with UI
-    public void SetUI() {
+    public void SetQuestionComponents() {
         questionUI = this.GetComponent<QuestionUI>();
 
         questionUI.SetQuestionController(this);

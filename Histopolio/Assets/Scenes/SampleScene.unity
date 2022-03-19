@@ -365,7 +365,6 @@ GameObject:
   - component: {fileID: 615705952}
   - component: {fileID: 615705953}
   - component: {fileID: 615705954}
-  - component: {fileID: 615705955}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -385,8 +384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eeb33f4ce0373f00983200f40470a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4520254274414789984, guid: 058191a7231db1537be4a452b2f2fc86, type: 3}
   questionController: {fileID: 1130259506}
+  dice: {fileID: 840991778}
+  playerPrefab: {fileID: 4520254274414789984, guid: 058191a7231db1537be4a452b2f2fc86, type: 3}
   numPlayers: 4
   player1Color: {r: 0, g: 0.09941673, b: 1, a: 1}
   player2Color: {r: 1, g: 0, b: 0, a: 1}
@@ -458,9 +458,7 @@ MonoBehaviour:
   playerNameText: {fileID: 858215559}
   playerColor: {fileID: 1188865605}
   playerScoreText: {fileID: 271241449}
-  dice: {fileID: 840991772}
   turnButton: {fileID: 2043512185}
-  diceSide: {fileID: 1229314364}
 --- !u!114 &615705954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,18 +469,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c441711ca17bb060c9bcd31bc68a2195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &615705955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615705948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b97c413241443c51b3d0a405bfa81bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &751151920
@@ -655,6 +641,8 @@ GameObject:
   - component: {fileID: 840991776}
   - component: {fileID: 840991775}
   - component: {fileID: 840991774}
+  - component: {fileID: 840991778}
+  - component: {fileID: 840991777}
   m_Layer: 5
   m_Name: Dice
   m_TagString: Untagged
@@ -726,8 +714,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 615705953}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 840991777}
+        m_TargetAssemblyTypeName: DiceUI, Assembly-CSharp
         m_MethodName: OnDiceClick
         m_Mode: 1
         m_Arguments:
@@ -776,6 +764,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840991772}
   m_CullTransparentMesh: 1
+--- !u!114 &840991777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840991772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520220b7c0ed041d597c50a54c724d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice: {fileID: 840991772}
+  diceSide: {fileID: 1229314364}
+--- !u!114 &840991778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840991772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b97c413241443c51b3d0a405bfa81bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &858215557
 GameObject:
   m_ObjectHideFlags: 0
