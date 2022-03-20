@@ -11,7 +11,7 @@ public class QuestionUI : MonoBehaviour
     [SerializeField] private GameObject[] answers = new GameObject[4];
     [SerializeField] private Text[] answersText = new Text[4];
     [SerializeField] private GameObject menu;
-    [SerializeField] private GridLayoutGroup grid;
+    [SerializeField] private Beardy.GridLayoutGroup grid;
 
 
     // Start is called before the first frame update
@@ -58,8 +58,10 @@ public class QuestionUI : MonoBehaviour
             grid.cellSize = new Vector2(910, 600);
         else if (answers.Length == 3)
             grid.cellSize = new Vector2(600, 600);
-        else
+        else if (answers.Length == 4)
             grid.cellSize = new Vector2(910, 300);
+        else
+            grid.cellSize = new Vector2(600,300);
     }
 
     // Show question menu
