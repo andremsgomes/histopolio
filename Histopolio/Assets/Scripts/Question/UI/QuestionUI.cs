@@ -8,8 +8,10 @@ public class QuestionUI : MonoBehaviour
     private QuestionController questionController;
 
     [SerializeField] private Text question;
-    [SerializeField] private Text[] answers = new Text[4];
+    [SerializeField] private GameObject[] answers = new GameObject[4];
+    [SerializeField] private Text[] answersText = new Text[4];
     [SerializeField] private GameObject menu;
+    [SerializeField] private GridLayoutGroup grid;
 
 
     // Start is called before the first frame update
@@ -27,6 +29,11 @@ public class QuestionUI : MonoBehaviour
     // OnAnswerClick is called when an answer is clicked
     public void OnAnswerClick(int answer) {
         menu.SetActive(false);
+
+        for (int i = 0; i < answers.Length; i++) {
+            answers[i].SetActive(false);
+        }
+
         questionController.CheckAnswer(answer);
     }
 
@@ -43,8 +50,16 @@ public class QuestionUI : MonoBehaviour
     // Set answers
     public void SetAnswers(string[] answers) {
         for (int i = 0; i < answers.Length; i++) {
-            this.answers[i].text = answers[i];
+            this.answers[i].SetActive(true);
+            this.answersText[i].text = answers[i];
         }
+
+        if (answers.Length == 2)
+            grid.cellSize = new Vector2(910, 600);
+        else if (answers.Length == 3)
+            grid.cellSize = new Vector2(600, 600);
+        else
+            grid.cellSize = new Vector2(910, 300);
     }
 
     // Show question menu

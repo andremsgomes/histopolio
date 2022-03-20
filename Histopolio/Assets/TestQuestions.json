@@ -17,8 +17,7 @@
             "answers": [
                 "Kahoot",
                 "Histopolio",
-                "Monopolio",
-                "Catan"
+                "Monopolio"
             ],
             "correctAnswer": 2
         },
@@ -27,9 +26,7 @@
             "question": "What is this game?",
             "answers": [
                 "Kahoot",
-                "Histopolio",
-                "Monopolio",
-                "Catan"
+                "Histopolio"
             ],
             "correctAnswer": 2
         },
