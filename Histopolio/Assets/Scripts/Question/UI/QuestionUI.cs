@@ -8,8 +8,8 @@ public class QuestionUI : MonoBehaviour
     private QuestionController questionController;
 
     [SerializeField] private Text question;
-    [SerializeField] private GameObject[] answers = new GameObject[4];
-    [SerializeField] private Text[] answersText = new Text[4];
+    [SerializeField] private GameObject[] answers = new GameObject[6];
+    [SerializeField] private Text[] answersText = new Text[6];
     [SerializeField] private GameObject menu;
     [SerializeField] private Beardy.GridLayoutGroup grid;
 

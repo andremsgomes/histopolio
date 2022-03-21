@@ -12,6 +12,15 @@
             "correctAnswer": 2
         },
         {
+            "tileId": 1,
+            "question": "O termo célula foi proposto por Antoni Van Leeuwenhoek",
+            "answers": [
+                "Verdadeiro",
+                "Falso"
+            ],
+            "correctAnswer": 2
+        },
+        {
             "tileId": 3,
             "question": "What is this game?",
             "answers": [
@@ -20,6 +29,18 @@
                 "Monopolio"
             ],
             "correctAnswer": 2
+        },
+        {
+            "tileId": 3,
+            "question": "Qual das seguintes características é FALSA para o epitélio de transição?",
+            "answers": [
+                "As células designam-se células em guarda chuva.",
+                "A convexidade apical é característica.",
+                "Existe nas vias urinárias.",
+                "Todas as células estão assentes na membrana basal.",
+                "Todas as células contactam com o lúmen do órgão."
+            ],
+            "correctAnswer": 5
         },
         {
             "tileId": 7,
@@ -31,13 +52,23 @@
             "correctAnswer": 2
         },
         {
+            "tileId": 7,
+            "question": "O prato estriado existe em células pavimentosas",
+            "answers": [
+                "Verdadeiro",
+                "Falso"
+            ],
+            "correctAnswer": 2
+        },
+        {
             "tileId": 8,
             "question": "What is this game?",
             "answers": [
                 "Kahoot",
                 "Histopolio",
                 "Monopolio",
-                "Catan"
+                "Catan",
+                "Risk"
             ],
             "correctAnswer": 2
         },
@@ -48,7 +79,9 @@
                 "Kahoot",
                 "Histopolio",
                 "Monopolio",
-                "Catan"
+                "Catan",
+                "Risk",
+                "Trivial"
             ],
             "correctAnswer": 2
         },

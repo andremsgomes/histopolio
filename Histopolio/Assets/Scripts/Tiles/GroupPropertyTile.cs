@@ -30,7 +30,7 @@ public class GroupPropertyTile : Tile
         
         gameManager.PrepareQuestion(questions[index]);
         
-        questions.RemoveAt(index);
+        // questions.RemoveAt(index);       // TODO: load all questions again after all are removed
     }
 
     // Set points
