@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         if (playerCamera)
-            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile().GetCameraRotation());
+            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile(), gameManager.GetNextTile());
     }
 
     // Set game manager
@@ -37,9 +37,33 @@ public class CameraManager : MonoBehaviour
     }
 
     // Set camera to player
-    void SetPlayerCamera(Vector3 playerPosition, Quaternion tileRotation) {
+    void SetPlayerCamera(Vector3 playerPosition, Tile currentTile, Tile nextTile) {
+        Vector3 currentTilePosition = currentTile.transform.position;
+        Vector3 nextTilePosition = nextTile.transform.position;
+        
+        // Distance between current and next tile's centers
+        float tilesDistance = nextTilePosition.x - currentTilePosition.x;
+        if (tilesDistance == 0)
+            tilesDistance = nextTilePosition.y - currentTilePosition.y;
+
+        // Distance between player and next tile's centers
+        float playerTileDistance = nextTilePosition.x - playerPosition.x;
+        if (playerTileDistance == 0)
+            playerTileDistance = nextTilePosition.y - playerPosition.y;
+
+        // Percentage of distance covered by player between the two tiles
+        float perc_path = (tilesDistance-playerTileDistance) / tilesDistance;
+
+        // Camera rotation difference between tiles
+        float tilesRotationDiference = nextTile.GetCameraRotation().eulerAngles.z - currentTile.GetCameraRotation().eulerAngles.z;
+        if (tilesRotationDiference > 180)
+            tilesRotationDiference = tilesRotationDiference - 360;
+
+        // Adjust camera rotation to keep up with player movement
+        float zRotation = currentTile.GetCameraRotation().eulerAngles.z + perc_path * tilesRotationDiference;
+
         gameCamera.transform.position = new Vector3(playerPosition.x, playerPosition.y, -10);
-        gameCamera.transform.rotation = tileRotation;
+        gameCamera.transform.rotation = Quaternion.Euler(0, 0, zRotation);
         gameCamera.orthographicSize = 3.4f;
 
         playerCamera = true;
@@ -51,6 +75,6 @@ public class CameraManager : MonoBehaviour
         if (playerCamera)
             SetBoardCamera();
         else
-            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile().GetCameraRotation());
+            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile(), gameManager.GetNextTile());
     }
 }

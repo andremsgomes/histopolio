@@ -93,6 +93,13 @@ public class GameManager : MonoBehaviour
         return currentPlayer.GetTile();
     }
 
+    // Get next tile
+    public Tile GetNextTile() {
+        int currenTileId = GetCurrentTile().GetId();
+        
+        return GetTile(currenTileId+1);
+    }
+
     // Move player after rolled dice
     public void MovePlayer(int diceResult) {
         currentPlayer.Move(diceResult);
