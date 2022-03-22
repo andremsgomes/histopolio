@@ -363,8 +363,8 @@ GameObject:
   - component: {fileID: 615705951}
   - component: {fileID: 615705949}
   - component: {fileID: 615705952}
-  - component: {fileID: 615705953}
   - component: {fileID: 615705954}
+  - component: {fileID: 615705953}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 615705948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df831a90552eec0678d8de7bf7a99981, type: 3}
+  m_Script: {fileID: 11500000, guid: 09badcc590597c1eda2a2725f25efe31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 858215559}
@@ -1220,7 +1220,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 615705953}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
         m_MethodName: OnCameraChangeClick
         m_Mode: 1
         m_Arguments:
@@ -1459,7 +1459,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 615705953}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
         m_MethodName: OnFinishTurnClick
         m_Mode: 1
         m_Arguments:
