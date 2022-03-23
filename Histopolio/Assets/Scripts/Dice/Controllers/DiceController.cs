@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DiceController : MonoBehaviour
 {
-    private GameManager gameManager;
+    private GameController gameController;
     private DiceUI diceUI;
     private bool coroutineAllowed = true;
 
@@ -38,12 +38,12 @@ public class DiceController : MonoBehaviour
             yield return new WaitForSeconds(0.08f);
         }
 
-        gameManager.MovePlayer(randomDiceSide);
+        gameController.MovePlayer(randomDiceSide);
     }
 
     // Set game manager
-    public void SetGameManager(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public void SetGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
     // Set dice UI

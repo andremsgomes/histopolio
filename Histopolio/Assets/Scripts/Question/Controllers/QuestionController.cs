@@ -7,7 +7,7 @@ public class QuestionController : MonoBehaviour
 {
     private QuestionUI questionUI;
     private int correctAnswer;
-    private GameManager gameManager;
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class QuestionController : MonoBehaviour
         QuestionsData questionsData = JsonUtility.FromJson<QuestionsData>(jsonString);
 
         foreach (QuestionData question in questionsData.questions) {
-            gameManager.AddQuestion(question);
+            gameController.AddQuestion(question);
         }
     }
 
@@ -41,12 +41,12 @@ public class QuestionController : MonoBehaviour
 
     // Check if answer is correct
     public void CheckAnswer(int answer) {
-        gameManager.FinishQuestion(answer == correctAnswer);
+        gameController.FinishQuestion(answer == correctAnswer);
     }
 
     // Set game manager
-    public void SetGameManager(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public void SetGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
     // Connect with UI

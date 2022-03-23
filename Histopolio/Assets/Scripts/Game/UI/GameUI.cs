@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    private GameManager gameManager;
+    private GameController gameController;
 
     [SerializeField] private Text playerNameText;
     [SerializeField] private Image playerColor;
@@ -27,12 +27,12 @@ public class GameUI : MonoBehaviour
     // OnCameraChangeClick is called when camera change button is clicked
     public void OnCameraChangeClick()
     {
-        gameManager.ChangeCamera();
+        gameController.ChangeCamera();
     }
 
     // Set game manager
-    public void SetGameManager(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public void SetGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
     // Set current player name text
@@ -53,13 +53,13 @@ public class GameUI : MonoBehaviour
     // OnFinishTurnClick is called when finish turn button is clicked
     public void OnFinishTurnClick() {
         turnButton.SetActive(false);
-        gameManager.ChangeCurrentPlayer();
-        gameManager.ShowDice();
+        gameController.ChangeCurrentPlayer();
+        gameController.ShowDice();
     }
 
     // DisplayFinishTurn is called after player moved
     public void DisplayFinishTurn() {
-        gameManager.HideDice();
+        gameController.HideDice();
         turnButton.SetActive(true);
     }
 }

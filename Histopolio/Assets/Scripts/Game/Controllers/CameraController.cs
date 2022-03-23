@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private bool playerCamera;
-    private GameManager gameManager;
+    private GameController gameController;
 
     [SerializeField] private Camera gameCamera;
 
@@ -19,12 +19,12 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         if (playerCamera)
-            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile(), gameManager.GetNextTile());
+            SetPlayerCamera(gameController.GetPlayerPosition(), gameController.GetCurrentTile(), gameController.GetNextTile());
     }
 
     // Set game manager
-    public void SetGameManager(GameManager gameManager) {
-        this.gameManager = gameManager;
+    public void SetGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
     // Set camera to show all board
@@ -75,6 +75,6 @@ public class CameraController : MonoBehaviour
         if (playerCamera)
             SetBoardCamera();
         else
-            SetPlayerCamera(gameManager.GetPlayerPosition(), gameManager.GetCurrentTile(), gameManager.GetNextTile());
+            SetPlayerCamera(gameController.GetPlayerPosition(), gameController.GetCurrentTile(), gameController.GetNextTile());
     }
 }
