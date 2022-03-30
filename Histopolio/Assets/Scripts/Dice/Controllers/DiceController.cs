@@ -38,7 +38,7 @@ public class DiceController : MonoBehaviour
             yield return new WaitForSeconds(0.08f);
         }
 
-        gameController.MovePlayer(randomDiceSide);
+        gameController.MovePlayer(1);
     }
 
     // Set game manager

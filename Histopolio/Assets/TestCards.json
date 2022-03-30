@@ -2,6 +2,66 @@
     "cards": [
         {
             "tileId": 2,
+            "info": "Fotografa as 5 preparações da aula prática que estiveres a fazer (1 foto por lâmina) e coloca legendas das estruturas que estão a bold no roteiro (relativas a essas lâminas). Faz um pdf e coloca na página do Moodle para ganhares 20 pontos."
+        },
+        {
+            "tileId": 17,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 33,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 4,
+            "info": "Este não é o teu dia! O pagamento do seguro escolar vai levar-te 10 pontos!"
+        },
+        {
+            "tileId": 12,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 28,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 38,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 5,
+            "info": "Assiste ao vídeo sobre o tecido epitelial para ganhares 20 pontos."
+        },
+        {
+            "tileId": 15,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 25,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 35,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 6,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 22,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 36,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 0,
+            "info": "Info Test"
+        },
+        {
+            "tileId": 30,
             "info": "Info Test"
         }
     ]
