@@ -8,6 +8,10 @@ public class DiceController : MonoBehaviour
     private DiceUI diceUI;
     private bool coroutineAllowed = true;
 
+    [Header("Test")]
+    [SerializeField] private bool test;
+    [SerializeField] private int diceRoll;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +26,12 @@ public class DiceController : MonoBehaviour
 
     // Roll the dice
     public void RollDice() {
-        if (coroutineAllowed)
-            StartCoroutine("RollDiceCoroutine");
+        if (coroutineAllowed) {
+            if (test)
+                gameController.MovePlayer(diceRoll);
+            else
+                StartCoroutine("RollDiceCoroutine");
+        }
     }
 
     private IEnumerator RollDiceCoroutine() {
