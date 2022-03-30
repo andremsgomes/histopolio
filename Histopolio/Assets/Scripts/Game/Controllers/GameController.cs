@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 
     [Header("Controllers")]
     [SerializeField] private QuestionController questionController;
+    [SerializeField] private CardController cardController;
     [SerializeField] private DiceController dice;
 
     [Header("Prefabs")]
@@ -43,6 +44,10 @@ public class GameController : MonoBehaviour
         questionController.SetGameController(this);
         questionController.SetQuestionComponents();
         questionController.LoadQuestions("TestQuestions.json");
+
+        cardController.SetGameController(this);
+        cardController.SetCardComponents();
+        cardController.LoadCards("TestCards.json");
 
         cameraController.SetGameController(this);
         cameraController.SetBoardCamera();
@@ -164,6 +169,11 @@ public class GameController : MonoBehaviour
         FinishTurn();
     }
 
+    // Add card to tile
+    public void AddCard(CardData card) {
+        ((CardTile)boardController.GetTile(card.tileId)).AddCard(card);
+    }
+
     // Add question to tile
     public void AddQuestion(QuestionData question) {
         ((GroupPropertyTile)boardController.GetTile(question.tileId)).AddQuestion(question);
@@ -173,6 +183,12 @@ public class GameController : MonoBehaviour
     public void PrepareQuestion(QuestionData question) {
         questionController.LoadQuestion(question);
         questionController.ShowQuestionMenu();
+    }
+
+    // Show card menu
+    public void PrepareCard(CardData card) {
+        cardController.LoadCard(card);
+        cardController.ShowCardMenu();
     }
 
     // Show dice

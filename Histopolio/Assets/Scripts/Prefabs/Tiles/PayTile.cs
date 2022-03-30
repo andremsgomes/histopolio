@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PayTile : Tile
+public class PayTile : CardTile
 {
     private int points;
     [SerializeField] private Text pointsText;
@@ -18,11 +18,6 @@ public class PayTile : Tile
     void Update()
     {
         
-    }
-
-    // Perform action when player arrives to tile
-    public override void PerformAction() {
-        gameController.FinishTurn();
     }
 
     // Set points

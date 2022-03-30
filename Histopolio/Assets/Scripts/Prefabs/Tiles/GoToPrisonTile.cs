@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoToPrisonTile : Tile
+public class GoToPrisonTile : CardTile
 {
     // Start is called before the first frame update
     void Start()
@@ -14,11 +14,6 @@ public class GoToPrisonTile : Tile
     void Update()
     {
         
-    }
-
-    // Perform action when player arrives to tile
-    public override void PerformAction() {
-        gameController.FinishTurn();
     }
 
     // Get rotation for the tile

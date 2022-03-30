@@ -24,7 +24,7 @@ public class GroupPropertyTile : Tile
         
     }
 
-    // Add points when player arrives to tile
+    // Ask a random question
     public override void PerformAction() {
         int index = Random.Range(0,questions.Count);
         

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommunityTile : Tile
+public class CommunityTile : CardTile
 {
     // Start is called before the first frame update
     void Start()
@@ -14,10 +14,5 @@ public class CommunityTile : Tile
     void Update()
     {
         
-    }
-
-    // Perform action when player arrives to tile
-    public override void PerformAction() {
-        gameController.FinishTurn();
     }
 }
