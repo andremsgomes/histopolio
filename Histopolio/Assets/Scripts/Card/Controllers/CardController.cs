@@ -6,7 +6,7 @@ using System.IO;
 public class CardController : MonoBehaviour
 {
     private CardUI cardUI;
-    private int correctAnswer;
+    private int points;
     private GameController gameController;
 
     // Start is called before the first frame update
@@ -45,11 +45,13 @@ public class CardController : MonoBehaviour
 
     // Load, set, and show info from card data
     public void LoadCard(CardData cardData) {
+        points = cardData.points;
         cardUI.SetInfo(cardData.info);
     }
 
     // Continue turn
     public void Continue() {
+        gameController.GiveCurrentPlayerPoints(points);
         gameController.FinishTurn();
     }
 

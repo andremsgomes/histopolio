@@ -151,6 +151,7 @@ public class GameController : MonoBehaviour
     // Give current player points
     public void GiveCurrentPlayerPoints(int points) {
         currentPlayer.AddPoints(points);
+        gameUI.SetPlayerScore(currentPlayer.GetScore());
     }
 
     // Display finish turn button and hide dice button

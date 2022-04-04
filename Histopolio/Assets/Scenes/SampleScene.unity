@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   test: 0
-  diceRoll: 20
+  diceRoll: 5
 --- !u!1 &858215557
 GameObject:
   m_ObjectHideFlags: 0
