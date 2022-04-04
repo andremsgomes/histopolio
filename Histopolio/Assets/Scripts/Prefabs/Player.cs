@@ -107,4 +107,9 @@ public class Player : MonoBehaviour
     public void ReceivePointsFromTile() {
         score += ((GroupPropertyTile)tile).GetPoints();
     }
+
+    // Set points
+    public void SetScore(int score) {
+        this.score = score;
+    }
 }

@@ -76,6 +76,7 @@ public class GameController : MonoBehaviour
             players[i].SetId(i);
             players[i].SetColor(playerColors[i]);
             players[i].SetName($"Player {i+1}");    // TODO: nome será introduzido pelo utilizador
+            players[i].SetScore(20);
         }
 
         SetCurrentPlayer(players[0]);
