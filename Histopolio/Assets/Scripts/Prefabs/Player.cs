@@ -91,6 +91,9 @@ public class Player : MonoBehaviour
     // Add points to score
     public void AddPoints(int points) {
         score += points;
+
+        if (score < 0)
+            score = 0;
     }
 
     // Get score
