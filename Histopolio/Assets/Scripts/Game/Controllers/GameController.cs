@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private QuestionController questionController;
     [SerializeField] private CardController cardController;
     [SerializeField] private DiceController dice;
+    [SerializeField] private MainMenuController mainMenuController;
 
     [Header("Prefabs")]
     [SerializeField] private Player playerPrefab;
@@ -56,6 +57,9 @@ public class GameController : MonoBehaviour
 
         dice.SetGameController(this);
         dice.SetDiceComponents();
+
+        mainMenuController.SetGameController(this);
+        mainMenuController.SetMainMenuComponents();
 
         SetColors();
 
