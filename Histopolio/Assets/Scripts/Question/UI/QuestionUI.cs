@@ -68,4 +68,9 @@ public class QuestionUI : MonoBehaviour
     public void ShowQuestionMenu() {
         menu.SetActive(true);
     }
+
+    // Hide question menu
+    public void HideQuestionMenu() {
+        menu.SetActive(false);
+    }
 }

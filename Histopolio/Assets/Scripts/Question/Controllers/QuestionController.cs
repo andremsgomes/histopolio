@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Networking;
+using Newtonsoft.Json.Linq;
 
 public class QuestionController : MonoBehaviour
 {
@@ -59,5 +61,27 @@ public class QuestionController : MonoBehaviour
     // Activate question menu
     public void ShowQuestionMenu() {
         questionUI.ShowQuestionMenu();
+    }
+
+    // Get answer from the server
+    public void GetAnswerFromServer() {
+        StartCoroutine(GetWebData());
+    }
+
+    // Send request to server
+    IEnumerator GetWebData() {
+        UnityWebRequest www = UnityWebRequest.Get("http://localhost:5000/api/answer");  // TODO: guardar url numa variavel
+
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+            Debug.LogError("Something went wrong: " + www.error);
+        else {
+            JObject response = JObject.Parse(www.downloadHandler.text);
+            int answer = (int)response["data"]["answer"];
+
+            questionUI.HideQuestionMenu();
+            CheckAnswer(answer);
+        }
     }
 }

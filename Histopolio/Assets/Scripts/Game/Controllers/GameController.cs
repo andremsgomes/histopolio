@@ -189,6 +189,7 @@ public class GameController : MonoBehaviour
     public void PrepareQuestion(QuestionData question) {
         questionController.LoadQuestion(question);
         questionController.ShowQuestionMenu();
+        questionController.GetAnswerFromServer();
     }
 
     // Show card menu
