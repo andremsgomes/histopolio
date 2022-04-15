@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose
-    .connect('mongodb://mongo:27017/sinkeo', { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect('mongodb://mongo:27017/histopolio', { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(e => {
         console.error('Connection error', e.message)
     })
