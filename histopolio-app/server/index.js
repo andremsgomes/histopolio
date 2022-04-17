@@ -17,10 +17,25 @@ const wss = new WebSocket.Server({ server: server }, ()=>{
 
 wss.on('connection', function connection(ws) {
     console.log('A new client connected!')
-    ws.send('Welcome New Client')
 
     ws.on('message', function message(data) {
-        console.log('received: %s', data);
+        console.log(data);
+        
+        const dataReceived = JSON.parse(data);
+        const command = dataReceived['type'];
+
+        switch(command) {
+            case 'question':
+                const dataToSend = {
+                    type: 'answer',
+                    answer: 2
+                }
+
+                ws.send(JSON.stringify(dataToSend))
+                break
+            default:
+                console.log('Unknown message: ' + data)
+        }
     });
 });
 

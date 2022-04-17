@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     private Color[] playerColors;
     private BoardController boardController;
     private CameraController cameraController;
+    private WebSocketClientController webSocketClientController;
     private GameUI gameUI;
     private Player currentPlayer;
 
@@ -37,6 +38,7 @@ public class GameController : MonoBehaviour
     {
         boardController = this.GetComponent<BoardController>();
         cameraController = this.GetComponent<CameraController>();
+        webSocketClientController = this.GetComponent<WebSocketClientController>();
         gameUI = this.GetComponent<GameUI>();
 
         boardController.SetGameController(this);
@@ -52,6 +54,8 @@ public class GameController : MonoBehaviour
 
         cameraController.SetGameController(this);
         cameraController.SetBoardCamera();
+
+        webSocketClientController.SetGameController(this);
 
         gameUI.SetGameController(this);
 
@@ -189,7 +193,6 @@ public class GameController : MonoBehaviour
     public void PrepareQuestion(QuestionData question) {
         questionController.LoadQuestion(question);
         questionController.ShowQuestionMenu();
-        questionController.GetAnswerFromServer();
     }
 
     // Show card menu
@@ -206,5 +209,15 @@ public class GameController : MonoBehaviour
     // Hide dice
     public void HideDice() {
         dice.HideDice();
+    }
+
+    // Send message to the server
+    public void SendMessageToServer(string message) {
+        webSocketClientController.SendMessage(message);
+    }
+
+    // Check answer received from server
+    public void CheckAnswerFromServer(int answer) {
+        questionController.CheckAnswer(answer);
     }
 }

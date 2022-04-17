@@ -28,8 +28,6 @@ public class QuestionUI : MonoBehaviour
 
     // OnAnswerClick is called when an answer is clicked
     public void OnAnswerClick(int answer) {
-        menu.SetActive(false);
-
         for (int i = 0; i < answers.Length; i++) {
             answers[i].SetActive(false);
         }

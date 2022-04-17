@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine.Networking;
-using Newtonsoft.Json.Linq;
 
 public class QuestionController : MonoBehaviour
 {
@@ -39,10 +37,14 @@ public class QuestionController : MonoBehaviour
         questionUI.SetAnswers(questionData.answers);
 
         correctAnswer = questionData.correctAnswer;
+
+        SendQuestionToServer(questionData);
     }
 
     // Check if answer is correct
     public void CheckAnswer(int answer) {
+        questionUI.HideQuestionMenu();
+
         gameController.FinishQuestion(answer == correctAnswer);
     }
 
@@ -63,25 +65,10 @@ public class QuestionController : MonoBehaviour
         questionUI.ShowQuestionMenu();
     }
 
-    // Get answer from the server
-    public void GetAnswerFromServer() {
-        StartCoroutine(GetWebData());
-    }
+    // Send question to the server
+    void SendQuestionToServer(QuestionData questionData) {
+        string message = JsonUtility.ToJson(questionData);
 
-    // Send request to server
-    IEnumerator GetWebData() {
-        UnityWebRequest www = UnityWebRequest.Get("http://localhost:5000/api/answer");  // TODO: guardar url numa variavel
-
-        yield return www.SendWebRequest();
-
-        if (www.result != UnityWebRequest.Result.Success)
-            Debug.LogError("Something went wrong: " + www.error);
-        else {
-            JObject response = JObject.Parse(www.downloadHandler.text);
-            int answer = (int)response["data"]["answer"];
-
-            questionUI.HideQuestionMenu();
-            CheckAnswer(answer);
-        }
+        gameController.SendMessageToServer(message);
     }
 }
