@@ -5,7 +5,6 @@ const http = require('http');
 const WebSocket = require('ws');
 
 const apiRouter = require('./routes/api-router')
-// const db = require('./db')
 
 const app = express()
 const apiPort = 8080
@@ -20,7 +19,7 @@ wss.on('connection', function connection(ws) {
 
     ws.on('message', function message(data) {
         console.log(data);
-        
+
         const dataReceived = JSON.parse(data);
         const command = dataReceived['type'];
 
@@ -41,8 +40,6 @@ wss.on('connection', function connection(ws) {
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
