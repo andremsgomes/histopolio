@@ -6,10 +6,29 @@ import { w3cwebsocket } from 'websocket';
 const client = new w3cwebsocket('ws://localhost:8080');
 
 class App extends Component {
+  constructor() {
+      super();
+  }
+  
   componentDidMount() {
     client.onopen = () => {
       console.log('WebSocket Client Connected');
+
+      this.sendIdentificationMessage()
     }
+  }
+
+  sendIdentificationMessage() {
+    const dataToSend = {
+      type: 'identification',
+      id: 'react'
+    }
+
+    this.sendToServer(JSON.stringify(dataToSend))
+  }
+
+  sendToServer(message) {
+    client.send(message)
   }
 
   render() {

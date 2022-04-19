@@ -22,6 +22,9 @@ public class WebSocketClientController : MonoBehaviour
         };
 
         ws.Connect();
+
+        string id = JsonUtility.ToJson(new IdentificationData());
+        SendMessage(id);
     }
 
     // Update is called once per frame

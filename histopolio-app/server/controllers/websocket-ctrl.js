@@ -1,3 +1,6 @@
+let unityWS = null
+let reactWS = []
+
 async function processMessage(ws, data) {
     console.log(data);
 
@@ -13,6 +16,14 @@ async function processMessage(ws, data) {
 
             ws.send(JSON.stringify(dataToSend))
             break
+        case 'identification':
+            if (dataReceived['id'] == 'unity')
+                unityWS = ws;
+            else {
+                reactWS.push(ws);
+                console.log('Users connected: ' + reactWS.length)
+            }
+            break;
         default:
             console.log('Unknown message: ' + data)
     }
