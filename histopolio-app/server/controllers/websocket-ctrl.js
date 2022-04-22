@@ -1,5 +1,6 @@
-let unityWS = null
-let reactWS = []
+const { sendQuestionToFrontend, sendAnswerToUnity } = require('./game-ctrl');
+let unityWS = null;
+let frontendWSs = [];
 
 async function processMessage(ws, data) {
     console.log(data);
@@ -9,34 +10,26 @@ async function processMessage(ws, data) {
 
     switch(command) {
         case 'question':
-            await handleQuestionReceived(dataReceived);
+            await sendQuestionToFrontend(frontendWSs, dataReceived);
             break;
         case 'identification':
-            await handleIdentificationReceived(ws, dataReceived);
+            await authentication(ws, dataReceived);
             break;
         case 'answer':
-            await handleAnswerReceived(dataReceived);
+            await sendAnswerToUnity(unityWS, dataReceived);
             break;
         default:
             console.log('Unknown message: ' + data);
     }
 }
 
-async function handleQuestionReceived(dataReceived) {
-    reactWS[0].send(JSON.stringify(dataReceived))
-}
-
-async function handleIdentificationReceived(ws, dataReceived) {
+async function authentication(ws, dataReceived) {
     if (dataReceived['id'] == 'unity')
         unityWS = ws
     else {
-        reactWS.push(ws)
-        console.log('Users connected: ' + reactWS.length)
+        frontendWSs.push(ws)
+        console.log('Users connected: ' + frontendWSs.length)
     }
-}
-
-async function handleAnswerReceived(dataReceived) {
-    unityWS.send(JSON.stringify(dataReceived));
 }
 
 module.exports = {
