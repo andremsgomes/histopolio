@@ -189,10 +189,10 @@ public class GameController : MonoBehaviour
         ((GroupPropertyTile)boardController.GetTile(question.tileId)).AddQuestion(question);
     }
 
-    // Show question menu
+    // Load question to send to server
     public void PrepareQuestion(QuestionData question) {
         questionController.LoadQuestion(question);
-        questionController.ShowQuestionMenu();
+        // questionController.ShowQuestionMenu();
     }
 
     // Show card menu

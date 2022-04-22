@@ -40,17 +40,22 @@ public class WebSocketClientController : MonoBehaviour
     void ProcessMessage() {
         Debug.Log(message);
 
-        JObject response = JObject.Parse(message);
-        string command = (string)response["type"];
+        JObject dataReceived = JObject.Parse(message);
+        string command = (string)dataReceived["type"];
 
         switch (command) {
             case "answer":
-                gameController.CheckAnswerFromServer((int)response["answer"]);
+                OnAnswerReceived(dataReceived);
                 break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
         }
+    }
+
+    // OnAnswerReceived is called when an answer is received
+    public void OnAnswerReceived(JObject dataReceived) {
+        gameController.CheckAnswerFromServer((int)dataReceived["answer"]);
     }
 
     // Send message to the server

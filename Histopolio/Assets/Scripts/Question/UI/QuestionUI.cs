@@ -28,10 +28,6 @@ public class QuestionUI : MonoBehaviour
 
     // OnAnswerClick is called when an answer is clicked
     public void OnAnswerClick(int answer) {
-        for (int i = 0; i < answers.Length; i++) {
-            answers[i].SetActive(false);
-        }
-
         questionController.CheckAnswer(answer);
     }
 
@@ -69,6 +65,9 @@ public class QuestionUI : MonoBehaviour
 
     // Hide question menu
     public void HideQuestionMenu() {
+        for (int i = 0; i < answers.Length; i++) {
+            answers[i].SetActive(false);
+        }
         menu.SetActive(false);
     }
 }

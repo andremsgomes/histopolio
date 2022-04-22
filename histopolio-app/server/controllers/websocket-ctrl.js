@@ -9,27 +9,37 @@ async function processMessage(ws, data) {
 
     switch(command) {
         case 'question':
-            const dataToSend = {
-                type: 'answer',
-                answer: 2
-            }
-
-            ws.send(JSON.stringify(dataToSend))
-            break
+            await handleQuestionReceived(dataReceived);
+            break;
         case 'identification':
-            if (dataReceived['id'] == 'unity')
-                unityWS = ws;
-            else {
-                reactWS.push(ws);
-                console.log('Users connected: ' + reactWS.length)
-            }
+            await handleIdentificationReceived(ws, dataReceived);
+            break;
+        case 'answer':
+            await handleAnswerReceived(dataReceived);
             break;
         default:
-            console.log('Unknown message: ' + data)
+            console.log('Unknown message: ' + data);
     }
+}
+
+async function handleQuestionReceived(dataReceived) {
+    reactWS[0].send(JSON.stringify(dataReceived))
+}
+
+async function handleIdentificationReceived(ws, dataReceived) {
+    if (dataReceived['id'] == 'unity')
+        unityWS = ws
+    else {
+        reactWS.push(ws)
+        console.log('Users connected: ' + reactWS.length)
+    }
+}
+
+async function handleAnswerReceived(dataReceived) {
+    unityWS.send(JSON.stringify(dataReceived));
 }
 
 module.exports = {
     processMessage,
-  };
+};
   
