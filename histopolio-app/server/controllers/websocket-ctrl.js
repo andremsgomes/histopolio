@@ -1,4 +1,5 @@
 const { sendQuestionToFrontend, sendAnswerToUnity } = require('./game-ctrl');
+const { loadBoard } = require('./load-ctrl');
 let unityWS = null;
 let frontendWSs = [];
 
@@ -17,6 +18,9 @@ async function processMessage(ws, data) {
             break;
         case 'answer':
             await sendAnswerToUnity(unityWS, dataReceived);
+            break;
+        case 'load board':
+            await loadBoard(unityWS, dataReceived);
             break;
         default:
             console.log('Unknown message: ' + data);

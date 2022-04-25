@@ -74,11 +74,8 @@ public class BoardController : MonoBehaviour
     }
 
     // Load existing board
-    public void LoadBoard() {
+    public void LoadBoard(BoardData boardData) {
         tiles = new Tile[40];
-
-        string jsonString = File.ReadAllText(Application.dataPath + "/BoardData.json");
-        BoardData boardData = JsonUtility.FromJson<BoardData>(jsonString);
 
         foreach(GroupPropertyTileData groupPropertyTileData in boardData.groupPropertyTiles) {
             tiles[groupPropertyTileData.id] = Instantiate(groupPropertyTilePrefab, groupPropertyTileData.position, groupPropertyTileData.rotation);

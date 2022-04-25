@@ -42,15 +42,14 @@ public class GameController : MonoBehaviour
         gameUI = this.GetComponent<GameUI>();
 
         boardController.SetGameController(this);
-        boardController.LoadBoard();
 
         questionController.SetGameController(this);
         questionController.SetQuestionComponents();
-        questionController.LoadQuestions("TestQuestions.json");
+        // questionController.LoadQuestions("TestQuestions.json");
 
         cardController.SetGameController(this);
         cardController.SetCardComponents();
-        cardController.LoadCards("TestCards.json");
+        // cardController.LoadCards("TestCards.json");
 
         cameraController.SetGameController(this);
         cameraController.SetBoardCamera();
@@ -67,7 +66,7 @@ public class GameController : MonoBehaviour
 
         SetColors();
 
-        SpawnPlayers();
+        // SpawnPlayers();
     }
     
     // Spawn players on GO Tile
@@ -219,5 +218,15 @@ public class GameController : MonoBehaviour
     // Check answer received from server
     public void CheckAnswerFromServer(int answer) {
         questionController.CheckAnswer(answer);
+    }
+
+    // Request board data from server
+    public void RequestBoardData() {
+        webSocketClientController.RequestBoardData("BoardData");
+    }
+
+    // Load board received from server
+    public void LoadBoardReceived(BoardData boardData) {
+        boardController.LoadBoard(boardData);
     }
 }

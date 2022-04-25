@@ -9,7 +9,7 @@ public class WebSocketClientController : MonoBehaviour
     private WebSocket ws;
     private GameController gameController;
     private string message;
-    private bool processAllowed = false;
+    private bool processAllowed = false;    // TODO: mudar para um array de processos
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,6 @@ public class WebSocketClientController : MonoBehaviour
         
         ws.OnMessage += (sender, e) => {
             message = e.Data;
-            processAllowed = true;
         };
 
         ws.Connect();
@@ -33,6 +32,7 @@ public class WebSocketClientController : MonoBehaviour
         if (processAllowed) {
             processAllowed = false;
             ProcessMessage();
+            processAllowed = true;
         }
     }
 
@@ -47,6 +47,9 @@ public class WebSocketClientController : MonoBehaviour
             case "answer":
                 OnAnswerReceived(dataReceived);
                 break;
+            case "board":
+                OnBoardReceived(dataReceived);
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -54,7 +57,7 @@ public class WebSocketClientController : MonoBehaviour
     }
 
     // OnAnswerReceived is called when an answer is received
-    public void OnAnswerReceived(JObject dataReceived) {
+    void OnAnswerReceived(JObject dataReceived) {
         gameController.CheckAnswerFromServer((int)dataReceived["answer"]);
     }
 
@@ -66,5 +69,21 @@ public class WebSocketClientController : MonoBehaviour
     // Set game controller
     public void SetGameController(GameController gameController) {
         this.gameController = gameController;
+    }
+
+    // Request board data from server
+    public void RequestBoardData(string board) {
+        BoardDataRequest boardDataRequest = new BoardDataRequest();
+        boardDataRequest.board = board;
+
+        string boardDataRequestString = JsonUtility.ToJson(boardDataRequest);
+
+        SendMessage(boardDataRequestString);
+    }
+
+    // OnBoardReceived is callend when the board data is received
+    void OnBoardReceived(JObject dataReceived) {
+        BoardData boardData = JsonUtility.FromJson<BoardData>(Newtonsoft.Json.JsonConvert.SerializeObject(dataReceived["board"]));
+        gameController.LoadBoardReceived(boardData);
     }
 }
