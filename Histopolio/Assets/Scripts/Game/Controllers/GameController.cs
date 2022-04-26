@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour
 
         cardController.SetGameController(this);
         cardController.SetCardComponents();
-        // cardController.LoadCards("TestCards.json");
 
         cameraController.SetGameController(this);
         cameraController.SetBoardCamera();
@@ -64,8 +63,6 @@ public class GameController : MonoBehaviour
         mainMenuController.SetMainMenuComponents();
 
         SetColors();
-
-        // SpawnPlayers();
     }
     
     // Spawn players on GO Tile
@@ -237,5 +234,13 @@ public class GameController : MonoBehaviour
     // Load cards received from server
     public void LoadCardsReceived(CardsData cardsData) {
         cardController.LoadCards(cardsData);
+    }
+
+    // Start new game
+    public void StartNewGame() {
+        SpawnPlayers();
+        gameUI.ShowHUD();
+
+        Debug.Log("New Game Started");
     }
 }

@@ -125,5 +125,7 @@ public class WebSocketClientController : MonoBehaviour
     void OnCardsReceived(JObject dataReceived) {
         CardsData cardsData = JsonUtility.FromJson<CardsData>(Newtonsoft.Json.JsonConvert.SerializeObject(dataReceived["cards"]));
         gameController.LoadCardsReceived(cardsData);
+
+        gameController.StartNewGame();
     }
 }

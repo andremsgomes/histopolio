@@ -11,6 +11,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Image playerColor;
     [SerializeField] private Text playerScoreText;
     [SerializeField] private GameObject turnButton;
+    [SerializeField] private GameObject HUD;
 
     // Start is called before the first frame update
     void Start()
@@ -61,5 +62,10 @@ public class GameUI : MonoBehaviour
     public void DisplayFinishTurn() {
         gameController.HideDice();
         turnButton.SetActive(true);
+    }
+
+    // Show HUD
+    public void ShowHUD() {
+        HUD.SetActive(true);
     }
 }
