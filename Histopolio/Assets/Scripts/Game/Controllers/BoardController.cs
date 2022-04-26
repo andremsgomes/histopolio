@@ -151,6 +151,8 @@ public class BoardController : MonoBehaviour
 
         BoardBase boardBase = Instantiate(boardBasePrefab, new Vector3(4, 5.3f), Quaternion.identity);
         boardBase.name = "Board base";
+
+        Debug.Log("Board loaded");
     }
 
     // Set game manager

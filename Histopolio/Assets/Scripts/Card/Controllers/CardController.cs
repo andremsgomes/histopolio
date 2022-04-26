@@ -34,13 +34,12 @@ public class CardController : MonoBehaviour
     }
 
     // Load cards from file
-    public void LoadCards(string fileRelativePath) {
-        string jsonString = File.ReadAllText(Application.dataPath + "/" + fileRelativePath);
-        CardsData cardsData = JsonUtility.FromJson<CardsData>(jsonString);
-
+    public void LoadCards(CardsData cardsData) {
         foreach (CardData card in cardsData.cards) {
             gameController.AddCard(card);
         }
+
+        Debug.Log("Cards loaded");
     }
 
     // Load, set, and show info from card data

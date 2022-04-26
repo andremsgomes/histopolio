@@ -26,6 +26,8 @@ public class QuestionController : MonoBehaviour
         foreach (QuestionData question in questionsData.questions) {
             gameController.AddQuestion(question);
         }
+
+        Debug.Log("Questions loaded");
     }
 
     // Load, set, and show question from question data

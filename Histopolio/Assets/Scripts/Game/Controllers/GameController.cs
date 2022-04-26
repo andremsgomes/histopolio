@@ -233,4 +233,9 @@ public class GameController : MonoBehaviour
     public void LoadQuestionsReceived(QuestionsData questionsData) {
         questionController.LoadQuestions(questionsData);
     }
+
+    // Load cards received from server
+    public void LoadCardsReceived(CardsData cardsData) {
+        cardController.LoadCards(cardsData);
+    }
 }

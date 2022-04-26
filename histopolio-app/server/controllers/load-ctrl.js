@@ -22,7 +22,19 @@ async function loadQuestions(ws, dataReceived) {
     ws.send(JSON.stringify(dataToSend));
 }
 
+async function loadCards(ws, dataReceived) {
+    const cards = readJSONFile("./data/" + dataReceived.board + "/Cards.json");
+
+    const dataToSend = {
+        type: "cards",
+        cards: cards
+    }
+
+    ws.send(JSON.stringify(dataToSend));
+}
+
 module.exports = {
     loadBoard,
-    loadQuestions
+    loadQuestions,
+    loadCards
 };

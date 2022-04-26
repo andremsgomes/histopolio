@@ -53,6 +53,9 @@ public class WebSocketClientController : MonoBehaviour
             case "questions":
                 OnQuestionsReceived(dataReceived);
                 break;
+            case "cards":
+                OnCardsReceived(dataReceived);
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -109,5 +112,18 @@ public class WebSocketClientController : MonoBehaviour
     void OnQuestionsReceived(JObject dataReceived) {
         QuestionsData questionsData = JsonUtility.FromJson<QuestionsData>(Newtonsoft.Json.JsonConvert.SerializeObject(dataReceived["questions"]));
         gameController.LoadQuestionsReceived(questionsData);
+
+        RequestCardsData(questionsData.board);
+    }
+
+    // Request cards data from server
+    void RequestCardsData(string board) {
+        RequestLoadData("load cards", board);
+    }
+
+    // OnCardsReceived is called when the cards data is received
+    void OnCardsReceived(JObject dataReceived) {
+        CardsData cardsData = JsonUtility.FromJson<CardsData>(Newtonsoft.Json.JsonConvert.SerializeObject(dataReceived["cards"]));
+        gameController.LoadCardsReceived(cardsData);
     }
 }
