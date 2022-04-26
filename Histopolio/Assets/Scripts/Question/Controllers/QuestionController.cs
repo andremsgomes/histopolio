@@ -22,10 +22,7 @@ public class QuestionController : MonoBehaviour
     }
 
     // Load questions from file
-    public void LoadQuestions(string fileRelativePath) {
-        string jsonString = File.ReadAllText(Application.dataPath + "/" + fileRelativePath);
-        QuestionsData questionsData = JsonUtility.FromJson<QuestionsData>(jsonString);
-
+    public void LoadQuestions(QuestionsData questionsData) {
         foreach (QuestionData question in questionsData.questions) {
             gameController.AddQuestion(question);
         }

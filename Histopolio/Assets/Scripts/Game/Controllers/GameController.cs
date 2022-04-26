@@ -45,7 +45,6 @@ public class GameController : MonoBehaviour
 
         questionController.SetGameController(this);
         questionController.SetQuestionComponents();
-        // questionController.LoadQuestions("TestQuestions.json");
 
         cardController.SetGameController(this);
         cardController.SetCardComponents();
@@ -222,11 +221,16 @@ public class GameController : MonoBehaviour
 
     // Request board data from server
     public void RequestBoardData() {
-        webSocketClientController.RequestBoardData("BoardData");
+        webSocketClientController.RequestBoardData("Histopolio");
     }
 
     // Load board received from server
     public void LoadBoardReceived(BoardData boardData) {
         boardController.LoadBoard(boardData);
+    }
+
+    // Load questions received from server
+    public void LoadQuestionsReceived(QuestionsData questionsData) {
+        questionController.LoadQuestions(questionsData);
     }
 }

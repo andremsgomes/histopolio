@@ -4,6 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class BoardData {
+    public string name;
     public List<GroupPropertyTileData> groupPropertyTiles = new List<GroupPropertyTileData>();
     public List<CommunityTileData> communityTiles = new List<CommunityTileData>();
     public List<PayTileData> payTiles = new List<PayTileData>();
