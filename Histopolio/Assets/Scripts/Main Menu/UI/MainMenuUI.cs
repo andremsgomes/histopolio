@@ -27,8 +27,8 @@ public class MainMenuUI : MonoBehaviour
 
     // OnLoadGameClick is called when the load game button is clicked
     public void OnLoadGameClick() {
-        menu.SetActive(false);
-        mainMenuController.LoadGame();
+        // menu.SetActive(false);
+        // mainMenuController.LoadGame();
     }
 
     // OnNewGameClick is called when the new game button is clicked

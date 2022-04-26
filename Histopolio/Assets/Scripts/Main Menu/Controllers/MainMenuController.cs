@@ -33,12 +33,12 @@ public class MainMenuController : MonoBehaviour
 
     // Show load game menu
     public void LoadGame() {
-        gameController.RequestBoardData();
         // TODO: mostrar novo menu
     }
 
     // Show choose board menu
     public void NewGame() {
+        gameController.RequestBoardData();
         // TODO: mostrar novo menu
     }
 }
