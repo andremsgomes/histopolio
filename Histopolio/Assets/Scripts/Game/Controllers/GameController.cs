@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     private WebSocketClientController webSocketClientController;
     private GameUI gameUI;
     private Player currentPlayer;
+    private bool gameLoaded = false;
 
     [Header("Controllers")]
     [SerializeField] private QuestionController questionController;
@@ -242,5 +243,14 @@ public class GameController : MonoBehaviour
         gameUI.ShowHUD();
 
         Debug.Log("New Game Started");
+    }
+
+    // Check if game is loaded
+    public bool GetGameLoaded() {
+        return gameLoaded;
+    }
+
+    public void SetGameLoaded(bool gameLoaded) {
+        this.gameLoaded = gameLoaded;
     }
 }

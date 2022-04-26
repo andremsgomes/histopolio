@@ -37,8 +37,17 @@ public class MainMenuController : MonoBehaviour
     }
 
     // Show choose board menu
-    public void NewGame() {
+    public void LoadNewGame() {
         gameController.RequestBoardData();
-        // TODO: mostrar novo menu
+    }
+
+    // Start new game
+    public void StartNewGame() {
+        gameController.StartNewGame();
+    }
+
+    // Check if game is loaded
+    public bool GetGameLoaded() {
+        return gameController.GetGameLoaded();
     }
 }
