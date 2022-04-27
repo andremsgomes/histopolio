@@ -50,4 +50,9 @@ public class MainMenuController : MonoBehaviour
     public bool GetGameLoaded() {
         return gameController.GetGameLoaded();
     }
+
+    // Show new player on join menu
+    public void ShowNewPlayer(int index, Color color) {
+        mainMenuUI.ShowNewPlayer(index, color);
+    }
 }

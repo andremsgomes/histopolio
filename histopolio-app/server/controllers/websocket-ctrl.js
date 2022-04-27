@@ -1,4 +1,4 @@
-const { sendQuestionToFrontend, sendAnswerToUnity, sendGameStatusToFrontend } = require('./game-ctrl');
+const { sendQuestionToFrontend, sendAnswerToUnity, sendGameStatusToFrontend, sendNewPlayerToUnity } = require('./game-ctrl');
 const { loadBoard, loadQuestions, loadCards } = require('./load-ctrl');
 let unityWS = null;
 let frontendWSs = [];
@@ -30,6 +30,9 @@ async function processMessage(ws, data) {
             break;
         case 'game status':
             await sendGameStatusToFrontend(ws, unityWS != null);
+            break;
+        case 'join game':
+            await sendNewPlayerToUnity(unityWS, dataReceived);
             break;
         default:
             console.log('Unknown message: ' + data);

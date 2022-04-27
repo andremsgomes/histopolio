@@ -24,6 +24,10 @@ async function sendGameStatusToFrontend(frontendWS, gameStarted) {
     frontendWS.send(JSON.stringify(dataToSend));
 }
 
+async function sendNewPlayerToUnity(unityWS, dataReceived) {
+    unityWS.send(JSON.stringify(dataReceived));
+}
+
 module.exports = {
     sendQuestionToFrontend,
     sendAnswerToUnity,

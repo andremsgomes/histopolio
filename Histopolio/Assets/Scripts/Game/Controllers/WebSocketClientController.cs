@@ -56,6 +56,9 @@ public class WebSocketClientController : MonoBehaviour
             case "cards":
                 OnCardsReceived(dataReceived);
                 break;
+            case "join game":
+                OnJoinGameReceived();
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -127,5 +130,10 @@ public class WebSocketClientController : MonoBehaviour
         gameController.LoadCardsReceived(cardsData);
 
         gameController.SetGameLoaded(true);
+    }
+
+    // OnJoinGameReceived is called when a request to join the game is received
+    void OnJoinGameReceived() {
+        gameController.AddPlayer();
     }
 }

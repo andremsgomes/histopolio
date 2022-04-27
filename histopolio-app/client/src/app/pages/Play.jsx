@@ -80,7 +80,17 @@ class Play extends Component {
       gameStarted: dataReceived["gameStarted"],
     });
 
-    console.log(dataReceived['gameStarted']);
+    if (this.state.gameStarted) {
+      this.sendJoinGameMessage();
+    }
+  }
+
+  sendJoinGameMessage() {
+    const dataToSend = {
+      type: "join game"
+    };
+
+    this.sendToServer(JSON.stringify(dataToSend));
   }
 
   handleAnswer(answerIndex) {

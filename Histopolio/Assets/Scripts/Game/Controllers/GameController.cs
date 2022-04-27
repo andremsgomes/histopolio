@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private Player[] players;
+    private List<Player> players = new List<Player>();
     private Color[] playerColors;
     private BoardController boardController;
     private CameraController cameraController;
@@ -21,9 +21,6 @@ public class GameController : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private Player playerPrefab;
-
-    [Header("Number of Players")]
-    [SerializeField] private int numPlayers;
 
     [Header("Players' Colors")]
     [SerializeField] private Color player1Color;
@@ -68,21 +65,6 @@ public class GameController : MonoBehaviour
     
     // Spawn players on GO Tile
     void SpawnPlayers() {
-        players = new Player[numPlayers];
-
-        Tile firstTile = boardController.GetTile(0);
-
-        for (int i = 0; i < numPlayers; i++) {
-            players[i] = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
-            players[i].name = $"Player {i+1}";
-            players[i].SetGameController(this);
-            players[i].SetTile(firstTile);
-            players[i].SetId(i);
-            players[i].SetColor(playerColors[i]);
-            players[i].SetName($"Player {i+1}");    // TODO: nome será introduzido pelo utilizador
-            players[i].SetScore(20);
-        }
-
         SetCurrentPlayer(players[0]);
     }
 
@@ -125,7 +107,7 @@ public class GameController : MonoBehaviour
     public void ChangeCurrentPlayer() {
         int newId = currentPlayer.GetId()+1;
 
-        if (newId >= numPlayers)
+        if (newId >= players.Count)
             newId = 0;
 
         SetCurrentPlayer(players[newId]);
@@ -250,7 +232,26 @@ public class GameController : MonoBehaviour
         return gameLoaded;
     }
 
+    // Set game loaded
     public void SetGameLoaded(bool gameLoaded) {
         this.gameLoaded = gameLoaded;
+    }
+
+    public void AddPlayer() {
+        Tile firstTile = boardController.GetTile(0);
+
+        Player newPlayer = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
+
+        newPlayer.name = $"Player {players.Count+1}";
+        newPlayer.SetGameController(this);
+        newPlayer.SetTile(firstTile);
+        newPlayer.SetId(players.Count);
+        newPlayer.SetColor(playerColors[players.Count]);
+        newPlayer.SetName($"Player {players.Count+1}");    // TODO: nome será introduzido pelo utilizador
+        newPlayer.SetScore(20);
+
+        mainMenuController.ShowNewPlayer(players.Count, playerColors[players.Count]);
+
+        players.Add(newPlayer);
     }
 }
