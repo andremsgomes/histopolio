@@ -1,4 +1,4 @@
-const { sendQuestionToFrontend, sendAnswerToUnity } = require('./game-ctrl');
+const { sendQuestionToFrontend, sendAnswerToUnity, sendGameStatusToFrontend } = require('./game-ctrl');
 const { loadBoard, loadQuestions, loadCards } = require('./load-ctrl');
 let unityWS = null;
 let frontendWSs = [];
@@ -9,7 +9,7 @@ async function processMessage(ws, data) {
     const dataReceived = JSON.parse(data);
     const command = dataReceived['type'];
 
-    switch(command) {
+    switch (command) {
         case 'question':
             await sendQuestionToFrontend(frontendWSs, dataReceived);
             break;
@@ -28,16 +28,25 @@ async function processMessage(ws, data) {
         case 'load cards':
             await loadCards(unityWS, dataReceived);
             break;
+        case 'game status':
+            await sendGameStatusToFrontend(ws, unityWS != null);
+            break;
         default:
             console.log('Unknown message: ' + data);
     }
 }
 
 async function authentication(ws, dataReceived) {
-    if (dataReceived['id'] == 'unity')
-        unityWS = ws
+    if (dataReceived['id'] == 'unity') {
+        unityWS = ws;
+        console.log('Game connected');
+
+        frontendWSs.forEach(frontendWS => {
+            sendGameStatusToFrontend(frontendWS, true);
+        });
+    }
     else {
-        frontendWSs.push(ws)
+        frontendWSs.push(ws);
         console.log('Users connected: ' + frontendWSs.length)
     }
 }
@@ -45,4 +54,3 @@ async function authentication(ws, dataReceived) {
 module.exports = {
     processMessage,
 };
-  
