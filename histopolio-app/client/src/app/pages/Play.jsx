@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { w3cwebsocket } from 'websocket';
+import { w3cwebsocket } from "websocket";
 
 class Play extends Component {
   constructor(props) {
@@ -87,7 +87,7 @@ class Play extends Component {
 
   sendJoinGameMessage() {
     const dataToSend = {
-      type: "join game"
+      type: "join game",
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -115,6 +115,7 @@ class Play extends Component {
               <p>{this.state.question}</p>
               {this.state.answers.map((answer, index) => (
                 <button
+                  className="btn btn-secondary btn-lg"
                   onClick={() => {
                     this.handleAnswer(index);
                   }}
