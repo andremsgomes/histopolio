@@ -1,4 +1,4 @@
-const { readJSONFile, writeJSONFile } = require('./../utils/json-utils');
+const { readJSONFile } = require('./../utils/json-utils');
 
 async function loadBoard(ws, dataReceived) {
     const board = readJSONFile("./data/" + dataReceived.board + "/BoardData.json");

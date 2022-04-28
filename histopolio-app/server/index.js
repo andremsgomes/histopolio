@@ -5,6 +5,7 @@ const http = require('http');
 const WebSocket = require('ws');
 
 const { processMessage } = require('./controllers/websocket-ctrl')
+const authRouter = require("./routes/auth");
 
 const app = express()
 const apiPort = 8080
@@ -25,6 +26,8 @@ wss.on('connection', function connection(ws) {
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
-})
+});
+
+app.use("/api/auth", authRouter);
 
 server.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))

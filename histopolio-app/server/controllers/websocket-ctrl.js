@@ -1,5 +1,5 @@
-const { sendQuestionToFrontend, sendAnswerToUnity, sendGameStatusToFrontend, sendNewPlayerToUnity } = require('./game-ctrl');
-const { loadBoard, loadQuestions, loadCards } = require('./load-ctrl');
+const gameController = require('./game-ctrl');
+const loadController = require('./load-ctrl');
 let unityWS = null;
 let frontendWSs = [];
 
@@ -11,28 +11,28 @@ async function processMessage(ws, data) {
 
     switch (command) {
         case 'question':
-            await sendQuestionToFrontend(frontendWSs, dataReceived);
+            await gameController.sendQuestionToFrontend(frontendWSs, dataReceived);
             break;
         case 'identification':
             await authentication(ws, dataReceived);
             break;
         case 'answer':
-            await sendAnswerToUnity(unityWS, dataReceived);
+            await gameController.sendAnswerToUnity(unityWS, dataReceived);
             break;
         case 'load board':
-            await loadBoard(unityWS, dataReceived);
+            await loadController.loadBoard(unityWS, dataReceived);
             break;
         case 'load questions':
-            await loadQuestions(unityWS, dataReceived);
+            await loadController.loadQuestions(unityWS, dataReceived);
             break;
         case 'load cards':
-            await loadCards(unityWS, dataReceived);
+            await loadController.loadCards(unityWS, dataReceived);
             break;
         case 'game status':
-            await sendGameStatusToFrontend(ws, unityWS != null);
+            await gameController.sendGameStatusToFrontend(ws, unityWS != null);
             break;
         case 'join game':
-            await sendNewPlayerToUnity(unityWS, dataReceived);
+            await gameController.sendNewPlayerToUnity(unityWS, dataReceived);
             break;
         default:
             console.log('Unknown message: ' + data);
@@ -45,7 +45,7 @@ async function authentication(ws, dataReceived) {
         console.log('Game connected');
 
         frontendWSs.forEach(frontendWS => {
-            sendGameStatusToFrontend(frontendWS, true);
+            gameController.sendGameStatusToFrontend(frontendWS, true);
         });
     }
     else {
