@@ -92,8 +92,12 @@ class Play extends Component {
   }
 
   sendJoinGameMessage() {
+    const { user } = this.context;
+
     const dataToSend = {
       type: "join game",
+      id: user.id,
+      name: user.name
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
