@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import { useAuth } from "../providers/AuthProvider";
+import { useAuth } from "../context/AuthContext";
 import AuthNavigator from "./AuthNavigator";
 import AppNavigator from "./AppNavigator";
 

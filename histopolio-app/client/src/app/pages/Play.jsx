@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { w3cwebsocket } from "websocket";
+import AuthContext from "../context/AuthContext";
 
 class Play extends Component {
   constructor(props) {
@@ -7,6 +8,8 @@ class Play extends Component {
 
     this.client = new w3cwebsocket("ws://localhost:8080");
   }
+
+  static contextType = AuthContext;
 
   state = {
     gameStarted: false,
@@ -32,9 +35,12 @@ class Play extends Component {
   }
 
   sendIdentificationMessage() {
+    const { user } = this.context;
+
     const dataToSend = {
       type: "identification",
-      id: "react",
+      platform: "react",
+      id: user.id
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -112,7 +118,7 @@ class Play extends Component {
         <div>
           {this.state.showQuestion ? (
             <div>
-              <p>{this.state.question}</p>
+              <h1>{this.state.question}</h1>
               {this.state.answers.map((answer, index) => (
                 <button
                   className="btn btn-secondary btn-lg"
@@ -125,14 +131,14 @@ class Play extends Component {
               ))}
             </div>
           ) : (
-            <p>Espera pela tua vez!</p>
+            <h2>Espera pela tua vez!</h2>
           )}
         </div>
       );
     } else {
       return (
         <div>
-          <p>Espera pelo início do jogo!</p>
+          <h2>Espera pelo início do jogo!</h2>
         </div>
       );
     }
