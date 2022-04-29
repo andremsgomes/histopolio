@@ -1,7 +1,8 @@
 const gameController = require("./game-ctrl");
 const loadController = require("./load-ctrl");
+
 let unityWS = null;
-let frontendWSs = [];
+let frontendWSs = new Map();
 
 async function processMessage(ws, data) {
   console.log(data);
@@ -48,8 +49,9 @@ async function authentication(ws, dataReceived) {
       gameController.sendGameStatusToFrontend(frontendWS, true);
     });
   } else {
-    frontendWSs[dataReceived["id"]] = ws;
-    console.log("Users connected: " + (frontendWSs.length - 1));
+    frontendWSs.set(dataReceived["id"], ws);
+
+    console.log("Users connected: " + frontendWSs.size);
   }
 }
 
