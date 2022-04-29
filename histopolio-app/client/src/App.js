@@ -1,16 +1,15 @@
-import './App.css';
-import { Component } from 'react';
+import "./App.css";
+import React from "react";
 
-import MainContent from './app/Components/MainContent';
+import { AuthProvider } from "./app/providers/AuthProvider";
+import RootNavigator from "./app/navigation/RootNavigator";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <MainContent />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <AuthProvider>
+      <RootNavigator />
+    </AuthProvider>
+  );
 }
 
 export default App;

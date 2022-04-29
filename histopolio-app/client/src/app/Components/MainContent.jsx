@@ -13,8 +13,8 @@ class MainContent extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Menu />} />
-          <Route path="play" element={<Play />} />
+          <Route path="/kfsnfskdn" element={<Menu />} />
+          <Route path="jnfsjn" element={<Play />} />
         </Routes>
       </BrowserRouter>
     );
