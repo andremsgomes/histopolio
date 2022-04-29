@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Menu extends Component {
-  handleClick() {
-    window.location.href = "play";
-  }
+import { Link } from "react-router-dom";
 
-  render() {
-    return (
-      <div>
-        <button className="btn btn-primary btn-lg" onClick={this.handleClick}>
-          Jogar
-        </button>
-      </div>
-    );
-  }
+function Menu() {
+  return (
+    <div>
+      <Link to="/play" style={{ textDecoration: "none" }}>
+        <button className="btn btn-primary btn-lg">Jogar</button>
+      </Link>
+    </div>
+  );
 }
 
 export default Menu;
