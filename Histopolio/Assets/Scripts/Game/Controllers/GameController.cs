@@ -237,20 +237,20 @@ public class GameController : MonoBehaviour
         this.gameLoaded = gameLoaded;
     }
 
-    public void AddPlayer() {
+    public void AddPlayer(int id, string name) {
         Tile firstTile = boardController.GetTile(0);
 
         Player newPlayer = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
 
-        newPlayer.name = $"Player {players.Count+1}";
+        newPlayer.name = name;
         newPlayer.SetGameController(this);
         newPlayer.SetTile(firstTile);
-        newPlayer.SetId(players.Count);
+        newPlayer.SetId(id);
         newPlayer.SetColor(playerColors[players.Count]);
-        newPlayer.SetName($"Player {players.Count+1}");    // TODO: nome será introduzido pelo utilizador
+        newPlayer.SetName(name);    // TODO: nome será introduzido pelo utilizador
         newPlayer.SetScore(20);
 
-        mainMenuController.ShowNewPlayer(players.Count, playerColors[players.Count]);
+        mainMenuController.ShowNewPlayer(players.Count, name, playerColors[players.Count]);
 
         players.Add(newPlayer);
     }

@@ -52,7 +52,7 @@ public class MainMenuController : MonoBehaviour
     }
 
     // Show new player on join menu
-    public void ShowNewPlayer(int index, Color color) {
-        mainMenuUI.ShowNewPlayer(index, color);
+    public void ShowNewPlayer(int index, string name, Color color) {
+        mainMenuUI.ShowNewPlayer(index, name, color);
     }
 }

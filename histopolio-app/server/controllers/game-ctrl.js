@@ -1,5 +1,5 @@
 async function sendQuestionToFrontend(frontendWS, dataReceived) {
-    frontendWS[0].send(JSON.stringify(dataReceived))
+    frontendWS.send(JSON.stringify(dataReceived))
 }
 
 async function sendAnswerToUnity(unityWS, dataReceived) {

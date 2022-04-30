@@ -12,7 +12,7 @@ async function processMessage(ws, data) {
 
   switch (command) {
     case "question":
-      await gameController.sendQuestionToFrontend(frontendWSs, dataReceived);
+      await gameController.sendQuestionToFrontend(frontendWSs.get(1), dataReceived);
       break;
     case "identification":
       await authentication(ws, dataReceived);

@@ -58,7 +58,8 @@ public class MainMenuUI : MonoBehaviour
     }
 
     // Show new player on join menu
-    public void ShowNewPlayer(int index, Color color) {
+    public void ShowNewPlayer(int index, string name, Color color) {
+        playerNames[index].text = name;
         players[index].GetComponent<Image>().color = color;
         players[index].SetActive(true);
     }
