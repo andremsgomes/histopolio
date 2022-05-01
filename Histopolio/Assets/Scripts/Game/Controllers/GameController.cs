@@ -105,12 +105,12 @@ public class GameController : MonoBehaviour
 
     // Change current player
     public void ChangeCurrentPlayer() {
-        int newId = currentPlayer.GetId()+1;
+        int newPlayOrder = currentPlayer.GetPlayOrder()+1;
 
-        if (newId >= players.Count)
-            newId = 0;
+        if (newPlayOrder >= players.Count)
+            newPlayOrder = 0;
 
-        SetCurrentPlayer(players[newId]);
+        SetCurrentPlayer(players[newPlayOrder]);
     }
 
     // Set colors array
@@ -190,8 +190,19 @@ public class GameController : MonoBehaviour
     }
 
     // Send message to the server
-    public void SendMessageToServer(string message) {
+    void SendMessageToServer(string message) {
         webSocketClientController.SendMessage(message);
+    }
+
+    // Send question send data to server
+    public void SendQuestionToServer(QuestionData questionData) {
+        QuestionSendData questionSendData = new QuestionSendData();
+        questionSendData.userId = currentPlayer.GetId();
+        questionSendData.questionData = questionData;
+
+        string message = JsonUtility.ToJson(questionSendData);
+
+        SendMessageToServer(message);
     }
 
     // Check answer received from server
@@ -246,6 +257,7 @@ public class GameController : MonoBehaviour
         newPlayer.SetGameController(this);
         newPlayer.SetTile(firstTile);
         newPlayer.SetId(id);
+        newPlayer.SetPlayOrder(players.Count);
         newPlayer.SetColor(playerColors[players.Count]);
         newPlayer.SetName(name);    // TODO: nome será introduzido pelo utilizador
         newPlayer.SetScore(20);

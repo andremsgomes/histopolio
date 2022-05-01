@@ -389,7 +389,6 @@ MonoBehaviour:
   dice: {fileID: 840991778}
   mainMenuController: {fileID: 6959726823380668328}
   playerPrefab: {fileID: 4520254274414789984, guid: 058191a7231db1537be4a452b2f2fc86, type: 3}
-  numPlayers: 4
   player1Color: {r: 0, g: 0.09941673, b: 1, a: 1}
   player2Color: {r: 1, g: 0, b: 0, a: 1}
   player3Color: {r: 0, g: 1, b: 0.054832935, a: 1}

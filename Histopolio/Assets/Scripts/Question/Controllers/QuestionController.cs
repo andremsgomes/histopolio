@@ -66,8 +66,6 @@ public class QuestionController : MonoBehaviour
 
     // Send question to the server
     void SendQuestionToServer(QuestionData questionData) {
-        string message = JsonUtility.ToJson(questionData);
-
-        gameController.SendMessageToServer(message);
+        gameController.SendQuestionToServer(questionData);
     }
 }

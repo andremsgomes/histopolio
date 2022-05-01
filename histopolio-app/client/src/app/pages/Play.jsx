@@ -75,8 +75,8 @@ class Play extends Component {
 
   handleQuestionReceived(dataReceived) {
     this.setState({
-      question: dataReceived["question"],
-      answers: dataReceived["answers"],
+      question: dataReceived["questionData"]["question"],
+      answers: dataReceived["questionData"]["answers"],
       showQuestion: true,
     });
   }

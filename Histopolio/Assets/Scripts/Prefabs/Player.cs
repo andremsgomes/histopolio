@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private string playerName;
     private int score;
     private int moveSpaces;
+    private int playOrder;
 
     [SerializeField] private float speed;
 
@@ -66,6 +67,16 @@ public class Player : MonoBehaviour
     // Get player id
     public int GetId() {
         return id;
+    }
+
+    // Ser play order
+    public void SetPlayOrder(int playOrder) {
+        this.playOrder = playOrder;
+    }
+
+    // Get play order
+    public int GetPlayOrder() {
+        return playOrder;
     }
 
     // Set player color
