@@ -65,6 +65,13 @@ public class GameController : MonoBehaviour
     
     // Spawn players on GO Tile
     void SpawnPlayers() {
+        Tile firstTile = boardController.GetTile(0);
+
+        foreach (Player player in players) {
+            player.transform.position = new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3);
+            player.SetTile(firstTile);
+        }
+
         SetCurrentPlayer(players[0]);
     }
 
@@ -249,13 +256,10 @@ public class GameController : MonoBehaviour
     }
 
     public void AddPlayer(int id, string name) {
-        Tile firstTile = boardController.GetTile(0);
-
-        Player newPlayer = Instantiate(playerPrefab, new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3), Quaternion.identity);
+        Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
         newPlayer.name = name;
         newPlayer.SetGameController(this);
-        newPlayer.SetTile(firstTile);
         newPlayer.SetId(id);
         newPlayer.SetPlayOrder(players.Count);
         newPlayer.SetColor(playerColors[players.Count]);
