@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { useAuth } from "../context/AuthContext";
 
@@ -23,7 +24,7 @@ function Login() {
   return (
     <div>
       <input
-        type="text"
+        type="email"
         name="email"
         onChange={handleEmailChange}
         placeholder="Email"
@@ -37,6 +38,7 @@ function Login() {
         value={password}
       />
       <button onClick={handleClick}>Login</button>
+      <p>Não tens conta? Cria uma <Link to="/signup">aqui</Link></p>
     </div>
   );
 }

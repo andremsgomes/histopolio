@@ -1,13 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080/'
+  baseURL: "http://localhost:8080/",
 });
 
-export const login = payload => api.post('/api/auth/login', payload)
+export const login = (payload) => api.post("/api/auth/login", payload);
+export const signup = (payload) => api.post("/api/auth/signup", payload);
 
 const apiRoutes = {
-    login
-}
+  login,
+  signup,
+};
 
 export default apiRoutes;

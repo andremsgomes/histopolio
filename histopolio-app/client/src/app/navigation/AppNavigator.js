@@ -11,6 +11,7 @@ function AppNavigator() {
       <Route path="/" element={<Menu />} />
       <Route path="/play" element={<Play />} />
       <Route path="/login" element={<Navigate replace to="/" />} />
+      <Route path="/signup" element={<Navigate replace to="/" />} />
     </Routes>
   );
 }

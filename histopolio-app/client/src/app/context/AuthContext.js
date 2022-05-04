@@ -20,11 +20,30 @@ function AuthProvider({ children }) {
       });
   }
 
+  async function signup(name, email, password, passwordConfirmation) {
+    if (password !== passwordConfirmation) {
+      window.alert("Passwords não são iguais");
+      return;
+    }
+
+    const payload = { name, email, password };
+
+    await api
+      .signup(payload)
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user,
         login,
+        signup,
       }}
     >
       {children}

@@ -1,20 +1,29 @@
 [
-    {
-        "id": 1,
-        "credentials": {
-            "email": "andre@gmail.com",
-            "password": "andre123"
-        },
-        "name": "André",
-        "points": 20
+  {
+    "id": 1,
+    "credentials": {
+      "email": "andre@gmail.com",
+      "password": "andre123"
     },
-    {
-        "id": 2,
-        "credentials": {
-            "email": "ines@gmail.com",
-            "password": "ines123"
-        },
-        "name": "Inês",
-        "points": 20
-    }
+    "name": "André",
+    "points": 20
+  },
+  {
+    "id": 2,
+    "credentials": {
+      "email": "ines@gmail.com",
+      "password": "ines123"
+    },
+    "name": "Inês",
+    "points": 20
+  },
+  {
+    "id": 3,
+    "credentials": {
+      "email": "teste@gmail.com",
+      "password": "teste123"
+    },
+    "name": "Teste",
+    "points": 20
+  }
 ]
