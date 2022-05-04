@@ -3,7 +3,7 @@
     "id": 1,
     "credentials": {
       "email": "andre@gmail.com",
-      "password": "andre123"
+      "password": "$2b$10$rb8bQFpd7GJ7MVTCZdiqe.Y/5WO7o6GXNOTVkAy6WaAI7fU75w8uG"
     },
     "name": "André",
     "points": 20
@@ -12,7 +12,7 @@
     "id": 2,
     "credentials": {
       "email": "ines@gmail.com",
-      "password": "ines123"
+      "password": "$2b$10$6N2A7AdFFbXUj0v6eeg88OvSoDJdny5KhvRXPY0P4.lmX00EPLukm"
     },
     "name": "Inês",
     "points": 20
@@ -21,7 +21,7 @@
     "id": 3,
     "credentials": {
       "email": "teste@gmail.com",
-      "password": "teste123"
+      "password": "$2b$10$CeS8T6WMvdTMv.xH9eM05eu/B9Eh7wB1AxaErs0iD7jEVrY3wTAcC"
     },
     "name": "Teste",
     "points": 20
