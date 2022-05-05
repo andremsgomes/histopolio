@@ -8,8 +8,7 @@ public class WebSocketClientController : MonoBehaviour
 {
     private WebSocket ws;
     private GameController gameController;
-    private string message;
-    private bool processAllowed = true;    // TODO: mudar para um array de processos
+    private Queue<string> messages = new Queue<string>();
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +16,7 @@ public class WebSocketClientController : MonoBehaviour
         ws = new WebSocket("ws://localhost:8080");   // TODO: mudar para variavel
         
         ws.OnMessage += (sender, e) => {
-            message = e.Data;
+            messages.Enqueue(e.Data);
         };
 
         ws.Connect();
@@ -29,15 +28,13 @@ public class WebSocketClientController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (processAllowed && message != null) {
-            processAllowed = false;
-            ProcessMessage();
-            processAllowed = true;
+        while (messages.Count > 0) {
+            ProcessMessage(messages.Dequeue());
         }
     }
 
     // Process message received
-    void ProcessMessage() {
+    void ProcessMessage(string message) {
         Debug.Log(message);
 
         JObject dataReceived = JObject.Parse(message);
