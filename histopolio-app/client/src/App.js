@@ -6,11 +6,9 @@ import RootNavigator from "./app/navigation/RootNavigator";
 
 function App() {
   return (
-    <div className="App">
-      <AuthProvider>
-        <RootNavigator />
-      </AuthProvider>
-    </div>
+    <AuthProvider>
+      <RootNavigator />
+    </AuthProvider>
   );
 }
 
