@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-function Menu() {
+function Home() {
   const { user } = useAuth();
 
   return (
@@ -16,4 +16,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default Home;
