@@ -9,7 +9,7 @@ function Login() {
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login } = useAuth();
+  const { errorMessage, login } = useAuth();
 
   const handleClick = () => {
     let emailError = false;
@@ -20,7 +20,7 @@ function Login() {
 
     const emailInput = document.getElementById("emailInput");
     emailInput.style.borderColor = "#ced4da";
-    
+
     const passwordInput = document.getElementById("passwordInput");
     passwordInput.style.borderColor = "#ced4da";
 
@@ -63,6 +63,11 @@ function Login() {
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
+        {errorMessage.length > 0 && (
+          <div className="alert alert-danger" role="alert">
+            {errorMessage}
+          </div>
+        )}
         <div className="form-group row">
           <label for="email" className="col-sm-2 col-form-label">
             Email

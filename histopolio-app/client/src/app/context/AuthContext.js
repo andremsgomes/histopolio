@@ -6,6 +6,7 @@ const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function login(email, password) {
     const payload = { email, password };
@@ -13,10 +14,11 @@ function AuthProvider({ children }) {
     await api
       .login(payload)
       .then((res) => {
+        setErrorMessage("");
         setUser(res.data);
       })
       .catch((error) => {
-        window.alert(error.message);
+        setErrorMessage(error.response.data.message);
       });
   }
 
@@ -42,6 +44,7 @@ function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         user,
+        errorMessage,
         login,
         signup,
       }}
