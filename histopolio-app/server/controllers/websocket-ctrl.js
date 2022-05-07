@@ -12,7 +12,10 @@ async function processMessage(ws, data) {
 
   switch (command) {
     case "question":
-      await gameController.sendQuestionToFrontend(frontendWSs.get(dataReceived["userId"]), dataReceived);
+      await gameController.sendQuestionToFrontend(
+        frontendWSs.get(dataReceived["userId"]),
+        dataReceived
+      );
       break;
     case "identification":
       await authentication(ws, dataReceived);
@@ -34,6 +37,20 @@ async function processMessage(ws, data) {
       break;
     case "join game":
       await gameController.sendNewPlayerToUnity(unityWS, dataReceived);
+      break;
+    case "turn":
+      await gameController.sendTurnToFrontend(
+        frontendWSs.get(dataReceived["userId"])
+      );
+      break;
+    case "dice result":
+      await gameController.sendDiceResultToUnity(unityWS, dataReceived);
+      break;
+    case "info shown":
+      await gameController.sendInfoShownToFrontend(
+        frontendWSs.get(dataReceived["userId"]),
+        dataReceived
+      );
       break;
     default:
       console.log("Unknown message: " + data);

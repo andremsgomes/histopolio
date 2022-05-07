@@ -56,6 +56,9 @@ public class WebSocketClientController : MonoBehaviour
             case "join game":
                 OnJoinGameReceived(dataReceived);
                 break;
+            case "dice result":
+                OnDiceResultReceived(dataReceived);
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -132,5 +135,10 @@ public class WebSocketClientController : MonoBehaviour
     // OnJoinGameReceived is called when a request to join the game is received
     void OnJoinGameReceived(JObject dataReceived) {
         gameController.AddPlayer((int)dataReceived["id"], (string)dataReceived["name"]);
+    }
+
+    // OnDiceResultReceived is called when the dice result is received
+    void OnDiceResultReceived(JObject dataReceived) {
+        gameController.MovePlayer((int)dataReceived["result"]);
     }
 }

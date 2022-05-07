@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     [Header("Controllers")]
     [SerializeField] private QuestionController questionController;
     [SerializeField] private CardController cardController;
-    [SerializeField] private DiceController dice;
+    // [SerializeField] private DiceController dice;
     [SerializeField] private MainMenuController mainMenuController;
 
     [Header("Prefabs")]
@@ -54,8 +54,8 @@ public class GameController : MonoBehaviour
 
         gameUI.SetGameController(this);
 
-        dice.SetGameController(this);
-        dice.SetDiceComponents();
+        // dice.SetGameController(this);
+        // dice.SetDiceComponents();
 
         mainMenuController.SetGameController(this);
         mainMenuController.SetMainMenuComponents();
@@ -140,6 +140,12 @@ public class GameController : MonoBehaviour
         gameUI.SetPlayerNameText(currentPlayer.GetPlayerName());
         gameUI.SetPlayerColor(currentPlayer.GetColor());
         gameUI.SetPlayerScore(currentPlayer.GetScore());
+
+        PlayerTurnData playerTurnData = new PlayerTurnData();
+        playerTurnData.userId = currentPlayer.GetId();
+        string message = JsonUtility.ToJson(playerTurnData);
+
+        SendMessageToServer(message);
     }
 
     // Give current player points
@@ -151,7 +157,7 @@ public class GameController : MonoBehaviour
     // Display finish turn button and hide dice button
     public void FinishTurn() {
         gameUI.DisplayFinishTurn();
-        dice.AllowCoroutine();
+        // dice.AllowCoroutine();
     }
 
     // FinishQuestion is called after player answers question
@@ -186,15 +192,15 @@ public class GameController : MonoBehaviour
         cardController.ShowCardMenu();
     }
 
-    // Show dice
-    public void ShowDice() {
-        dice.ShowDice();
-    }
+    // // Show dice
+    // public void ShowDice() {
+    //     dice.ShowDice();
+    // }
 
-    // Hide dice
-    public void HideDice() {
-        dice.HideDice();
-    }
+    // // Hide dice
+    // public void HideDice() {
+    //     dice.HideDice();
+    // }
 
     // Send message to the server
     void SendMessageToServer(string message) {
@@ -255,6 +261,7 @@ public class GameController : MonoBehaviour
         this.gameLoaded = gameLoaded;
     }
 
+    // Add player to the game
     public void AddPlayer(int id, string name) {
         Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
@@ -263,11 +270,20 @@ public class GameController : MonoBehaviour
         newPlayer.SetId(id);
         newPlayer.SetPlayOrder(players.Count);
         newPlayer.SetColor(playerColors[players.Count]);
-        newPlayer.SetName(name);    // TODO: nome será introduzido pelo utilizador
+        newPlayer.SetName(name);
         newPlayer.SetScore(20);
 
         mainMenuController.ShowNewPlayer(players.Count, name, playerColors[players.Count]);
 
         players.Add(newPlayer);
+    }
+
+    // Send info shown message
+    public void SendInfoShownMessageToServer() {
+        InfoShownData infoShownData = new InfoShownData();
+        infoShownData.userId = currentPlayer.GetId();
+        string message = JsonUtility.ToJson(infoShownData);
+
+        SendMessageToServer(message);
     }
 }

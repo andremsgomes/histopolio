@@ -55,12 +55,12 @@ public class GameUI : MonoBehaviour
     public void OnFinishTurnClick() {
         turnButton.SetActive(false);
         gameController.ChangeCurrentPlayer();
-        gameController.ShowDice();
+        // gameController.ShowDice();
     }
 
     // DisplayFinishTurn is called after player moved
     public void DisplayFinishTurn() {
-        gameController.HideDice();
+        // gameController.HideDice();
         turnButton.SetActive(true);
     }
 

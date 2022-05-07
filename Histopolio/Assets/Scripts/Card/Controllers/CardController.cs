@@ -51,6 +51,7 @@ public class CardController : MonoBehaviour
     // Continue turn
     public void Continue() {
         gameController.GiveCurrentPlayerPoints(points);
+        gameController.SendInfoShownMessageToServer();
         gameController.FinishTurn();
     }
 

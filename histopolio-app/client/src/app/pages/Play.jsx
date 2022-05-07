@@ -1,5 +1,9 @@
-import React, { Component, useContext } from "react";
+import React, { Component } from "react";
+
 import { w3cwebsocket } from "websocket";
+import ReactDice from "react-dice-complete";
+import "react-dice-complete/dist/react-dice-complete.css";
+
 import AuthContext from "../context/AuthContext";
 
 class Play extends Component {
@@ -7,12 +11,17 @@ class Play extends Component {
     super(props);
 
     this.client = new w3cwebsocket("ws://localhost:8080");
+
+    this.handleDiceClick = this.handleDiceClick.bind(this);
   }
 
   static contextType = AuthContext;
 
   state = {
     gameStarted: false,
+    showDice: false,
+    rollTime: 0,
+    diceRolled: false,
     showQuestion: false,
     question: "",
     answers: [],
@@ -40,7 +49,7 @@ class Play extends Component {
     const dataToSend = {
       type: "identification",
       platform: "react",
-      id: user.id
+      id: user.id,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -62,23 +71,21 @@ class Play extends Component {
     const command = dataReceived["type"];
 
     switch (command) {
-      case "question":
-        this.handleQuestionReceived(dataReceived);
-        break;
       case "game status":
         this.handleGameStatusReceived(dataReceived);
+        break;
+      case "turn":
+        this.handleTurnReceived();
+        break;
+      case "info shown":
+        this.hideDice();
+        break;
+      case "question":
+        this.handleQuestionReceived(dataReceived);
         break;
       default:
         console.log("Unknown message: " + dataReceived);
     }
-  }
-
-  handleQuestionReceived(dataReceived) {
-    this.setState({
-      question: dataReceived["questionData"]["question"],
-      answers: dataReceived["questionData"]["answers"],
-      showQuestion: true,
-    });
   }
 
   handleGameStatusReceived(dataReceived) {
@@ -97,10 +104,34 @@ class Play extends Component {
     const dataToSend = {
       type: "join game",
       id: user.id,
-      name: user.name
+      name: user.name,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
+  }
+
+  handleTurnReceived() {
+    this.setState({
+      showDice: true,
+    });
+  }
+
+  hideDice() {
+    this.setState({
+      showDice: false,
+      rollTime: 0,
+      diceRolled: false,
+    });
+  }
+
+  handleQuestionReceived(dataReceived) {
+    this.setState({
+      question: dataReceived["questionData"]["question"],
+      answers: dataReceived["questionData"]["answers"],
+      showQuestion: true,
+    });
+
+    this.hideDice();
   }
 
   handleAnswer(answerIndex) {
@@ -116,26 +147,63 @@ class Play extends Component {
     this.sendToServer(JSON.stringify(dataToSend));
   }
 
+  rollDoneCallback(num) {
+    const dataToSend = {
+      type: "dice result",
+      result: num,
+      rollTime: this.state.rollTime * 1000,
+    };
+
+    this.sendToServer(JSON.stringify(dataToSend));
+  }
+
+  handleDiceClick() {
+    if (!this.state.diceRolled) {
+      const rollTime = Math.random() * 2 + 1;
+
+      this.setState({
+        rollTime: rollTime,
+        diceRolled: true,
+      });
+
+      this.reactDice.rollAll();
+    }
+  }
+
   render() {
     if (this.state.gameStarted) {
       return (
         <div>
-          {this.state.showQuestion ? (
-            <div>
-              <h1>{this.state.question}</h1>
-              {this.state.answers.map((answer, index) => (
-                <button
-                  className="btn btn-secondary btn-lg"
-                  onClick={() => {
-                    this.handleAnswer(index);
-                  }}
-                >
-                  {answer}
-                </button>
-              ))}
+          {this.state.showDice ? (
+            <div onClick={this.handleDiceClick}>
+              <ReactDice
+                numDice={1}
+                rollTime={this.state.rollTime}
+                rollDone={(num) => this.rollDoneCallback(num)}
+                disableIndividual={true}
+                ref={(dice) => (this.reactDice = dice)}
+              />
             </div>
           ) : (
-            <h2>Espera pela tua vez!</h2>
+            <div>
+              {this.state.showQuestion ? (
+                <div>
+                  <h1>{this.state.question}</h1>
+                  {this.state.answers.map((answer, index) => (
+                    <button
+                      className="btn btn-secondary btn-lg"
+                      onClick={() => {
+                        this.handleAnswer(index);
+                      }}
+                    >
+                      {answer}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <h2>Espera pela tua vez!</h2>
+              )}
+            </div>
           )}
         </div>
       );
