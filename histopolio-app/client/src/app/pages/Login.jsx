@@ -6,12 +6,15 @@ import { useAuth } from "../context/AuthContext";
 function Login() {
   const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const { errorMessage, login } = useAuth();
 
   const handleClick = () => {
+    setShowAlert(false);
+
     let emailError = false;
     let passwordError = false;
 
@@ -49,7 +52,10 @@ function Login() {
       passwordInput.style.borderColor = "red";
     }
 
-    if (!(emailError || passwordError)) login(email, password);
+    if (!(emailError || passwordError)) {
+      login(email, password);
+      setShowAlert(true);
+    }
   };
 
   const handleEmailChange = (e) => {
@@ -63,7 +69,7 @@ function Login() {
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-        {errorMessage.length > 0 && (
+        {showAlert && errorMessage.length > 0 && (
           <div className="alert alert-danger" role="alert">
             {errorMessage}
           </div>
@@ -106,7 +112,7 @@ function Login() {
           </button>
         </div>
         <p className="mt-4 text-center">
-          Não tens uma conta? Regista-te <Link to="/signup">aqui</Link>
+          Não tens uma conta? Regista-te <Link to="/signup">aqui</Link>.
         </p>
       </div>
     </div>

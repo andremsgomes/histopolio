@@ -9,24 +9,24 @@ function AuthProvider({ children }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   async function login(email, password) {
+    setErrorMessage("");
+
     const payload = { email, password };
 
     await api
       .login(payload)
       .then((res) => {
-        setErrorMessage("");
         setUser(res.data);
       })
       .catch((error) => {
-        setErrorMessage(error.response.data.message);
+        if (error.response?.data?.message)
+          setErrorMessage(error.response.data.message);
+        else setErrorMessage(error.message);
       });
   }
 
-  async function signup(name, email, password, passwordConfirmation) {
-    if (password !== passwordConfirmation) {
-      window.alert("Passwords não são iguais");
-      return;
-    }
+  async function signup(name, email, password) {
+    setErrorMessage("");
 
     const payload = { name, email, password };
 
@@ -36,7 +36,9 @@ function AuthProvider({ children }) {
         setUser(res.data);
       })
       .catch((error) => {
-        window.alert(error.message);
+        if (error.response?.data?.message)
+          setErrorMessage(error.response.data.message);
+        else setErrorMessage(error.message);
       });
   }
 
