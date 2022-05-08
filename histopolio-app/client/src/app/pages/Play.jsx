@@ -105,6 +105,8 @@ class Play extends Component {
       type: "join game",
       id: user.id,
       name: user.name,
+      points: user.game.points,
+      position: user.game.position,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));

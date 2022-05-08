@@ -54,6 +54,7 @@ public class GameUI : MonoBehaviour
     // OnFinishTurnClick is called when finish turn button is clicked
     public void OnFinishTurnClick() {
         turnButton.SetActive(false);
+        gameController.SaveCurrentPlayer();
         gameController.ChangeCurrentPlayer();
         // gameController.ShowDice();
     }

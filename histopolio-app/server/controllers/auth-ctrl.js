@@ -35,11 +35,16 @@ function signup(req, res) {
   const users = readJSONFile("./data/Users.json");
   const id = users.length + 1;
 
+  const game = {
+    points: 20,
+    position: 0
+  }
+
   const user = {
     id: id,
     credentials: credentials,
     name: name,
-    points: 20,
+    game: game
   };
 
   users.push(user);
@@ -48,7 +53,7 @@ function signup(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
-    points: user.points
+    game: user.game
   }
 
   return res.status(201).json(returnUser);
@@ -76,7 +81,7 @@ function login(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
-    points: user.points
+    game: user.game
   }
 
   return res.status(200).json(returnUser);

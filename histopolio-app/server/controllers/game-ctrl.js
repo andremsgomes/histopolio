@@ -1,3 +1,5 @@
+const { readJSONFile, writeJSONFile } = require("./../utils/json-utils");
+
 async function sendQuestionToFrontend(frontendWS, dataReceived) {
   frontendWS.send(JSON.stringify(dataReceived));
 }
@@ -38,6 +40,25 @@ async function sendInfoShownToFrontend(frontendWS, dataReceived) {
   frontendWS.send(JSON.stringify(dataReceived));
 }
 
+function saveGame(dataReceived) {
+  console.log(dataReceived);
+
+  const users = readJSONFile("./data/Users.json");
+
+  const newUsers = users.map((user) => {
+    if (user.id === dataReceived["userId"]) {
+      user.game.points = dataReceived["points"];
+      user.game.position = dataReceived["position"];
+    }
+
+    return user;
+  });
+
+  console.log(newUsers);
+
+  writeJSONFile("./data/Users.json", newUsers);
+}
+
 module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
@@ -46,4 +67,5 @@ module.exports = {
   sendTurnToFrontend,
   sendDiceResultToUnity,
   sendInfoShownToFrontend,
+  saveGame,
 };

@@ -1,3 +1,4 @@
+const { saveGame } = require("./game-ctrl");
 const gameController = require("./game-ctrl");
 const loadController = require("./load-ctrl");
 
@@ -51,6 +52,9 @@ async function processMessage(ws, data) {
         frontendWSs.get(dataReceived["userId"]),
         dataReceived
       );
+      break;
+    case "save":
+      gameController.saveGame(dataReceived);
       break;
     default:
       console.log("Unknown message: " + data);
