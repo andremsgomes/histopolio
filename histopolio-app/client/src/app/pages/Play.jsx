@@ -184,14 +184,21 @@ class Play extends Component {
       return (
         <div>
           {this.state.showDice ? (
-            <div onClick={this.handleDiceClick}>
-              <ReactDice
-                numDice={1}
-                rollTime={this.state.rollTime}
-                rollDone={(num) => this.rollDoneCallback(num)}
-                disableIndividual={true}
-                ref={(dice) => (this.reactDice = dice)}
-              />
+            <div className="text-center">
+              <h4 className="mb-4">Lança o dado!</h4>
+              <div className="mt-4" onClick={this.handleDiceClick}>
+                <ReactDice
+                  numDice={1}
+                  faceColor="#ffF"
+                  dotColor="#000000"
+                  outline={true}
+                  dieSize={200}
+                  rollTime={this.state.rollTime}
+                  rollDone={(num) => this.rollDoneCallback(num)}
+                  disableIndividual={true}
+                  ref={(dice) => (this.reactDice = dice)}
+                />
+              </div>
             </div>
           ) : (
             <div>

@@ -10,7 +10,7 @@ function RootNavigator() {
   const { user } = useAuth();
 
   return (
-    <BrowserRouter>{user ? (user.admin ? <AppNavigator /> : <AdminNavigator />) : <AuthNavigator />}</BrowserRouter>
+    <BrowserRouter>{user ? (user.admin ? <AdminNavigator /> : <AppNavigator />) : <AuthNavigator />}</BrowserRouter>
   );
 }
 
