@@ -123,6 +123,7 @@ public class GameController : MonoBehaviour
     {
         // TODO: criar documento só de players => enviar com um POST request para evitar conflitos no documento de players OU ter um documento de players por board
         SavePlayerData savePlayerData = new SavePlayerData();
+        savePlayerData.board = "Histopolio";
         savePlayerData.userId = currentPlayer.GetId();
         savePlayerData.points = currentPlayer.GetScore();
         savePlayerData.position = currentPlayer.GetTile().GetId();
@@ -258,6 +259,10 @@ public class GameController : MonoBehaviour
         questionController.CheckAnswer(answer);
     }
 
+    void SendNewGameToServer() {
+        webSocketClientController.SendNewGame("Histopolio");
+    }
+
     // Request board data from server
     public void RequestBoardData()
     {
@@ -285,6 +290,8 @@ public class GameController : MonoBehaviour
     // Start new game
     public void StartNewGame()
     {
+        SendNewGameToServer();
+
         SpawnPlayers();
         gameUI.ShowHUD();
 

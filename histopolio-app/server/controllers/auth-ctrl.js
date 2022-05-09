@@ -12,7 +12,9 @@ function signup(req, res) {
   const { name, email, password } = req.body;
 
   if (!(name && email && password)) {
-    return res.status(400).send({ error: true, message: "Dados mal formatados" });
+    return res
+      .status(400)
+      .send({ error: true, message: "Dados mal formatados" });
   }
 
   if (getUser(email)) {
@@ -35,16 +37,10 @@ function signup(req, res) {
   const users = readJSONFile("./data/Users.json");
   const id = users.length + 1;
 
-  const game = {
-    points: 20,
-    position: 0
-  }
-
   const user = {
     id: id,
     credentials: credentials,
     name: name,
-    game: game
   };
 
   users.push(user);
@@ -53,8 +49,7 @@ function signup(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
-    game: user.game
-  }
+  };
 
   return res.status(201).json(returnUser);
 }
@@ -63,7 +58,9 @@ function login(req, res) {
   const { email, password } = req.body;
 
   if (!(email && password)) {
-    return res.status(400).send({ error: true, message: "Dados mal formatados" });
+    return res
+      .status(400)
+      .send({ error: true, message: "Dados mal formatados" });
   }
 
   const user = getUser(email);
@@ -81,8 +78,7 @@ function login(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
-    game: user.game
-  }
+  };
 
   return res.status(200).json(returnUser);
 }

@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+import api from "../api";
+
 function Home() {
   const { user } = useAuth();
+
+  const [points, setPoints] = useState("");
+
+  useEffect(() => {
+    api
+      .gameData("Histopolio", user.id)
+      .then((res) => {
+        setPoints(res.data.points);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  });
 
   return (
     <div className="text-center">
@@ -14,7 +29,7 @@ function Home() {
           Jogar Histopólio
         </button>
       </Link>
-      <h3 className="mt-3">Os teus pontos: {user.game.points}</h3>
+      <h3 className="mt-3">Os teus pontos: {points}</h3>
     </div>
   );
 }

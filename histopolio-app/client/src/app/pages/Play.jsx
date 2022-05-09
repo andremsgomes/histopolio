@@ -25,6 +25,8 @@ class Play extends Component {
     showQuestion: false,
     question: "",
     answers: [],
+    points: 0,
+    position: 0,
   };
 
   componentDidMount() {
@@ -56,8 +58,11 @@ class Play extends Component {
   }
 
   sendRequestGameStatusMessage() {
+    const { user } = this.context;
+
     const dataToSend = {
       type: "game status",
+      userId: user.id,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -91,6 +96,8 @@ class Play extends Component {
   handleGameStatusReceived(dataReceived) {
     this.setState({
       gameStarted: dataReceived["gameStarted"],
+      points: dataReceived["playerData"]["points"],
+      position: dataReceived["playerData"]["position"],
     });
 
     if (this.state.gameStarted) {
@@ -103,10 +110,10 @@ class Play extends Component {
 
     const dataToSend = {
       type: "join game",
-      id: user.id,
+      userId: user.id,
       name: user.name,
-      points: user.game.points,
-      position: user.game.position,
+      points: this.state.points,
+      position: this.state.position,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));

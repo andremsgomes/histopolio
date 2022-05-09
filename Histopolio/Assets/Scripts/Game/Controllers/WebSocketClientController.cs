@@ -82,20 +82,25 @@ public class WebSocketClientController : MonoBehaviour
         this.gameController = gameController;
     }
 
-    // Request load data from server
-    void RequestLoadData(string type, string board) {
-        LoadDataRequest loadDataRequest = new LoadDataRequest();
-        loadDataRequest.type = type;
-        loadDataRequest.board = board;
+    // Send board requests to server
+    void SendBoardRequest(string type, string board) {
+        BoardSendData boardSendData = new BoardSendData();
+        boardSendData.type = type;
+        boardSendData.board = board;
 
-        string loadDataRequestString = JsonUtility.ToJson(loadDataRequest);
+        string boardSendDataString = JsonUtility.ToJson(boardSendData);
 
-        SendMessage(loadDataRequestString);
+        SendMessage(boardSendDataString);
+    }
+
+    // Send new game message to server
+    public void SendNewGame(string board) {
+        SendBoardRequest("new game", board);
     }
 
     // Request board data from server
     public void RequestBoardData(string board) {
-        RequestLoadData("load board", board);
+        SendBoardRequest("load board", board);
     }
 
     // OnBoardReceived is callend when the board data is received
@@ -108,7 +113,7 @@ public class WebSocketClientController : MonoBehaviour
 
     // Request questions data from server
     void RequestQuestionsData(string board) {
-        RequestLoadData("load questions", board);
+        SendBoardRequest("load questions", board);
     }
 
     // OnQuestionsReceived is called when the questions data is received
@@ -121,7 +126,7 @@ public class WebSocketClientController : MonoBehaviour
 
     // Request cards data from server
     void RequestCardsData(string board) {
-        RequestLoadData("load cards", board);
+        SendBoardRequest("load cards", board);
     }
 
     // OnCardsReceived is called when the cards data is received
@@ -134,7 +139,7 @@ public class WebSocketClientController : MonoBehaviour
 
     // OnJoinGameReceived is called when a request to join the game is received
     void OnJoinGameReceived(JObject dataReceived) {
-        gameController.AddPlayer((int)dataReceived["id"], (string)dataReceived["name"]);
+        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"]);
     }
 
     // OnDiceResultReceived is called when the dice result is received

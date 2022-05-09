@@ -1,4 +1,3 @@
-const { saveGame } = require("./game-ctrl");
 const gameController = require("./game-ctrl");
 const loadController = require("./load-ctrl");
 
@@ -34,7 +33,11 @@ async function processMessage(ws, data) {
       await loadController.loadCards(unityWS, dataReceived);
       break;
     case "game status":
-      await gameController.sendGameStatusToFrontend(ws, unityWS != null);
+      await gameController.sendGameStatusToFrontend(
+        dataReceived["userId"],
+        ws,
+        unityWS != null
+      );
       break;
     case "join game":
       await gameController.sendNewPlayerToUnity(unityWS, dataReceived);
@@ -56,6 +59,9 @@ async function processMessage(ws, data) {
     case "save":
       gameController.saveGame(dataReceived);
       break;
+    case "new game":
+      gameController.newGame(frontendWSs.keys(), dataReceived);
+      break;
     default:
       console.log("Unknown message: " + data);
   }
@@ -66,9 +72,9 @@ async function authentication(ws, dataReceived) {
     unityWS = ws;
     console.log("Game connected");
 
-    frontendWSs.forEach((frontendWS) => {
-      gameController.sendGameStatusToFrontend(frontendWS, true);
-    });
+    for (const id of frontendWSs.keys()) {
+      gameController.sendGameStatusToFrontend(id, frontendWSs.get(id), true);
+    }
   } else {
     frontendWSs.set(dataReceived["id"], ws);
 

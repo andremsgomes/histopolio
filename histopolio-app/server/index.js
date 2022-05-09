@@ -7,6 +7,7 @@ const WebSocket = require("ws");
 
 const { processMessage } = require("./controllers/websocket-ctrl");
 const authRouter = require("./routes/auth");
+const gameRouter = require("./routes/game");
 
 const app = express();
 const apiPort = 8080;
@@ -31,5 +32,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/game", gameRouter);
 
 server.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
