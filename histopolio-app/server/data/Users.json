@@ -5,7 +5,8 @@
       "email": "andre@up.pt",
       "password": "$2b$10$rb8bQFpd7GJ7MVTCZdiqe.Y/5WO7o6GXNOTVkAy6WaAI7fU75w8uG"
     },
-    "name": "André"
+    "name": "André",
+    "admin": false
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
       "email": "ines@up.pt",
       "password": "$2b$10$6N2A7AdFFbXUj0v6eeg88OvSoDJdny5KhvRXPY0P4.lmX00EPLukm"
     },
-    "name": "Inês"
+    "name": "Inês",
+    "admin": false
   },
   {
     "id": 3,
@@ -21,6 +23,16 @@
       "email": "teste@up.pt",
       "password": "$2b$10$CeS8T6WMvdTMv.xH9eM05eu/B9Eh7wB1AxaErs0iD7jEVrY3wTAcC"
     },
-    "name": "Teste"
+    "name": "Teste",
+    "admin": false
+  },
+  {
+    "id": 4,
+    "credentials": {
+      "email": "admin@up.pt",
+      "password": "$2b$10$oWtLvNYvdzrJvxkulwGYJulg/AybUep3TPxgGU8qkuEeLC7Jauy2O"
+    },
+    "name": "Admin",
+    "admin": true
   }
 ]

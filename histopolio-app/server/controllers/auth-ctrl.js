@@ -41,6 +41,7 @@ function signup(req, res) {
     id: id,
     credentials: credentials,
     name: name,
+    admin: false,
   };
 
   users.push(user);

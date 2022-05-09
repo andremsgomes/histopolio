@@ -10,8 +10,7 @@ function AppNavigator() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/play" element={<Play />} />
-      <Route path="/login" element={<Navigate replace to="/" />} />
-      <Route path="/signup" element={<Navigate replace to="/" />} />
+      <Route path="/*" element={<Navigate replace to="/" />} />
     </Routes>
   );
 }
