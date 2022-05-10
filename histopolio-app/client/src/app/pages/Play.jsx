@@ -111,9 +111,7 @@ class Play extends Component {
     const dataToSend = {
       type: "join game",
       userId: user.id,
-      name: user.name,
-      points: this.state.points,
-      position: this.state.position,
+      name: user.name
     };
 
     this.sendToServer(JSON.stringify(dataToSend));

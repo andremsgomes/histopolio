@@ -66,12 +66,12 @@ public class GameController : MonoBehaviour
     // Spawn players on GO Tile
     void SpawnPlayers()
     {
-        Tile firstTile = boardController.GetTile(0);
-
         foreach (Player player in players)
         {
-            player.transform.position = new Vector3(firstTile.transform.position.x, firstTile.transform.position.y, -3);
-            player.SetTile(firstTile);
+            Tile tile = boardController.GetTile(player.GetPosition());
+
+            player.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, -3);
+            player.SetTile(tile);
         }
 
         SetCurrentPlayer(players[0]);
@@ -259,10 +259,6 @@ public class GameController : MonoBehaviour
         questionController.CheckAnswer(answer);
     }
 
-    void SendNewGameToServer() {
-        webSocketClientController.SendNewGame("Histopolio");
-    }
-
     // Request board data from server
     public void RequestBoardData()
     {
@@ -288,14 +284,12 @@ public class GameController : MonoBehaviour
     }
 
     // Start new game
-    public void StartNewGame()
+    public void StartGame()
     {
-        SendNewGameToServer();
-
         SpawnPlayers();
         gameUI.ShowHUD();
 
-        Debug.Log("New Game Started");
+        Debug.Log("Game Started");
     }
 
     // Check if game is loaded
@@ -311,7 +305,7 @@ public class GameController : MonoBehaviour
     }
 
     // Add player to the game
-    public void AddPlayer(int id, string name)
+    public void AddPlayer(int id, string name, int points, int position)
     {
         Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
@@ -321,7 +315,8 @@ public class GameController : MonoBehaviour
         newPlayer.SetPlayOrder(players.Count);
         newPlayer.SetColor(playerColors[players.Count]);
         newPlayer.SetName(name);
-        newPlayer.SetScore(20);
+        newPlayer.SetScore(points);
+        newPlayer.SetPosition(position);
 
         mainMenuController.ShowNewPlayer(players.Count, name, playerColors[players.Count]);
 
@@ -336,5 +331,15 @@ public class GameController : MonoBehaviour
         string message = JsonUtility.ToJson(infoShownData);
 
         SendMessageToServer(message);
+    }
+
+    // Send new game message to server
+    public void SendNewGameMessage() {
+        webSocketClientController.SendBoardRequest("new game", "Histopolio");
+    }
+
+    // Send load game message to server
+    public void SendLoadGameMessage() {
+        webSocketClientController.SendBoardRequest("load game", "Histopolio");
     }
 }

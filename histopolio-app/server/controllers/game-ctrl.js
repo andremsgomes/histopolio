@@ -1,5 +1,7 @@
 const { readJSONFile, writeJSONFile } = require("./../utils/json-utils");
 
+let gameSaveFilePath = "";
+
 async function sendQuestionToFrontend(frontendWS, dataReceived) {
   frontendWS.send(JSON.stringify(dataReceived));
 }
@@ -8,8 +10,8 @@ async function sendAnswerToUnity(unityWS, dataReceived) {
   unityWS.send(JSON.stringify(dataReceived));
 }
 
-async function sendGameStatusToFrontend(userId, frontendWS, gameStarted) {
-  let playerData = await getPlayerData("Histopolio", userId);
+async function sendGameStatusToFrontend(userId, frontendWS, saveFile) {
+  let playerData = await getPlayerData(saveFile, userId);
 
   if (!playerData) {
     playerData = {
@@ -20,15 +22,37 @@ async function sendGameStatusToFrontend(userId, frontendWS, gameStarted) {
 
   const dataToSend = {
     type: "game status",
-    gameStarted: gameStarted,
+    gameStarted: gameSaveFilePath.length > 0,
     playerData: playerData,
   };
 
   frontendWS.send(JSON.stringify(dataToSend));
 }
 
-async function sendNewPlayerToUnity(unityWS, dataReceived) {
-  unityWS.send(JSON.stringify(dataReceived));
+function addPlayerToGame(unityWS, dataReceived) {
+  let player = getPlayerData(gameSaveFilePath, dataReceived["userId"]);
+
+  if (!player) {
+    player = {
+      userId: dataReceived["userId"],
+      points: 20,
+      position: 0
+    }
+
+    let players = readJSONFile(gameSaveFilePath);
+    players.push(player);
+    writeJSONFile(gameSaveFilePath, players);
+  }
+
+  const dataToSend = {
+    type: "join game",
+    userId: player.userId,
+    name: dataReceived["name"],
+    points: player.points,
+    position: player.position
+  }
+
+  unityWS.send(JSON.stringify(dataToSend));
 }
 
 async function sendTurnToFrontend(frontendWS) {
@@ -50,28 +74,30 @@ async function sendInfoShownToFrontend(frontendWS, dataReceived) {
   frontendWS.send(JSON.stringify(dataReceived));
 }
 
-function newGame(userIds, dataReceived) {
-  let savedData = [];
+function newGame(frontendWSs, dataReceived) {
+  gameSaveFilePath = "./data/" + dataReceived.board + "/SavedData.json";
 
-  for (const id of userIds) {
-    const player = {
-      userId: id,
-      points: 20,
-      position: 0,
-    };
-
-    savedData.push(player);
-  }
-
-  writeJSONFile("./data/" + dataReceived.board + "/SavedData.json", savedData); // TODO: allow multiple saves
+  writeJSONFile(gameSaveFilePath, []); // TODO: allow multiple saves
 
   console.log("New Game Started!");
+
+  for (id of frontendWSs.keys()) {
+    sendGameStatusToFrontend(id, frontendWSs.get(id), gameSaveFilePath);
+  }
+}
+
+async function loadGame(frontendWSs, dataReceived) {
+  gameSaveFilePath = "./data/" + dataReceived.board + "/SavedData.json";
+
+  console.log("Game Loaded!");
+
+  for (id of frontendWSs.keys()) {
+    sendGameStatusToFrontend(id, frontendWSs.get(id), gameSaveFilePath);
+  }
 }
 
 function saveGame(dataReceived) {
-  const players = readJSONFile(
-    "./data/" + dataReceived.board + "/SavedData.json"
-  );
+  const players = readJSONFile(gameSaveFilePath);
 
   const newSavedData = players.map((player) => {
     if (player.userId === dataReceived["userId"]) {
@@ -82,16 +108,13 @@ function saveGame(dataReceived) {
     return player;
   });
 
-  writeJSONFile(
-    "./data/" + dataReceived.board + "/SavedData.json",
-    newSavedData
-  );
+  writeJSONFile(gameSaveFilePath, newSavedData);
 
-  console.log("Game saved!");
+  console.log("Game Saved!");
 }
 
-async function getPlayerData(board, userId) {
-  const savedData = readJSONFile("./data/" + board + "/SavedData.json");
+function getPlayerData(file, userId) {
+  const savedData = readJSONFile(file);
 
   return savedData.find((player) => player.userId == userId);
 }
@@ -100,7 +123,7 @@ async function getSavedData(req, res) {
   const board = req.params.board;
   const userId = req.params.user_id;
 
-  const player = await getPlayerData(board, userId);
+  const player = getPlayerData("./data/" + board + "/SavedData.json", userId);
 
   if (!player) {
     return res
@@ -114,12 +137,13 @@ async function getSavedData(req, res) {
 module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
-  sendNewPlayerToUnity,
+  addPlayerToGame,
   sendGameStatusToFrontend,
   sendTurnToFrontend,
   sendDiceResultToUnity,
   sendInfoShownToFrontend,
   newGame,
+  loadGame,
   saveGame,
   getSavedData,
 };

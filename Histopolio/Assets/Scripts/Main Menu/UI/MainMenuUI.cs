@@ -37,22 +37,23 @@ public class MainMenuUI : MonoBehaviour
 
     // OnLoadGameClick is called when the load game button is clicked
     public void OnLoadGameClick() {
-        // menu.SetActive(false);
-        // mainMenuController.LoadGame();
+        initialMenu.SetActive(false);
+        joinMenu.SetActive(true);
+        mainMenuController.LoadGame();
     }
 
     // OnNewGameClick is called when the new game button is clicked
     public void OnNewGameClick() {
         initialMenu.SetActive(false);
         joinMenu.SetActive(true);
-        mainMenuController.LoadNewGame();
+        mainMenuController.NewGame();
     }
 
     // OnStartClick when the start button is clicked
     public void OnStartClick() {
         if (!mainMenuController.GetGameLoaded()) return;
 
-        mainMenuController.StartNewGame();
+        mainMenuController.StartGame();
         joinMenu.SetActive(false);
         mainMenu.SetActive(false);
     }

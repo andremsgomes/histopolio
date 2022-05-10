@@ -83,7 +83,7 @@ public class WebSocketClientController : MonoBehaviour
     }
 
     // Send board requests to server
-    void SendBoardRequest(string type, string board) {
+    public void SendBoardRequest(string type, string board) {
         BoardSendData boardSendData = new BoardSendData();
         boardSendData.type = type;
         boardSendData.board = board;
@@ -91,11 +91,6 @@ public class WebSocketClientController : MonoBehaviour
         string boardSendDataString = JsonUtility.ToJson(boardSendData);
 
         SendMessage(boardSendDataString);
-    }
-
-    // Send new game message to server
-    public void SendNewGame(string board) {
-        SendBoardRequest("new game", board);
     }
 
     // Request board data from server
@@ -139,7 +134,7 @@ public class WebSocketClientController : MonoBehaviour
 
     // OnJoinGameReceived is called when a request to join the game is received
     void OnJoinGameReceived(JObject dataReceived) {
-        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"]);
+        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"], (int)dataReceived["points"], (int)dataReceived["position"]);
     }
 
     // OnDiceResultReceived is called when the dice result is received

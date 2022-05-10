@@ -36,11 +36,11 @@ async function processMessage(ws, data) {
       await gameController.sendGameStatusToFrontend(
         dataReceived["userId"],
         ws,
-        unityWS != null
+        "./data/Histopolio/SavedData.json"
       );
       break;
     case "join game":
-      await gameController.sendNewPlayerToUnity(unityWS, dataReceived);
+      await gameController.addPlayerToGame(unityWS, dataReceived);
       break;
     case "turn":
       await gameController.sendTurnToFrontend(
@@ -60,7 +60,10 @@ async function processMessage(ws, data) {
       gameController.saveGame(dataReceived);
       break;
     case "new game":
-      gameController.newGame(frontendWSs.keys(), dataReceived);
+      gameController.newGame(frontendWSs ,dataReceived);
+      break;
+    case "load game":
+      gameController.loadGame(frontendWSs, dataReceived);
       break;
     default:
       console.log("Unknown message: " + data);
@@ -70,14 +73,9 @@ async function processMessage(ws, data) {
 async function authentication(ws, dataReceived) {
   if (dataReceived["platform"] == "unity") {
     unityWS = ws;
-    console.log("Game connected");
-
-    for (const id of frontendWSs.keys()) {
-      gameController.sendGameStatusToFrontend(id, frontendWSs.get(id), true);
-    }
+    console.log("Unity connected");
   } else {
     frontendWSs.set(dataReceived["id"], ws);
-
     console.log("Users connected: " + frontendWSs.size);
   }
 }

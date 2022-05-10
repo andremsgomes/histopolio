@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private int id;
     private string playerName;
     private int score;
+    private int position;
     private int moveSpaces;
     private int playOrder;
 
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
     {
         if (moveSpaces > 0)
         {
-            MoveTo(gameController.GetTile(tile.GetId() + 1));
+            MoveTo(gameController.GetTile(position + 1));
 
             if (moveSpaces == 0)
             {
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         if (transform.position == target)
         {
             SetTile(tile);
+            SetPosition(position+1);
             moveSpaces--;
         }
     }
@@ -132,6 +134,16 @@ public class Player : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+
+    // Set position
+    public void SetPosition(int position) {
+        this.position = position;
+    }
+
+    // Get position
+    public int GetPosition() {
+        return position;
     }
 
     // Get tile
