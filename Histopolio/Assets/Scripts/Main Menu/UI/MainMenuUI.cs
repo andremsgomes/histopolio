@@ -18,6 +18,11 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject[] players = new GameObject[24];
     [SerializeField] private Text[] playerNames = new Text[24];
 
+    [Header("Saves Menu")]
+    [SerializeField] private GameObject savesMenu;
+    [SerializeField] private GameObject savesContainer;
+    [SerializeField] private SaveSlot saveSlotPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +43,18 @@ public class MainMenuUI : MonoBehaviour
     // OnLoadGameClick is called when the load game button is clicked
     public void OnLoadGameClick() {
         initialMenu.SetActive(false);
-        joinMenu.SetActive(true);
         mainMenuController.LoadGame();
+        savesMenu.SetActive(true);
+    }
+
+    // Show save files
+    public void ShowSaveFiles(List<string> files) {
+        foreach (string file in files) {
+            SaveSlot saveSlot = Instantiate(saveSlotPrefab);
+            saveSlot.transform.SetParent(savesContainer.transform, false);
+            saveSlot.SetFileName(file);
+            saveSlot.SetMainMenuController(mainMenuController);
+        }
     }
 
     // OnNewGameClick is called when the new game button is clicked
@@ -63,5 +78,15 @@ public class MainMenuUI : MonoBehaviour
         playerNames[index].text = name;
         players[index].GetComponent<Image>().color = color;
         players[index].SetActive(true);
+    }
+
+    // Hide saves menu
+    public void HideSavesMenu() {
+        savesMenu.SetActive(false);
+    }
+
+    // Show join menu
+    public void ShowJoinMenu() {
+        joinMenu.SetActive(true);
     }
 }

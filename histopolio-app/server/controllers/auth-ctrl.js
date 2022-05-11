@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 
-const { readJSONFile, writeJSONFile } = require("./../utils/json-utils");
+const { readJSONFile, writeJSONFile } = require("../utils/file-utils");
 
 function getUser(email) {
   const users = readJSONFile("./data/Users.json");

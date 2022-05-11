@@ -36,7 +36,7 @@ async function processMessage(ws, data) {
       await gameController.sendGameStatusToFrontend(
         dataReceived["userId"],
         ws,
-        "./data/Histopolio/SavedData.json"
+        "./data/Histopolio/saves/SavedData.json"
       );
       break;
     case "join game":
@@ -60,10 +60,13 @@ async function processMessage(ws, data) {
       gameController.saveGame(dataReceived);
       break;
     case "new game":
-      gameController.newGame(frontendWSs ,dataReceived);
+      gameController.newGame(frontendWSs, dataReceived);
       break;
     case "load game":
       gameController.loadGame(frontendWSs, dataReceived);
+      break;
+    case "load saves":
+      loadController.loadSaves(unityWS, dataReceived);
       break;
     default:
       console.log("Unknown message: " + data);

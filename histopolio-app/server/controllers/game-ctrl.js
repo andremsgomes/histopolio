@@ -1,4 +1,4 @@
-const { readJSONFile, writeJSONFile } = require("./../utils/json-utils");
+const { readJSONFile, writeJSONFile } = require("../utils/file-utils");
 
 let gameSaveFilePath = "";
 
@@ -77,7 +77,7 @@ async function sendInfoShownToFrontend(frontendWS, dataReceived) {
 }
 
 function newGame(frontendWSs, dataReceived) {
-  gameSaveFilePath = "./data/" + dataReceived.board + "/SavedData.json";
+  gameSaveFilePath = "./data/saves" + dataReceived.board + "/SavedData.json";
 
   writeJSONFile(gameSaveFilePath, []); // TODO: allow multiple saves
 
@@ -89,7 +89,7 @@ function newGame(frontendWSs, dataReceived) {
 }
 
 async function loadGame(frontendWSs, dataReceived) {
-  gameSaveFilePath = "./data/" + dataReceived.board + "/SavedData.json";
+  gameSaveFilePath = `./data/saves/${dataReceived.board}/${dataReceived.file}`;
 
   console.log("Game Loaded!");
 
@@ -125,7 +125,7 @@ async function getPlayerSavedData(req, res) {
   const board = req.params.board;
   const userId = req.params.user_id;
 
-  const player = getPlayerData("./data/" + board + "/SavedData.json", userId);
+  const player = getPlayerData("./data/saves" + board + "/SavedData.json", userId);
 
   if (!player) {
     return res
@@ -139,7 +139,7 @@ async function getPlayerSavedData(req, res) {
 async function getSavedData(req, res) {
   const board = req.params.board;
 
-  const savedData = readJSONFile("./data/" + board + "/SavedData.json");
+  const savedData = readJSONFile("./data/saves" + board + "/SavedData.json");
 
   if (!savedData) {
     return res
@@ -153,7 +153,7 @@ async function getSavedData(req, res) {
 function updateSavedData(req, res) {
   const { board, savedData } = req.body;
 
-  writeJSONFile("./data/" + board + "/SavedData.json", savedData);
+  writeJSONFile("./data/saves" + board + "/SavedData.json", savedData);
 
   return res.status(200);
 }

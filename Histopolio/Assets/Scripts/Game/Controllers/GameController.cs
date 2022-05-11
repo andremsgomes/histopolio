@@ -338,8 +338,22 @@ public class GameController : MonoBehaviour
         webSocketClientController.SendBoardRequest("new game", "Histopolio");
     }
 
-    // Send load game message to server
-    public void SendLoadGameMessage() {
-        webSocketClientController.SendBoardRequest("load game", "Histopolio");
+    // Send load save files message to server
+    public void SendLoadSavesMessage() {
+        webSocketClientController.SendBoardRequest("load saves", "Histopolio");
+    }
+
+    // Show save files on menu
+    public void ShowSaveFiles(List<string> files) {
+        mainMenuController.ShowSaveFiles(files);
+    }
+
+    public void LoadSaveFile(string fileName) {
+        LoadFileData loadFileData = new LoadFileData();
+        loadFileData.board = "Histopolio";
+        loadFileData.file = fileName;
+        string message = JsonUtility.ToJson(loadFileData);
+
+        SendMessageToServer(message);
     }
 }

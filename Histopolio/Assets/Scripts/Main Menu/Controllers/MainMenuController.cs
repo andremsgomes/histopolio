@@ -33,7 +33,7 @@ public class MainMenuController : MonoBehaviour
 
     // Show load game menu
     public void LoadGame() {
-        gameController.SendLoadGameMessage();
+        gameController.SendLoadSavesMessage();
         gameController.RequestBoardData();
     }
 
@@ -56,5 +56,17 @@ public class MainMenuController : MonoBehaviour
     // Show new player on join menu
     public void ShowNewPlayer(int index, string name, Color color) {
         mainMenuUI.ShowNewPlayer(index, name, color);
+    }
+
+    // Show save files
+    public void ShowSaveFiles(List<string> files) {
+        mainMenuUI.ShowSaveFiles(files);
+    }
+
+    // Load save file from server and show join screen
+    public void LoadSaveFile(string fileName) {
+        gameController.LoadSaveFile(fileName);
+        mainMenuUI.HideSavesMenu();
+        mainMenuUI.ShowJoinMenu();
     }
 }

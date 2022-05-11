@@ -59,6 +59,9 @@ public class WebSocketClientController : MonoBehaviour
             case "dice result":
                 OnDiceResultReceived(dataReceived);
                 break;
+            case "save files":
+                OnSaveFilesReceived(dataReceived);
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -140,5 +143,16 @@ public class WebSocketClientController : MonoBehaviour
     // OnDiceResultReceived is called when the dice result is received
     void OnDiceResultReceived(JObject dataReceived) {
         gameController.MovePlayer((int)dataReceived["result"]);
+    }
+
+    // OnSaveFilesReceived is called when the save files are received
+    void OnSaveFilesReceived(JObject dataReceived) {
+        List<string> files = new List<string>();
+
+        foreach (string file in dataReceived["files"]) {
+            files.Add(file);
+        }
+
+        gameController.ShowSaveFiles(files);
     }
 }
