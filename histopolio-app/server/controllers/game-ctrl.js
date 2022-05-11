@@ -1,4 +1,8 @@
-const { readJSONFile, writeJSONFile } = require("../utils/file-utils");
+const {
+  readJSONFile,
+  writeJSONFile,
+  fileExists,
+} = require("../utils/file-utils");
 
 let gameSaveFilePath = "";
 
@@ -76,22 +80,13 @@ async function sendInfoShownToFrontend(frontendWS, dataReceived) {
   frontendWS.send(JSON.stringify(dataReceived));
 }
 
-function newGame(frontendWSs, dataReceived) {
-  gameSaveFilePath = "./data/saves" + dataReceived.board + "/SavedData.json";
-
-  writeJSONFile(gameSaveFilePath, []); // TODO: allow multiple saves
-
-  console.log("New Game Started!");
-
-  for (id of frontendWSs.keys()) {
-    sendGameStatusToFrontend(id, frontendWSs.get(id), gameSaveFilePath);
-  }
-}
-
 async function loadGame(frontendWSs, dataReceived) {
-  gameSaveFilePath = `./data/saves/${dataReceived.board}/${dataReceived.file}`;
+  gameSaveFilePath = `./data/${dataReceived.board}/saves/${dataReceived.file}`;
 
-  console.log("Game Loaded!");
+  if (!fileExists(gameSaveFilePath)) {
+    writeJSONFile(gameSaveFilePath, []);
+    console.log("New Game Started!");
+  } else console.log("Game Loaded!");
 
   for (id of frontendWSs.keys()) {
     sendGameStatusToFrontend(id, frontendWSs.get(id), gameSaveFilePath);
@@ -125,7 +120,10 @@ async function getPlayerSavedData(req, res) {
   const board = req.params.board;
   const userId = req.params.user_id;
 
-  const player = getPlayerData("./data/saves" + board + "/SavedData.json", userId);
+  const player = getPlayerData(
+    "./data/saves" + board + "/SavedData.json",
+    userId
+  );
 
   if (!player) {
     return res
@@ -166,7 +164,6 @@ module.exports = {
   sendTurnToFrontend,
   sendDiceResultToUnity,
   sendInfoShownToFrontend,
-  newGame,
   loadGame,
   saveGame,
   getPlayerSavedData,

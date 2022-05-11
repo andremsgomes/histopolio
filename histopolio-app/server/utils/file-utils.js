@@ -17,15 +17,26 @@ function writeJSONFile(filePath, content) {
 function getFilesFromDir(dirPath) {
   try {
     const files = fs.readdirSync(dirPath);
-    return files
+    return files;
   } catch (error) {
     console.log(error);
     return [];
-  } 
+  }
+}
+
+function fileExists(filePath) {
+  try {
+    const exists = fs.existsSync(filePath);
+    return exists;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 }
 
 module.exports = {
   readJSONFile,
   writeJSONFile,
   getFilesFromDir,
+  fileExists,
 };

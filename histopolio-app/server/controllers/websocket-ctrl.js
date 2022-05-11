@@ -59,9 +59,6 @@ async function processMessage(ws, data) {
     case "save":
       gameController.saveGame(dataReceived);
       break;
-    case "new game":
-      gameController.newGame(frontendWSs, dataReceived);
-      break;
     case "load game":
       gameController.loadGame(frontendWSs, dataReceived);
       break;

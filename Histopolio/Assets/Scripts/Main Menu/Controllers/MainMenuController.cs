@@ -39,7 +39,6 @@ public class MainMenuController : MonoBehaviour
 
     // Show choose board menu
     public void NewGame() {
-        gameController.SendNewGameMessage();
         gameController.RequestBoardData();
     }
 

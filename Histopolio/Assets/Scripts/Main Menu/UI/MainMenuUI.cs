@@ -9,6 +9,9 @@ public class MainMenuUI : MonoBehaviour
 
     [Header("Main Menu")]
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject newGameButton;
+    [SerializeField] private GameObject gameCreation;
+    [SerializeField] private InputField newGameField;
 
     [Header("Initial Menu")]
     [SerializeField] private GameObject initialMenu;
@@ -42,8 +45,8 @@ public class MainMenuUI : MonoBehaviour
 
     // OnLoadGameClick is called when the load game button is clicked
     public void OnLoadGameClick() {
-        initialMenu.SetActive(false);
         mainMenuController.LoadGame();
+        initialMenu.SetActive(false);
         savesMenu.SetActive(true);
     }
 
@@ -59,9 +62,19 @@ public class MainMenuUI : MonoBehaviour
 
     // OnNewGameClick is called when the new game button is clicked
     public void OnNewGameClick() {
+        newGameButton.SetActive(false);
+        gameCreation.SetActive(true);
+    }
+
+    // OnGoClick is called when the GO button is clicked
+    public void OnGoClick() {
+        mainMenuController.NewGame();
+
+        string fileName = newGameField.text + ".json";
+        mainMenuController.LoadSaveFile(fileName);
+        
         initialMenu.SetActive(false);
         joinMenu.SetActive(true);
-        mainMenuController.NewGame();
     }
 
     // OnStartClick when the start button is clicked
