@@ -5,6 +5,7 @@ import ReactDice from "react-dice-complete";
 import "react-dice-complete/dist/react-dice-complete.css";
 
 import AuthContext from "../context/AuthContext";
+import Wait from "../components/Wait";
 
 class Play extends Component {
   constructor(props) {
@@ -111,7 +112,8 @@ class Play extends Component {
     const dataToSend = {
       type: "join game",
       userId: user.id,
-      name: user.name
+      name: user.name,
+      email: user.email,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -222,11 +224,7 @@ class Play extends Component {
         </div>
       );
     } else {
-      return (
-        <div>
-          <h2>Espera pelo início do jogo!</h2>
-        </div>
-      );
+      return <Wait points={this.state.points} />;
     }
   }
 }

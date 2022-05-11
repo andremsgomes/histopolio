@@ -35,9 +35,11 @@ function addPlayerToGame(unityWS, dataReceived) {
   if (!player) {
     player = {
       userId: dataReceived["userId"],
+      name: dataReceived["name"],
+      email: dataReceived["email"],
       points: 20,
-      position: 0
-    }
+      position: 0,
+    };
 
     let players = readJSONFile(gameSaveFilePath);
     players.push(player);
@@ -47,10 +49,10 @@ function addPlayerToGame(unityWS, dataReceived) {
   const dataToSend = {
     type: "join game",
     userId: player.userId,
-    name: dataReceived["name"],
+    name: player.name,
     points: player.points,
-    position: player.position
-  }
+    position: player.position,
+  };
 
   unityWS.send(JSON.stringify(dataToSend));
 }
@@ -119,7 +121,7 @@ function getPlayerData(file, userId) {
   return savedData.find((player) => player.userId == userId);
 }
 
-async function getSavedData(req, res) {
+async function getPlayerSavedData(req, res) {
   const board = req.params.board;
   const userId = req.params.user_id;
 
@@ -134,6 +136,28 @@ async function getSavedData(req, res) {
   return res.status(200).json(player);
 }
 
+async function getSavedData(req, res) {
+  const board = req.params.board;
+
+  const savedData = readJSONFile("./data/" + board + "/SavedData.json");
+
+  if (!savedData) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  return res.status(200).json(savedData);
+}
+
+function updateSavedData(req, res) {
+  const { board, savedData } = req.body;
+
+  writeJSONFile("./data/" + board + "/SavedData.json", savedData);
+
+  return res.status(200);
+}
+
 module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
@@ -145,5 +169,7 @@ module.exports = {
   newGame,
   loadGame,
   saveGame,
+  getPlayerSavedData,
   getSavedData,
+  updateSavedData,
 };

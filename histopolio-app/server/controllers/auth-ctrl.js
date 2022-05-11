@@ -50,6 +50,7 @@ function signup(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
+    admin: user.admin,
   };
 
   return res.status(201).json(returnUser);
@@ -79,6 +80,7 @@ function login(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
+    admin: user.admin,
   };
 
   return res.status(200).json(returnUser);
