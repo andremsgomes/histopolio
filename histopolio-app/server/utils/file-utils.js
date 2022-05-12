@@ -11,7 +11,11 @@ function readJSONFile(filePath) {
 }
 
 function writeJSONFile(filePath, content) {
-  fs.writeFileSync(filePath, JSON.stringify(content, null, 2));
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(content, null, 2));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function getFilesFromDir(dirPath) {

@@ -118,10 +118,11 @@ function getPlayerData(file, userId) {
 
 async function getPlayerSavedData(req, res) {
   const board = req.params.board;
+  const save = req.params.save;
   const userId = req.params.user_id;
 
   const player = getPlayerData(
-    "./data/saves" + board + "/SavedData.json",
+    `./data/${board}/saves/${save}.json`,
     userId
   );
 
@@ -136,8 +137,9 @@ async function getPlayerSavedData(req, res) {
 
 async function getSavedData(req, res) {
   const board = req.params.board;
+  const save = req.params.save
 
-  const savedData = readJSONFile("./data/saves" + board + "/SavedData.json");
+  const savedData = readJSONFile(`./data/${board}/saves/${save}.json`);
 
   if (!savedData) {
     return res
@@ -149,11 +151,11 @@ async function getSavedData(req, res) {
 }
 
 function updateSavedData(req, res) {
-  const { board, savedData } = req.body;
+  const { board, save, savedData } = req.body;
 
-  writeJSONFile("./data/saves" + board + "/SavedData.json", savedData);
+  writeJSONFile(`./data/${board}/saves/${save}.json`, savedData);
 
-  return res.status(200);
+  return res.status(200).send();
 }
 
 module.exports = {

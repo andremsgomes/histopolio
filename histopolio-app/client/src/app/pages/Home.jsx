@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     api
-      .playerData("Histopolio", user.id)
+      .playerData("Histopolio", "Turma1", user.id)
       .then((res) => {
         setPoints(res.data.points);
       })

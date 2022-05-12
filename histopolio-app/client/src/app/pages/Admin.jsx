@@ -17,11 +17,13 @@ class Admin extends Component {
 
   state = {
     players: [],
+    alertType: "",
+    alertMessage: "",
   };
 
   componentDidMount() {
     api
-      .savedData("Histopolio")
+      .savedData("Histopolio", "Turma1")
       .then((res) => {
         this.setState({
           players: res.data,
@@ -29,6 +31,10 @@ class Admin extends Component {
       })
       .catch((error) => {
         console.log(error.message);
+        this.setState({
+          alertType: "danger",
+          alertMessage: error.message,
+        });
       });
   }
 
@@ -66,15 +72,35 @@ class Admin extends Component {
 
   handleClick() {
     const board = "Histopolio";
+    const save = "Turma1";
     const savedData = this.state.players;
-    const payload = { board, savedData };
+    const payload = { board, save, savedData };
 
-    api.updateData(payload);
+    api
+      .updateData(payload)
+      .then(() => {
+        this.setState({
+          alertType: "success",
+          alertMessage: "Dados atualizados com sucesso.",
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        this.setState({
+          alertType: "danger",
+          alertMessage: error.message,
+        });
+      });
   }
 
   render() {
     return (
       <div className="text-center mt-4">
+        {this.state.alertMessage.length > 0 && (
+          <div className={"alert alert-" + this.state.alertType} role="alert">
+            {this.state.alertMessage}
+          </div>
+        )}
         <h1>Tabela de jogadores</h1>
         <table className="table table-hover mt-4">
           <thead>
