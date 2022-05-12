@@ -190,12 +190,20 @@ async function getBoardQuestionsData(req, res) {
   questions["questions"].forEach((question) => {
     boardData["groupPropertyTiles"].forEach((tile) => {
       if (question["tileId"] === tile["id"]) {
-        tile["questions"].push(question);   // TODO: melhorar com break
+        tile["questions"].push(question); // TODO: melhorar com break
       }
     });
   });
 
   return res.status(200).json(boardData);
+}
+
+function updateBoardData(req, res) {
+  const { boardData } = req.body;
+
+  writeJSONFile(`./data/${boardData["name"]}/BoardData.json`, boardData);
+
+  return res.status(200).send();
 }
 
 module.exports = {
@@ -213,4 +221,5 @@ module.exports = {
   updateSavedData,
   getSaves,
   getBoardQuestionsData,
+  updateBoardData,
 };

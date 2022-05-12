@@ -79,7 +79,7 @@ class EditSave extends Component {
     const payload = { board, save, savedData };
 
     api
-      .updateData(payload)
+      .updateSave(payload)
       .then(() => {
         this.setState({
           alertType: "success",
@@ -144,7 +144,7 @@ class EditSave extends Component {
           </tbody>
         </table>
         <button
-          className="btn btn-lg btn-primary mt-4"
+          className="btn btn-lg btn-primary my-4"
           onClick={this.handleClick}
         >
           Guardar alterações

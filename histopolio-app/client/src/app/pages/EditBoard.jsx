@@ -8,6 +8,14 @@ function withParams(Component) {
 }
 
 class EditBoard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handlePointsChange = this.handlePointsChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   state = {
     board: null,
   };
@@ -21,6 +29,65 @@ class EditBoard extends Component {
           board: res.data,
         });
       })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
+
+  handleNameChange(e) {
+    const tileId = parseInt(e.target.id.substring(4));
+
+    const newGroupPropertyTiles = this.state.board.groupPropertyTiles.map(
+      (tile) => {
+        if (tile.id === tileId) {
+          tile.tileName = e.target.value;
+        }
+
+        return tile;
+      }
+    );
+
+    let newBoard = this.state.board;
+    newBoard.groupPropertyTiles = newGroupPropertyTiles;
+
+    this.setState({
+      board: newBoard,
+    });
+  }
+
+  handlePointsChange(e) {
+    const tileId = parseInt(e.target.id.substring(6));
+
+    const newGroupPropertyTiles = this.state.board.groupPropertyTiles.map(
+      (tile) => {
+        if (tile.id === tileId) {
+          tile.points = parseInt(e.target.value);
+        }
+
+        return tile;
+      }
+    );
+
+    let newBoard = this.state.board;
+    newBoard.groupPropertyTiles = newGroupPropertyTiles;
+
+    this.setState({
+      board: newBoard,
+    });
+  }
+
+  handleClick() {
+    let boardData = JSON.parse(JSON.stringify(this.state.board));
+
+    boardData.groupPropertyTiles.forEach((tile) => {
+      delete tile.questions;
+    });
+
+    const payload = { boardData };
+
+    api
+      .updateBoard(payload)
+      .then(() => {})
       .catch((error) => {
         console.log(error.message);
       });
@@ -46,14 +113,34 @@ class EditBoard extends Component {
                 return (
                   <tr>
                     <th scope="row">{tile.id}</th>
-                    <td>{tile.tileName}</td>
-                    <td>{tile.points}</td>
+                    <td>
+                      <input
+                        id={"name" + tile.id}
+                        onChange={this.handleNameChange}
+                        type="text"
+                        value={tile.tileName}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        id={"points" + tile.id}
+                        onChange={this.handlePointsChange}
+                        type="number"
+                        value={tile.points}
+                      />
+                    </td>
                     <td>{tile.questions.length} perguntas</td>
                   </tr>
                 );
               })}
           </tbody>
         </table>
+        <button
+          className="btn btn-lg btn-primary my-4"
+          onClick={this.handleClick}
+        >
+          Guardar alterações
+        </button>
       </div>
     );
   }

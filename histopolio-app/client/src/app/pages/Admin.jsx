@@ -44,7 +44,7 @@ class Admin extends Component {
           );
         })}
         <Link to="/admin/edit/Histopolio" style={{ textDecoration: "none" }}>
-          <button className="btn btn-lg btn-primary mt-4">
+          <button className="btn btn-lg btn-primary my-4">
             Editar tabuleiro
           </button>
         </Link>

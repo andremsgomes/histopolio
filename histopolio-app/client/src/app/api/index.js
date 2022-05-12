@@ -12,8 +12,10 @@ export const savedData = (board, save) =>
   api.get(`/api/game/data/${board}/${save}`);
 export const playerData = (board, save, userId) =>
   api.get(`/api/game/data/${board}/${save}/${userId}`);
-export const updateData = (payload) =>
-  api.post("api/game/data/update", payload);
+export const updateSave = (payload) =>
+  api.post("api/game/data/save/update", payload);
+export const updateBoard = (payload) =>
+  api.post("api/game/data/board/update", payload);
 
 const apiRoutes = {
   login,
@@ -22,7 +24,8 @@ const apiRoutes = {
   boardData,
   savedData,
   playerData,
-  updateData,
+  updateSave,
+  updateBoard,
 };
 
 export default apiRoutes;
