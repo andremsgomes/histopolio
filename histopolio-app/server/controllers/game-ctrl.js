@@ -164,7 +164,7 @@ async function getSaves(req, res) {
   return res.status(200).json(saveFiles);
 }
 
-async function getBoardQuestionsData(req, res) {
+async function getBoardData(req, res) {
   const board = req.params.board;
 
   let boardData = readJSONFile(`./data/${board}/BoardData.json`);
@@ -184,13 +184,13 @@ async function getBoardQuestionsData(req, res) {
   }
 
   boardData["groupPropertyTiles"].forEach((tile) => {
-    tile["questions"] = [];
+    tile["questions"] = 0;
   });
 
   questions["questions"].forEach((question) => {
     boardData["groupPropertyTiles"].forEach((tile) => {
       if (question["tileId"] === tile["id"]) {
-        tile["questions"].push(question); // TODO: melhorar com break
+        tile["questions"] += 1;
       }
     });
   });
@@ -204,6 +204,29 @@ function updateBoardData(req, res) {
   writeJSONFile(`./data/${boardData["name"]}/BoardData.json`, boardData);
 
   return res.status(200).send();
+}
+
+async function getQuestionsData(req, res) {
+  const board = req.params.board;
+  const tileId = parseInt(req.params.tile);
+
+  const questions = readJSONFile(`./data/${board}/Questions.json`);
+
+  if (!questions) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  let tileQuestions = [];
+
+  questions["questions"].forEach((question) => {
+    if (question["tileId"] === tileId) {
+      tileQuestions.push(question);
+    }
+  });
+
+  return res.status(200).json(tileQuestions);
 }
 
 module.exports = {
@@ -220,6 +243,7 @@ module.exports = {
   getSavedData,
   updateSavedData,
   getSaves,
-  getBoardQuestionsData,
+  getBoardData,
   updateBoardData,
+  getQuestionsData,
 };

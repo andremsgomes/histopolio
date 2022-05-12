@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import api from "../api";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -24,7 +24,6 @@ class EditBoard extends Component {
     api
       .boardData(this.props.params.board)
       .then((res) => {
-        console.log(res);
         this.setState({
           board: res.data,
         });
@@ -129,7 +128,19 @@ class EditBoard extends Component {
                         value={tile.points}
                       />
                     </td>
-                    <td>{tile.questions.length} perguntas</td>
+                    <td>
+                      <Link
+                        to={
+                          "/admin/edit/" +
+                          this.props.params.board +
+                          "/" +
+                          tile.id +
+                          "/questions"
+                        }
+                      >
+                        {tile.questions} perguntas
+                      </Link>
+                    </td>
                   </tr>
                 );
               })}

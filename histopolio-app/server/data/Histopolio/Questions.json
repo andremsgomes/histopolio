@@ -2,6 +2,7 @@
     "board": "Histopolio",
     "questions": [
         {
+            "id": 1,
             "tileId": 1,
             "question": "What is this game?",
             "answers": [
@@ -13,6 +14,7 @@
             "correctAnswer": 2
         },
         {
+            "id": 2,
             "tileId": 1,
             "question": "O termo célula foi proposto por Antoni Van Leeuwenhoek",
             "answers": [
