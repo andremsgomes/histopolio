@@ -33,11 +33,7 @@ async function processMessage(ws, data) {
       await loadController.loadCards(unityWS, dataReceived);
       break;
     case "game status":
-      await gameController.sendGameStatusToFrontend(
-        dataReceived["userId"],
-        ws,
-        "./data/Histopolio/saves/SavedData.json"
-      );
+      await gameController.sendGameStatusToFrontend(ws, dataReceived);
       break;
     case "join game":
       await gameController.addPlayerToGame(unityWS, dataReceived);

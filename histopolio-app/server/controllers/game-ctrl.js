@@ -15,8 +15,9 @@ async function sendAnswerToUnity(unityWS, dataReceived) {
   unityWS.send(JSON.stringify(dataReceived));
 }
 
-async function sendGameStatusToFrontend(userId, frontendWS, saveFile) {
-  let playerData = await getPlayerData(saveFile, userId);
+async function sendGameStatusToFrontend(frontendWS, dataReceived) {
+  const saveFilePath = `./data/${dataReceived["board"]}/saves/${dataReceived["saveFile"]}`;
+  let playerData = await getPlayerData(saveFilePath, dataReceived["userId"]);
 
   if (!playerData) {
     playerData = {
@@ -82,7 +83,7 @@ async function sendInfoShownToFrontend(frontendWS, dataReceived) {
 }
 
 async function loadGame(frontendWSs, dataReceived) {
-  gameSaveFilePath = `./data/${dataReceived.board}/saves/${dataReceived.file}`;
+  gameSaveFilePath = `./data/${dataReceived["board"]}/saves/${dataReceived["file"]}`;
 
   if (!fileExists(gameSaveFilePath)) {
     writeJSONFile(gameSaveFilePath, []);

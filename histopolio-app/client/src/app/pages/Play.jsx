@@ -64,6 +64,8 @@ class Play extends Component {
     const dataToSend = {
       type: "game status",
       userId: user.id,
+      board: "Histopolio", // TODO: ter no url
+      saveFile: "Turma1.json", // TODO: retirar
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
