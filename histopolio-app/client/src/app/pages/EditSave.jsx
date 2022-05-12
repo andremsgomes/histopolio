@@ -120,24 +120,24 @@ class EditSave extends Component {
               return (
                 <tr>
                   <th scope="row">{player.userId}</th>
-                  <th>{player.name}</th>
-                  <th>{player.email}</th>
-                  <th>
+                  <td>{player.name}</td>
+                  <td>{player.email}</td>
+                  <td>
                     <input
                       id={"position" + player.userId}
                       onChange={this.handlePositionChange}
                       type="number"
                       value={player.position}
                     />
-                  </th>
-                  <th>
+                  </td>
+                  <td>
                     <input
                       id={"points" + player.userId}
                       onChange={this.handlePointsChange}
                       type="number"
                       value={player.points}
                     />
-                  </th>
+                  </td>
                 </tr>
               );
             })}

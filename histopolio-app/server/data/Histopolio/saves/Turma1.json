@@ -2,19 +2,29 @@
   {
     "userId": 1,
     "name": "André",
-    "points": 86,
-    "position": 33
+    "email": "andre@up.pt",
+    "points": 90,
+    "position": 4
   },
   {
     "userId": 2,
     "name": "Inês",
-    "points": 20,
-    "position": 10
+    "email": "ines@up.pt",
+    "points": 34,
+    "position": 20
   },
   {
     "userId": 3,
     "name": "Teste",
+    "email": "teste@up.pt",
+    "points": 34,
+    "position": 17
+  },
+  {
+    "userId": 5,
+    "name": "Diogo",
+    "email": "diogo@up.pt",
     "points": 20,
-    "position": 6
+    "position": 0
   }
 ]

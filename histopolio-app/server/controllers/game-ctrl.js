@@ -15,9 +15,8 @@ async function sendAnswerToUnity(unityWS, dataReceived) {
   unityWS.send(JSON.stringify(dataReceived));
 }
 
-async function sendGameStatusToFrontend(frontendWS, dataReceived) {
-  const saveFilePath = `./data/${dataReceived["board"]}/saves/${dataReceived["saveFile"]}`;
-  let playerData = await getPlayerData(saveFilePath, dataReceived["userId"]);
+async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
+  let playerData = await getPlayerData(saveFilePath, userId);
 
   if (!playerData) {
     playerData = {
@@ -91,7 +90,7 @@ async function loadGame(frontendWSs, dataReceived) {
   } else console.log("Game Loaded!");
 
   for (id of frontendWSs.keys()) {
-    sendGameStatusToFrontend(id, frontendWSs.get(id), gameSaveFilePath);
+    sendGameStatusToFrontend(frontendWSs.get(id), id, gameSaveFilePath);
   }
 }
 
@@ -165,6 +164,40 @@ async function getSaves(req, res) {
   return res.status(200).json(saveFiles);
 }
 
+async function getBoardQuestionsData(req, res) {
+  const board = req.params.board;
+
+  let boardData = readJSONFile(`./data/${board}/BoardData.json`);
+
+  if (!boardData) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  const questions = readJSONFile(`./data/${board}/Questions.json`);
+
+  if (!questions) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  boardData["groupPropertyTiles"].forEach((tile) => {
+    tile["questions"] = [];
+  });
+
+  questions["questions"].forEach((question) => {
+    boardData["groupPropertyTiles"].forEach((tile) => {
+      if (question["tileId"] === tile["id"]) {
+        tile["questions"].push(question);   // TODO: melhorar com break
+      }
+    });
+  });
+
+  return res.status(200).json(boardData);
+}
+
 module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
@@ -179,4 +212,5 @@ module.exports = {
   getSavedData,
   updateSavedData,
   getSaves,
+  getBoardQuestionsData,
 };

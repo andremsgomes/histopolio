@@ -34,5 +34,14 @@
     },
     "name": "Admin",
     "admin": true
+  },
+  {
+    "id": 5,
+    "credentials": {
+      "email": "diogo@up.pt",
+      "password": "$2b$10$nUkjLF.FjLgannCN3yswIug/icsXYhSv5SITh1FJqLLNZOznGFUgW"
+    },
+    "name": "Diogo",
+    "admin": false
   }
 ]

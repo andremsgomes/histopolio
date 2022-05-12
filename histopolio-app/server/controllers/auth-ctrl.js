@@ -50,6 +50,7 @@ function signup(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
+    email: user.credentials.email,
     admin: user.admin,
   };
 
@@ -80,6 +81,7 @@ function login(req, res) {
   const returnUser = {
     id: user.id,
     name: user.name,
+    email: user.credentials.email,
     admin: user.admin,
   };
 

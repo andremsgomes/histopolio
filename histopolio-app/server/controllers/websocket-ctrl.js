@@ -33,7 +33,11 @@ async function processMessage(ws, data) {
       await loadController.loadCards(unityWS, dataReceived);
       break;
     case "game status":
-      await gameController.sendGameStatusToFrontend(ws, dataReceived);
+      await gameController.sendGameStatusToFrontend(
+        ws,
+        dataReceived["userId"],
+        `./data/${dataReceived["board"]}/saves/${dataReceived["saveFile"]}`
+      );
       break;
     case "join game":
       await gameController.addPlayerToGame(unityWS, dataReceived);
