@@ -2,6 +2,7 @@ const {
   readJSONFile,
   writeJSONFile,
   fileExists,
+  getFilesFromDir,
 } = require("../utils/file-utils");
 
 let gameSaveFilePath = "";
@@ -121,10 +122,7 @@ async function getPlayerSavedData(req, res) {
   const save = req.params.save;
   const userId = req.params.user_id;
 
-  const player = getPlayerData(
-    `./data/${board}/saves/${save}.json`,
-    userId
-  );
+  const player = getPlayerData(`./data/${board}/saves/${save}.json`, userId);
 
   if (!player) {
     return res
@@ -137,7 +135,7 @@ async function getPlayerSavedData(req, res) {
 
 async function getSavedData(req, res) {
   const board = req.params.board;
-  const save = req.params.save
+  const save = req.params.save;
 
   const savedData = readJSONFile(`./data/${board}/saves/${save}.json`);
 
@@ -158,6 +156,14 @@ function updateSavedData(req, res) {
   return res.status(200).send();
 }
 
+async function getSaves(req, res) {
+  const board = req.params.board;
+
+  const saveFiles = getFilesFromDir(`./data/${board}/saves/`);
+
+  return res.status(200).json(saveFiles);
+}
+
 module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
@@ -171,4 +177,5 @@ module.exports = {
   getPlayerSavedData,
   getSavedData,
   updateSavedData,
+  getSaves,
 };
