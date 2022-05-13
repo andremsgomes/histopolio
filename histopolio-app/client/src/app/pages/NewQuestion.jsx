@@ -12,12 +12,14 @@ class NewQuestion extends Component {
     super(props);
 
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
+    this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   state = {
     question: "",
+    image: "",
     answers: ["", "", "", "", "", "", "", "", "", ""],
     correctAnswer: 1,
   };
@@ -25,6 +27,13 @@ class NewQuestion extends Component {
   handleQuestionChange(e) {
     this.setState({
       question: e.target.value,
+    });
+  }
+
+  handleImageChange(e) {
+    // TODO: importar imagens do computador
+    this.setState({
+      image: e.target.value,
     });
   }
 
@@ -49,6 +58,7 @@ class NewQuestion extends Component {
     const board = this.props.params.board;
     const tileId = parseInt(this.props.params.tile);
     const question = this.state.question;
+    const image = this.state.image;
     let answers = [];
     const correctAnswer = this.state.correctAnswer;
 
@@ -56,7 +66,7 @@ class NewQuestion extends Component {
       if (answer.length > 0) answers.push(answer);
     });
 
-    const payload = { board, tileId, question, answers, correctAnswer };
+    const payload = { board, tileId, question, image, answers, correctAnswer };
 
     api
       .newQuestion(payload)
@@ -87,6 +97,31 @@ class NewQuestion extends Component {
               />
             </div>
           </div>
+          <div className="form-group row mt-4">
+            <label for="image" className="col-sm-2 col-form-label">
+              Link da imagem
+            </label>
+            <div className="col-sm-10">
+              <input
+                type="text"
+                className="form-control"
+                id="imageInput"
+                name="image"
+                onChange={this.handleImageChange}
+                value={this.state.image}
+              />
+            </div>
+          </div>
+          {this.state.image.length > 0 && (
+            <div className="text-center mt-3">
+              <img
+                src={this.state.image}
+                className="rounded"
+                alt="question"
+                width="600"
+              />
+            </div>
+          )}
           <div className="mt-4">
             {this.state.answers.map((answer, i) => {
               return (

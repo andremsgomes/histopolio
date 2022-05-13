@@ -230,7 +230,7 @@ async function getQuestionsData(req, res) {
 }
 
 function newQuestion(req, res) {
-  const { board, tileId, question, answers, correctAnswer } = req.body;
+  const { board, tileId, question, image, answers, correctAnswer } = req.body;
 
   const questions = readJSONFile(`./data/${board}/Questions.json`);
 
@@ -244,6 +244,7 @@ function newQuestion(req, res) {
     id: questions["questions"].length + 1,
     tileId: tileId,
     question: question,
+    image: image,
     answers: answers,
     correctAnswer: correctAnswer,
   };
