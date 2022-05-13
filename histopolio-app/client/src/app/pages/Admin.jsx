@@ -32,7 +32,7 @@ class Admin extends Component {
 
           return (
             <Link
-              to={"/admin/edit/Histopolio/" + saveName}
+              to={"/admin/Histopolio/" + saveName}
               style={{ textDecoration: "none" }}
             >
               <div className="card">
@@ -43,7 +43,7 @@ class Admin extends Component {
             </Link>
           );
         })}
-        <Link to="/admin/edit/Histopolio" style={{ textDecoration: "none" }}>
+        <Link to="/admin/Histopolio" style={{ textDecoration: "none" }}>
           <button className="btn btn-lg btn-primary my-4">
             Editar tabuleiro
           </button>

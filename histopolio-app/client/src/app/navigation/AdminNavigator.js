@@ -6,14 +6,16 @@ import Admin from "../pages/Admin";
 import EditSave from "../pages/EditSave";
 import EditBoard from "../pages/EditBoard";
 import EditQuestions from "../pages/EditQuestions";
+import NewQuestion from "../pages/NewQuestion";
 
 function AdminNavigator() {
   return (
     <Routes>
       <Route path="/admin" element={<Admin />} />
-      <Route path="/admin/edit/:board" element={<EditBoard />} />
-      <Route path="/admin/edit/:board/:tile/questions" element={<EditQuestions />} />
-      <Route path="/admin/edit/:board/:save" element={<EditSave />} />
+      <Route path="/admin/:board" element={<EditBoard />} />
+      <Route path="/admin/:board/:tile/questions" element={<EditQuestions />} />
+      <Route path="/admin/:board/:tile/questions/new" element={<NewQuestion />} />
+      <Route path="/admin/:board/:save" element={<EditSave />} />
       <Route path="/*" element={<Navigate replace to="/admin" />} />
     </Routes>
   );

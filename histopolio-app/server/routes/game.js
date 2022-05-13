@@ -6,6 +6,7 @@ router.get("/data/:board", gameController.getBoardData);
 router.post("/data/board/update", gameController.updateBoardData);
 
 router.get("/data/:board/:tile/questions", gameController.getQuestionsData);
+router.post("/data/questions/new", gameController.newQuestion);
 
 router.get("/data/:board/saves", gameController.getSaves);
 

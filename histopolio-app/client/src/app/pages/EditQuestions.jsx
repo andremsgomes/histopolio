@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import api from "../api";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -64,7 +64,20 @@ class EditQuestions extends Component {
             })}
           </tbody>
         </table>
-        <button className="btn btn-lg btn-primary my-4">Adicionar pergunta</button>
+        <Link
+          to={
+            "/admin/" +
+            this.props.params.board +
+            "/" +
+            this.props.params.tile +
+            "/questions/new"
+          }
+          style={{ textDecoration: "none" }}
+        >
+          <button className="btn btn-lg btn-primary my-4">
+            Adicionar pergunta
+          </button>
+        </Link>
       </div>
     );
   }

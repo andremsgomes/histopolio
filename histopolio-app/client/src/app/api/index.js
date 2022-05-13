@@ -18,6 +18,8 @@ export const updateSave = (payload) =>
   api.post("api/game/data/save/update", payload);
 export const updateBoard = (payload) =>
   api.post("api/game/data/board/update", payload);
+export const newQuestion = (payload) =>
+  api.post("api/game/data/questions/new", payload);
 
 const apiRoutes = {
   login,
@@ -29,6 +31,7 @@ const apiRoutes = {
   playerData,
   updateSave,
   updateBoard,
+  newQuestion,
 };
 
 export default apiRoutes;

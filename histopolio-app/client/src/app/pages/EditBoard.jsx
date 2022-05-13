@@ -131,7 +131,7 @@ class EditBoard extends Component {
                     <td>
                       <Link
                         to={
-                          "/admin/edit/" +
+                          "/admin/" +
                           this.props.params.board +
                           "/" +
                           tile.id +

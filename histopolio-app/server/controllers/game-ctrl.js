@@ -229,6 +229,32 @@ async function getQuestionsData(req, res) {
   return res.status(200).json(tileQuestions);
 }
 
+function newQuestion(req, res) {
+  const { board, tileId, question, answers, correctAnswer } = req.body;
+
+  const questions = readJSONFile(`./data/${board}/Questions.json`);
+
+  if (!questions) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  const newQuestion = {
+    id: questions["questions"].length + 1,
+    tileId: tileId,
+    question: question,
+    answers: answers,
+    correctAnswer: correctAnswer,
+  };
+
+  questions["questions"].push(newQuestion);
+
+  writeJSONFile(`./data/${board}/Questions.json`, questions);
+
+  return res.status(200).send();
+}
+
 module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
@@ -246,4 +272,5 @@ module.exports = {
   getBoardData,
   updateBoardData,
   getQuestionsData,
+  newQuestion,
 };
