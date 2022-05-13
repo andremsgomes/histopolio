@@ -32,10 +32,10 @@ class EditQuestions extends Component {
   render() {
     return (
       <div className="text-center mt-4">
-        <h1>Tabela de perguntas</h1>
-        <h4>
+        <h1>
           {this.props.params.board} - Casa {this.props.params.tile}
-        </h4>
+        </h1>
+        <h4>Tabela de perguntas</h4>
         <table className="table table-hover mt-4">
           <thead>
             <tr>

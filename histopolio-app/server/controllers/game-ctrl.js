@@ -240,8 +240,10 @@ function newQuestion(req, res) {
       .send({ error: true, message: "O ficheiro não existe" });
   }
 
+  const lastId = questions["questions"][questions["questions"].length - 1].id;
+
   const newQuestion = {
-    id: questions["questions"].length + 1,
+    id: lastId + 1,
     tileId: tileId,
     question: question,
     image: image,

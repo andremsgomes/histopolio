@@ -24,6 +24,7 @@ class Admin extends Component {
   render() {
     return (
       <div className="text-center m-4">
+        <h1 className="mb-4">Histopolio</h1>
         {this.state.saves.length > 0 && (
           <h3 className="mb-3">Dados guardados:</h3>
         )}
