@@ -6,6 +6,7 @@ import "react-dice-complete/dist/react-dice-complete.css";
 
 import AuthContext from "../context/AuthContext";
 import Wait from "../components/Wait";
+import Question from "../components/Question";
 
 class Play extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Play extends Component {
     this.client = new w3cwebsocket("ws://localhost:8080");
 
     this.handleDiceClick = this.handleDiceClick.bind(this);
+    this.handleAnswer = this.handleAnswer.bind(this);
   }
 
   static contextType = AuthContext;
@@ -23,9 +25,7 @@ class Play extends Component {
     showDice: false,
     rollTime: 0,
     diceRolled: false,
-    showQuestion: false,
-    question: "",
-    answers: [],
+    question: null,
     points: 0,
     position: 0,
   };
@@ -137,16 +137,14 @@ class Play extends Component {
 
   handleQuestionReceived(dataReceived) {
     this.setState({
-      question: dataReceived["questionData"]["question"],
-      answers: dataReceived["questionData"]["answers"],
-      showQuestion: true,
+      question: dataReceived["questionData"],
     });
 
     this.hideDice();
   }
 
   handleAnswer(answerIndex) {
-    this.setState({ showQuestion: false });
+    this.setState({ question: null });
 
     const answer = answerIndex + 1;
 
@@ -204,19 +202,12 @@ class Play extends Component {
             </div>
           ) : (
             <div>
-              {this.state.showQuestion ? (
+              {this.state.question ? (
                 <div>
-                  <h1>{this.state.question}</h1>
-                  {this.state.answers.map((answer, index) => (
-                    <button
-                      className="btn btn-secondary btn-lg"
-                      onClick={() => {
-                        this.handleAnswer(index);
-                      }}
-                    >
-                      {answer}
-                    </button>
-                  ))}
+                  <Question
+                    question={this.state.question}
+                    onAnswerClick={this.handleAnswer}
+                  />
                 </div>
               ) : (
                 <h2>Espera pela tua vez!</h2>

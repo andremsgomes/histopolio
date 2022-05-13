@@ -118,7 +118,7 @@ class NewQuestion extends Component {
                 src={this.state.image}
                 className="rounded"
                 alt="question"
-                width="600"
+                width="100%"
               />
             </div>
           )}

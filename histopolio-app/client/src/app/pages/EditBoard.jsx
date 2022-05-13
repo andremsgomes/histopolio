@@ -138,7 +138,7 @@ class EditBoard extends Component {
                           "/questions"
                         }
                       >
-                        {tile.questions} perguntas
+                        {tile.questions} pergunta{tile.questions !== 1 && ("s")}
                       </Link>
                     </td>
                   </tr>

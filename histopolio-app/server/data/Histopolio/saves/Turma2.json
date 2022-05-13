@@ -1,0 +1,30 @@
+[
+  {
+    "userId": 1,
+    "name": "André",
+    "email": "andre@up.pt",
+    "points": 18,
+    "position": 17
+  },
+  {
+    "userId": 3,
+    "name": "Teste",
+    "email": "teste@up.pt",
+    "points": 10,
+    "position": 4
+  },
+  {
+    "userId": 2,
+    "name": "Inês",
+    "email": "ines@up.pt",
+    "points": 26,
+    "position": 1
+  },
+  {
+    "userId": 5,
+    "name": "Diogo",
+    "email": "diogo@up.pt",
+    "points": 20,
+    "position": 6
+  }
+]
