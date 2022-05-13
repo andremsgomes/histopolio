@@ -9,7 +9,7 @@ function getUser(email) {
 }
 
 function signup(req, res) {
-  const { name, email, password } = req.body;
+  const { name, avatar, email, password } = req.body;
 
   if (!(name && email && password)) {
     return res
@@ -41,6 +41,7 @@ function signup(req, res) {
     id: id,
     credentials: credentials,
     name: name,
+    avatar: avatar,
     admin: false,
   };
 
@@ -51,6 +52,7 @@ function signup(req, res) {
     id: user.id,
     name: user.name,
     email: user.credentials.email,
+    avatar: user.avatar,
     admin: user.admin,
   };
 
@@ -82,6 +84,7 @@ function login(req, res) {
     id: user.id,
     name: user.name,
     email: user.credentials.email,
+    avatar: user.avatar,
     admin: user.admin,
   };
 

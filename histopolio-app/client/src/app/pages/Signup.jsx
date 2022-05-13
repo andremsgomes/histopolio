@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 function Signup() {
   const [name, setName] = useState("");
   const [nameErrorMessage, setNameErrorMessage] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [password, setPassword] = useState("");
@@ -57,6 +58,12 @@ function Signup() {
       nameInput.style.borderColor = "red";
     }
 
+    // avatar validation
+    const avatarToSend =
+      avatar.length > 0
+        ? avatar
+        : "https://tleliteracy.com/wp-content/uploads/2017/02/default-avatar.png";
+
     // email validation
     if (email.length === 0) {
       emailError = true;
@@ -96,13 +103,17 @@ function Signup() {
     }
 
     if (!(nameError || emailError || passwordError || confirmPasswordError)) {
-      signup(name, email, password);
+      signup(name, avatarToSend, email, password);
       setShowAlert(true);
     }
   };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
+  };
+
+  const handleAvatarChange = (e) => {
+    setAvatar(e.target.value);
   };
 
   const handleEmailChange = (e) => {
@@ -140,6 +151,38 @@ function Signup() {
             />
             <div className="text-danger">{nameErrorMessage}</div>
           </div>
+        </div>
+        <div className="form-group row mt-3">
+          <label for="avatar" className="col-sm-3 col-form-label">
+            Link do Avatar
+          </label>
+          <div className="col-sm-9">
+            <input
+              type="text"
+              className="form-control"
+              id="avatarInput"
+              name="avatar"
+              onChange={handleAvatarChange}
+              value={avatar}
+            />
+          </div>
+        </div>
+        <div className="text-center mt-3">
+          {avatar.length > 0 ? (
+            <img
+              src={avatar}
+              alt="Avatar"
+              className="rounded-circle"
+              style={{ objectFit: "cover", width: "250px", height: "250px" }}
+            />
+          ) : (
+            <img
+              src="https://tleliteracy.com/wp-content/uploads/2017/02/default-avatar.png"
+              alt="Avatar"
+              className="rounded-circle"
+              style={{ objectFit: "cover", width: "250px", height: "250px" }}
+            />
+          )}
         </div>
         <div className="form-group row mt-3">
           <label for="email" className="col-sm-3 col-form-label">

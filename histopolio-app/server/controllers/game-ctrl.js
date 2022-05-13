@@ -55,6 +55,7 @@ function addPlayerToGame(unityWS, dataReceived) {
     type: "join game",
     userId: player.userId,
     name: player.name,
+    avatar: dataReceived["avatar"],
     points: player.points,
     position: player.position,
   };

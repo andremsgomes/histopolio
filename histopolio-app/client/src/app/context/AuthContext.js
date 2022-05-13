@@ -25,10 +25,10 @@ function AuthProvider({ children }) {
       });
   }
 
-  async function signup(name, email, password) {
+  async function signup(name, avatar, email, password) {
     setErrorMessage("");
 
-    const payload = { name, email, password };
+    const payload = { name, avatar, email, password };
 
     await api
       .signup(payload)

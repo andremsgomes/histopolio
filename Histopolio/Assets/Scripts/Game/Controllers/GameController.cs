@@ -305,12 +305,12 @@ public class GameController : MonoBehaviour
     }
 
     // Add player to the game
-    public void AddPlayer(int id, string name, int points, int position, string image)
+    public void AddPlayer(int id, string name, int points, int position, string avatarURL)
     {
         Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
         newPlayer.name = name;
-        newPlayer.SetImage(image);
+        newPlayer.SetAvatar(avatarURL);
         newPlayer.SetGameController(this);
         newPlayer.SetId(id);
         newPlayer.SetPlayOrder(players.Count);
@@ -349,6 +349,7 @@ public class GameController : MonoBehaviour
         mainMenuController.ShowSaveFiles(files);
     }
 
+    // Load data from save file
     public void LoadSaveFile(string fileName) {
         LoadFileData loadFileData = new LoadFileData();
         loadFileData.board = "Histopolio";

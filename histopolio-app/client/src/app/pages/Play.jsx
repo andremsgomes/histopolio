@@ -116,6 +116,7 @@ class Play extends Component {
       userId: user.id,
       name: user.name,
       email: user.email,
+      avatar: user.avatar,
     };
 
     this.sendToServer(JSON.stringify(dataToSend));

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private GameController gameController;
     private int id;
     private string playerName;
-    private string imageURL;
+    private string avatarURL;
     private int score;
     private int position;
     private int moveSpaces;
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        
+
     }
 
     // Update is called once per frame
@@ -167,15 +167,15 @@ public class Player : MonoBehaviour
     }
 
     // Set image avatar
-    public void SetImage(string image) {
-        this.imageURL = image;
+    public void SetAvatar(string avatarURL) {
+        this.avatarURL = avatarURL;
 
         StartCoroutine("ChangeSprite");
     }
 
     // Change sprite of the player object
     IEnumerator ChangeSprite() {
-        WWW www = new WWW(this.imageURL);
+        WWW www = new WWW(this.avatarURL);
         yield return www;
         img.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
     }
