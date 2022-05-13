@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,18 +9,19 @@ public class Player : MonoBehaviour
     private GameController gameController;
     private int id;
     private string playerName;
+    private string imageURL;
     private int score;
     private int position;
     private int moveSpaces;
     private int playOrder;
 
     [SerializeField] private float speed;
+    [SerializeField] private Image img;
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-
+    void Start() {
+        
     }
 
     // Update is called once per frame
@@ -162,5 +164,19 @@ public class Player : MonoBehaviour
     public void SetScore(int score)
     {
         this.score = score;
+    }
+
+    // Set image avatar
+    public void SetImage(string image) {
+        this.imageURL = image;
+
+        StartCoroutine("ChangeSprite");
+    }
+
+    // Change sprite of the player object
+    IEnumerator ChangeSprite() {
+        WWW www = new WWW(this.imageURL);
+        yield return www;
+        img.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
     }
 }
