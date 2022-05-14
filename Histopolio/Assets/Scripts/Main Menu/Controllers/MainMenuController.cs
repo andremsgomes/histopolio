@@ -53,8 +53,8 @@ public class MainMenuController : MonoBehaviour
     }
 
     // Show new player on join menu
-    public void ShowNewPlayer(int index, string name, Color color) {
-        mainMenuUI.ShowNewPlayer(index, name, color);
+    public void ShowNewPlayer(int index, Sprite avatar) {
+        mainMenuUI.ShowNewPlayer(index, avatar);
     }
 
     // Show save files

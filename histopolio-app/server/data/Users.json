@@ -58,5 +58,15 @@
     "name": "Homer Simpson",
     "avatar": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F13%2F2015%2F04%2F05%2Ffeatured.jpg&q=60",
     "admin": false
+  },
+  {
+    "id": 7,
+    "credentials": {
+      "email": "crash@up.pt",
+      "password": "$2b$10$7kmxLueZPjFtyp4zQDJpleGqHZBJQfe7FmCp3IAkjS6m1K1Jb7/Y."
+    },
+    "name": "Crash Bandicoot",
+    "avatar": "https://i.pinimg.com/originals/b4/24/31/b42431bf388a7017faf90a88495e3ff5.jpg",
+    "admin": false
   }
 ]

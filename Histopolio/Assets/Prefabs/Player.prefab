@@ -444,5 +444,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4100e8cc6e9406929da352496be6986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   img: {fileID: 3038378922855370039}

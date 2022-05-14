@@ -26,5 +26,12 @@
     "email": "diogo@up.pt",
     "points": 20,
     "position": 6
+  },
+  {
+    "userId": 6,
+    "name": "Homer Simpson",
+    "email": "homer@up.pt",
+    "points": 20,
+    "position": 0
   }
 ]

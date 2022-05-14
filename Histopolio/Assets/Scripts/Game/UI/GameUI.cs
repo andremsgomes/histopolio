@@ -8,7 +8,7 @@ public class GameUI : MonoBehaviour
     private GameController gameController;
 
     [SerializeField] private Text playerNameText;
-    [SerializeField] private Image playerColor;
+    [SerializeField] private Image avatar;
     [SerializeField] private Text playerScoreText;
     [SerializeField] private GameObject turnButton;
     [SerializeField] private GameObject HUD;
@@ -41,9 +41,9 @@ public class GameUI : MonoBehaviour
         playerNameText.text = name;
     }
 
-    // Set current player color
-    public void SetPlayerColor(Color color) {
-        playerColor.color = color;
+    // Set current player avatar
+    public void SetAvatar(Sprite avatar) {
+        this.avatar.sprite = avatar;
     }
 
     // Set current player score

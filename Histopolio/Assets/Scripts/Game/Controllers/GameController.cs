@@ -163,7 +163,7 @@ public class GameController : MonoBehaviour
         currentPlayer = player;
 
         gameUI.SetPlayerNameText(currentPlayer.GetPlayerName());
-        gameUI.SetPlayerColor(currentPlayer.GetColor());
+        gameUI.SetAvatar(currentPlayer.GetAvatar());
         gameUI.SetPlayerScore(currentPlayer.GetScore());
 
         PlayerTurnData playerTurnData = new PlayerTurnData();
@@ -309,17 +309,16 @@ public class GameController : MonoBehaviour
     {
         Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
+        IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
+        StartCoroutine(coroutine);
+
         newPlayer.name = name;
-        newPlayer.SetAvatar(avatarURL);
         newPlayer.SetGameController(this);
         newPlayer.SetId(id);
         newPlayer.SetPlayOrder(players.Count);
-        newPlayer.SetColor(playerColors[players.Count]);
         newPlayer.SetName(name);
         newPlayer.SetScore(points);
         newPlayer.SetPosition(position);
-
-        mainMenuController.ShowNewPlayer(players.Count, name, playerColors[players.Count]);
 
         players.Add(newPlayer);
     }
@@ -357,5 +356,32 @@ public class GameController : MonoBehaviour
         string message = JsonUtility.ToJson(loadFileData);
 
         SendMessageToServer(message);
+    }
+
+    // Load image from url and set on player and join menu
+    IEnumerator LoadAvatar(string avatar, Player player) {
+        WWW www = new WWW(avatar);
+        yield return www;
+
+        // Square image
+        float width = www.texture.width, height = www.texture.height;
+        float startWidth = 0, startHeight = 0, endWidth = width, endHeight = height;
+
+        if (width > height) {
+            startWidth = (width-height) / 2;
+            endWidth = width - (width-height)/2;
+        }
+
+        if (height > width) {
+            startHeight = (height-width) / 2;
+            endHeight = height - (height-width)/2;
+        }
+
+        Debug.Log("" + width + ", " + height + ", " + startWidth + ", " + endWidth + ", " + startHeight + ", " + endHeight);
+
+        Sprite sprite = Sprite.Create(www.texture, new Rect(startWidth, startHeight, endWidth, endHeight), new Vector2(0, 0));
+
+        player.SetAvatar(sprite);
+        mainMenuController.ShowNewPlayer(players.Count, sprite);
     }
 }
