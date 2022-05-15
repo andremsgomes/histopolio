@@ -34,6 +34,19 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
   frontendWS.send(JSON.stringify(dataToSend));
 }
 
+async function sendEndGameToFrontend(frontendWSs) {
+  gameSaveFilePath = "";
+
+  const dataToSend = {
+    type: "game status",
+    gameStarted: false,
+  };
+
+  for (ws of frontendWSs.values()) {
+    ws.send(JSON.stringify(dataToSend));
+  }
+}
+
 function addPlayerToGame(unityWS, dataReceived) {
   let player = getPlayerData(gameSaveFilePath, dataReceived["userId"]);
 
@@ -58,6 +71,15 @@ function addPlayerToGame(unityWS, dataReceived) {
     avatar: dataReceived["avatar"],
     points: player.points,
     position: player.position,
+  };
+
+  unityWS.send(JSON.stringify(dataToSend));
+}
+
+async function removePlayerFromGame(unityWS, userId) {
+  const dataToSend = {
+    type: "remove player",
+    userId: userId,
   };
 
   unityWS.send(JSON.stringify(dataToSend));
@@ -263,7 +285,9 @@ module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
   addPlayerToGame,
+  removePlayerFromGame,
   sendGameStatusToFrontend,
+  sendEndGameToFrontend,
   sendTurnToFrontend,
   sendDiceResultToUnity,
   sendInfoShownToFrontend,

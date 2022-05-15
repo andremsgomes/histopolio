@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
-    private List<Player> players = new List<Player>();
+    private Dictionary<int, Player> players = new Dictionary<int, Player>();
+    private Dictionary<int, int> playerTurns = new Dictionary<int, int>();
     private Color[] playerColors;
     private BoardController boardController;
     private CameraController cameraController;
@@ -66,7 +68,7 @@ public class GameController : MonoBehaviour
     // Spawn players on GO Tile
     void SpawnPlayers()
     {
-        foreach (Player player in players)
+        foreach (Player player in players.Values)
         {
             Tile tile = boardController.GetTile(player.GetPosition());
 
@@ -74,7 +76,7 @@ public class GameController : MonoBehaviour
             player.SetTile(tile);
         }
 
-        SetCurrentPlayer(players[0]);
+        SetCurrentPlayer(players[playerTurns.OrderBy(kvp => kvp.Value).First().Key]);
     }
 
     // Change camera
@@ -121,7 +123,6 @@ public class GameController : MonoBehaviour
     // Save current player's position and points
     public void SaveCurrentPlayer()
     {
-        // TODO: criar documento só de players => enviar com um POST request para evitar conflitos no documento de players OU ter um documento de players por board
         SavePlayerData savePlayerData = new SavePlayerData();
         savePlayerData.board = "Histopolio";
         savePlayerData.userId = currentPlayer.GetId();
@@ -135,12 +136,9 @@ public class GameController : MonoBehaviour
     // Change current player
     public void ChangeCurrentPlayer()
     {
-        int newPlayOrder = currentPlayer.GetPlayOrder() + 1;
+        playerTurns[currentPlayer.GetId()] += 1;
 
-        if (newPlayOrder >= players.Count)
-            newPlayOrder = 0;
-
-        SetCurrentPlayer(players[newPlayOrder]);
+        SetCurrentPlayer(players[playerTurns.OrderBy(kvp => kvp.Value).First().Key]);
     }
 
     // Set colors array
@@ -310,17 +308,23 @@ public class GameController : MonoBehaviour
         Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
         IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
-        StartCoroutine(coroutine);
+        // StartCoroutine(coroutine);
 
         newPlayer.name = name;
         newPlayer.SetGameController(this);
         newPlayer.SetId(id);
-        newPlayer.SetPlayOrder(players.Count);
         newPlayer.SetName(name);
         newPlayer.SetScore(points);
         newPlayer.SetPosition(position);
 
-        players.Add(newPlayer);
+        players.Add(id, newPlayer);
+        playerTurns.Add(id, 0);
+    }
+
+    // Remove player from the game
+    public void RemovePlayer(int id) {
+        Destroy(players[id]);
+        players.Remove(id);
     }
 
     // Send info shown message

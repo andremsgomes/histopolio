@@ -5,7 +5,10 @@ const cors = require("cors");
 
 const WebSocket = require("ws");
 
-const { processMessage } = require("./controllers/websocket-ctrl");
+const {
+  processMessage,
+  checkWebSocktetsState,
+} = require("./controllers/websocket-ctrl");
 const authRouter = require("./routes/auth");
 const gameRouter = require("./routes/game");
 
@@ -19,11 +22,18 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+checkWebSocktetsState();
+
 wss.on("connection", function connection(ws) {
   console.log("A new client connected!");
+  ws.isAlive = true;
 
   ws.on("message", function message(data) {
     processMessage(ws, data);
+  });
+
+  ws.on("pong", function () {
+    ws.isAlive = true;
   });
 });
 

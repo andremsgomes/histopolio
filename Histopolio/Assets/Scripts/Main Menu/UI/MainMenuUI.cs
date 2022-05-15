@@ -88,7 +88,7 @@ public class MainMenuUI : MonoBehaviour
 
     // Show new player on join menu
     public void ShowNewPlayer(int index, Sprite avatar) {
-        playerAvatars[index].sprite = avatar;
+        // playerAvatars[index].sprite = avatar;
         players[index].SetActive(true);
     }
 

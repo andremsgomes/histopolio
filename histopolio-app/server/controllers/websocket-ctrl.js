@@ -7,6 +7,11 @@ let frontendWSs = new Map();
 async function processMessage(ws, data) {
   console.log(data);
 
+  if (data == "unityPong") {
+    unityWS.isAlive = true;
+    return;
+  }
+
   const dataReceived = JSON.parse(data);
   const command = dataReceived["type"];
 
@@ -80,6 +85,37 @@ async function authentication(ws, dataReceived) {
   }
 }
 
+async function checkWebSocktetsState() {
+  setInterval(async function () {
+    if (unityWS != null) {
+      if (!unityWS.isAlive) {
+        gameController.sendEndGameToFrontend(frontendWSs);
+        unityWS.terminate();
+        unityWS = null;
+        console.log("Unity closed");
+      } else {
+        unityWS.isAlive = false;
+        unityWS.send("ping");
+      }
+    }
+
+    for (id of frontendWSs.keys()) {
+      const ws = frontendWSs.get(id);
+
+      if (!ws.isAlive) {
+        gameController.removePlayerFromGame(unityWS, id);
+        ws.terminate();
+        frontendWSs.delete(id);
+        console.log(`User ${id} disconnected!`);
+      } else {
+        ws.isAlive = false;
+        ws.ping();
+      }
+    }
+  }, 1000);
+}
+
 module.exports = {
   processMessage,
+  checkWebSocktetsState,
 };

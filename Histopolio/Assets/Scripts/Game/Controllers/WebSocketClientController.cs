@@ -35,6 +35,11 @@ public class WebSocketClientController : MonoBehaviour
 
     // Process message received
     void ProcessMessage(string message) {
+        if (message == "ping") {
+            SendMessage("unityPong");
+            return;
+        }
+
         Debug.Log(message);
 
         JObject dataReceived = JObject.Parse(message);
@@ -154,5 +159,10 @@ public class WebSocketClientController : MonoBehaviour
         }
 
         gameController.ShowSaveFiles(files);
+    }
+
+    // OnRemovePlayerReceived is called when a player leaves
+    void OnRemovePlayerReceived(JObject dataReceived) {
+
     }
 }

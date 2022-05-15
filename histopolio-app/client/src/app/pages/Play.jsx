@@ -99,11 +99,14 @@ class Play extends Component {
   handleGameStatusReceived(dataReceived) {
     this.setState({
       gameStarted: dataReceived["gameStarted"],
-      points: dataReceived["playerData"]["points"],
-      position: dataReceived["playerData"]["position"],
     });
 
     if (this.state.gameStarted) {
+      this.setState({
+        points: dataReceived["playerData"]["points"],
+        position: dataReceived["playerData"]["position"],
+      });
+
       this.sendJoinGameMessage();
     }
   }
