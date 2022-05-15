@@ -308,7 +308,7 @@ public class GameController : MonoBehaviour
         Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
         IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
-        // StartCoroutine(coroutine);
+        StartCoroutine(coroutine);
 
         newPlayer.name = name;
         newPlayer.SetGameController(this);
@@ -322,8 +322,10 @@ public class GameController : MonoBehaviour
     }
 
     // Remove player from the game
-    public void RemovePlayer(int id) {
+    public void RemovePlayer(int id)
+    {
         Destroy(players[id]);
+        playerTurns.Remove(id);
         players.Remove(id);
     }
 
@@ -338,22 +340,26 @@ public class GameController : MonoBehaviour
     }
 
     // Send new game message to server
-    public void SendNewGameMessage() {
+    public void SendNewGameMessage()
+    {
         webSocketClientController.SendBoardRequest("new game", "Histopolio");
     }
 
     // Send load save files message to server
-    public void SendLoadSavesMessage() {
+    public void SendLoadSavesMessage()
+    {
         webSocketClientController.SendBoardRequest("load saves", "Histopolio");
     }
 
     // Show save files on menu
-    public void ShowSaveFiles(List<string> files) {
+    public void ShowSaveFiles(List<string> files)
+    {
         mainMenuController.ShowSaveFiles(files);
     }
 
     // Load data from save file
-    public void LoadSaveFile(string fileName) {
+    public void LoadSaveFile(string fileName)
+    {
         LoadFileData loadFileData = new LoadFileData();
         loadFileData.board = "Histopolio";
         loadFileData.file = fileName;
@@ -363,7 +369,8 @@ public class GameController : MonoBehaviour
     }
 
     // Load image from url and set on player and join menu
-    IEnumerator LoadAvatar(string avatar, Player player) {
+    IEnumerator LoadAvatar(string avatar, Player player)
+    {
         WWW www = new WWW(avatar);
         yield return www;
 
@@ -371,14 +378,16 @@ public class GameController : MonoBehaviour
         float width = www.texture.width, height = www.texture.height;
         float startWidth = 0, startHeight = 0, endWidth = width, endHeight = height;
 
-        if (width > height) {
-            startWidth = (width-height) / 2;
-            endWidth = width - (width-height)/2;
+        if (width > height)
+        {
+            startWidth = (width - height) / 2;
+            endWidth = width - (width - height) / 2;
         }
 
-        if (height > width) {
-            startHeight = (height-width) / 2;
-            endHeight = height - (height-width)/2;
+        if (height > width)
+        {
+            startHeight = (height - width) / 2;
+            endHeight = height - (height - width) / 2;
         }
 
         Debug.Log("" + width + ", " + height + ", " + startWidth + ", " + endWidth + ", " + startHeight + ", " + endHeight);

@@ -8,11 +8,15 @@ const {
 let gameSaveFilePath = "";
 
 async function sendQuestionToFrontend(frontendWS, dataReceived) {
-  frontendWS.send(JSON.stringify(dataReceived));
+  if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
+    frontendWS.send(JSON.stringify(dataReceived));
+  }
 }
 
 async function sendAnswerToUnity(unityWS, dataReceived) {
-  unityWS.send(JSON.stringify(dataReceived));
+  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
+    unityWS.send(JSON.stringify(dataReceived));
+  }
 }
 
 async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
@@ -31,7 +35,9 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
     playerData: playerData,
   };
 
-  frontendWS.send(JSON.stringify(dataToSend));
+  if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
+    frontendWS.send(JSON.stringify(dataToSend));
+  }
 }
 
 async function sendEndGameToFrontend(frontendWSs) {
@@ -43,7 +49,7 @@ async function sendEndGameToFrontend(frontendWSs) {
   };
 
   for (ws of frontendWSs.values()) {
-    ws.send(JSON.stringify(dataToSend));
+    if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(dataToSend));
   }
 }
 
@@ -73,7 +79,9 @@ function addPlayerToGame(unityWS, dataReceived) {
     position: player.position,
   };
 
-  unityWS.send(JSON.stringify(dataToSend));
+  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
+    unityWS.send(JSON.stringify(dataToSend));
+  }
 }
 
 async function removePlayerFromGame(unityWS, userId) {
@@ -82,7 +90,9 @@ async function removePlayerFromGame(unityWS, userId) {
     userId: userId,
   };
 
-  unityWS.send(JSON.stringify(dataToSend));
+  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
+    unityWS.send(JSON.stringify(dataToSend));
+  }
 }
 
 async function sendTurnToFrontend(frontendWS) {
@@ -90,18 +100,24 @@ async function sendTurnToFrontend(frontendWS) {
     type: "turn",
   };
 
-  frontendWS.send(JSON.stringify(dataToSend));
+  if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
+    frontendWS.send(JSON.stringify(dataToSend));
+  }
 }
 
 async function sendDiceResultToUnity(unityWS, dataReceived) {
   // wait for dice to stop rolling
   await new Promise((resolve) => setTimeout(resolve, dataReceived["rollTime"]));
 
-  unityWS.send(JSON.stringify(dataReceived));
+  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
+    unityWS.send(JSON.stringify(dataReceived));
+  }
 }
 
 async function sendInfoShownToFrontend(frontendWS, dataReceived) {
-  frontendWS.send(JSON.stringify(dataReceived));
+  if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
+    frontendWS.send(JSON.stringify(dataReceived));
+  }
 }
 
 async function loadGame(frontendWSs, dataReceived) {
