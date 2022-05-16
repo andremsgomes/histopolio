@@ -324,9 +324,13 @@ public class GameController : MonoBehaviour
     // Remove player from the game
     public void RemovePlayer(int id)
     {
-        Destroy(players[id]);
-        playerTurns.Remove(id);
-        players.Remove(id);
+        if (currentPlayer.GetId() != id)
+        {
+            Debug.Log(players[id].GetPlayerName() + " left");
+            Destroy(players[id].gameObject);
+            playerTurns.Remove(id);
+            players.Remove(id);
+        }
     }
 
     // Send info shown message
@@ -389,8 +393,6 @@ public class GameController : MonoBehaviour
             startHeight = (height - width) / 2;
             endHeight = height - (height - width) / 2;
         }
-
-        Debug.Log("" + width + ", " + height + ", " + startWidth + ", " + endWidth + ", " + startHeight + ", " + endHeight);
 
         Sprite sprite = Sprite.Create(www.texture, new Rect(startWidth, startHeight, endWidth, endHeight), new Vector2(0, 0));
 

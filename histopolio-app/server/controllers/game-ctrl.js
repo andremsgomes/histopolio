@@ -1,3 +1,5 @@
+const WebSocket = require("ws");
+
 const {
   readJSONFile,
   writeJSONFile,

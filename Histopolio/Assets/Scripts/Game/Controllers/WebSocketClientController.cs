@@ -67,6 +67,9 @@ public class WebSocketClientController : MonoBehaviour
             case "save files":
                 OnSaveFilesReceived(dataReceived);
                 break;
+            case "remove player":
+                OnRemovePlayerReceived(dataReceived);
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -163,6 +166,6 @@ public class WebSocketClientController : MonoBehaviour
 
     // OnRemovePlayerReceived is called when a player leaves
     void OnRemovePlayerReceived(JObject dataReceived) {
-
+        gameController.RemovePlayer((int)dataReceived["userId"]);
     }
 }
