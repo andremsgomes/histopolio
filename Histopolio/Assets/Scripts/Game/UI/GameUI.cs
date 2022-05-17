@@ -12,6 +12,9 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Text playerScoreText;
     [SerializeField] private GameObject turnButton;
     [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject[] leaderboardPlaces = new GameObject[3];
+    [SerializeField] private Image[] leaderboardAvatars = new Image[3];
+    [SerializeField] private Text[] leaderboardScores = new Text[3];
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +57,6 @@ public class GameUI : MonoBehaviour
     // OnFinishTurnClick is called when finish turn button is clicked
     public void OnFinishTurnClick() {
         turnButton.SetActive(false);
-        gameController.SaveCurrentPlayer();
         gameController.ChangeCurrentPlayer();
         // gameController.ShowDice();
     }
@@ -68,5 +70,12 @@ public class GameUI : MonoBehaviour
     // Show HUD
     public void ShowHUD() {
         HUD.SetActive(true);
+    }
+
+    // Show place in leaderboard
+    public void UpdateLeaderboard(int index, Sprite avatar, string name, int points) {
+        leaderboardPlaces[index].SetActive(true);
+        leaderboardAvatars[index].sprite = avatar; 
+        leaderboardScores[index].text = name + " - " + points;
     }
 }

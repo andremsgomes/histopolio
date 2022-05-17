@@ -3,42 +3,48 @@
     "userId": 1,
     "name": "André",
     "email": "andre@up.pt",
-    "points": 237,
-    "position": 6
+    "points": 266,
+    "position": 14,
+    "numTurns": 2
   },
   {
     "userId": 2,
     "name": "Inês",
     "email": "ines@up.pt",
-    "points": 74,
-    "position": 27
+    "points": 88,
+    "position": 8,
+    "numTurns": 1
   },
   {
     "userId": 3,
     "name": "Teste",
     "email": "teste@up.pt",
-    "points": 34,
-    "position": 22
+    "points": 54,
+    "position": 29,
+    "numTurns": 5
   },
   {
     "userId": 5,
     "name": "Diogo",
     "email": "diogo@up.pt",
     "points": 20,
-    "position": 0
+    "position": 0,
+    "numTurns": 0
   },
   {
     "userId": 6,
     "name": "Homer Simpson",
     "email": "homer@up.pt",
-    "points": 20,
-    "position": 0
+    "points": 37,
+    "position": 14,
+    "numTurns": 3
   },
   {
     "userId": 7,
     "name": "Crash Bandicoot",
     "email": "crash@up.pt",
     "points": 20,
-    "position": 0
+    "position": 0,
+    "numTurns": 0
   }
 ]

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private int score;
     private int position;
     private int moveSpaces;
-    private int playOrder;
+    private int numTurns;
 
     [SerializeField] private float speed;
     [SerializeField] private Image img;
@@ -86,18 +86,6 @@ public class Player : MonoBehaviour
         return id;
     }
 
-    // Ser play order
-    public void SetPlayOrder(int playOrder)
-    {
-        this.playOrder = playOrder;
-    }
-
-    // Get play order
-    public int GetPlayOrder()
-    {
-        return playOrder;
-    }
-
     // Set player name
     public void SetName(string playerName)
     {
@@ -161,5 +149,20 @@ public class Player : MonoBehaviour
     // Get avatar
     public Sprite GetAvatar() {
         return img.sprite;
+    }
+
+    // Set number of turns played
+    public void SetNumTurns(int numTurns) {
+        this.numTurns = numTurns;
+    }
+
+    // Get number of turns played
+    public int GetNumTurns() {
+        return numTurns;
+    }
+
+    // Add turn played
+    public void AddTurn() {
+        numTurns += 1;
     }
 }

@@ -8,6 +8,7 @@ const {
 } = require("../utils/file-utils");
 
 let gameSaveFilePath = "";
+let gameStarted = false;
 
 async function sendQuestionToFrontend(frontendWS, dataReceived) {
   if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
@@ -33,7 +34,7 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
 
   const dataToSend = {
     type: "game status",
-    gameStarted: gameSaveFilePath.length > 0,
+    gameStarted: gameStarted,
     playerData: playerData,
   };
 
@@ -42,8 +43,17 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
   }
 }
 
+async function setGameReady(frontendWSs) {
+  gameStarted = true;
+
+  for (id of frontendWSs.keys()) {
+    sendGameStatusToFrontend(frontendWSs.get(id), id, gameSaveFilePath);
+  }
+}
+
 async function sendEndGameToFrontend(frontendWSs) {
   gameSaveFilePath = "";
+  gameStarted = false;
 
   const dataToSend = {
     type: "game status",
@@ -65,6 +75,7 @@ function addPlayerToGame(unityWS, dataReceived) {
       email: dataReceived["email"],
       points: 20,
       position: 0,
+      numTurns: 0,
     };
 
     let players = readJSONFile(gameSaveFilePath);
@@ -79,6 +90,7 @@ function addPlayerToGame(unityWS, dataReceived) {
     avatar: dataReceived["avatar"],
     points: player.points,
     position: player.position,
+    numTurns: player.numTurns,
   };
 
   if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
@@ -122,7 +134,7 @@ async function sendInfoShownToFrontend(frontendWS, dataReceived) {
   }
 }
 
-async function loadGame(frontendWSs, dataReceived) {
+async function loadGame(unityWS, dataReceived) {
   gameSaveFilePath = `./data/${dataReceived["board"]}/saves/${dataReceived["file"]}`;
 
   if (!fileExists(gameSaveFilePath)) {
@@ -130,18 +142,29 @@ async function loadGame(frontendWSs, dataReceived) {
     console.log("New Game Started!");
   } else console.log("Game Loaded!");
 
-  for (id of frontendWSs.keys()) {
-    sendGameStatusToFrontend(frontendWSs.get(id), id, gameSaveFilePath);
-  }
+  const players = readJSONFile(gameSaveFilePath);
+  const users = readJSONFile("./data/Users.json");
+
+  players.forEach((player) => {
+    player["avatar"] = users.find((user) => user.id === player.userId).avatar;
+  });
+
+  const dataToSend = {
+    type: "players",
+    players: players,
+  };
+
+  unityWS.send(JSON.stringify(dataToSend));
 }
 
-function saveGame(dataReceived) {
+function saveGame(frontendWSs, dataReceived) {
   const players = readJSONFile(gameSaveFilePath);
 
   const newSavedData = players.map((player) => {
     if (player.userId === dataReceived["userId"]) {
       player.points = dataReceived["points"];
       player.position = dataReceived["position"];
+      player.numTurns = dataReceived["numTurns"];
     }
 
     return player;
@@ -150,6 +173,30 @@ function saveGame(dataReceived) {
   writeJSONFile(gameSaveFilePath, newSavedData);
 
   console.log("Game Saved!");
+
+  sendUpdateToFrontend(frontendWSs);
+}
+
+async function sendUpdateToFrontend(frontendWSs) {
+  const players = readJSONFile(gameSaveFilePath);
+
+  players.sort((a, b) => b.points - a.points);
+
+  let rank = 1;
+
+  players.forEach((player) => {
+    const dataToSend = {
+      type: "update",
+      points: player.points,
+      position: player.position,
+      rank: rank++,
+    };
+
+    ws = frontendWSs.get(player.userId);
+
+    if (ws && ws.readyState === WebSocket.OPEN)
+      ws.send(JSON.stringify(dataToSend));
+  });
 }
 
 function getPlayerData(file, userId) {
@@ -305,6 +352,7 @@ module.exports = {
   addPlayerToGame,
   removePlayerFromGame,
   sendGameStatusToFrontend,
+  setGameReady,
   sendEndGameToFrontend,
   sendTurnToFrontend,
   sendDiceResultToUnity,

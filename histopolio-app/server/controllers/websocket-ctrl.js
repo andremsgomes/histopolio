@@ -62,13 +62,16 @@ async function processMessage(ws, data) {
       );
       break;
     case "save":
-      gameController.saveGame(dataReceived);
+      gameController.saveGame(frontendWSs, dataReceived);
       break;
     case "load game":
-      gameController.loadGame(frontendWSs, dataReceived);
+      gameController.loadGame(unityWS, dataReceived);
       break;
     case "load saves":
       loadController.loadSaves(unityWS, dataReceived);
+      break;
+    case "ready":
+      gameController.setGameReady(frontendWSs);
       break;
     default:
       console.log("Unknown message: " + data);

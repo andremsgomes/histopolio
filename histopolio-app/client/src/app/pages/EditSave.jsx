@@ -14,6 +14,7 @@ class EditSave extends Component {
 
     this.handlePositionChange = this.handlePositionChange.bind(this);
     this.handlePointsChange = this.handlePointsChange.bind(this);
+    this.handleNumTurnsChange = this.handleNumTurnsChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -72,6 +73,22 @@ class EditSave extends Component {
     });
   }
 
+  handleNumTurnsChange(e) {
+    const playerId = parseInt(e.target.id.substring(8));
+
+    const newPlayers = this.state.players.map((player) => {
+      if (player.userId === playerId) {
+        player.numTurns = parseInt(e.target.value);
+      }
+
+      return player;
+    });
+
+    this.setState({
+      players: newPlayers,
+    });
+  }
+
   handleClick() {
     const board = this.props.params.board;
     const save = this.props.params.save;
@@ -113,6 +130,7 @@ class EditSave extends Component {
               <th scope="col">Email</th>
               <th scope="col">Posição no tabuleiro</th>
               <th scope="col">Pontuação</th>
+              <th scope="col">Número de jogadas</th>
             </tr>
           </thead>
           <tbody>
@@ -136,6 +154,14 @@ class EditSave extends Component {
                       onChange={this.handlePointsChange}
                       type="number"
                       value={player.points}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      id={"numTurns" + player.userId}
+                      onChange={this.handleNumTurnsChange}
+                      type="number"
+                      value={player.numTurns}
                     />
                   </td>
                 </tr>

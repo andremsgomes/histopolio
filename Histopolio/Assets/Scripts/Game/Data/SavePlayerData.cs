@@ -5,4 +5,5 @@ public class SavePlayerData {
     public int userId;
     public int points;
     public int position;
+    public int numTurns;
 }

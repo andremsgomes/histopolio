@@ -18,8 +18,8 @@ public class MainMenuUI : MonoBehaviour
 
     [Header("Join Menu")]
     [SerializeField] private GameObject joinMenu;
-    [SerializeField] private GameObject[] players = new GameObject[24];
-    [SerializeField] private Image[] playerAvatars = new Image[24];
+    [SerializeField] private GameObject playersContainer;
+    [SerializeField] private JoinPlayer joinPlayerPrefab;
 
     [Header("Saves Menu")]
     [SerializeField] private GameObject savesMenu;
@@ -87,9 +87,10 @@ public class MainMenuUI : MonoBehaviour
     }
 
     // Show new player on join menu
-    public void ShowNewPlayer(int index, Sprite avatar) {
-        playerAvatars[index].sprite = avatar;
-        players[index].SetActive(true);
+    public void ShowNewPlayer(Sprite avatar) {
+        JoinPlayer joinPlayer = Instantiate(joinPlayerPrefab);
+        joinPlayer.transform.SetParent(playersContainer.transform);
+        joinPlayer.SetAvatar(avatar);
     }
 
     // Hide saves menu

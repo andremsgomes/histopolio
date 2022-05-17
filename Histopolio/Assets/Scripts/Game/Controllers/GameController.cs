@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 public class GameController : MonoBehaviour
 {
     private Dictionary<int, Player> players = new Dictionary<int, Player>();
     private Dictionary<int, int> playerTurns = new Dictionary<int, int>();
-    private Color[] playerColors;
+    private Dictionary<int, int> playerScores = new Dictionary<int, int>();
+    private Dictionary<int, string> playerNames = new Dictionary<int, string>();
+    private Dictionary<int, Sprite> playerSprites = new Dictionary<int, Sprite>();
     private BoardController boardController;
     private CameraController cameraController;
     private WebSocketClientController webSocketClientController;
     private GameUI gameUI;
     private Player currentPlayer;
     private bool gameLoaded = false;
+    private string board = "Histopolio";
+    private string saveFile = "";
 
     [Header("Controllers")]
     [SerializeField] private QuestionController questionController;
@@ -23,14 +28,6 @@ public class GameController : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private Player playerPrefab;
-
-    [Header("Players' Colors")]
-    [SerializeField] private Color player1Color;
-    [SerializeField] private Color player2Color;
-    [SerializeField] private Color player3Color;
-    [SerializeField] private Color player4Color;
-    [SerializeField] private Color player5Color;
-    [SerializeField] private Color player6Color;
 
 
     // Start is called before the first frame update
@@ -61,8 +58,6 @@ public class GameController : MonoBehaviour
 
         mainMenuController.SetGameController(this);
         mainMenuController.SetMainMenuComponents();
-
-        SetColors();
     }
 
     // Spawn players on GO Tile
@@ -121,13 +116,14 @@ public class GameController : MonoBehaviour
     }
 
     // Save current player's position and points
-    public void SaveCurrentPlayer()
+    void SaveCurrentPlayer()
     {
         SavePlayerData savePlayerData = new SavePlayerData();
         savePlayerData.board = "Histopolio";
         savePlayerData.userId = currentPlayer.GetId();
         savePlayerData.points = currentPlayer.GetScore();
         savePlayerData.position = currentPlayer.GetTile().GetId();
+        savePlayerData.numTurns = currentPlayer.GetNumTurns() + 1;
         string message = JsonUtility.ToJson(savePlayerData);
 
         SendMessageToServer(message);
@@ -136,23 +132,10 @@ public class GameController : MonoBehaviour
     // Change current player
     public void ChangeCurrentPlayer()
     {
-        playerTurns[currentPlayer.GetId()] += 1;
+        currentPlayer.AddTurn();
+        playerTurns[currentPlayer.GetId()] = currentPlayer.GetNumTurns();
 
         SetCurrentPlayer(players[playerTurns.OrderBy(kvp => kvp.Value).First().Key]);
-    }
-
-    // Set colors array
-    void SetColors()
-    {
-        playerColors = new Color[6];
-
-        playerColors[0] = player1Color;
-        playerColors[1] = player2Color;
-        playerColors[2] = player3Color;
-        playerColors[3] = player4Color;
-        playerColors[4] = player5Color;
-        playerColors[5] = player6Color;
-        // TODO: add more colors
     }
 
     // Set current player
@@ -175,12 +158,16 @@ public class GameController : MonoBehaviour
     public void GiveCurrentPlayerPoints(int points)
     {
         currentPlayer.AddPoints(points);
+        playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
+
         gameUI.SetPlayerScore(currentPlayer.GetScore());
+        UpdateLeaderboard();
     }
 
     // Display finish turn button and hide dice button
     public void FinishTurn()
     {
+        SaveCurrentPlayer();
         gameUI.DisplayFinishTurn();
         // dice.AllowCoroutine();
     }
@@ -191,7 +178,10 @@ public class GameController : MonoBehaviour
         if (receivePoints)
         {
             currentPlayer.ReceivePointsFromTile();
+            playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
+
             gameUI.SetPlayerScore(currentPlayer.GetScore());
+            UpdateLeaderboard();
         }
 
         FinishTurn();
@@ -285,6 +275,7 @@ public class GameController : MonoBehaviour
     public void StartGame()
     {
         SpawnPlayers();
+        UpdateLeaderboard();
         gameUI.ShowHUD();
 
         Debug.Log("Game Started");
@@ -296,29 +287,33 @@ public class GameController : MonoBehaviour
         return gameLoaded;
     }
 
-    // Set game loaded
-    public void SetGameLoaded(bool gameLoaded)
-    {
-        this.gameLoaded = gameLoaded;
-    }
-
     // Add player to the game
-    public void AddPlayer(int id, string name, int points, int position, string avatarURL)
+    public void AddPlayer(int id, string name, int points, int position, int numTurns, string avatarURL)
     {
-        Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
+        if (currentPlayer != null && id == currentPlayer.GetId())
+        {
+            webSocketClientController.ResendLastMessage();
+        }
+        else
+        {
+            Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
-        IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
-        StartCoroutine(coroutine);
+            newPlayer.name = name;
+            newPlayer.SetGameController(this);
+            newPlayer.SetId(id);
+            newPlayer.SetName(name);
+            newPlayer.SetScore(points);
+            newPlayer.SetPosition(position);
+            newPlayer.SetNumTurns(numTurns);
 
-        newPlayer.name = name;
-        newPlayer.SetGameController(this);
-        newPlayer.SetId(id);
-        newPlayer.SetName(name);
-        newPlayer.SetScore(points);
-        newPlayer.SetPosition(position);
+            IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
+            StartCoroutine(coroutine);
 
-        players.Add(id, newPlayer);
-        playerTurns.Add(id, 0);
+            players[id] = newPlayer;
+            playerTurns[id] = newPlayer.GetNumTurns();
+            playerScores[id] = newPlayer.GetScore();
+            playerNames[id] = newPlayer.GetPlayerName();
+        }
     }
 
     // Remove player from the game
@@ -364,9 +359,11 @@ public class GameController : MonoBehaviour
     // Load data from save file
     public void LoadSaveFile(string fileName)
     {
+        saveFile = fileName;
+
         LoadFileData loadFileData = new LoadFileData();
-        loadFileData.board = "Histopolio";
-        loadFileData.file = fileName;
+        loadFileData.board = board;
+        loadFileData.file = saveFile;
         string message = JsonUtility.ToJson(loadFileData);
 
         SendMessageToServer(message);
@@ -396,7 +393,81 @@ public class GameController : MonoBehaviour
 
         Sprite sprite = Sprite.Create(www.texture, new Rect(startWidth, startHeight, endWidth, endHeight), new Vector2(0, 0));
 
+        playerSprites[player.GetId()] = sprite;
         player.SetAvatar(sprite);
-        mainMenuController.ShowNewPlayer(players.Count, sprite);
+        mainMenuController.ShowNewPlayer(sprite);
+    }
+
+    // Load leadeboard
+    public void LoadLeaderboard(JArray players) {
+        foreach (JObject player in players)
+        {
+            playerScores[(int)player["userId"]] = (int)player["points"];
+            playerNames[(int)player["userId"]] = (string)player["name"];
+        }
+
+        IEnumerator coroutine = LoadAvatars(players);
+        StartCoroutine(coroutine);
+    }
+
+    // Load avatars for leaderboard
+    IEnumerator LoadAvatars(JArray players)
+    {
+        List<KeyValuePair<int, int>> sortedScores = playerScores.OrderByDescending(kvp => kvp.Value).ToList();
+
+        int leaderboardLength = 3;
+        if (sortedScores.Count < leaderboardLength) leaderboardLength = sortedScores.Count;
+
+        foreach (JObject player in players)
+        {
+            for (int i = 0; i < leaderboardLength; i++) {
+                if ((int)player["userId"] == sortedScores[i].Key) {
+                    // Load avatar
+                    WWW www = new WWW((string)player["avatar"]);
+                    yield return www;
+
+                    // Square image
+                    float width = www.texture.width, height = www.texture.height;
+                    float startWidth = 0, startHeight = 0, endWidth = width, endHeight = height;
+
+                    if (width > height)
+                    {
+                        startWidth = (width - height) / 2;
+                        endWidth = width - (width - height) / 2;
+                    }
+
+                    if (height > width)
+                    {
+                        startHeight = (height - width) / 2;
+                        endHeight = height - (height - width) / 2;
+                    }
+
+                    Sprite sprite = Sprite.Create(www.texture, new Rect(startWidth, startHeight, endWidth, endHeight), new Vector2(0, 0));
+                    playerSprites[(int)player["userId"]] = sprite;
+
+                    break;
+                }
+            }
+        }
+
+        gameLoaded = true;
+
+        SimpleData simpleData = new SimpleData();
+        simpleData.type = "ready";
+        string message = JsonUtility.ToJson(simpleData);
+
+        SendMessageToServer(message);
+    }
+
+    // Update leaderboard
+    void UpdateLeaderboard() {
+        List<KeyValuePair<int, int>> sortedScores = playerScores.OrderByDescending(kvp => kvp.Value).ToList();
+
+        int leaderboardLength = 3;
+        if (sortedScores.Count < leaderboardLength) leaderboardLength = sortedScores.Count;
+
+        for (int i = 0; i < leaderboardLength; i++) {
+            gameUI.UpdateLeaderboard(i, playerSprites[sortedScores[i].Key], playerNames[sortedScores[i].Key], sortedScores[i].Value);
+        }
     }
 }

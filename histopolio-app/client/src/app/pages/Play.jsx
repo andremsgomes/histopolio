@@ -28,6 +28,7 @@ class Play extends Component {
     question: null,
     points: 0,
     position: 0,
+    rank: 1,
   };
 
   componentDidMount() {
@@ -91,6 +92,9 @@ class Play extends Component {
       case "question":
         this.handleQuestionReceived(dataReceived);
         break;
+      case "update":
+        this.handleUpdate(dataReceived);
+        break;
       default:
         console.log("Unknown message: " + dataReceived);
     }
@@ -150,6 +154,14 @@ class Play extends Component {
     });
 
     this.hideDice();
+  }
+
+  handleUpdate(dataReceived) {
+    this.setState({
+      points: dataReceived["points"],
+      position: dataReceived["position"],
+      rank: dataReceived["rank"],
+    });
   }
 
   handleAnswer(answerIndex) {
@@ -223,6 +235,7 @@ class Play extends Component {
               )}
             </div>
           )}
+          <p>Rank: {this.state.rank}</p>
         </div>
       );
     } else {
