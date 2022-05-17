@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 
 import api from "../api";
 
 function Home() {
-  const { user } = useAuth();
+  const user = JSON.parse(sessionStorage.getItem("user"));
 
   const [points, setPoints] = useState("");
 

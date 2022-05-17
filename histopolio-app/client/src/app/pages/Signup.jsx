@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useAuth } from "../context/AuthContext";
+import api from "../api";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -16,13 +16,9 @@ function Signup() {
     confirmPasswordErrorMessage,
     setConfirmPasswordErrorMessage,
   ] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-
-  const { errorMessage, signup } = useAuth();
+  const [alertMessage, setAlertMessage] = useState("");
 
   const handleClick = () => {
-    setShowAlert(false);
-
     let nameError = false;
     let emailError = false;
     let passwordError = false;
@@ -103,8 +99,19 @@ function Signup() {
     }
 
     if (!(nameError || emailError || passwordError || confirmPasswordError)) {
-      signup(name, avatarToSend, email, password);
-      setShowAlert(true);
+      const payload = { name, avatarToSend, email, password };
+
+      api
+        .signup(payload)
+        .then((res) => {
+          sessionStorage.setItem("user", JSON.stringify(res.data));
+          window.location.href = "/";
+        })
+        .catch((error) => {
+          if (error.response?.data?.message)
+            setAlertMessage(error.response.data.message);
+          else setAlertMessage(error.message);
+        });
     }
   };
 
@@ -131,9 +138,9 @@ function Signup() {
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
-        {showAlert && errorMessage.length > 0 && (
+        {alertMessage.length > 0 && (
           <div className="alert alert-danger" role="alert">
-            {errorMessage}
+            {alertMessage}
           </div>
         )}
         <div className="form-group row">

@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 2,
-      "tileId": 3,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 3,
       "tileId": 7,
       "question": "Pergunta com imagem",
@@ -401,6 +387,53 @@
         "Falso"
       ],
       "correctAnswer": 1
+    },
+    {
+      "id": 32,
+      "tileId": 3,
+      "question": "Qual das seguintes características é FALSA para o epitélio de transição",
+      "image": "",
+      "answers": [
+        "Todas as células contactam com o lúmen do órgão.",
+        "Todas as células estão assentes na membrana basal.",
+        "As células designam-se células em guarda chuva.",
+        "Existe nas vias urinárias.",
+        "A convexidade apical é característica."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 33,
+      "tileId": 3,
+      "question": "Qual das seguintes estruturas é visível em microscopia óptica?",
+      "image": "",
+      "answers": [
+        "Lâmina basal",
+        "Membrana basal"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 34,
+      "tileId": 3,
+      "question": "O epitélio de transição existe na transição entre órgãos.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 35,
+      "tileId": 3,
+      "question": "O epitélio pseudoestratificado pode ser cúbico.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
     }
   ]
 }

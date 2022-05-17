@@ -4,7 +4,6 @@ import { w3cwebsocket } from "websocket";
 import ReactDice from "react-dice-complete";
 import "react-dice-complete/dist/react-dice-complete.css";
 
-import AuthContext from "../context/AuthContext";
 import Wait from "../components/Wait";
 import Question from "../components/Question";
 
@@ -17,8 +16,6 @@ class Play extends Component {
     this.handleDiceClick = this.handleDiceClick.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
   }
-
-  static contextType = AuthContext;
 
   state = {
     gameStarted: false,
@@ -48,7 +45,7 @@ class Play extends Component {
   }
 
   sendIdentificationMessage() {
-    const { user } = this.context;
+    const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
       type: "identification",
@@ -60,7 +57,7 @@ class Play extends Component {
   }
 
   sendRequestGameStatusMessage() {
-    const { user } = this.context;
+    const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
       type: "game status",
@@ -121,7 +118,7 @@ class Play extends Component {
   }
 
   sendJoinGameMessage() {
-    const { user } = this.context;
+    const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
       type: "join game",
