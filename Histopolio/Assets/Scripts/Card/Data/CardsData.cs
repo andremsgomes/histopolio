@@ -3,5 +3,6 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class CardsData {
-    public List<CardData> cards = new List<CardData>();
+    public List<NoTileCardData> communityCards = new List<NoTileCardData>();
+    public List<TileCardData> cards = new List<TileCardData>();
 }

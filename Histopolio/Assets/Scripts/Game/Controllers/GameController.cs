@@ -188,7 +188,7 @@ public class GameController : MonoBehaviour
     }
 
     // Add card to tile
-    public void AddCard(CardData card)
+    public void AddCard(TileCardData card)
     {
         ((CardTile)boardController.GetTile(card.tileId)).AddCard(card);
     }
@@ -207,7 +207,7 @@ public class GameController : MonoBehaviour
     }
 
     // Show card menu
-    public void PrepareCard(CardData card)
+    public void PrepareCard(TileCardData card)
     {
         cardController.LoadCard(card);
         cardController.ShowCardMenu();
@@ -469,5 +469,10 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < leaderboardLength; i++) {
             gameUI.UpdateLeaderboard(i, playerSprites[sortedScores[i].Key], playerNames[sortedScores[i].Key], sortedScores[i].Value);
         }
+    }
+
+    // Show random community card
+    public void ShowCommunityCard() {
+        cardController.ShowCommunityCard();
     }
 }

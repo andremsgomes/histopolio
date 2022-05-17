@@ -8,9 +8,11 @@ router.post("/data/board/update", gameController.updateBoardData);
 router.get("/data/:board/:tile/questions", gameController.getQuestionsData);
 router.post("/data/questions/new", gameController.newQuestion);
 
+router.post("/data/cards/community_cards/new", gameController.newCommunityCard);
+
 router.get("/data/:board/saves", gameController.getSaves);
 
-router.get("/data/:board/:save", gameController.getSavedData);
+router.get("/data/:board/saves/:save", gameController.getSavedData);
 router.post("/data/save/update", gameController.updateSavedData);
 
 router.get("/data/:board/:save/:user_id", gameController.getPlayerSavedData);

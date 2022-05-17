@@ -115,7 +115,7 @@ async function checkWebSocktetsState() {
         ws.ping();
       }
     }
-  }, 1000);
+  }, 2000);
 }
 
 module.exports = {

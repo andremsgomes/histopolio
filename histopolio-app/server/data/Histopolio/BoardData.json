@@ -771,5 +771,12 @@
       "z": 1,
       "w": -4.371138828673793e-8
     }
-  }
+  },
+  "communityCards": [
+    {
+      "id": 1,
+      "info": "Estás no bom caminho para ser um expert e ter um lugar no HISTOPÓDIO! Na PRÓXIMA AULA terás de apresentar a primeira preparação da aula prática e receberás 20 PONTOS.",
+      "points": 0
+    }
+  ]
 }

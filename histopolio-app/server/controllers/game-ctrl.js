@@ -268,7 +268,7 @@ async function getBoardData(req, res) {
   if (!questions) {
     return res
       .status(404)
-      .send({ error: true, message: "O ficheiro não existe" });
+      .send({ error: true, message: "O ficheiro de perguntas não existe" });
   }
 
   boardData["groupPropertyTiles"].forEach((tile) => {
@@ -282,6 +282,16 @@ async function getBoardData(req, res) {
       }
     });
   });
+
+  const cards = readJSONFile(`./data/${board}/Cards.json`);
+
+  if (!cards) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro de cartas não existe" });
+  }
+
+  boardData["communityCards"] = cards["communityCards"];
 
   return res.status(200).json(boardData);
 }
@@ -328,7 +338,10 @@ function newQuestion(req, res) {
       .send({ error: true, message: "O ficheiro não existe" });
   }
 
-  const lastId = questions["questions"][questions["questions"].length - 1].id;
+  const lastId =
+    questions["questions"].length > 0
+      ? questions["questions"][questions["questions"].length - 1].id
+      : 0;
 
   const newQuestion = {
     id: lastId + 1,
@@ -342,6 +355,35 @@ function newQuestion(req, res) {
   questions["questions"].push(newQuestion);
 
   writeJSONFile(`./data/${board}/Questions.json`, questions);
+
+  return res.status(200).send();
+}
+
+function newCommunityCard(req, res) {
+  const { board, info, points } = req.body;
+
+  const cards = readJSONFile(`./data/${board}/Cards.json`);
+
+  if (!cards) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  const lastId =
+    cards["communityCards"].length > 0
+      ? cards["communityCards"][cards["communityCards"].length - 1].id
+      : 0;
+
+  const newCommunityCard = {
+    id: lastId + 1,
+    info: info,
+    points: points,
+  };
+
+  cards["communityCards"].push(newCommunityCard);
+
+  writeJSONFile(`./data/${board}/Cards.json`, cards);
 
   return res.status(200).send();
 }
@@ -367,4 +409,5 @@ module.exports = {
   updateBoardData,
   getQuestionsData,
   newQuestion,
+  newCommunityCard,
 };

@@ -8,6 +8,7 @@ public class CardController : MonoBehaviour
     private CardUI cardUI;
     private int points;
     private GameController gameController;
+    private List<NoTileCardData> communityCards = new List<NoTileCardData>();
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,12 @@ public class CardController : MonoBehaviour
 
     // Load cards from file
     public void LoadCards(CardsData cardsData) {
-        foreach (CardData card in cardsData.cards) {
+        foreach (NoTileCardData card in cardsData.communityCards)
+        {   
+            communityCards.Add(card);
+        }
+
+        foreach (TileCardData card in cardsData.cards) {
             gameController.AddCard(card);
         }
 
@@ -43,7 +49,7 @@ public class CardController : MonoBehaviour
     }
 
     // Load, set, and show info from card data
-    public void LoadCard(CardData cardData) {
+    public void LoadCard(TileCardData cardData) {
         points = cardData.points;
         cardUI.SetInfo(cardData.info);
     }
@@ -58,5 +64,15 @@ public class CardController : MonoBehaviour
     // Activate card menu
     public void ShowCardMenu() {
         cardUI.ShowCardMenu();
+    }
+
+    // Show random community card
+    public void ShowCommunityCard() {
+        int index = Random.Range(0, communityCards.Count);
+        
+        points = communityCards[index].points;
+        cardUI.SetInfo(communityCards[index].info);
+
+        ShowCardMenu();
     }
 }

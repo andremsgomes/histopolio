@@ -15,4 +15,9 @@ public class CommunityTile : CardTile
     {
         
     }
+
+    // Draw a random card
+    public override void PerformAction() {
+        gameController.ShowCommunityCard();
+    }
 }
