@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 1,
-      "tileId": 1,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 2,
       "tileId": 3,
       "question": "Pergunta com imagem",
@@ -312,11 +298,107 @@
     {
       "id": 23,
       "tileId": 1,
-      "question": "Segunda pergunta",
+      "question": "A coloração usada nesta lâmina é o...",
+      "image": "https://www.linkpicture.com/q/casa1pergunta1.png",
+      "answers": [
+        "PAS",
+        "Tricrómio de Masson",
+        "Azul de Alcião"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 24,
+      "tileId": 1,
+      "question": "Uma estrutura diz-se PATOGNOMÓNICA quando...",
+      "image": "https://www.linkpicture.com/q/casa1pergunta1.png",
+      "answers": [
+        "é uma característica Patológica de um orgão",
+        "é característica de um orgão, permitindo identificá-lo",
+        "é designada por um epónimo"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 25,
+      "tileId": 1,
+      "question": "Quantos tecidos fundamentais é que se consideram na Histologia?",
       "image": "",
       "answers": [
-        "Resposta 1",
-        "Resposta 2"
+        "4",
+        "21",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 26,
+      "tileId": 1,
+      "question": "O tipo de epitélio que se encontra nos órgãos depende da função desempenhada.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 27,
+      "tileId": 1,
+      "question": "Qual dos seguintes tecidos NÃO É um tecido fundamental.",
+      "image": "",
+      "answers": [
+        "Tecido Nervoso",
+        "Tecido Epitelial",
+        "Tecido Conjuntivo",
+        "Tecido ósseo"
+      ],
+      "correctAnswer": "4"
+    },
+    {
+      "id": 28,
+      "tileId": 1,
+      "question": "Na Hematoxilina-Eosina podemos dizer que os núcleos são acidófilos.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 29,
+      "tileId": 1,
+      "question": "Qual das seguintes colorações é útil para identificar glicoproteínas neutras?",
+      "image": "",
+      "answers": [
+        "Tricrómio de Masson",
+        "Negro do Sudão",
+        "Coloração com a Prata",
+        "PAS (Ácido Periódico de Schiff)"
+      ],
+      "correctAnswer": "4"
+    },
+    {
+      "id": 30,
+      "tileId": 1,
+      "question": "O termo CÉLULA foi definido por Antoni Van Leeuwenhoek",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 31,
+      "tileId": 1,
+      "question": "O termo CORPÚSCULO DE MALPIGHI é um epónimo?",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
       ],
       "correctAnswer": 1
     }
