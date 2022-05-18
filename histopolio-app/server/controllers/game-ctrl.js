@@ -260,8 +260,20 @@ async function getSaves(req, res) {
   const board = req.params.board;
 
   const saveFiles = getFilesFromDir(`./data/${board}/saves/`);
+  let saves = [];
 
-  return res.status(200).json(saveFiles);
+  saveFiles.forEach((file) => {
+    const players = readJSONFile(`./data/${board}/saves/${file}`);
+
+    const save = {
+      file: file,
+      numPlayers: players.length,
+    };
+
+    saves.push(save);
+  });
+
+  return res.status(200).json(saves);
 }
 
 async function getBoardData(req, res) {

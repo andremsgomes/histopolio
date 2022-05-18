@@ -33,10 +33,6 @@ public class Player : MonoBehaviour
             if (moveSpaces == 0)
             {
                 tile.PerformAction();
-
-                // TODO: mudar
-                if (GetTile().GetId() % 10 == 0)
-                    gameController.SendInfoShownMessageToServer();
             }
         }
     }
