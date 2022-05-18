@@ -499,4 +499,9 @@ public class GameController : MonoBehaviour
         cardController.HideCardMenu();
         FinishTurn();
     }
+
+    // Get board
+    public string GetBoard() {
+        return board;
+    }
 }

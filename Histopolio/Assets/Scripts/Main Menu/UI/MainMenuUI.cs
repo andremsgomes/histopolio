@@ -20,6 +20,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject joinMenu;
     [SerializeField] private GameObject playersContainer;
     [SerializeField] private JoinPlayer joinPlayerPrefab;
+    [SerializeField] private Text title;
 
     [Header("Saves Menu")]
     [SerializeField] private GameObject savesMenu;
@@ -99,7 +100,8 @@ public class MainMenuUI : MonoBehaviour
     }
 
     // Show join menu
-    public void ShowJoinMenu() {
+    public void ShowJoinMenu(string board, string save) {
         joinMenu.SetActive(true);
+        title.text = board + " - " + save;
     }
 }
