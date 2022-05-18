@@ -391,20 +391,6 @@
       "correctAnswer": "2"
     },
     {
-      "id": 37,
-      "tileId": 12,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 38,
       "tileId": 28,
       "question": "Pergunta com imagem",
@@ -593,6 +579,28 @@
         "Plasmócitos",
         "Mastócitos",
         "Macrófagos"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 54,
+      "tileId": 12,
+      "question": "A matriz extracelular no conjuntivo é composta por FIBRAS, COMPONENTE AMORFO e LÍQUIDO INTERSTICIAL.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 55,
+      "tileId": 12,
+      "question": "Há 3 tipos de fibras no conjuntivo: COLAGÉNIO, ELÁSTICAS e RETICULARES.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
       ],
       "correctAnswer": 1
     }
