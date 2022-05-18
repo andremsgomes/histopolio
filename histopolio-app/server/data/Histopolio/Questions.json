@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 4,
-      "tileId": 8,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 5,
       "tileId": 9,
       "question": "Pergunta com imagem",
@@ -506,6 +492,52 @@
         "Falso"
       ],
       "correctAnswer": 1
+    },
+    {
+      "id": 43,
+      "tileId": 8,
+      "question": "Qual das seguintes características NÃO se aplica nas células caliciformes",
+      "image": "",
+      "answers": [
+        "Glândula unicelular",
+        "Célula serosa",
+        "Presença de teca (área dilatada)",
+        "Glândula exócrina"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 44,
+      "tileId": 8,
+      "question": "Os crescentes de Gianuzzi são sempre serosos (ou seja, células serosas sobre células mucosas).",
+      "image": "https://www.linkpicture.com/q/casa8pergunta3.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 45,
+      "tileId": 8,
+      "question": "Relativamente às características tintoriais, as células apontadas são MUCOSAS.",
+      "image": "https://www.linkpicture.com/q/casa8pergunta4.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 46,
+      "tileId": 8,
+      "question": "As glândulas endócrinas apresentam canais.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
     }
   ]
 }
