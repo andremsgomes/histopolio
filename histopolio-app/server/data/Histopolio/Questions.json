@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 3,
-      "tileId": 7,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 4,
       "tileId": 8,
       "question": "Pergunta com imagem",
@@ -487,6 +473,39 @@
         "Resposta 5"
       ],
       "correctAnswer": "2"
+    },
+    {
+      "id": 40,
+      "tileId": 7,
+      "question": "O prato estriado existe em células pavimentosas.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 41,
+      "tileId": 7,
+      "question": "Os estereocílios existem no aparelho respiratório (arrastam o muco).",
+      "image": "https://www.linkpicture.com/q/casa7pergunta2.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 42,
+      "tileId": 7,
+      "question": "As estruturas apontadas são ácinos serosos.",
+      "image": "https://www.linkpicture.com/q/casa7pergunta4.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
     }
   ]
 }
