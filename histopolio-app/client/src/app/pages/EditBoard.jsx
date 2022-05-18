@@ -95,6 +95,7 @@ class EditBoard extends Component {
     });
 
     delete boardData.communityCards;
+    delete boardData.chanceCards;
 
     const payload = { boardData };
 
@@ -148,14 +149,16 @@ class EditBoard extends Component {
             >
               Guardar alterações
             </button>
-            <h4 className="mt-4">Cartas Decisões do Senado</h4>
+            <h4 className="mt-4">Cartas</h4>
             {this.state.board.communityCards.length > 0 && (
               <table className="table table-hover mt-3">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Pontos imediatos</th>
+                    <th scope="col">Mover</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                   </tr>
@@ -165,8 +168,27 @@ class EditBoard extends Component {
                     return (
                       <tr>
                         <th scope="row">{card.id}</th>
+                        <td>Decisão do Senado</td>
                         <td>{card.info}</td>
                         <td>{card.points}</td>
+                        <td>{card.move}</td>
+                        <td>
+                          <FontAwesomeIcon icon={faPencil} />
+                        </td>
+                        <td>
+                          <FontAwesomeIcon icon={faTrashCan} />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                  {this.state.board.chanceCards.map((card) => {
+                    return (
+                      <tr>
+                        <th scope="row">{card.id}</th>
+                        <td>Sorte</td>
+                        <td>{card.info}</td>
+                        <td>{card.points}</td>
+                        <td>{card.move}</td>
                         <td>
                           <FontAwesomeIcon icon={faPencil} />
                         </td>
@@ -183,7 +205,7 @@ class EditBoard extends Component {
               to={
                 "/admin/" +
                 this.props.params.board +
-                "/cards/community_cards/new"
+                "/cards/deck/new"
               }
               style={{ textDecoration: "none" }}
             >

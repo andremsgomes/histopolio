@@ -15,4 +15,9 @@ public class ChanceTile : CardTile
     {
         
     }
+
+    // Draw a random card
+    public override void PerformAction() {
+        gameController.ShowChanceCard();
+    }
 }

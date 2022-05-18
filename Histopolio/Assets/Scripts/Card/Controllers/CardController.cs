@@ -7,8 +7,10 @@ public class CardController : MonoBehaviour
 {
     private CardUI cardUI;
     private int points;
+    private int move = 0;
     private GameController gameController;
     private List<NoTileCardData> communityCards = new List<NoTileCardData>();
+    private List<NoTileCardData> chanceCards = new List<NoTileCardData>();
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,11 @@ public class CardController : MonoBehaviour
             communityCards.Add(card);
         }
 
+        foreach (NoTileCardData card in cardsData.chanceCards)
+        {   
+            chanceCards.Add(card);
+        }
+
         foreach (TrainCardData card in cardsData.trainCards)
         {
             gameController.AddCard(card);
@@ -52,6 +59,7 @@ public class CardController : MonoBehaviour
     // Load, set, and show info from card data
     public void LoadCard(TrainCardData cardData) {
         points = cardData.points;
+        move = 0;
         cardUI.SetInfo(cardData.info);
     }
 
@@ -59,7 +67,11 @@ public class CardController : MonoBehaviour
     public void Continue() {
         gameController.GiveCurrentPlayerPoints(points);
         gameController.SendInfoShownMessageToServer();
-        gameController.FinishTurn();
+
+        if (move == 0)
+            gameController.FinishTurn();
+        else
+            gameController.MovePlayer(move);
     }
 
     // Activate card menu
@@ -77,7 +89,19 @@ public class CardController : MonoBehaviour
         int index = Random.Range(0, communityCards.Count);
         
         points = communityCards[index].points;
+        move = communityCards[index].move;
         cardUI.SetInfo(communityCards[index].info);
+
+        ShowCardMenu(true);
+    }
+
+    // Show random chance card
+    public void ShowChanceCard() {
+        int index = Random.Range(0, chanceCards.Count);
+        
+        points = chanceCards[index].points;
+        move = chanceCards[index].move;
+        cardUI.SetInfo(chanceCards[index].info);
 
         ShowCardMenu(true);
     }

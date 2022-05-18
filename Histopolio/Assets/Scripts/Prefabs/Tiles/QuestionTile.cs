@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public abstract class QuestionTile : Tile
+public abstract class QuestionTile : PointsTile
 {
-    protected int points;
     private List<QuestionData> questions = new List<QuestionData>();
-    [SerializeField] protected Text pointsText;
-
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +24,6 @@ public abstract class QuestionTile : Tile
         
         gameController.PrepareQuestion(questions[index]);
     }
-
-    // Set points
-    public abstract void SetPoints(int points);
 
     // Get points
     public int GetPoints() {

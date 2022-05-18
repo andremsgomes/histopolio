@@ -326,6 +326,7 @@ async function getBoardData(req, res) {
   });
 
   boardData["communityCards"] = cards["communityCards"];
+  boardData["chanceCards"] = cards["chanceCards"];
 
   return res.status(200).json(boardData);
 }
@@ -393,8 +394,8 @@ function newQuestion(req, res) {
   return res.status(200).send();
 }
 
-function newCommunityCard(req, res) {
-  const { board, info, points } = req.body;
+function newDeckCard(req, res) {
+  const { board, deck, info, points, move } = req.body;
 
   const cards = readJSONFile(`./data/${board}/Cards.json`);
 
@@ -405,17 +406,16 @@ function newCommunityCard(req, res) {
   }
 
   const lastId =
-    cards["communityCards"].length > 0
-      ? cards["communityCards"][cards["communityCards"].length - 1].id
-      : 0;
+    cards[deck].length > 0 ? cards[deck][cards[deck].length - 1].id : 0;
 
-  const newCommunityCard = {
+  const newCard = {
     id: lastId + 1,
     info: info,
     points: points,
+    move: move,
   };
 
-  cards["communityCards"].push(newCommunityCard);
+  cards[deck].push(newCard);
 
   writeJSONFile(`./data/${board}/Cards.json`, cards);
 
@@ -498,7 +498,7 @@ module.exports = {
   updateBoardData,
   getQuestionsData,
   newQuestion,
-  newCommunityCard,
+  newDeckCard,
   getTrainCardsData,
   newTrainCard,
 };

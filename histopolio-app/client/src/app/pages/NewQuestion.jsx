@@ -149,7 +149,7 @@ class NewQuestion extends Component {
             <div className="col-sm-10">
               <select
                 class="form-select"
-                name="correcAnswer"
+                name="correctAnswer"
                 onChange={this.handleSelectChange}
               >
                 {this.state.answers.map((_, i) => {

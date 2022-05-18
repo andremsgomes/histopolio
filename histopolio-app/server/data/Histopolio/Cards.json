@@ -3,7 +3,16 @@
     {
       "id": 1,
       "info": "Estás no bom caminho para ser um expert e ter um lugar no HISTOPÓDIO! Na PRÓXIMA AULA terás de apresentar a primeira preparação da aula prática e receberás 20 PONTOS.",
-      "points": 0
+      "points": 0,
+      "move": 0
+    }
+  ],
+  "chanceCards": [
+    {
+      "id": 1,
+      "info": "Por sempre devolveres os livros a tempo, a biblioteca decidiu recompensar-te! Recebe 25 PONTOS e avança DUAS casas.",
+      "points": "25",
+      "move": "2"
     }
   ],
   "trainCards": [

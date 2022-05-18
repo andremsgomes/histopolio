@@ -8,7 +8,7 @@ router.post("/data/board/update", gameController.updateBoardData);
 router.get("/data/:board/:tile/questions", gameController.getQuestionsData);
 router.post("/data/questions/new", gameController.newQuestion);
 
-router.post("/data/cards/community_cards/new", gameController.newCommunityCard);
+router.post("/data/cards/deck/new", gameController.newDeckCard);
 
 router.get("/data/:board/:tile/train_cards", gameController.getTrainCardsData);
 router.post("/data/cards/train_cards/new", gameController.newTrainCard);

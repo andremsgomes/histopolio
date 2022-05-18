@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour
         return GetTile(currenTileId + 1);
     }
 
-    // Move player after rolled dice
+    // Move player after rolled dice or drawn card
     public void MovePlayer(int diceResult)
     {
         currentPlayer.Move(diceResult);
@@ -481,6 +481,11 @@ public class GameController : MonoBehaviour
     // Show random community card
     public void ShowCommunityCard() {
         cardController.ShowCommunityCard();
+    }
+
+    // Show random chance card
+    public void ShowChanceCard() {
+        cardController.ShowChanceCard();
     }
 
     // Hide card menu
