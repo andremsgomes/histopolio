@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 5,
-      "tileId": 9,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 6,
       "tileId": 11,
       "question": "Pergunta com imagem",
@@ -538,6 +524,44 @@
         "Falso"
       ],
       "correctAnswer": "2"
+    },
+    {
+      "id": 47,
+      "tileId": 9,
+      "question": "Qual das seguintes características é FALSA para as células serosas.",
+      "image": "",
+      "answers": [
+        "Produção de fluido seroso, rico em proteínas",
+        "Núcleo achatado contra a base da célula",
+        "Citoplasma com abundante retículo endoplasmático rugoso",
+        "Citoplasma corado com tonalidade eosinófila",
+        "Organização tridimensional em ácinos"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 48,
+      "tileId": 9,
+      "question": "Uma glândula cujo canal se divida diz-se RAMIFICADA.",
+      "image": "https://www.linkpicture.com/q/casa9pergunta3.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 49,
+      "tileId": 9,
+      "question": "Atendendo à imagem e às estruturas apontadas, estamos a ver uma gândula",
+      "image": "https://www.linkpicture.com/q/casa9pergunta4.png",
+      "answers": [
+        "composta ramificada",
+        "simples não ramificada",
+        "composta não ramificada",
+        "simples ramificada"
+      ],
+      "correctAnswer": 1
     }
   ]
 }
