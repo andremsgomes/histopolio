@@ -173,9 +173,9 @@ public class GameController : MonoBehaviour
     }
 
     // FinishQuestion is called after player answers question
-    public void FinishQuestion(bool receivePoints)
+    public void FinishQuestion(bool correctAnswer)
     {
-        if (receivePoints)
+        if ((((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer))
         {
             currentPlayer.ReceivePointsFromTile();
             playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
@@ -196,7 +196,7 @@ public class GameController : MonoBehaviour
     // Add question to tile
     public void AddQuestion(QuestionData question)
     {
-        ((GroupPropertyTile)boardController.GetTile(question.tileId)).AddQuestion(question);
+        ((QuestionTile)boardController.GetTile(question.tileId)).AddQuestion(question);
     }
 
     // Load question to send to server

@@ -1,33 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PayTile : CardTile
+public class PayTile : QuestionTile
 {
-    private int points;
-    [SerializeField] private Text pointsText;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Set points
-    public void SetPoints(int points) {
-        this.points = points;
+    public override void SetPoints(int points) {
+        this.points = -1*points;
         pointsText.text = "- " + points;
-    }
-
-    // Get points
-    public int GetPoints() {
-        return points;
     }
 }

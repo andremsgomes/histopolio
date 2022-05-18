@@ -297,7 +297,7 @@
       "id": 24,
       "tileId": 1,
       "question": "Uma estrutura diz-se PATOGNOMÓNICA quando...",
-      "image": "https://www.linkpicture.com/q/casa1pergunta1.png",
+      "image": "https://www.linkpicture.com/q/casa1pergunta2.png",
       "answers": [
         "é uma característica Patológica de um orgão",
         "é característica de um orgão, permitindo identificá-lo",
@@ -432,6 +432,59 @@
       "answers": [
         "Verdadeiro",
         "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 36,
+      "tileId": 4,
+      "question": "O epitélio caracteriza-se por ter abundante matriz extracelular.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 37,
+      "tileId": 12,
+      "question": "Pergunta com imagem",
+      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
+      "answers": [
+        "Resposta 1",
+        "Resposta muito muito muito muitooooo muito longa 2",
+        "Resposta 3",
+        "Resposta 4",
+        "Resposta 5"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 38,
+      "tileId": 28,
+      "question": "Pergunta com imagem",
+      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
+      "answers": [
+        "Resposta 1",
+        "Resposta muito muito muito muitooooo muito longa 2",
+        "Resposta 3",
+        "Resposta 4",
+        "Resposta 5"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 39,
+      "tileId": 38,
+      "question": "Pergunta com imagem",
+      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
+      "answers": [
+        "Resposta 1",
+        "Resposta muito muito muito muitooooo muito longa 2",
+        "Resposta 3",
+        "Resposta 4",
+        "Resposta 5"
       ],
       "correctAnswer": "2"
     }

@@ -275,10 +275,20 @@ async function getBoardData(req, res) {
     tile["questions"] = 0;
   });
 
+  boardData["payTiles"].forEach((tile) => {
+    tile["questions"] = 0;
+  });
+
   questions["questions"].forEach((question) => {
     boardData["groupPropertyTiles"].forEach((tile) => {
       if (question["tileId"] === tile["id"]) {
-        tile["questions"] += 1;
+        tile["questions"]++;
+      }
+    });
+
+    boardData["payTiles"].forEach((tile) => {
+      if (question["tileId"] === tile["id"]) {
+        tile["questions"]++;
       }
     });
   });

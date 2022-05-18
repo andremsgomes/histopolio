@@ -23,26 +23,6 @@
       "points": 0
     },
     {
-      "tileId": 4,
-      "info": "Este não é o teu dia! O pagamento do seguro escolar vai levar-te 10 pontos!",
-      "points": -10
-    },
-    {
-      "tileId": 12,
-      "info": "Info Test",
-      "points": -10
-    },
-    {
-      "tileId": 28,
-      "info": "Info Test",
-      "points": -15
-    },
-    {
-      "tileId": 38,
-      "info": "Info Test",
-      "points": -10
-    },
-    {
       "tileId": 5,
       "info": "Assiste ao vídeo sobre o tecido epitelial para ganhares 20 pontos.",
       "points": 20
