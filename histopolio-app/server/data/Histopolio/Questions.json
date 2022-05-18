@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 6,
-      "tileId": 11,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 7,
       "tileId": 13,
       "question": "Pergunta com imagem",
@@ -560,6 +546,53 @@
         "simples não ramificada",
         "composta não ramificada",
         "simples ramificada"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 50,
+      "tileId": 11,
+      "question": "Os mastócitos são originados a partir dos basófilos do sangue.",
+      "image": "https://www.linkpicture.com/q/casa11pergunta1.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 51,
+      "tileId": 11,
+      "question": "Qual das seguintes colorações é específica para os mastócitos (metacromasia)?",
+      "image": "https://www.linkpicture.com/q/casa11pergunta2.png",
+      "answers": [
+        "Azul de Toluidina",
+        "Hematoxilina de Mallory",
+        "Oil Red",
+        "Azul de alcião"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 52,
+      "tileId": 11,
+      "question": "Os mastócitos estão envolvidos em respostas alérgicas.",
+      "image": "https://www.linkpicture.com/q/casa11pergunta3.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 53,
+      "tileId": 11,
+      "question": "Que células se encontram na imagem?",
+      "image": "https://www.linkpicture.com/q/casa11pergunta4.png",
+      "answers": [
+        "Plasmócitos",
+        "Mastócitos",
+        "Macrófagos"
       ],
       "correctAnswer": 1
     }
