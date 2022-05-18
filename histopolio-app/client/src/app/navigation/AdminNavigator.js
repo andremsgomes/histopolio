@@ -8,6 +8,8 @@ import EditBoard from "../pages/EditBoard";
 import EditQuestions from "../pages/EditQuestions";
 import NewQuestion from "../pages/NewQuestion";
 import NewCommunityCard from "../pages/NewCommunityCard";
+import EditTrainCards from "../pages/EditTrainCards";
+import NewTrainCard from "../pages/NewTrainCard";
 
 function AdminNavigator() {
   return (
@@ -17,6 +19,8 @@ function AdminNavigator() {
       <Route path="/admin/:board/:tile/questions" element={<EditQuestions />} />
       <Route path="/admin/:board/:tile/questions/new" element={<NewQuestion />} />
       <Route path="/admin/:board/cards/community_cards/new" element={<NewCommunityCard />} />
+      <Route path="/admin/:board/:tile/train_cards" element={<EditTrainCards />} />
+      <Route path="/admin/:board/:tile/train_cards/new" element={<NewTrainCard />} />
       <Route path="/admin/:board/:save" element={<EditSave />} />
       <Route path="/*" element={<Navigate replace to="/admin" />} />
     </Routes>

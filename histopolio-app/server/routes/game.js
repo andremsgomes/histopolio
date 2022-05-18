@@ -10,11 +10,14 @@ router.post("/data/questions/new", gameController.newQuestion);
 
 router.post("/data/cards/community_cards/new", gameController.newCommunityCard);
 
+router.get("/data/:board/:tile/train_cards", gameController.getTrainCardsData);
+router.post("/data/cards/train_cards/new", gameController.newTrainCard);
+
 router.get("/data/:board/saves", gameController.getSaves);
 
 router.get("/data/:board/saves/:save", gameController.getSavedData);
 router.post("/data/save/update", gameController.updateSavedData);
 
-router.get("/data/:board/:save/:user_id", gameController.getPlayerSavedData);
+router.get("/data/:board/:save/:user_id/player", gameController.getPlayerSavedData);
 
 module.exports = router;

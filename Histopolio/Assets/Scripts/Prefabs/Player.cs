@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
     // Receive points from current tile
     public void ReceivePointsFromTile()
     {
-        score += ((QuestionTile)tile).GetPoints();
+        score += ((PointsTile)tile).GetPoints();
     }
 
     // Set points

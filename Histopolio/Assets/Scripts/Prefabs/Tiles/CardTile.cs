@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CardTile : Tile
 {
-    private List<TileCardData> cards = new List<TileCardData>();
+    private List<TrainCardData> cards = new List<TrainCardData>();
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public abstract class CardTile : Tile
     }
 
     // Add card
-    public void AddCard(TileCardData card) {
+    public void AddCard(TrainCardData card) {
         cards.Add(card);
     }
 
@@ -28,7 +28,5 @@ public abstract class CardTile : Tile
         int index = Random.Range(0,cards.Count);
         
         gameController.PrepareCard(cards[index]);
-        
-        // cards.RemoveAt(index);       // TODO: load all questions again after all are removed
     }
 }

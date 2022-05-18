@@ -199,6 +199,18 @@ async function sendUpdateToFrontend(frontendWSs) {
   });
 }
 
+async function sendContentToFrontend(frontendWS, dataReceived) {
+  if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
+    frontendWS.send(JSON.stringify(dataReceived));
+  }
+}
+
+async function sendContentViewedToUnity(unityWS, dataReceived) {
+  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
+    unityWS.send(JSON.stringify(dataReceived));
+  }
+}
+
 function getPlayerData(file, userId) {
   const savedData = readJSONFile(file);
 
@@ -301,6 +313,18 @@ async function getBoardData(req, res) {
       .send({ error: true, message: "O ficheiro de cartas não existe" });
   }
 
+  boardData["stationTiles"].forEach((tile) => {
+    tile["cards"] = 0;
+  });
+
+  cards["trainCards"].forEach((card) => {
+    boardData["stationTiles"].forEach((tile) => {
+      if (card["tileId"] === tile["id"]) {
+        tile["cards"]++;
+      }
+    });
+  });
+
   boardData["communityCards"] = cards["communityCards"];
 
   return res.status(200).json(boardData);
@@ -398,6 +422,59 @@ function newCommunityCard(req, res) {
   return res.status(200).send();
 }
 
+async function getTrainCardsData(req, res) {
+  const board = req.params.board;
+  const tileId = parseInt(req.params.tile);
+
+  const cards = readJSONFile(`./data/${board}/Cards.json`);
+
+  if (!cards) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  let tileCards = [];
+
+  cards["trainCards"].forEach((card) => {
+    if (card["tileId"] === tileId) {
+      tileCards.push(card);
+    }
+  });
+
+  return res.status(200).json(tileCards);
+}
+
+function newTrainCard(req, res) {
+  const { board, tileId, info, content } = req.body;
+
+  const cards = readJSONFile(`./data/${board}/Cards.json`);
+
+  if (!cards) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  const lastId =
+    cards["trainCards"].length > 0
+      ? cards["trainCards"][cards["trainCards"].length - 1].id
+      : 0;
+
+  const newTrainCard = {
+    id: lastId + 1,
+    tileId: tileId,
+    info: info,
+    content: content,
+  };
+
+  cards["trainCards"].push(newTrainCard);
+
+  writeJSONFile(`./data/${board}/Cards.json`, cards);
+
+  return res.status(200).send();
+}
+
 module.exports = {
   sendQuestionToFrontend,
   sendAnswerToUnity,
@@ -411,6 +488,8 @@ module.exports = {
   sendInfoShownToFrontend,
   loadGame,
   saveGame,
+  sendContentToFrontend,
+  sendContentViewedToUnity,
   getPlayerSavedData,
   getSavedData,
   updateSavedData,
@@ -420,4 +499,6 @@ module.exports = {
   getQuestionsData,
   newQuestion,
   newCommunityCard,
+  getTrainCardsData,
+  newTrainCard,
 };

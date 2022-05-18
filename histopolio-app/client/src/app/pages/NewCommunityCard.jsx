@@ -57,7 +57,7 @@ class NewCommunityCard extends Component {
         <div className="col-sm-12 col-md-8 col-lg-6 mx-auto">
           <div className="form-group row">
             <label for="info" className="col-sm-2 col-form-label">
-              Informação
+              Descrição
             </label>
             <div className="col-sm-10">
               <textarea

@@ -13,7 +13,7 @@ export const questionsData = (board, tile) =>
 export const savedData = (board, save) =>
   api.get(`/api/game/data/${board}/saves/${save}`);
 export const playerData = (board, save, userId) =>
-  api.get(`/api/game/data/${board}/${save}/${userId}`);
+  api.get(`/api/game/data/${board}/${save}/${userId}/player`);
 export const updateSave = (payload) =>
   api.post("api/game/data/save/update", payload);
 export const updateBoard = (payload) =>
@@ -22,6 +22,10 @@ export const newQuestion = (payload) =>
   api.post("api/game/data/questions/new", payload);
 export const newCommunityCard = (payload) =>
   api.post("api/game/data/cards/community_cards/new", payload);
+export const trainCardsData = (board, tile) =>
+  api.get(`/api/game/data/${board}/${tile}/train_cards`);
+export const newTrainCard = (payload) =>
+  api.post("api/game/data/cards/train_cards/new", payload);
 
 const apiRoutes = {
   login,
@@ -35,6 +39,8 @@ const apiRoutes = {
   updateBoard,
   newQuestion,
   newCommunityCard,
+  trainCardsData,
+  newTrainCard,
 };
 
 export default apiRoutes;

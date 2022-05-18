@@ -188,9 +188,9 @@ public class GameController : MonoBehaviour
     }
 
     // Add card to tile
-    public void AddCard(TileCardData card)
+    public void AddCard(TrainCardData card)
     {
-        ((CardTile)boardController.GetTile(card.tileId)).AddCard(card);
+        ((StationTile)boardController.GetTile(card.tileId)).AddCard(card);
     }
 
     // Add question to tile
@@ -207,10 +207,17 @@ public class GameController : MonoBehaviour
     }
 
     // Show card menu
-    public void PrepareCard(TileCardData card)
+    public void PrepareCard(TrainCardData card)
     {
+        ContentData contentData = new ContentData();
+        contentData.userId = currentPlayer.GetId();
+        contentData.content = card.content;
+        string message = JsonUtility.ToJson(contentData);
+
+        SendMessageToServer(message);
+
         cardController.LoadCard(card);
-        cardController.ShowCardMenu();
+        cardController.ShowCardMenu(false);
     }
 
     // // Show dice
@@ -474,5 +481,17 @@ public class GameController : MonoBehaviour
     // Show random community card
     public void ShowCommunityCard() {
         cardController.ShowCommunityCard();
+    }
+
+    // Hide card menu
+    public void GiveCardPoints() {
+        currentPlayer.ReceivePointsFromTile();
+        playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
+
+        gameUI.SetPlayerScore(currentPlayer.GetScore());
+        UpdateLeaderboard();
+
+        cardController.HideCardMenu();
+        FinishTurn();
     }
 }

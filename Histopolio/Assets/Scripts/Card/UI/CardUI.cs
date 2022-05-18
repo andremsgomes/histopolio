@@ -8,6 +8,7 @@ public class CardUI : MonoBehaviour
     private CardController cardController;
 
     [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject continueButton;
     [SerializeField] private Text info;
 
     // Start is called before the first frame update
@@ -39,7 +40,13 @@ public class CardUI : MonoBehaviour
     }
 
     // Show card menu
-    public void ShowCardMenu() {
+    public void ShowCardMenu(bool showButton) {
         menu.SetActive(true);
+        continueButton.SetActive(showButton);
+    }
+
+    // Hide card menu
+    public void HideCardMenu() {
+        menu.SetActive(false);
     }
 }

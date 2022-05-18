@@ -15,6 +15,7 @@ class Play extends Component {
 
     this.handleDiceClick = this.handleDiceClick.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
+    this.handleContentClick = this.handleContentClick.bind(this);
   }
 
   state = {
@@ -23,6 +24,7 @@ class Play extends Component {
     rollTime: 0,
     diceRolled: false,
     question: null,
+    content: "",
     points: 0,
     position: 0,
     rank: 1,
@@ -92,6 +94,9 @@ class Play extends Component {
       case "update":
         this.handleUpdate(dataReceived);
         break;
+      case "content":
+        this.handleContentReceived(dataReceived);
+        break;
       default:
         console.log("Unknown message: " + dataReceived);
     }
@@ -112,6 +117,7 @@ class Play extends Component {
     } else {
       this.setState({
         question: null,
+        content: "",
         showDice: false,
       });
     }
@@ -161,6 +167,14 @@ class Play extends Component {
     });
   }
 
+  handleContentReceived(dataReceived) {
+    this.setState({
+      content: dataReceived["content"],
+    });
+
+    this.hideDice();
+  }
+
   handleAnswer(answerIndex) {
     this.setState({ question: null });
 
@@ -169,6 +183,16 @@ class Play extends Component {
     const dataToSend = {
       type: "answer",
       answer: answer,
+    };
+
+    this.sendToServer(JSON.stringify(dataToSend));
+  }
+
+  handleContentClick() {
+    this.setState({ content: "" });
+
+    const dataToSend = {
+      type: "content viewed",
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -228,7 +252,24 @@ class Play extends Component {
                   />
                 </div>
               ) : (
-                <h2>Espera pela tua vez!</h2>
+                <div className="text-center">
+                  {this.state.content.length > 0 ? (
+                    <a
+                      href={this.state.content}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <button
+                        className="btn btn-primary btn-lg mt-4"
+                        onClick={this.handleContentClick}
+                      >
+                        Ver conteúdo
+                      </button>
+                    </a>
+                  ) : (
+                    <h2>Espera pela tua vez!</h2>
+                  )}
+                </div>
               )}
             </div>
           )}

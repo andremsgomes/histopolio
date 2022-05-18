@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import TilesTable from "../components/TilesTable";
 
 function withParams(Component) {
   return (props) => <Component {...props} params={useParams()} />;
@@ -85,6 +86,16 @@ class EditBoard extends Component {
       delete tile.questions;
     });
 
+    boardData.payTiles.forEach((tile) => {
+      delete tile.questions;
+    });
+
+    boardData.stationTiles.forEach((tile) => {
+      delete tile.cards;
+    });
+
+    delete boardData.communityCards;
+
     const payload = { boardData };
 
     api
@@ -101,104 +112,36 @@ class EditBoard extends Component {
         <h1>{this.props.params.board}</h1>
         {this.state.board && (
           <div>
-            <h4 className="mt-4">Casas de perguntas</h4>
-            <table className="table table-hover mt-3">
-              <thead>
-                <tr>
-                  <th scope="col">Posição</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Pontos</th>
-                  <th scope="col">Perguntas</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.board.groupPropertyTiles.map((tile) => {
-                  return (
-                    <tr>
-                      <th scope="row">{tile.id}</th>
-                      <td>
-                        <input
-                          id={"name" + tile.id}
-                          onChange={this.handleNameChange}
-                          type="text"
-                          value={tile.tileName}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          id={"points" + tile.id}
-                          onChange={this.handlePointsChange}
-                          type="number"
-                          value={tile.points}
-                        />
-                      </td>
-                      <td>
-                        <Link
-                          to={
-                            "/admin/" +
-                            this.props.params.board +
-                            "/" +
-                            tile.id +
-                            "/questions"
-                          }
-                        >
-                          {tile.questions} pergunta{tile.questions !== 1 && "s"}
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            <h4 className="mt-4">Casas de azar</h4>
-            <table className="table table-hover mt-3">
-              <thead>
-                <tr>
-                  <th scope="col">Posição</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Pontos a retirar</th>
-                  <th scope="col">Perguntas</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.board.payTiles.map((tile) => {
-                  return (
-                    <tr>
-                      <th scope="row">{tile.id}</th>
-                      <td>
-                        <input
-                          id={"name" + tile.id}
-                          onChange={this.handleNameChange}
-                          type="text"
-                          value={tile.tileName}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          id={"points" + tile.id}
-                          onChange={this.handlePointsChange}
-                          type="number"
-                          value={tile.points}
-                        />
-                      </td>
-                      <td>
-                        <Link
-                          to={
-                            "/admin/" +
-                            this.props.params.board +
-                            "/" +
-                            tile.id +
-                            "/questions"
-                          }
-                        >
-                          {tile.questions} pergunta{tile.questions !== 1 && "s"}
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <TilesTable
+              title="Casas de perguntas"
+              pointsCol="Pontos"
+              content="Perguntas"
+              tiles={this.state.board.groupPropertyTiles}
+              onNameChange={this.handleNameChange}
+              onPointsChange={this.handlePointsChange}
+              board={this.props.params.board}
+              contentLink="/questions"
+            />
+            <TilesTable
+              title="Casas de azar"
+              pointsCol="Pontos a retirar"
+              content="Perguntas"
+              tiles={this.state.board.payTiles}
+              onNameChange={this.handleNameChange}
+              onPointsChange={this.handlePointsChange}
+              board={this.props.params.board}
+              contentLink="/questions"
+            />
+            <TilesTable
+              title="Estações de treino"
+              pointsCol="Pontos"
+              content="Cartas"
+              tiles={this.state.board.stationTiles}
+              onNameChange={this.handleNameChange}
+              onPointsChange={this.handlePointsChange}
+              board={this.props.params.board}
+              contentLink="/train_cards"
+            />
             <button
               className="btn btn-lg btn-primary my-4"
               onClick={this.handleClick}
@@ -211,7 +154,7 @@ class EditBoard extends Component {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Info</th>
+                    <th scope="col">Descrição</th>
                     <th scope="col">Pontos imediatos</th>
                     <th scope="col"></th>
                     <th scope="col"></th>

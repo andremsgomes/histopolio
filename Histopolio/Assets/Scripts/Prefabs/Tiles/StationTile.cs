@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StationTile : CardTile
+public class StationTile : PointsTile
 {
-    private int points;
-    [SerializeField] private Text pointsText;
+    private List<TrainCardData> cards = new List<TrainCardData>();
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +20,20 @@ public class StationTile : CardTile
     }
 
     // Set points
-    public void SetPoints(int points) {
+    public override void SetPoints(int points) {
         this.points = points;
         pointsText.text = "+ " + points;
     }
 
-    // Get points
-    public int GetPoints() {
-        return points;
+    // Draw a random card
+    public override void PerformAction() {
+        int index = Random.Range(0,cards.Count);
+        
+        gameController.PrepareCard(cards[index]);
+    }
+
+    // Add card
+    public void AddCard(TrainCardData card) {
+        cards.Add(card);
     }
 }

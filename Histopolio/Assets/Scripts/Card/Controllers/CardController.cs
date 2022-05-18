@@ -41,7 +41,8 @@ public class CardController : MonoBehaviour
             communityCards.Add(card);
         }
 
-        foreach (TileCardData card in cardsData.cards) {
+        foreach (TrainCardData card in cardsData.trainCards)
+        {
             gameController.AddCard(card);
         }
 
@@ -49,7 +50,7 @@ public class CardController : MonoBehaviour
     }
 
     // Load, set, and show info from card data
-    public void LoadCard(TileCardData cardData) {
+    public void LoadCard(TrainCardData cardData) {
         points = cardData.points;
         cardUI.SetInfo(cardData.info);
     }
@@ -62,8 +63,13 @@ public class CardController : MonoBehaviour
     }
 
     // Activate card menu
-    public void ShowCardMenu() {
-        cardUI.ShowCardMenu();
+    public void ShowCardMenu(bool showButton) {
+        cardUI.ShowCardMenu(showButton);
+    }
+
+    // Deactivate card menu
+    public void HideCardMenu() {
+        cardUI.HideCardMenu();
     }
 
     // Show random community card
@@ -73,6 +79,12 @@ public class CardController : MonoBehaviour
         points = communityCards[index].points;
         cardUI.SetInfo(communityCards[index].info);
 
-        ShowCardMenu();
+        ShowCardMenu(true);
+    }
+
+    // Get points
+    public int GetPoints()
+    {
+        return points;
     }
 }

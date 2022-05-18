@@ -79,6 +79,9 @@ public class WebSocketClientController : MonoBehaviour
             case "players":
                 OnPlayersReceived(dataReceived);
                 break;
+            case "content viewed":
+                OnContentViewedReceived();
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -200,7 +203,12 @@ public class WebSocketClientController : MonoBehaviour
     // Resend last message sent
     public void ResendLastMessage()
     {
-        Debug.Log("This is the last message: " + lastMessage);
         SendMessage(lastMessage);
+    }
+
+    // OnContentViewedReceived is called when a player views the content sent
+    void OnContentViewedReceived()
+    {
+        gameController.GiveCardPoints();
     }
 }

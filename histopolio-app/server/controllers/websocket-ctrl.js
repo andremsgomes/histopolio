@@ -64,6 +64,15 @@ async function processMessage(ws, data) {
     case "save":
       gameController.saveGame(frontendWSs, dataReceived);
       break;
+    case "content":
+      gameController.sendContentToFrontend(
+        frontendWSs.get(dataReceived["userId"]),
+        dataReceived
+      );
+      break;
+    case "content viewed":
+      gameController.sendContentViewedToUnity(unityWS, dataReceived);
+      break;
     case "load game":
       gameController.loadGame(unityWS, dataReceived);
       break;
