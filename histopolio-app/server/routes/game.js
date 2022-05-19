@@ -18,6 +18,6 @@ router.get("/data/:board/saves", gameController.getSaves);
 router.get("/data/:board/saves/:save", gameController.getSavedData);
 router.post("/data/save/update", gameController.updateSavedData);
 
-router.get("/data/:board/:save/:user_id/player", gameController.getPlayerSavedData);
+router.get("/data/:board/:user_id/player", gameController.getPlayerSavedData);
 
 module.exports = router;

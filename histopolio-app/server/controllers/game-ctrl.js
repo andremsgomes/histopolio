@@ -219,18 +219,25 @@ function getPlayerData(file, userId) {
 
 async function getPlayerSavedData(req, res) {
   const board = req.params.board;
-  const save = req.params.save;
   const userId = req.params.user_id;
 
-  const player = getPlayerData(`./data/${board}/saves/${save}.json`, userId);
+  const saveFiles = getFilesFromDir(`./data/${board}/saves/`);
+  let saves = [];
 
-  if (!player) {
-    return res
-      .status(404)
-      .send({ error: true, message: "O utilizador nunca jogou" });
-  }
+  saveFiles.forEach((file) => {
+    const player = getPlayerData(`./data/${board}/saves/${file}`, userId);
 
-  return res.status(200).json(player);
+    if (player) {
+      const save = {
+        file: file.substring(0, file.indexOf(".json")),
+        player: player,
+      };
+
+      saves.push(save);
+    }
+  });
+
+  return res.status(200).json(saves);
 }
 
 async function getSavedData(req, res) {

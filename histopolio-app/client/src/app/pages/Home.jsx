@@ -7,18 +7,20 @@ import api from "../api";
 function Home() {
   const user = JSON.parse(sessionStorage.getItem("user"));
 
-  const [points, setPoints] = useState("");
+  const [saves, setSaves] = useState([]);
 
   useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
     api
-      .playerData("Histopolio", "Turma1", user.id)
+      .playerData("Histopolio", user.id)
       .then((res) => {
-        setPoints(res.data.points);
+        setSaves(res.data);
       })
       .catch((error) => {
         console.log(error.message);
       });
-  });
+  }, []);
 
   return (
     <div className="text-center">
@@ -28,7 +30,15 @@ function Home() {
           Jogar Histopólio
         </button>
       </Link>
-      <h3 className="mt-3">Os teus pontos: {points}</h3>
+      <div className="mt-2">
+        {saves.map((save) => {
+          return (
+            <h6>
+              {save.file}: {save.player.points} pontos
+            </h6>
+          );
+        })}
+      </div>
     </div>
   );
 }

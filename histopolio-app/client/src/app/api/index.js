@@ -12,8 +12,8 @@ export const questionsData = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/questions`);
 export const savedData = (board, save) =>
   api.get(`/api/game/data/${board}/saves/${save}`);
-export const playerData = (board, save, userId) =>
-  api.get(`/api/game/data/${board}/${save}/${userId}/player`);
+export const playerData = (board, userId) =>
+  api.get(`/api/game/data/${board}/${userId}/player`);
 export const updateSave = (payload) =>
   api.post("api/game/data/save/update", payload);
 export const updateBoard = (payload) =>
