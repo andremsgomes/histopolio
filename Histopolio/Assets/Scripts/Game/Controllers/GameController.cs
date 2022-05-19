@@ -497,15 +497,9 @@ public class GameController : MonoBehaviour
     }
 
     // Hide card menu
-    public void GiveCardPoints() {
-        currentPlayer.ReceivePointsFromTile();
-        playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
-
-        gameUI.SetPlayerScore(currentPlayer.GetScore());
-        UpdateLeaderboard();
-
+    public void ContinueTrainCard() {
         cardController.HideCardMenu();
-        FinishTurn();
+        cardController.Continue();
     }
 
     // Get board

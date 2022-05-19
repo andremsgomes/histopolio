@@ -420,7 +420,7 @@ function newQuestion(req, res) {
 }
 
 function newDeckCard(req, res) {
-  const { board, deck, info, points, move } = req.body;
+  const { board, deck, info, points, action, actionValue } = req.body;
 
   const cards = readJSONFile(`./data/${board}/Cards.json`);
 
@@ -437,7 +437,8 @@ function newDeckCard(req, res) {
     id: lastId + 1,
     info: info,
     points: points,
-    move: move,
+    action: action,
+    actionValue: actionValue,
   };
 
   cards[deck].push(newCard);

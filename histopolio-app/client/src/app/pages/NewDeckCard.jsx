@@ -14,7 +14,8 @@ class NewDeckCard extends Component {
     this.handleDeckChange = this.handleDeckChange.bind(this);
     this.handleInfoChange = this.handleInfoChange.bind(this);
     this.handlePointsChange = this.handlePointsChange.bind(this);
-    this.handleMoveChange = this.handleMoveChange.bind(this);
+    this.handleActionChange = this.handleActionChange.bind(this);
+    this.handleActionValueChange = this.handleActionValueChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -22,7 +23,8 @@ class NewDeckCard extends Component {
     deck: "communityCards",
     info: "",
     points: 0,
-    move: 0,
+    action: "none",
+    actionValue: "",
   };
 
   handleDeckChange(e) {
@@ -43,9 +45,25 @@ class NewDeckCard extends Component {
     });
   }
 
-  handleMoveChange(e) {
+  handleActionChange(e) {
     this.setState({
-      move: e.target.value,
+      action: e.target.value,
+    });
+
+    if (e.target.value === "none") {
+      this.setState({
+        actionValue: "",
+      });
+    } else {
+      this.setState({
+        actionValue: 0,
+      });
+    }
+  }
+
+  handleActionValueChange(e) {
+    this.setState({
+      actionValue: e.target.value,
     });
   }
 
@@ -56,9 +74,10 @@ class NewDeckCard extends Component {
     const deck = this.state.deck;
     const info = this.state.info;
     const points = this.state.points;
-    const move = this.state.move;
+    const action = this.state.action;
+    const actionValue = this.state.actionValue.toString();
 
-    const payload = { board, deck, info, points, move };
+    const payload = { board, deck, info, points, action, actionValue };
 
     api
       .newDeckCard(payload)
@@ -84,8 +103,18 @@ class NewDeckCard extends Component {
                 name="deck"
                 onChange={this.handleDeckChange}
               >
-                <option selected={this.state.deck === "communityCards"} value="communityCards">Decisão do Senado</option>
-                <option selected={this.state.deck === "chanceCards"} value="chanceCards">Sorte</option>
+                <option
+                  selected={this.state.deck === "communityCards"}
+                  value="communityCards"
+                >
+                  Decisão do Senado
+                </option>
+                <option
+                  selected={this.state.deck === "chanceCards"}
+                  value="chanceCards"
+                >
+                  Sorte
+                </option>
               </select>
             </div>
           </div>
@@ -120,20 +149,41 @@ class NewDeckCard extends Component {
             </div>
           </div>
           <div className="form-group row mt-4">
-            <label for="move" className="col-sm-2 col-form-label">
-              Mover (para mover para trás usar números negativos)
+            <label for="action" className="col-sm-2 col-form-label">
+              Ação
             </label>
             <div className="col-sm-10">
-              <input
-                type="number"
-                className="form-control"
-                id="moveInput"
-                name="move"
-                onChange={this.handleMoveChange}
-                value={this.state.move}
-              />
+              <select
+                class="form-select"
+                name="action"
+                onChange={this.handleActionChange}
+              >
+                <option selected={this.state.action === "none"} value="none">
+                  Sem ação
+                </option>
+                <option selected={this.state.action === "move"} value="move">
+                  Avançar
+                </option>
+              </select>
             </div>
           </div>
+          {this.state.action !== "none" && (
+            <div className="form-group row mt-4">
+              <label for="actionValue" className="col-sm-2 col-form-label">
+                Avançar (para recuar usar números negativos)
+              </label>
+              <div className="col-sm-10">
+                <input
+                  type="number"
+                  className="form-control"
+                  id="actionValueInput"
+                  name="actionValue"
+                  onChange={this.handleActionValueChange}
+                  value={this.state.actionValue}
+                />
+              </div>
+            </div>
+          )}
         </div>
         <div className="text-center mt-4">
           <button className="btn btn-lg btn-primary" onClick={this.handleClick}>

@@ -7,10 +7,11 @@ public class CardController : MonoBehaviour
 {
     private CardUI cardUI;
     private int points;
-    private int move = 0;
+    private string action;
+    private string actionValue;
     private GameController gameController;
-    private List<NoTileCardData> communityCards = new List<NoTileCardData>();
-    private List<NoTileCardData> chanceCards = new List<NoTileCardData>();
+    private List<DeckCardData> communityCards = new List<DeckCardData>();
+    private List<DeckCardData> chanceCards = new List<DeckCardData>();
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +39,12 @@ public class CardController : MonoBehaviour
 
     // Load cards from file
     public void LoadCards(CardsData cardsData) {
-        foreach (NoTileCardData card in cardsData.communityCards)
+        foreach (DeckCardData card in cardsData.communityCards)
         {   
             communityCards.Add(card);
         }
 
-        foreach (NoTileCardData card in cardsData.chanceCards)
+        foreach (DeckCardData card in cardsData.chanceCards)
         {   
             chanceCards.Add(card);
         }
@@ -59,7 +60,8 @@ public class CardController : MonoBehaviour
     // Load, set, and show info from card data
     public void LoadCard(TrainCardData cardData) {
         points = cardData.points;
-        move = 0;
+        action = "none";
+        actionValue = "";
         cardUI.SetInfo(cardData.info);
     }
 
@@ -68,10 +70,15 @@ public class CardController : MonoBehaviour
         gameController.GiveCurrentPlayerPoints(points);
         gameController.SendInfoShownMessageToServer();
 
-        if (move == 0)
-            gameController.FinishTurn();
-        else
-            gameController.MovePlayer(move);
+        switch (action)
+        {
+            case "move":
+                gameController.MovePlayer(int.Parse(actionValue));
+                break; 
+            default:
+                gameController.FinishTurn();
+                break;
+        }
     }
 
     // Activate card menu
@@ -89,7 +96,8 @@ public class CardController : MonoBehaviour
         int index = Random.Range(0, communityCards.Count);
         
         points = communityCards[index].points;
-        move = communityCards[index].move;
+        action = communityCards[index].action;
+        actionValue = communityCards[index].actionValue;
         cardUI.SetInfo(communityCards[index].info);
 
         ShowCardMenu(true);
@@ -100,7 +108,8 @@ public class CardController : MonoBehaviour
         int index = Random.Range(0, chanceCards.Count);
         
         points = chanceCards[index].points;
-        move = chanceCards[index].move;
+        action = chanceCards[index].action;
+        actionValue = chanceCards[index].actionValue;
         cardUI.SetInfo(chanceCards[index].info);
 
         ShowCardMenu(true);

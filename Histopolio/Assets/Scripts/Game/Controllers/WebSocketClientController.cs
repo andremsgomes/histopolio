@@ -209,6 +209,6 @@ public class WebSocketClientController : MonoBehaviour
     // OnContentViewedReceived is called when a player views the content sent
     void OnContentViewedReceived()
     {
-        gameController.GiveCardPoints();
+        gameController.ContinueTrainCard();
     }
 }
