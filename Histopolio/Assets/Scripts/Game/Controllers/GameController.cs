@@ -119,11 +119,12 @@ public class GameController : MonoBehaviour
     void SaveCurrentPlayer()
     {
         SavePlayerData savePlayerData = new SavePlayerData();
-        savePlayerData.board = "Histopolio";
         savePlayerData.userId = currentPlayer.GetId();
         savePlayerData.points = currentPlayer.GetScore();
         savePlayerData.position = currentPlayer.GetTile().GetId();
         savePlayerData.numTurns = currentPlayer.GetNumTurns() + 1;
+        savePlayerData.totalAnswers = currentPlayer.GetTotalAnswers();
+        savePlayerData.correctAnswers = currentPlayer.GetCorrectAnswers();
         string message = JsonUtility.ToJson(savePlayerData);
 
         SendMessageToServer(message);
@@ -175,6 +176,11 @@ public class GameController : MonoBehaviour
     // FinishQuestion is called after player answers question
     public void FinishQuestion(bool correctAnswer)
     {
+        currentPlayer.AddAnswer();
+
+        if (correctAnswer)
+            currentPlayer.AddCorrectAnswer();
+
         if ((((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer))
         {
             currentPlayer.ReceivePointsFromTile();
@@ -295,7 +301,7 @@ public class GameController : MonoBehaviour
     }
 
     // Add player to the game
-    public void AddPlayer(int id, string name, int points, int position, int numTurns, string avatarURL)
+    public void AddPlayer(int id, string name, int points, int position, int numTurns, int totalAnswers, int correctAnswers, string avatarURL)
     {
         if (currentPlayer != null && id == currentPlayer.GetId())
         {
@@ -312,6 +318,8 @@ public class GameController : MonoBehaviour
             newPlayer.SetScore(points);
             newPlayer.SetPosition(position);
             newPlayer.SetNumTurns(numTurns);
+            newPlayer.SetTotalAnswers(totalAnswers);
+            newPlayer.SetCorrectAnswers(correctAnswers);
 
             IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
             StartCoroutine(coroutine);

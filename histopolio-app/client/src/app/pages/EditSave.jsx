@@ -4,9 +4,8 @@ import api from "../api";
 import { useParams } from "react-router-dom";
 
 function withParams(Component) {
-  return props => <Component {...props} params={useParams()} />;
+  return (props) => <Component {...props} params={useParams()} />;
 }
-
 
 class EditSave extends Component {
   constructor(props) {
@@ -15,6 +14,8 @@ class EditSave extends Component {
     this.handlePositionChange = this.handlePositionChange.bind(this);
     this.handlePointsChange = this.handlePointsChange.bind(this);
     this.handleNumTurnsChange = this.handleNumTurnsChange.bind(this);
+    this.handleAnswersChange = this.handleAnswersChange.bind(this);
+    this.handleCorrectAnswersChange = this.handleCorrectAnswersChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -89,6 +90,38 @@ class EditSave extends Component {
     });
   }
 
+  handleAnswersChange(e) {
+    const playerId = parseInt(e.target.id.substring(7));
+
+    const newPlayers = this.state.players.map((player) => {
+      if (player.userId === playerId) {
+        player.totalAnswers = parseInt(e.target.value);
+      }
+
+      return player;
+    });
+
+    this.setState({
+      players: newPlayers,
+    });
+  }
+
+  handleCorrectAnswersChange(e) {
+    const playerId = parseInt(e.target.id.substring(14));
+
+    const newPlayers = this.state.players.map((player) => {
+      if (player.userId === playerId) {
+        player.correctAnswers = parseInt(e.target.value);
+      }
+
+      return player;
+    });
+
+    this.setState({
+      players: newPlayers,
+    });
+  }
+
   handleClick() {
     const board = this.props.params.board;
     const save = this.props.params.save;
@@ -121,7 +154,9 @@ class EditSave extends Component {
           </div>
         )}
         <h1>Tabela de jogadores</h1>
-        <h4>{this.props.params.board} - {this.props.params.save}</h4>
+        <h4>
+          {this.props.params.board} - {this.props.params.save}
+        </h4>
         <table className="table table-hover mt-4">
           <thead>
             <tr>
@@ -129,12 +164,24 @@ class EditSave extends Component {
               <th scope="col">Nome</th>
               <th scope="col">Email</th>
               <th scope="col">Posição no tabuleiro</th>
-              <th scope="col">Pontuação</th>
               <th scope="col">Número de jogadas</th>
+              <th scope="col">Pontuação</th>
+              <th scope="col">Total de respostas</th>
+              <th scope="col">Respostas corretas</th>
+              <th scope="col">% de respostas corretas</th>
             </tr>
           </thead>
           <tbody>
             {this.state.players.map((player) => {
+              const percCorrect =
+                !player.totalAnswers || player.totalAnswers === 0
+                  ? "-"
+                  : Math.round(
+                      (player.correctAnswers / player.totalAnswers) * 100 * 100
+                    ) /
+                      100 +
+                    "%";
+
               return (
                 <tr>
                   <th scope="row">{player.userId}</th>
@@ -150,6 +197,14 @@ class EditSave extends Component {
                   </td>
                   <td>
                     <input
+                      id={"numTurns" + player.userId}
+                      onChange={this.handleNumTurnsChange}
+                      type="number"
+                      value={player.numTurns}
+                    />
+                  </td>
+                  <td>
+                    <input
                       id={"points" + player.userId}
                       onChange={this.handlePointsChange}
                       type="number"
@@ -158,12 +213,21 @@ class EditSave extends Component {
                   </td>
                   <td>
                     <input
-                      id={"numTurns" + player.userId}
-                      onChange={this.handleNumTurnsChange}
+                      id={"answers" + player.userId}
+                      onChange={this.handleAnswersChange}
                       type="number"
-                      value={player.numTurns}
+                      value={player.totalAnswers}
                     />
                   </td>
+                  <td>
+                    <input
+                      id={"correctAnswers" + player.userId}
+                      onChange={this.handleCorrectAnswersChange}
+                      type="number"
+                      value={player.correctAnswers}
+                    />
+                  </td>
+                  <td>{percCorrect}</td>
                 </tr>
               );
             })}

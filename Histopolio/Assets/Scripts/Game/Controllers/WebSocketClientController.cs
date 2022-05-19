@@ -172,7 +172,7 @@ public class WebSocketClientController : MonoBehaviour
     // OnJoinGameReceived is called when a request to join the game is received
     void OnJoinGameReceived(JObject dataReceived)
     {
-        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"], (int)dataReceived["points"], (int)dataReceived["position"], (int)dataReceived["numTurns"], (string)dataReceived["avatar"]);
+        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"], (int)dataReceived["points"], (int)dataReceived["position"], (int)dataReceived["numTurns"], (int)dataReceived["totalAnswers"], (int)dataReceived["correctAnswers"], (string)dataReceived["avatar"]);
     }
 
     // OnDiceResultReceived is called when the dice result is received

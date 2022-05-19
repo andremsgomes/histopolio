@@ -3,9 +3,11 @@
     "userId": 1,
     "name": "André",
     "email": "andre@up.pt",
-    "points": 519,
-    "position": 10,
-    "numTurns": 33
+    "points": 539,
+    "position": 16,
+    "numTurns": 34,
+    "totalAnswers": 1,
+    "correctAnswers": 1
   },
   {
     "userId": 2,
@@ -13,7 +15,9 @@
     "email": "ines@up.pt",
     "points": 187,
     "position": 15,
-    "numTurns": 9
+    "numTurns": 9,
+    "totalAnswers": 0,
+    "correctAnswers": 0
   },
   {
     "userId": 3,
@@ -21,7 +25,9 @@
     "email": "teste@up.pt",
     "points": 80,
     "position": 29,
-    "numTurns": 5
+    "numTurns": 5,
+    "totalAnswers": 0,
+    "correctAnswers": 0
   },
   {
     "userId": 5,
@@ -29,7 +35,9 @@
     "email": "diogo@up.pt",
     "points": 20,
     "position": 4,
-    "numTurns": 2
+    "numTurns": 2,
+    "totalAnswers": 0,
+    "correctAnswers": 0
   },
   {
     "userId": 6,
@@ -37,7 +45,9 @@
     "email": "homer@up.pt",
     "points": 37,
     "position": 14,
-    "numTurns": 3
+    "numTurns": 3,
+    "totalAnswers": 0,
+    "correctAnswers": 0
   },
   {
     "userId": 7,
@@ -45,6 +55,8 @@
     "email": "crash@up.pt",
     "points": 22,
     "position": 9,
-    "numTurns": 2
+    "numTurns": 2,
+    "totalAnswers": 4,
+    "correctAnswers": 1
   }
 ]

@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 9,
-      "tileId": 16,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 10,
       "tileId": 18,
       "question": "Pergunta com imagem",
@@ -633,6 +619,18 @@
         "Falso"
       ],
       "correctAnswer": "2"
+    },
+    {
+      "id": 61,
+      "tileId": 16,
+      "question": "Em que localização espera encontrar o tecido da imagem?",
+      "image": "https://www.linkpicture.com/q/casa16pergunta1.png",
+      "answers": [
+        "Almofadas plantares",
+        "Tecido subcutâneo",
+        "Em torno da aorta"
+      ],
+      "correctAnswer": "3"
     }
   ]
 }

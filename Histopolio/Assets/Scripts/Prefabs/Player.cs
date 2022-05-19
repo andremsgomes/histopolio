@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private int position;
     private int moveSpaces;
     private int numTurns;
+    private int totalAnswers;
+    private int correctAnswers;
 
     [SerializeField] private float speed;
     [SerializeField] private Image img;
@@ -160,5 +162,35 @@ public class Player : MonoBehaviour
     // Add turn played
     public void AddTurn() {
         numTurns += 1;
+    }
+
+    // Set total answers
+    public void SetTotalAnswers(int totalAnswers) {
+        this.totalAnswers = totalAnswers;
+    }
+
+    // Add answer
+    public void AddAnswer() {
+        totalAnswers += 1;
+    }
+
+    // Get total answers
+    public int GetTotalAnswers() {
+        return totalAnswers;
+    }
+
+    // Set correct answers
+    public void SetCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
+    }
+
+    // Add correct answer
+    public void AddCorrectAnswer() {
+        correctAnswers += 1;
+    }
+
+    // Get correct answers
+    public int GetCorrectAnswers() {
+        return correctAnswers;
     }
 }
