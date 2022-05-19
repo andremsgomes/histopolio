@@ -17,18 +17,6 @@
   ],
   "trainCards": [
     {
-      "id": 1,
-      "tileId": 5,
-      "info": "Assiste ao conteúdo para ganhares 20 pontos!",
-      "content": "https://www.youtube.com/watch?v=Pj-h6MEgE7I&ab_channel=Kurzgesagt%E2%80%93InaNutshell"
-    },
-    {
-      "id": 2,
-      "tileId": 15,
-      "info": "Assiste ao conteúdo para ganhares 20 pontos!",
-      "content": "https://www.youtube.com/watch?v=Pj-h6MEgE7I&ab_channel=Kurzgesagt%E2%80%93InaNutshell"
-    },
-    {
       "id": 3,
       "tileId": 25,
       "info": "Assiste ao conteúdo para ganhares 20 pontos!",
@@ -39,6 +27,24 @@
       "tileId": 35,
       "info": "Assiste ao conteúdo para ganhares 20 pontos!",
       "content": "https://www.youtube.com/watch?v=Pj-h6MEgE7I&ab_channel=Kurzgesagt%E2%80%93InaNutshell"
+    },
+    {
+      "id": 5,
+      "tileId": 5,
+      "info": "Assiste ao vídeo para ganhares 20 PONTOS!",
+      "content": "https://youtu.be/BJ2-uIoOJBE"
+    },
+    {
+      "id": 6,
+      "tileId": 15,
+      "info": "Assiste ao vídeo para receberes 20 PONTOS!",
+      "content": "https://youtu.be/RHNl_Y6BAko"
+    },
+    {
+      "id": 7,
+      "tileId": 15,
+      "info": "Assiste ao vídeo para ganhares 20 PONTOS!",
+      "content": "https://youtu.be/wV7AZDmWfhA"
     }
   ]
 }
