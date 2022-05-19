@@ -11,15 +11,15 @@
     "userId": 2,
     "name": "Inês",
     "email": "ines@up.pt",
-    "points": 88,
-    "position": 8,
-    "numTurns": 1
+    "points": 187,
+    "position": 15,
+    "numTurns": 9
   },
   {
     "userId": 3,
     "name": "Teste",
     "email": "teste@up.pt",
-    "points": 54,
+    "points": 80,
     "position": 29,
     "numTurns": 5
   },
@@ -28,8 +28,8 @@
     "name": "Diogo",
     "email": "diogo@up.pt",
     "points": 20,
-    "position": 0,
-    "numTurns": 0
+    "position": 4,
+    "numTurns": 2
   },
   {
     "userId": 6,
@@ -43,8 +43,8 @@
     "userId": 7,
     "name": "Crash Bandicoot",
     "email": "crash@up.pt",
-    "points": 20,
-    "position": 0,
-    "numTurns": 0
+    "points": 22,
+    "position": 9,
+    "numTurns": 2
   }
 ]

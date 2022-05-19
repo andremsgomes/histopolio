@@ -2,34 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 7,
-      "tileId": 13,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
-      "id": 8,
-      "tileId": 14,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 9,
       "tileId": 16,
       "question": "Pergunta com imagem",
@@ -603,6 +575,64 @@
         "Falso"
       ],
       "correctAnswer": 1
+    },
+    {
+      "id": 56,
+      "tileId": 13,
+      "question": "A enzima que polimeriza as moléculas de colagénio para constituir as fibrilhas é a lisil oxidase.",
+      "image": "https://www.linkpicture.com/q/casa13pergunta1.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 57,
+      "tileId": 13,
+      "question": "Identifica",
+      "image": "https://www.linkpicture.com/q/casa13pergunta2.png",
+      "answers": [
+        "Fibroblasto",
+        "Fibrócito",
+        "Mastócito"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 58,
+      "tileId": 13,
+      "question": "Identifica",
+      "image": "https://www.linkpicture.com/q/casa13pergunta3.png",
+      "answers": [
+        "Célula Gigante de Corpo Estranho",
+        "Célula Gigante de Langhans",
+        "Mastócito"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 59,
+      "tileId": 14,
+      "question": "Qual das colorações NÃO é usada para fibras elásticas",
+      "image": "https://www.linkpicture.com/q/casa14pergunta1.png",
+      "answers": [
+        "Fucsina Resorcina",
+        "Oil Red",
+        "Orceína"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 60,
+      "tileId": 14,
+      "question": "Este é um tecido conjuntivo mucoso.",
+      "image": "https://www.linkpicture.com/q/casa14pergunta2.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
     }
   ]
 }
