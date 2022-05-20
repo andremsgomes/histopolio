@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 13,
-      "tileId": 23,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 14,
       "tileId": 24,
       "question": "Pergunta com imagem",
@@ -699,6 +685,41 @@
       "tileId": 21,
       "question": "O osso esponjoso apresenta sistemas intermediários.",
       "image": "https://www.linkpicture.com/q/casa21pergunta3.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 72,
+      "tileId": 23,
+      "question": "No sistema circunferencial interno as lamelas são paralelas à cavidade medular.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 73,
+      "tileId": 23,
+      "question": "A seta está a apontar para",
+      "image": "https://www.linkpicture.com/q/casa23pergunta2.png",
+      "answers": [
+        "lacuna óssea (osteoplasto)",
+        "osteócito",
+        "osteoclasto",
+        "endósteo"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 74,
+      "tileId": 23,
+      "question": "A estrutura apontada é um canal de Havers (canal central do osteónio).",
+      "image": "https://www.linkpicture.com/q/casa23pergunta3.png",
       "answers": [
         "Verdadeiro",
         "Falso"

@@ -22,6 +22,20 @@
       "points": 25,
       "action": "move",
       "actionValue": "2"
+    },
+    {
+      "id": 2,
+      "info": "A metade do jogo parece estar mesmo lá ao fundo, mas nas aulas de Histologia estás sempre no bom caminho!\nRecebe 10 PONTOS e avança TRÊS casas.",
+      "points": 10,
+      "action": "move",
+      "actionValue": "3"
+    },
+    {
+      "id": 3,
+      "info": "Mereces 15 PONTOS por te teres esforçado a montar todos os ossos que estão no teatro anatómico!\nAvança UMA casa.",
+      "points": 15,
+      "action": "move",
+      "actionValue": "1"
     }
   ],
   "trainCards": [

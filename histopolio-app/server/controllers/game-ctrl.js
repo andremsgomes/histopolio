@@ -32,6 +32,9 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
     };
   }
 
+  const rank = await getRank(userId, saveFilePath);
+  playerData["rank"] = rank;
+
   const dataToSend = {
     type: "game status",
     gameStarted: gameStarted,
@@ -41,6 +44,19 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
   if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
     frontendWS.send(JSON.stringify(dataToSend));
   }
+}
+
+async function getRank(userId, saveFilePath) {
+  const players = readJSONFile(saveFilePath);
+
+  players.sort((a, b) => b.points - a.points);
+
+  for (let i = 0; i < players.length; i++) {
+    if (players[i].userId === userId)
+      return i+1;
+  }
+
+  return 0;
 }
 
 async function setGameReady(frontendWSs) {

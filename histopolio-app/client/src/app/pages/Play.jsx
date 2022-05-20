@@ -27,7 +27,7 @@ class Play extends Component {
     content: "",
     points: 0,
     position: 0,
-    rank: 1,
+    rank: 0,
   };
 
   componentDidMount() {
@@ -107,12 +107,15 @@ class Play extends Component {
       gameStarted: dataReceived["gameStarted"],
     });
 
-    if (this.state.gameStarted) {
+    if (dataReceived["playerData"]) {
       this.setState({
         points: dataReceived["playerData"]["points"],
         position: dataReceived["playerData"]["position"],
+        rank: dataReceived["playerData"]["rank"],
       });
+    }
 
+    if (this.state.gameStarted) {
       this.sendJoinGameMessage();
     }
   }
@@ -271,7 +274,7 @@ class Play extends Component {
         </div>
       );
     } else {
-      return <Wait points={this.state.points} />;
+      return <Wait points={this.state.points} rank={this.state.rank} />;
     }
   }
 }
