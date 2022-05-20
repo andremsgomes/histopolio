@@ -114,12 +114,6 @@ class Play extends Component {
       });
 
       this.sendJoinGameMessage();
-    } else {
-      this.setState({
-        question: null,
-        content: "",
-        showDice: false,
-      });
     }
   }
 

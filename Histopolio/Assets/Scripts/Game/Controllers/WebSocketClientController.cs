@@ -21,10 +21,16 @@ public class WebSocketClientController : MonoBehaviour
             messages.Enqueue(e.Data);
         };
 
+        ConnectWebSocket();
+    }
+
+    // Connect and send id message
+    void ConnectWebSocket()
+    {
         ws.Connect();
 
         string id = JsonUtility.ToJson(new IdentificationData());
-        SendMessage(id);
+        ws.Send(id);
     }
 
     // Update is called once per frame
@@ -41,7 +47,11 @@ public class WebSocketClientController : MonoBehaviour
     {
         if (message == "ping")
         {
-            ws.Send("unityPong");
+            if (ws.ReadyState == WebSocketState.Closed)
+                ConnectWebSocket();
+            else
+                ws.Send("unityPong");
+            
             return;
         }
 
@@ -99,6 +109,9 @@ public class WebSocketClientController : MonoBehaviour
     // Send message to the server
     public void SendMessage(string message)
     {
+        if (ws.ReadyState == WebSocketState.Closed)
+            ConnectWebSocket();
+
         ws.Send(message);
         lastMessage = message;
     }

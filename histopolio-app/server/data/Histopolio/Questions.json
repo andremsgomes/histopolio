@@ -2,34 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 10,
-      "tileId": 18,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
-      "id": 11,
-      "tileId": 19,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 12,
       "tileId": 21,
       "question": "Pergunta com imagem",
@@ -629,6 +601,88 @@
         "Almofadas plantares",
         "Tecido subcutâneo",
         "Em torno da aorta"
+      ],
+      "correctAnswer": "3"
+    },
+    {
+      "id": 62,
+      "tileId": 18,
+      "question": "Que tecido se encontra na imagem?",
+      "image": "https://www.linkpicture.com/q/casa18pergunta1.png",
+      "answers": [
+        "Cartilagem hialina",
+        "Cartilagem elástica",
+        "Fibrocartilagem"
+      ],
+      "correctAnswer": "3"
+    },
+    {
+      "id": 63,
+      "tileId": 18,
+      "question": "Qual o colagénio predominante nesta imagem?",
+      "image": "https://www.linkpicture.com/q/casa18pergunta2.png",
+      "answers": [
+        "|",
+        "||",
+        "|||"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 64,
+      "tileId": 18,
+      "question": "Estes grupos isogénicos existem no(a)",
+      "image": "https://www.linkpicture.com/q/casa18pergunta3.png",
+      "answers": [
+        "orelha",
+        "metáfise do úmero",
+        "nariz"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 65,
+      "tileId": 19,
+      "question": "O crescimento da cartilagem a partir do pericôndrio designa-se aposicional.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 66,
+      "tileId": 19,
+      "question": "No pericôndrio a camada com maior celularidade é a camada externa.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 67,
+      "tileId": 19,
+      "question": "Qual é a afirmação FALSA?",
+      "image": "https://www.linkpicture.com/q/casa19pergunta3.png",
+      "answers": [
+        "As células estão alinhadas perpendicularmente ao eixo longitudinal do osso.",
+        "Estão presentes grupos isogéncos axiais.",
+        "São elementos de cartilagem hialina."
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 68,
+      "tileId": 1,
+      "question": "Relacione o microscópio com o cientista",
+      "image": "https://www.linkpicture.com/q/casa1pergunta9.png",
+      "answers": [
+        "Anton Van Leeuwenhoek",
+        "Jean Marie Bichat",
+        "Robert Hooke"
       ],
       "correctAnswer": "3"
     }
