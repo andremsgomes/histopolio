@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 12,
-      "tileId": 21,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 13,
       "tileId": 23,
       "question": "Pergunta com imagem",
@@ -685,6 +671,39 @@
         "Robert Hooke"
       ],
       "correctAnswer": "3"
+    },
+    {
+      "id": 69,
+      "tileId": 21,
+      "question": "Está representado osso compacto?",
+      "image": "https://www.linkpicture.com/q/casa21pergunta1.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 70,
+      "tileId": 21,
+      "question": "Os canais de Volkmann são paralelos ao eixo da força aplicada sobre o osso.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 71,
+      "tileId": 21,
+      "question": "O osso esponjoso apresenta sistemas intermediários.",
+      "image": "https://www.linkpicture.com/q/casa21pergunta3.png",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
     }
   ]
 }
