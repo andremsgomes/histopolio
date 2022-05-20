@@ -28,9 +28,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveSpaces > 0)
+        if (moveSpaces != 0)
         {
-            MoveTo(gameController.GetTile(position + 1));
+            if (moveSpaces > 0)
+                MoveTo(gameController.GetTile(position+1));
+            else
+                MoveTo(gameController.GetTile(position-1));
 
             if (moveSpaces == 0)
             {
@@ -49,8 +52,15 @@ public class Player : MonoBehaviour
         if (transform.position == target)
         {
             SetTile(tile);
-            SetPosition(position+1);
-            moveSpaces--;
+
+            if (moveSpaces > 0) {
+                SetPosition(position+1);
+                moveSpaces--;
+            }
+            else {
+                SetPosition(position-1);
+                moveSpaces++;
+            }
         }
     }
 

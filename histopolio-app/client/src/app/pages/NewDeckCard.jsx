@@ -50,15 +50,9 @@ class NewDeckCard extends Component {
       action: e.target.value,
     });
 
-    if (e.target.value === "none") {
-      this.setState({
-        actionValue: "",
-      });
-    } else {
-      this.setState({
-        actionValue: 0,
-      });
-    }
+    this.setState({
+      actionValue: "",
+    });
   }
 
   handleActionValueChange(e) {
@@ -73,9 +67,9 @@ class NewDeckCard extends Component {
     const board = this.props.params.board;
     const deck = this.state.deck;
     const info = this.state.info;
-    const points = this.state.points;
+    const points = parseInt(this.state.points);
     const action = this.state.action;
-    const actionValue = this.state.actionValue.toString();
+    const actionValue = this.state.actionValue;
 
     const payload = { board, deck, info, points, action, actionValue };
 
@@ -164,13 +158,20 @@ class NewDeckCard extends Component {
                 <option selected={this.state.action === "move"} value="move">
                   Avançar
                 </option>
+                <option selected={this.state.action === "tile"} value="tile">
+                  Mover para casa
+                </option>
               </select>
             </div>
           </div>
           {this.state.action !== "none" && (
             <div className="form-group row mt-4">
               <label for="actionValue" className="col-sm-2 col-form-label">
-                Avançar (para recuar usar números negativos)
+                {this.state.action === "move" ? (
+                  <div>Casas a avançar (negativo para recuar)</div>
+                ) : (
+                  <div>Casa</div>
+                )}
               </label>
               <div className="col-sm-10">
                 <input

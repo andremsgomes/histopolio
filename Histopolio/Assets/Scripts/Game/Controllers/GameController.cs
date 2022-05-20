@@ -106,6 +106,13 @@ public class GameController : MonoBehaviour
         currentPlayer.Move(diceResult);
     }
 
+    // Move player to tile
+    public void MovePlayerTo(int tile)
+    {
+        int spaces = tile - currentPlayer.GetTile().GetId();
+        MovePlayer(spaces);
+    }
+
     // Get tile with tile id
     public Tile GetTile(int tileId)
     {
@@ -498,8 +505,14 @@ public class GameController : MonoBehaviour
 
     // Hide card menu
     public void ContinueTrainCard() {
+        currentPlayer.ReceivePointsFromTile();
+        playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
+
+        gameUI.SetPlayerScore(currentPlayer.GetScore());
+        UpdateLeaderboard();
+
         cardController.HideCardMenu();
-        cardController.Continue();
+        FinishTurn();
     }
 
     // Get board

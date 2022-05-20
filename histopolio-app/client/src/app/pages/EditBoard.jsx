@@ -158,7 +158,7 @@ class EditBoard extends Component {
                     <th scope="col">Tipo</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Pontos imediatos</th>
-                    <th scope="col">Mover</th>
+                    <th scope="col">Ação</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                   </tr>
@@ -171,7 +171,15 @@ class EditBoard extends Component {
                         <td>Decisão do Senado</td>
                         <td>{card.info}</td>
                         <td>{card.points}</td>
-                        <td>{card.move}</td>
+                        <td>
+                          {card.action === "none" ? (
+                            <div>Sem ação</div>
+                          ) : card.action === "move" ? (
+                            <div>Mover {card.actionValue}</div>
+                          ) : (
+                            <div>Mover para casa {card.actionValue}</div>
+                          )}
+                        </td>
                         <td>
                           <FontAwesomeIcon icon={faPencil} />
                         </td>
@@ -188,7 +196,15 @@ class EditBoard extends Component {
                         <td>Sorte</td>
                         <td>{card.info}</td>
                         <td>{card.points}</td>
-                        <td>{card.move}</td>
+                        <td>
+                          {card.action === "none" ? (
+                            <div>Sem ação</div>
+                          ) : card.action === "move" ? (
+                            <div>Mover {card.actionValue} casas</div>
+                          ) : (
+                            <div>Mover para a casa {card.actionValue}</div>
+                          )}
+                        </td>
                         <td>
                           <FontAwesomeIcon icon={faPencil} />
                         </td>
@@ -202,11 +218,7 @@ class EditBoard extends Component {
               </table>
             )}
             <Link
-              to={
-                "/admin/" +
-                this.props.params.board +
-                "/cards/deck/new"
-              }
+              to={"/admin/" + this.props.params.board + "/cards/deck/new"}
               style={{ textDecoration: "none" }}
             >
               <button

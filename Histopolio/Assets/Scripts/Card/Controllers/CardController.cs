@@ -59,7 +59,6 @@ public class CardController : MonoBehaviour
 
     // Load, set, and show info from card data
     public void LoadCard(TrainCardData cardData) {
-        points = cardData.points;
         action = "none";
         actionValue = "";
         cardUI.SetInfo(cardData.info);
@@ -75,6 +74,9 @@ public class CardController : MonoBehaviour
             case "move":
                 gameController.MovePlayer(int.Parse(actionValue));
                 break; 
+            case "tile":
+                gameController.MovePlayerTo(int.Parse(actionValue));
+                break;
             default:
                 gameController.FinishTurn();
                 break;
