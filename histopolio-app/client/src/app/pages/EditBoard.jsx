@@ -22,6 +22,7 @@ class EditBoard extends Component {
 
   state = {
     board: null,
+    badges: [],
   };
 
   componentDidMount() {
@@ -30,6 +31,17 @@ class EditBoard extends Component {
       .then((res) => {
         this.setState({
           board: res.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+
+    api
+      .badgesData(this.props.params.board)
+      .then((res) => {
+        this.setState({
+          badges: res.data,
         });
       })
       .catch((error) => {
@@ -200,7 +212,10 @@ class EditBoard extends Component {
                           {card.action === "none" ? (
                             <div>Sem ação</div>
                           ) : card.action === "move" ? (
-                            <div>Mover {card.actionValue} casas</div>
+                            <div>
+                              Mover {card.actionValue} casa
+                              {parseInt(card.actionValue) !== 1 && "s"}
+                            </div>
                           ) : (
                             <div>Mover para a casa {card.actionValue}</div>
                           )}
@@ -221,15 +236,55 @@ class EditBoard extends Component {
               to={"/admin/" + this.props.params.board + "/cards/deck/new"}
               style={{ textDecoration: "none" }}
             >
-              <button
-                className="btn btn-lg btn-primary my-4"
-                onClick={this.handleClick}
-              >
+              <button className="btn btn-lg btn-primary my-4">
                 Adicionar carta
               </button>
             </Link>
           </div>
         )}
+        <h4 className="mt-4">Troféus</h4>
+        {this.state.badges.length > 0 && (
+          <table className="table table-hover mt-3">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Multiplicador</th>
+                <th scope="col">Custo</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.badges.map((badge) => {
+                return (
+                  <tr>
+                    <th scope="row">{badge.id}</th>
+                    <td>{badge.name}</td>
+                    <td>x{badge.multiplier}</td>
+                    <td>
+                      {badge.cost} ponto{badge.cost !== 1 && "s"}
+                    </td>
+                    <td>
+                      <FontAwesomeIcon icon={faPencil} />
+                    </td>
+                    <td>
+                      <FontAwesomeIcon icon={faTrashCan} />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+        <Link
+          to={"/admin/" + this.props.params.board + "/badges/new"}
+          style={{ textDecoration: "none" }}
+        >
+          <button className="btn btn-lg btn-primary my-4">
+            Adicionar troféu
+          </button>
+        </Link>
       </div>
     );
   }

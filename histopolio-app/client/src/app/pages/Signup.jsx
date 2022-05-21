@@ -56,9 +56,7 @@ function Signup() {
 
     // avatar validation
     const avatarToSend =
-      avatar.length > 0
-        ? avatar
-        : "https://tleliteracy.com/wp-content/uploads/2017/02/default-avatar.png";
+      avatar.length > 0 ? avatar : "https://www.linkpicture.com/q/user_21.png";
 
     // email validation
     if (email.length === 0) {
@@ -179,14 +177,14 @@ function Signup() {
             <img
               src={avatar}
               alt="Avatar"
-              className="rounded-circle"
+              className="rounded-circle border"
               style={{ objectFit: "cover", width: "250px", height: "250px" }}
             />
           ) : (
             <img
-              src="https://tleliteracy.com/wp-content/uploads/2017/02/default-avatar.png"
+              src="https://www.linkpicture.com/q/user_21.png"
               alt="Avatar"
-              className="rounded-circle"
+              className="rounded-circle border"
               style={{ objectFit: "cover", width: "250px", height: "250px" }}
             />
           )}

@@ -26,6 +26,9 @@ export const trainCardsData = (board, tile) =>
   api.get(`/api/game/data/${board}/${tile}/train_cards`);
 export const newTrainCard = (payload) =>
   api.post("api/game/data/cards/train_cards/new", payload);
+export const badgesData = (board) => api.get(`/api/game/data/${board}/badges`);
+export const newBadge = (payload) =>
+  api.post("/api/game/data/badges/new", payload);
 
 const apiRoutes = {
   login,
@@ -41,6 +44,8 @@ const apiRoutes = {
   newDeckCard,
   trainCardsData,
   newTrainCard,
+  badgesData,
+  newBadge,
 };
 
 export default apiRoutes;

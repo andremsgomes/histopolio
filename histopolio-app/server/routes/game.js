@@ -13,6 +13,9 @@ router.post("/data/cards/deck/new", gameController.newDeckCard);
 router.get("/data/:board/:tile/train_cards", gameController.getTrainCardsData);
 router.post("/data/cards/train_cards/new", gameController.newTrainCard);
 
+router.get("/data/:board/badges", gameController.getBadges);
+router.post("/data/badges/new", gameController.newBadge);
+
 router.get("/data/:board/saves", gameController.getSaves);
 
 router.get("/data/:board/saves/:save", gameController.getSavedData);

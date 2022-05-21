@@ -1761,7 +1761,7 @@ MonoBehaviour:
   initialMenu: {fileID: 3856871873107765355}
   joinMenu: {fileID: 1580641545060913577}
   playersContainer: {fileID: 8249004301374087622}
-  joinPlayerPrefab: {fileID: 1437426558221692237, guid: 1cd16664bb3261c7da93f9cf50afa52b, type: 3}
+  joinPlayerPrefab: {fileID: 4625185632515838958, guid: e8768510e20ab8fdeb53265b89f1c187, type: 3}
   title: {fileID: 5437371243940922102}
   savesMenu: {fileID: 1150487851122411809}
   savesContainer: {fileID: 5761237158947775291}

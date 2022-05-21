@@ -29,6 +29,7 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
     playerData = {
       points: 20,
       position: 0,
+      badges: [],
     };
   }
 
@@ -52,8 +53,7 @@ async function getRank(userId, saveFilePath) {
   players.sort((a, b) => b.points - a.points);
 
   for (let i = 0; i < players.length; i++) {
-    if (players[i].userId === userId)
-      return i+1;
+    if (players[i].userId === userId) return i + 1;
   }
 
   return 0;
@@ -68,17 +68,15 @@ async function setGameReady(frontendWSs) {
 }
 
 async function sendEndGameToFrontend(frontendWSs) {
-  gameSaveFilePath = "";
-  gameStarted = false;
-
-  const dataToSend = {
-    type: "game status",
-    gameStarted: false,
-  };
-
-  for (ws of frontendWSs.values()) {
-    if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(dataToSend));
-  }
+  // gameSaveFilePath = "";
+  // gameStarted = false;
+  // const dataToSend = {
+  //   type: "game status",
+  //   gameStarted: false,
+  // };
+  // for (ws of frontendWSs.values()) {
+  //   if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(dataToSend));
+  // }
 }
 
 function addPlayerToGame(unityWS, dataReceived) {
@@ -94,12 +92,22 @@ function addPlayerToGame(unityWS, dataReceived) {
       numTurns: 0,
       totalAnswers: 0,
       correctAnswers: 0,
+      badges: [],
     };
 
     let players = readJSONFile(gameSaveFilePath);
     players.push(player);
     writeJSONFile(gameSaveFilePath, players);
   }
+
+  let multiplier = 1;
+  const badges = readJSONFile(`./data/${dataReceived["board"]}/Badges.json`);
+
+  player.badges.forEach((userBadge) => {
+    badge = badges.find((b) => b.id === userBadge);
+
+    if (badge && badge.multiplier > multiplier) multiplier = badge.multiplier;
+  });
 
   const dataToSend = {
     type: "join game",
@@ -111,6 +119,8 @@ function addPlayerToGame(unityWS, dataReceived) {
     numTurns: player.numTurns,
     totalAnswers: player.totalAnswers,
     correctAnswers: player.correctAnswers,
+    badges: player.badges,
+    multiplier: multiplier,
   };
 
   if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
@@ -196,11 +206,11 @@ function saveGame(frontendWSs, dataReceived) {
 
   console.log("Game Saved!");
 
-  sendUpdateToFrontend(frontendWSs);
+  sendUpdateToFrontend(frontendWSs, gameSaveFilePath);
 }
 
-async function sendUpdateToFrontend(frontendWSs) {
-  const players = readJSONFile(gameSaveFilePath);
+async function sendUpdateToFrontend(frontendWSs, saveFile) {
+  const players = readJSONFile(saveFile);
 
   players.sort((a, b) => b.points - a.points);
 
@@ -231,6 +241,58 @@ async function sendContentViewedToUnity(unityWS, dataReceived) {
   if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
     unityWS.send(JSON.stringify(dataReceived));
   }
+}
+
+function updatePlayerBadges(unityWS, frontendWSs, dataReceived) {
+  const badges = readJSONFile(`./data/${dataReceived.board}/Badges.json`);
+  const badgePurchased = badges.find(
+    (badge) => badge.id === dataReceived.badgeId
+  );
+
+  const players = readJSONFile(
+    `./data/${dataReceived.board}/saves/${dataReceived.save}.json`
+  );
+
+  players.forEach((player) => {
+    if (player.userId === dataReceived.userId) {
+      player.badges.push(badgePurchased.id);
+      player.points -= badgePurchased.cost;
+    }
+  });
+
+  writeJSONFile(
+    `./data/${dataReceived.board}/saves/${dataReceived.save}.json`,
+    players
+  );
+
+  let multiplier = 1;
+  const player = getPlayerData(
+    `./data/${dataReceived.board}/saves/${dataReceived.save}.json`,
+    dataToSend.userId
+  );
+
+  player.badges.forEach((userBadge) => {
+    badge = badges.find((b) => b.id === userBadge);
+
+    if (badge && badge.multiplier > multiplier) multiplier = badge.multiplier;
+  });
+
+  dataToSend = {
+    type: "new badge",
+    userId: dataReceived.userId,
+    badgeId: dataReceived.badgeId,
+    points: player.points,
+    multiplier: multiplier,
+  };
+
+  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
+    unityWS.send(JSON.stringify(dataToSend));
+  }
+
+  sendUpdateToFrontend(
+    frontendWSs,
+    `./data/${dataReceived.board}/saves/${dataReceived.save}.json`
+  );
 }
 
 function getPlayerData(file, userId) {
@@ -432,7 +494,7 @@ function newQuestion(req, res) {
 
   writeJSONFile(`./data/${board}/Questions.json`, questions);
 
-  return res.status(200).send();
+  return res.status(201).send();
 }
 
 function newDeckCard(req, res) {
@@ -461,7 +523,7 @@ function newDeckCard(req, res) {
 
   writeJSONFile(`./data/${board}/Cards.json`, cards);
 
-  return res.status(200).send();
+  return res.status(201).send();
 }
 
 async function getTrainCardsData(req, res) {
@@ -514,7 +576,49 @@ function newTrainCard(req, res) {
 
   writeJSONFile(`./data/${board}/Cards.json`, cards);
 
-  return res.status(200).send();
+  return res.status(201).send();
+}
+
+async function getBadges(req, res) {
+  const board = req.params.board;
+
+  const badges = readJSONFile(`./data/${board}/Badges.json`);
+
+  if (!badges) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  return res.status(200).json(badges);
+}
+
+function newBadge(req, res) {
+  const { board, name, image, multiplier, cost } = req.body;
+
+  const badges = readJSONFile(`./data/${board}/Badges.json`);
+
+  if (!badges) {
+    return res
+      .status(404)
+      .send({ error: true, message: "O ficheiro não existe" });
+  }
+
+  const lastId = badges.length > 0 ? badges[badges.length - 1].id : 0;
+
+  const newBadge = {
+    id: lastId + 1,
+    name: name,
+    multiplier: multiplier,
+    cost: cost,
+    image: image,
+  };
+
+  badges.push(newBadge);
+
+  writeJSONFile(`./data/${board}/Badges.json`, badges);
+
+  return res.status(201).send();
 }
 
 module.exports = {
@@ -532,6 +636,7 @@ module.exports = {
   saveGame,
   sendContentToFrontend,
   sendContentViewedToUnity,
+  updatePlayerBadges,
   getPlayerSavedData,
   getSavedData,
   updateSavedData,
@@ -543,4 +648,6 @@ module.exports = {
   newDeckCard,
   getTrainCardsData,
   newTrainCard,
+  getBadges,
+  newBadge,
 };

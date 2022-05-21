@@ -15,6 +15,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject[] leaderboardPlaces = new GameObject[3];
     [SerializeField] private Image[] leaderboardAvatars = new Image[3];
     [SerializeField] private Text[] leaderboardScores = new Text[3];
+    [SerializeField] private GameObject badgesContainer;
+    [SerializeField] private Badge badgePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,21 @@ public class GameUI : MonoBehaviour
     // Set current player score
     public void SetPlayerScore(int score) {
         playerScoreText.text = score.ToString() + " Pontos";
+    }
+
+    // Set current player badges
+    public void SetBadges(List<Sprite> badges) {
+        // Remove previous badges
+        foreach (Transform child in badgesContainer.transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        foreach (Sprite sprite in badges)
+        {
+            Badge badge = Instantiate(badgePrefab);
+            badge.transform.SetParent(badgesContainer.transform);
+            badge.SetImage(sprite);
+        }
     }
 
     // OnFinishTurnClick is called when finish turn button is clicked

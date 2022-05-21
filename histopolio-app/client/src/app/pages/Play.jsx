@@ -2,10 +2,12 @@ import React, { Component } from "react";
 
 import { w3cwebsocket } from "websocket";
 import ReactDice from "react-dice-complete";
+import { Link } from "react-router-dom";
 import "react-dice-complete/dist/react-dice-complete.css";
 
 import Wait from "../components/Wait";
 import Question from "../components/Question";
+import Store from "../components/Store";
 
 class Play extends Component {
   constructor(props) {
@@ -16,6 +18,9 @@ class Play extends Component {
     this.handleDiceClick = this.handleDiceClick.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
     this.handleContentClick = this.handleContentClick.bind(this);
+    this.handleStoreClick = this.handleStoreClick.bind(this);
+    this.handleCloseStoreClick = this.handleCloseStoreClick.bind(this);
+    this.handleBadgePurchased = this.handleBadgePurchased.bind(this);
   }
 
   state = {
@@ -25,9 +30,12 @@ class Play extends Component {
     diceRolled: false,
     question: null,
     content: "",
+    storeOpen: false,
+    badges: [],
     points: 0,
     position: 0,
     rank: 0,
+    userBadges: [],
   };
 
   componentDidMount() {
@@ -35,6 +43,7 @@ class Play extends Component {
       console.log("WebSocket Client Connected");
 
       this.sendIdentificationMessage();
+      this.loadBadges();
       this.sendRequestGameStatusMessage();
     };
 
@@ -71,6 +80,15 @@ class Play extends Component {
     this.sendToServer(JSON.stringify(dataToSend));
   }
 
+  loadBadges() {
+    const dataToSend = {
+      type: "load badges",
+      board: "Histopolio", // TODO: ter no url
+    };
+
+    this.sendToServer(JSON.stringify(dataToSend));
+  }
+
   sendToServer(message) {
     this.client.send(message);
   }
@@ -81,6 +99,9 @@ class Play extends Component {
     switch (command) {
       case "game status":
         this.handleGameStatusReceived(dataReceived);
+        break;
+      case "badges":
+        this.handleBadgesReceived(dataReceived);
         break;
       case "turn":
         this.handleTurnReceived();
@@ -112,6 +133,7 @@ class Play extends Component {
         points: dataReceived["playerData"]["points"],
         position: dataReceived["playerData"]["position"],
         rank: dataReceived["playerData"]["rank"],
+        userBadges: dataReceived["playerData"]["badges"],
       });
     }
 
@@ -120,11 +142,18 @@ class Play extends Component {
     }
   }
 
+  handleBadgesReceived(dataReceived) {
+    this.setState({
+      badges: dataReceived["badges"],
+    });
+  }
+
   sendJoinGameMessage() {
     const user = JSON.parse(sessionStorage.getItem("user"));
 
     const dataToSend = {
       type: "join game",
+      board: "Histopolio", // TODO: ter no url
       userId: user.id,
       name: user.name,
       email: user.email,
@@ -218,64 +247,127 @@ class Play extends Component {
     }
   }
 
+  handleStoreClick() {
+    this.setState({
+      storeOpen: true,
+    });
+  }
+
+  handleCloseStoreClick() {
+    this.setState({
+      storeOpen: false,
+    });
+  }
+
+  handleBadgePurchased(badgeId, cost) {
+    const newUserBadges = [...this.state.userBadges];
+    newUserBadges.push(badgeId);
+    const newPoints = this.state.points - cost;
+
+    this.setState({
+      points: newPoints,
+      userBadges: newUserBadges,
+    });
+
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    const dataToSend = {
+      type: "badge purchased",
+      userId: user.id,
+      board: "Histopolio", // TODO: usar url
+      save: "Turma1", // TODO: usar url
+      badgeId: badgeId,
+    };
+
+    this.sendToServer(JSON.stringify(dataToSend));
+  }
+
   render() {
-    if (this.state.gameStarted) {
-      return (
-        <div>
-          {this.state.showDice ? (
-            <div className="text-center">
-              <h4 className="mb-4">Lança o dado!</h4>
-              <div className="mt-4" onClick={this.handleDiceClick}>
-                <ReactDice
-                  numDice={1}
-                  faceColor="#ffF"
-                  dotColor="#000000"
-                  outline={true}
-                  dieSize={200}
-                  rollTime={this.state.rollTime}
-                  rollDone={(num) => this.rollDoneCallback(num)}
-                  disableIndividual={true}
-                  ref={(dice) => (this.reactDice = dice)}
-                />
-              </div>
-            </div>
-          ) : (
-            <div>
-              {this.state.question ? (
-                <div>
-                  <Question
-                    question={this.state.question}
-                    onAnswerClick={this.handleAnswer}
+    return (
+      <div>
+        <nav aria-label="breadcrumb" className="m-4">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              Histopolio
+            </li>
+          </ol>
+        </nav>
+        {this.state.gameStarted ? (
+          <div>
+            {this.state.showDice ? (
+              <div className="text-center">
+                <h4 className="mb-4">Lança o dado!</h4>
+                <div className="mt-4" onClick={this.handleDiceClick}>
+                  <ReactDice
+                    numDice={1}
+                    faceColor="#ffF"
+                    dotColor="#000000"
+                    outline={true}
+                    dieSize={200}
+                    rollTime={this.state.rollTime}
+                    rollDone={(num) => this.rollDoneCallback(num)}
+                    disableIndividual={true}
+                    ref={(dice) => (this.reactDice = dice)}
                   />
                 </div>
-              ) : (
-                <div className="text-center">
-                  {this.state.content.length > 0 ? (
-                    <a
-                      href={this.state.content}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <button
-                        className="btn btn-primary btn-lg mt-4"
-                        onClick={this.handleContentClick}
+              </div>
+            ) : (
+              <div>
+                {this.state.question ? (
+                  <div>
+                    <Question
+                      question={this.state.question}
+                      onAnswerClick={this.handleAnswer}
+                    />
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    {this.state.content.length > 0 ? (
+                      <a
+                        href={this.state.content}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        Ver conteúdo
-                      </button>
-                    </a>
-                  ) : (
-                    <h2>Espera pela tua vez!</h2>
-                  )}
-                </div>
-              )}
-            </div>
-          )}
-          <p>Rank: {this.state.rank}</p>
-        </div>
-      );
-    } else {
-      return <Wait points={this.state.points} rank={this.state.rank} />;
-    }
+                        <button
+                          className="btn btn-primary btn-lg mt-4"
+                          onClick={this.handleContentClick}
+                        >
+                          Ver conteúdo
+                        </button>
+                      </a>
+                    ) : (
+                      <h2>Espera pela tua vez!</h2>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+            <p>Rank: {this.state.rank}</p>
+          </div>
+        ) : (
+          <div>
+            {this.state.storeOpen ? (
+              <Store
+                points={this.state.points}
+                badges={this.state.badges}
+                userBadges={this.state.userBadges}
+                onPurchaseClick={this.handleBadgePurchased}
+                onCloseClick={this.handleCloseStoreClick}
+              />
+            ) : (
+              <Wait
+                points={this.state.points}
+                rank={this.state.rank}
+                onStoreClick={this.handleStoreClick}
+              />
+            )}
+          </div>
+        )}
+      </div>
+    );
   }
 }
 

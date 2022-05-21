@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private int numTurns;
     private int totalAnswers;
     private int correctAnswers;
+    private List<Sprite> badges = new List<Sprite>();
+    private int multiplier;
 
     [SerializeField] private float speed;
     [SerializeField] private Image img;
@@ -140,7 +142,7 @@ public class Player : MonoBehaviour
     // Receive points from current tile
     public void ReceivePointsFromTile()
     {
-        score += ((PointsTile)tile).GetPoints();
+        score += ((PointsTile)tile).GetPoints() * multiplier;
     }
 
     // Set points
@@ -202,5 +204,31 @@ public class Player : MonoBehaviour
     // Get correct answers
     public int GetCorrectAnswers() {
         return correctAnswers;
+    }
+
+    // Set badges
+    public void SetBadges(List<Sprite> badges) {
+        this.badges = badges;
+    }
+
+    // Add a badge
+    public void AddBadge(Sprite badge) {
+        badges.Add(badge);
+    }
+
+    // Get badges
+    public List<Sprite> GetBadges() {
+        return badges;
+    }
+
+    // Set multiplier
+    public void SetMultiplier(int multiplier) {
+        this.multiplier = multiplier;
+    }
+
+    // Get multiplier
+    public int GetMultiplier()
+    {
+        return multiplier;
     }
 }

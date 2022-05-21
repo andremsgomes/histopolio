@@ -48,9 +48,22 @@ async function loadSaves(ws, dataReceived) {
   ws.send(JSON.stringify(dataToSend));
 }
 
+async function loadBadges(ws, dataReceived) {
+  const badges = readJSONFile(`./data/${dataReceived.board}/Badges.json`);
+  badges.sort((a, b) => a.multiplier - b.multiplier);
+
+  const dataToSend = {
+    type: "badges",
+    badges: badges,
+  };
+
+  ws.send(JSON.stringify(dataToSend));
+}
+
 module.exports = {
   loadBoard,
   loadQuestions,
   loadCards,
   loadSaves,
+  loadBadges,
 };

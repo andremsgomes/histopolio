@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     private Dictionary<int, int> playerScores = new Dictionary<int, int>();
     private Dictionary<int, string> playerNames = new Dictionary<int, string>();
     private Dictionary<int, Sprite> playerSprites = new Dictionary<int, Sprite>();
+    private Dictionary<int, Sprite> badgeSprites = new Dictionary<int, Sprite>();
     private BoardController boardController;
     private CameraController cameraController;
     private WebSocketClientController webSocketClientController;
@@ -154,6 +155,7 @@ public class GameController : MonoBehaviour
         gameUI.SetPlayerNameText(currentPlayer.GetPlayerName());
         gameUI.SetAvatar(currentPlayer.GetAvatar());
         gameUI.SetPlayerScore(currentPlayer.GetScore());
+        gameUI.SetBadges(currentPlayer.GetBadges());
 
         PlayerTurnData playerTurnData = new PlayerTurnData();
         playerTurnData.userId = currentPlayer.GetId();
@@ -165,7 +167,7 @@ public class GameController : MonoBehaviour
     // Give current player points
     public void GiveCurrentPlayerPoints(int points)
     {
-        currentPlayer.AddPoints(points);
+        currentPlayer.AddPoints(points * currentPlayer.GetMultiplier());
         playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
 
         gameUI.SetPlayerScore(currentPlayer.GetScore());
@@ -291,6 +293,26 @@ public class GameController : MonoBehaviour
         cardController.LoadCards(cardsData);
     }
 
+    // Load badges received from server
+    public void LoadBadges(JArray badges)
+    {
+        IEnumerator coroutine = LoadBadgeSprites(badges);
+        StartCoroutine(coroutine);
+    }
+
+    IEnumerator LoadBadgeSprites(JArray badges)
+    {
+        foreach (JObject badge in badges)
+        {
+            // Load image
+            WWW www = new WWW((string)badge["image"]);
+            yield return www;
+
+            Sprite sprite = CreateSquareSprite(www);
+            badgeSprites[(int)badge["id"]] = sprite;
+        }
+    }
+
     // Start new game
     public void StartGame()
     {
@@ -308,7 +330,7 @@ public class GameController : MonoBehaviour
     }
 
     // Add player to the game
-    public void AddPlayer(int id, string name, int points, int position, int numTurns, int totalAnswers, int correctAnswers, string avatarURL)
+    public void AddPlayer(int id, string name, int points, int position, int numTurns, int totalAnswers, int correctAnswers, string avatarURL, List<int> badges, int multiplier)
     {
         if (currentPlayer != null && id == currentPlayer.GetId())
         {
@@ -327,6 +349,15 @@ public class GameController : MonoBehaviour
             newPlayer.SetNumTurns(numTurns);
             newPlayer.SetTotalAnswers(totalAnswers);
             newPlayer.SetCorrectAnswers(correctAnswers);
+
+            List<Sprite> playerBadgeSprites = new List<Sprite>();
+            foreach (int badge in badges)
+            {
+                playerBadgeSprites.Add(badgeSprites[badge]);
+            }
+
+            newPlayer.SetBadges(playerBadgeSprites);
+            newPlayer.SetMultiplier(multiplier);
 
             IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
             StartCoroutine(coroutine);
@@ -397,23 +428,7 @@ public class GameController : MonoBehaviour
         WWW www = new WWW(avatar);
         yield return www;
 
-        // Square image
-        float width = www.texture.width, height = www.texture.height;
-        float startWidth = 0, startHeight = 0, endWidth = width, endHeight = height;
-
-        if (width > height)
-        {
-            startWidth = (width - height) / 2;
-            endWidth = width - (width - height) / 2;
-        }
-
-        if (height > width)
-        {
-            startHeight = (height - width) / 2;
-            endHeight = height - (height - width) / 2;
-        }
-
-        Sprite sprite = Sprite.Create(www.texture, new Rect(startWidth, startHeight, endWidth, endHeight), new Vector2(0, 0));
+        Sprite sprite = CreateSquareSprite(www);
 
         playerSprites[player.GetId()] = sprite;
         player.SetAvatar(sprite);
@@ -421,7 +436,8 @@ public class GameController : MonoBehaviour
     }
 
     // Load leadeboard
-    public void LoadLeaderboard(JArray players) {
+    public void LoadLeaderboard(JArray players)
+    {
         foreach (JObject player in players)
         {
             playerScores[(int)player["userId"]] = (int)player["points"];
@@ -442,29 +458,15 @@ public class GameController : MonoBehaviour
 
         foreach (JObject player in players)
         {
-            for (int i = 0; i < leaderboardLength; i++) {
-                if ((int)player["userId"] == sortedScores[i].Key) {
+            for (int i = 0; i < leaderboardLength; i++)
+            {
+                if ((int)player["userId"] == sortedScores[i].Key)
+                {
                     // Load avatar
                     WWW www = new WWW((string)player["avatar"]);
                     yield return www;
 
-                    // Square image
-                    float width = www.texture.width, height = www.texture.height;
-                    float startWidth = 0, startHeight = 0, endWidth = width, endHeight = height;
-
-                    if (width > height)
-                    {
-                        startWidth = (width - height) / 2;
-                        endWidth = width - (width - height) / 2;
-                    }
-
-                    if (height > width)
-                    {
-                        startHeight = (height - width) / 2;
-                        endHeight = height - (height - width) / 2;
-                    }
-
-                    Sprite sprite = Sprite.Create(www.texture, new Rect(startWidth, startHeight, endWidth, endHeight), new Vector2(0, 0));
+                    Sprite sprite = CreateSquareSprite(www);
                     playerSprites[(int)player["userId"]] = sprite;
 
                     break;
@@ -481,30 +483,57 @@ public class GameController : MonoBehaviour
         SendMessageToServer(message);
     }
 
+    // Create a square sprite
+    Sprite CreateSquareSprite(WWW www)
+    {
+        // Square image
+        float width = www.texture.width, height = www.texture.height;
+        float startWidth = 0, startHeight = 0, endWidth = width, endHeight = height;
+
+        if (width > height)
+        {
+            startWidth = (width - height) / 2;
+            endWidth = width - (width - height) / 2;
+        }
+
+        if (height > width)
+        {
+            startHeight = (height - width) / 2;
+            endHeight = height - (height - width) / 2;
+        }
+
+        return Sprite.Create(www.texture, new Rect(startWidth, startHeight, endWidth, endHeight), new Vector2(0, 0));
+    }
+
     // Update leaderboard
-    void UpdateLeaderboard() {
+    void UpdateLeaderboard()
+    {
         List<KeyValuePair<int, int>> sortedScores = playerScores.OrderByDescending(kvp => kvp.Value).ToList();
 
         int leaderboardLength = 3;
         if (sortedScores.Count < leaderboardLength) leaderboardLength = sortedScores.Count;
 
-        for (int i = 0; i < leaderboardLength; i++) {
+        for (int i = 0; i < leaderboardLength; i++)
+        {
             gameUI.UpdateLeaderboard(i, playerSprites[sortedScores[i].Key], playerNames[sortedScores[i].Key], sortedScores[i].Value);
         }
     }
 
     // Show random community card
-    public void ShowCommunityCard() {
+    public void ShowCommunityCard()
+    {
         cardController.ShowCommunityCard();
     }
 
     // Show random chance card
-    public void ShowChanceCard() {
+    public void ShowChanceCard()
+    {
         cardController.ShowChanceCard();
     }
 
     // Hide card menu
-    public void ContinueTrainCard() {
+    public void ContinueTrainCard()
+    {
         currentPlayer.ReceivePointsFromTile();
         playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
 
@@ -516,7 +545,26 @@ public class GameController : MonoBehaviour
     }
 
     // Get board
-    public string GetBoard() {
+    public string GetBoard()
+    {
         return board;
+    }
+
+    // Add badge to player
+    public void AddBadgeToPlayer(int userId, int badgeId, int points, int multiplier)
+    {
+        Player player = players[userId];
+        Sprite badgeSprite = badgeSprites[badgeId];
+        
+        player.AddBadge(badgeSprite);
+        player.SetScore(points);
+        player.SetMultiplier(multiplier);
+
+        UpdateLeaderboard();
+
+        if (currentPlayer.GetId() == userId) {
+            gameUI.SetPlayerScore(currentPlayer.GetScore());
+            gameUI.SetBadges(currentPlayer.GetBadges());
+        }
     }
 }

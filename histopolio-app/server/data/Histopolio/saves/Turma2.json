@@ -7,7 +7,8 @@
     "position": 20,
     "numTurns": 0,
     "totalAnswers": 0,
-    "correctAnswers": 0
+    "correctAnswers": 0,
+    "badges": []
   },
   {
     "userId": 3,
@@ -17,7 +18,8 @@
     "position": 4,
     "numTurns": 0,
     "totalAnswers": 0,
-    "correctAnswers": 0
+    "correctAnswers": 0,
+    "badges": []
   },
   {
     "userId": 2,
@@ -27,7 +29,8 @@
     "position": 1,
     "numTurns": 0,
     "totalAnswers": 0,
-    "correctAnswers": 0
+    "correctAnswers": 0,
+    "badges": []
   },
   {
     "userId": 5,
@@ -37,7 +40,8 @@
     "position": 6,
     "numTurns": 0,
     "totalAnswers": 0,
-    "correctAnswers": 0
+    "correctAnswers": 0,
+    "badges": []
   },
   {
     "userId": 6,
@@ -47,6 +51,7 @@
     "position": 0,
     "numTurns": 0,
     "totalAnswers": 0,
-    "correctAnswers": 0
+    "correctAnswers": 0,
+    "badges": []
   }
 ]

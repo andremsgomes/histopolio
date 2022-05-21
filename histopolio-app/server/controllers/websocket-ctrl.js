@@ -73,11 +73,17 @@ async function processMessage(ws, data) {
     case "content viewed":
       gameController.sendContentViewedToUnity(unityWS, dataReceived);
       break;
+    case "badge purchased":
+      gameController.updatePlayerBadges(unityWS, frontendWSs, dataReceived);
+      break;
     case "load game":
       gameController.loadGame(unityWS, dataReceived);
       break;
     case "load saves":
       loadController.loadSaves(unityWS, dataReceived);
+      break;
+    case "load badges":
+      loadController.loadBadges(ws, dataReceived);
       break;
     case "ready":
       gameController.setGameReady(frontendWSs);
