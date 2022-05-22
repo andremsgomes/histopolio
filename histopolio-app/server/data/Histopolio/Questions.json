@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 15,
-      "tileId": 26,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 16,
       "tileId": 27,
       "question": "Pergunta com imagem",
@@ -745,6 +731,30 @@
         "Epitélio estratificado pavimentoso não queratinizado"
       ],
       "correctAnswer": 1
+    },
+    {
+      "id": 78,
+      "tileId": 26,
+      "question": "As caveolae são estruturas patognomónicas do tecido muscular estriado cardíaco.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 79,
+      "tileId": 26,
+      "question": "Nesta imagem está representado músculo",
+      "image": "https://www.linkpicture.com/q/casa26pergunta2.png",
+      "answers": [
+        "liso",
+        "estriado esquelético (variedade visceral)",
+        "estriado esquelético (variedade somática)",
+        "estriado cardíaco"
+      ],
+      "correctAnswer": "3"
     }
   ]
 }
