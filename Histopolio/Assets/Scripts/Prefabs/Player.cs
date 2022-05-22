@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
 
     }
 
@@ -33,9 +34,9 @@ public class Player : MonoBehaviour
         if (moveSpaces != 0)
         {
             if (moveSpaces > 0)
-                MoveTo(gameController.GetTile(position+1));
+                MoveTo(gameController.GetTile(position + 1));
             else
-                MoveTo(gameController.GetTile(position-1));
+                MoveTo(gameController.GetTile(position - 1));
 
             if (moveSpaces == 0)
             {
@@ -55,12 +56,14 @@ public class Player : MonoBehaviour
         {
             SetTile(tile);
 
-            if (moveSpaces > 0) {
-                SetPosition(position+1);
+            if (moveSpaces > 0)
+            {
+                SetPosition(position + 1);
                 moveSpaces--;
             }
-            else {
-                SetPosition(position-1);
+            else
+            {
+                SetPosition(position - 1);
                 moveSpaces++;
             }
         }
@@ -124,12 +127,14 @@ public class Player : MonoBehaviour
     }
 
     // Set position
-    public void SetPosition(int position) {
+    public void SetPosition(int position)
+    {
         this.position = position;
     }
 
     // Get position
-    public int GetPosition() {
+    public int GetPosition()
+    {
         return position;
     }
 
@@ -152,77 +157,92 @@ public class Player : MonoBehaviour
     }
 
     // Set image avatar
-    public void SetAvatar(Sprite avatar) {
+    public void SetAvatar(Sprite avatar)
+    {
         img.sprite = avatar;
     }
 
     // Get avatar
-    public Sprite GetAvatar() {
+    public Sprite GetAvatar()
+    {
         return img.sprite;
     }
 
     // Set number of turns played
-    public void SetNumTurns(int numTurns) {
+    public void SetNumTurns(int numTurns)
+    {
         this.numTurns = numTurns;
     }
 
     // Get number of turns played
-    public int GetNumTurns() {
+    public int GetNumTurns()
+    {
         return numTurns;
     }
 
     // Add turn played
-    public void AddTurn() {
+    public void AddTurn()
+    {
         numTurns += 1;
     }
 
     // Set total answers
-    public void SetTotalAnswers(int totalAnswers) {
+    public void SetTotalAnswers(int totalAnswers)
+    {
         this.totalAnswers = totalAnswers;
     }
 
     // Add answer
-    public void AddAnswer() {
+    public void AddAnswer()
+    {
         totalAnswers += 1;
     }
 
     // Get total answers
-    public int GetTotalAnswers() {
+    public int GetTotalAnswers()
+    {
         return totalAnswers;
     }
 
     // Set correct answers
-    public void SetCorrectAnswers(int correctAnswers) {
+    public void SetCorrectAnswers(int correctAnswers)
+    {
         this.correctAnswers = correctAnswers;
     }
 
     // Add correct answer
-    public void AddCorrectAnswer() {
+    public void AddCorrectAnswer()
+    {
         correctAnswers += 1;
     }
 
     // Get correct answers
-    public int GetCorrectAnswers() {
+    public int GetCorrectAnswers()
+    {
         return correctAnswers;
     }
 
     // Set badges
-    public void SetBadges(List<Sprite> badges) {
+    public void SetBadges(List<Sprite> badges)
+    {
         this.badges = badges;
     }
 
     // Add a badge
-    public void AddBadge(Sprite badge) {
+    public void AddBadge(Sprite badge)
+    {
         badges.Add(badge);
     }
 
     // Get badges
-    public List<Sprite> GetBadges() {
+    public List<Sprite> GetBadges()
+    {
         return badges;
     }
 
     // Set multiplier
-    public void SetMultiplier(int multiplier) {
+    public void SetMultiplier(int multiplier)
+    {
         this.multiplier = multiplier;
     }
 
@@ -230,5 +250,17 @@ public class Player : MonoBehaviour
     public int GetMultiplier()
     {
         return multiplier;
+    }
+
+    // Set scale
+    public void SetScale(Vector3 scale)
+    {
+        transform.localScale = scale;
+    }
+
+    // Set position
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
     }
 }

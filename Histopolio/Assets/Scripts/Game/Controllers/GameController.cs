@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         {
             Tile tile = boardController.GetTile(player.GetPosition());
 
-            player.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, -3);
+            tile.AddPlayer(player);
             player.SetTile(tile);
         }
 
