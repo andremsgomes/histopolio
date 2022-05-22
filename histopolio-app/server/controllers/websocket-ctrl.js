@@ -3,6 +3,7 @@ const loadController = require("./load-ctrl");
 
 let unityWS = null;
 let frontendWSs = new Map();
+let unityDeadCount = 3;
 
 async function processMessage(ws, data) {
   console.log(data);
@@ -96,6 +97,7 @@ async function processMessage(ws, data) {
 async function authentication(ws, dataReceived) {
   if (dataReceived["platform"] == "unity") {
     unityWS = ws;
+    unityDeadCount = 0;
     console.log("Unity connected");
   } else {
     frontendWSs.set(dataReceived["id"], ws);
@@ -113,7 +115,17 @@ async function checkWebSocktetsState() {
         console.log("Unity closed");
       } else {
         unityWS.isAlive = false;
+        unityDeadCount = 0;
         unityWS.send("ping");
+      }
+    } else {
+      if (unityDeadCount < 3) {
+        unityDeadCount++;
+        gameController.sendEndGameToFrontend(frontendWSs);
+
+        if (unityDeadCount == 3) {
+          gameController.endGame();
+        }
       }
     }
 

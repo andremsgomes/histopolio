@@ -68,15 +68,19 @@ async function setGameReady(frontendWSs) {
 }
 
 async function sendEndGameToFrontend(frontendWSs) {
-  // gameSaveFilePath = "";
-  // gameStarted = false;
-  // const dataToSend = {
-  //   type: "game status",
-  //   gameStarted: false,
-  // };
-  // for (ws of frontendWSs.values()) {
-  //   if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(dataToSend));
-  // }
+  const dataToSend = {
+    type: "game status",
+    gameStarted: false,
+  };
+
+  for (ws of frontendWSs.values()) {
+    if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(dataToSend));
+  }
+}
+
+async function endGame() {
+  gameSaveFilePath = "";
+  gameStarted = false;
 }
 
 function addPlayerToGame(unityWS, dataReceived) {
@@ -629,6 +633,7 @@ module.exports = {
   sendGameStatusToFrontend,
   setGameReady,
   sendEndGameToFrontend,
+  endGame,
   sendTurnToFrontend,
   sendDiceResultToUnity,
   sendInfoShownToFrontend,
