@@ -298,46 +298,56 @@ class Play extends Component {
         {this.state.gameStarted ? (
           <div>
             {this.state.showDice ? (
-              <div className="text-center page-center">
-                <h2>Lança o dado!</h2>
-                <div className="mt-4" onClick={this.handleDiceClick}>
-                  <ReactDice
-                    numDice={1}
-                    faceColor="#ffF"
-                    dotColor="#000000"
-                    outline={true}
-                    dieSize={200}
-                    rollTime={this.state.rollTime}
-                    rollDone={(num) => this.rollDoneCallback(num)}
-                    disableIndividual={true}
-                    ref={(dice) => (this.reactDice = dice)}
+              <div>
+                {this.state.storeOpen ? (
+                  <Store
+                    points={this.state.points}
+                    badges={this.state.badges}
+                    userBadges={this.state.userBadges}
+                    onPurchaseClick={this.handleBadgePurchased}
+                    onCloseClick={this.handleCloseStoreClick}
                   />
-                </div>
-                <div className="mt-4">
-                  {this.state.rank !== 0 && (
-                    <h4>Estás em {this.state.rank}º lugar</h4>
-                  )}
-                  <h5>
-                    Tens {this.state.points} ponto
-                    {this.state.points !== 1 && "s"}
-                  </h5>
-                </div>
-                <button
-                  className="btn btn-lg btn-primary mt-4"
-                  onClick={this.handleStoreClick}
-                >
-                  Comprar troféus
-                </button>
+                ) : (
+                  <div className="text-center page-center">
+                    <h2>Lança o dado!</h2>
+                    <div className="mt-4" onClick={this.handleDiceClick}>
+                      <ReactDice
+                        numDice={1}
+                        faceColor="#ffF"
+                        dotColor="#000000"
+                        outline={true}
+                        dieSize={200}
+                        rollTime={this.state.rollTime}
+                        rollDone={(num) => this.rollDoneCallback(num)}
+                        disableIndividual={true}
+                        ref={(dice) => (this.reactDice = dice)}
+                      />
+                    </div>
+                    <div className="mt-4">
+                      {this.state.rank !== 0 && (
+                        <h4>Estás em {this.state.rank}º lugar</h4>
+                      )}
+                      <h5>
+                        Tens {this.state.points} ponto
+                        {this.state.points !== 1 && "s"}
+                      </h5>
+                    </div>
+                    <button
+                      className="btn btn-lg btn-primary mt-4"
+                      onClick={this.handleStoreClick}
+                    >
+                      Comprar troféus
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <div>
                 {this.state.question ? (
-                  <div>
-                    <Question
-                      question={this.state.question}
-                      onAnswerClick={this.handleAnswer}
-                    />
-                  </div>
+                  <Question
+                    question={this.state.question}
+                    onAnswerClick={this.handleAnswer}
+                  />
                 ) : (
                   <div className="text-center">
                     {this.state.content.length > 0 ? (
