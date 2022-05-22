@@ -298,8 +298,8 @@ class Play extends Component {
         {this.state.gameStarted ? (
           <div>
             {this.state.showDice ? (
-              <div className="text-center">
-                <h4 className="mb-4">Lança o dado!</h4>
+              <div className="text-center page-center">
+                <h2>Lança o dado!</h2>
                 <div className="mt-4" onClick={this.handleDiceClick}>
                   <ReactDice
                     numDice={1}
@@ -313,6 +313,21 @@ class Play extends Component {
                     ref={(dice) => (this.reactDice = dice)}
                   />
                 </div>
+                <div className="mt-4">
+                  {this.state.rank !== 0 && (
+                    <h4>Estás em {this.state.rank}º lugar</h4>
+                  )}
+                  <h5>
+                    Tens {this.state.points} ponto
+                    {this.state.points !== 1 && "s"}
+                  </h5>
+                </div>
+                <button
+                  className="btn btn-lg btn-primary mt-4"
+                  onClick={this.handleStoreClick}
+                >
+                  Comprar troféus
+                </button>
               </div>
             ) : (
               <div>
