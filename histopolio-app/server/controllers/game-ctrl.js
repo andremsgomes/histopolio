@@ -81,6 +81,8 @@ async function sendEndGameToFrontend(frontendWSs) {
 async function endGame() {
   gameSaveFilePath = "";
   gameStarted = false;
+
+  console.log("Game ended");
 }
 
 function addPlayerToGame(unityWS, dataReceived) {

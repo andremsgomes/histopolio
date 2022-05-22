@@ -3,11 +3,11 @@
     "userId": 1,
     "name": "André",
     "email": "andre@up.pt",
-    "points": 439,
-    "position": 0,
-    "numTurns": 5,
-    "totalAnswers": 6,
-    "correctAnswers": 6,
+    "points": 479,
+    "position": 13,
+    "numTurns": 9,
+    "totalAnswers": 8,
+    "correctAnswers": 7,
     "badges": [
       2,
       1

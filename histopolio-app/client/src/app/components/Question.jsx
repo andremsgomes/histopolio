@@ -4,7 +4,7 @@ function Question(props) {
   return (
     <div className="row m-4">
       <div className="col-sm-12 col-md-8 col-lg-6 mx-auto text-center mb-4">
-        <h1>{props.question.question}</h1>
+        <h2>{props.question.question}</h2>
         {props.question.image.length > 0 && (
           <img
             src={props.question.image}
@@ -24,6 +24,12 @@ function Question(props) {
             {answer}
           </button>
         ))}
+      </div>
+      <div className="mt-4 text-center">
+        {props.rank !== 0 && <h4>Estás em {props.rank}º lugar</h4>}
+        <h5>
+          Tens {props.points} ponto{props.points !== 1 && "s"}
+        </h5>
       </div>
     </div>
   );

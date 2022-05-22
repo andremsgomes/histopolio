@@ -347,6 +347,8 @@ class Play extends Component {
                   <Question
                     question={this.state.question}
                     onAnswerClick={this.handleAnswer}
+                    rank={this.state.rank}
+                    points={this.state.points}
                   />
                 ) : (
                   <div className="text-center">
