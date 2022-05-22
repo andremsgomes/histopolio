@@ -68,5 +68,35 @@
     "name": "Crash Bandicoot",
     "avatar": "https://i.pinimg.com/originals/b4/24/31/b42431bf388a7017faf90a88495e3ff5.jpg",
     "admin": false
+  },
+  {
+    "id": 10,
+    "credentials": {
+      "email": "b@up.pt",
+      "password": "$2b$10$QH7V9Rps8ldjK/Vdpm409uMpz1nFA6z7n.fsjFGLrEOWanDZSuW9W"
+    },
+    "name": "b",
+    "avatar": "https://www.linkpicture.com/q/user_21.png",
+    "admin": false
+  },
+  {
+    "id": 11,
+    "credentials": {
+      "email": "a@up.pt",
+      "password": "$2b$10$KzxMACqF9LLCGToETxvtl.ETquxWjRypZ.lLpqqyRUo8mnG93061a"
+    },
+    "name": "a",
+    "avatar": "https://www.linkpicture.com/q/user_21.png",
+    "admin": false
+  },
+  {
+    "id": 12,
+    "credentials": {
+      "email": "c@up.pt",
+      "password": "$2b$10$rPZEDnx18uCZ3HnwYcYyXu25VxsnRBJmsjMF2QNs1rrjtK6kWHMhu"
+    },
+    "name": "c",
+    "avatar": "https://www.linkpicture.com/q/user_21.png",
+    "admin": false
   }
 ]

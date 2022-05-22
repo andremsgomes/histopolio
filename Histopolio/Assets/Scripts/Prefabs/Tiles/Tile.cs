@@ -124,25 +124,67 @@ public abstract class Tile : MonoBehaviour
                 playersList[i].SetScale(scale);
             }
 
-            if (transform.rotation.z == 0) {
-                centerFour(playersList, 0, transform.position.x, transform.position.y+0.4f, 0.2f, transform.rotation.z);
-                centerFour(playersList, 4, transform.position.x, transform.position.y-0.4f, 0.2f, transform.rotation.z);
+            if (transform.rotation.z == 0)
+            {
+                centerFour(playersList, 0, transform.position.x, transform.position.y + 0.4f, 0.2f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x, transform.position.y - 0.4f, 0.2f, transform.rotation.z);
             }
-            else if (transform.rotation.z == 0.7071068f) {
-                centerFour(playersList, 0, transform.position.x-0.4f, transform.position.y, 0.2f, transform.rotation.z);
-                centerFour(playersList, 4, transform.position.x+0.4f, transform.position.y, 0.2f, transform.rotation.z);
+            else if (transform.rotation.z == 0.7071068f)
+            {
+                centerFour(playersList, 0, transform.position.x - 0.4f, transform.position.y, 0.2f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x + 0.4f, transform.position.y, 0.2f, transform.rotation.z);
             }
-            else if (transform.rotation.z == 1) {
-                centerFour(playersList, 0, transform.position.x, transform.position.y-0.4f, 0.2f, transform.rotation.z);
-                centerFour(playersList, 4, transform.position.x, transform.position.y+0.4f, 0.2f, transform.rotation.z);
+            else if (transform.rotation.z == 1)
+            {
+                centerFour(playersList, 0, transform.position.x, transform.position.y - 0.4f, 0.2f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x, transform.position.y + 0.4f, 0.2f, transform.rotation.z);
             }
-            else if (transform.rotation.z == -0.7071068f) {
-                centerFour(playersList, 0, transform.position.x+0.4f, transform.position.y, 0.2f, transform.rotation.z);
-                centerFour(playersList, 4, transform.position.x-0.4f, transform.position.y, 0.2f, transform.rotation.z);
+            else if (transform.rotation.z == -0.7071068f)
+            {
+                centerFour(playersList, 0, transform.position.x + 0.4f, transform.position.y, 0.2f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x - 0.4f, transform.position.y, 0.2f, transform.rotation.z);
+            }
+        }
+        else if (playersList.Count < 17)
+        {
+            Vector3 scale = new Vector3(0.25f, 0.25f, 1);
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                playersList[i].SetScale(scale);
+            }
+
+            if (transform.rotation.z == 0)
+            {
+                centerFour(playersList, 0, transform.position.x-0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x+0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 8, transform.position.x-0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 12, transform.position.x+0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
+            }
+            else if (transform.rotation.z == 0.7071068f)
+            {
+                centerFour(playersList, 0, transform.position.x-0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x-0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 8, transform.position.x+0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 12, transform.position.x+0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+            }
+            else if (transform.rotation.z == 1)
+            {
+                centerFour(playersList, 0, transform.position.x+0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x-0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 8, transform.position.x+0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 12, transform.position.x-0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+            }
+            else if (transform.rotation.z == -0.7071068f)
+            {
+                centerFour(playersList, 0, transform.position.x+0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 4, transform.position.x+0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 8, transform.position.x-0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
+                centerFour(playersList, 12, transform.position.x-0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
             }
         }
 
-        // TODO: fazer para < 17 e else
+        // TODO: fazer para else
     }
 
     // Center four players

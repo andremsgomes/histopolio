@@ -479,7 +479,7 @@ function newQuestion(req, res) {
   const lastId =
     questions["questions"].length > 0
       ? questions["questions"][questions["questions"].length - 1].id
-      : 0;
+      : 1;
 
   const newQuestion = {
     id: lastId + 1,
@@ -509,7 +509,7 @@ function newDeckCard(req, res) {
   }
 
   const lastId =
-    cards[deck].length > 0 ? cards[deck][cards[deck].length - 1].id : 0;
+    cards[deck].length > 0 ? cards[deck][cards[deck].length - 1].id : 1;
 
   const newCard = {
     id: lastId + 1,
@@ -563,7 +563,7 @@ function newTrainCard(req, res) {
   const lastId =
     cards["trainCards"].length > 0
       ? cards["trainCards"][cards["trainCards"].length - 1].id
-      : 0;
+      : 1;
 
   const newTrainCard = {
     id: lastId + 1,
@@ -604,7 +604,7 @@ function newBadge(req, res) {
       .send({ error: true, message: "O ficheiro não existe" });
   }
 
-  const lastId = badges.length > 0 ? badges[badges.length - 1].id : 0;
+  const lastId = badges.length > 0 ? badges[badges.length - 1].id : 1;
 
   const newBadge = {
     id: lastId + 1,

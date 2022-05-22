@@ -9,7 +9,7 @@ function getUser(email) {
 }
 
 function signup(req, res) {
-  const { name, avatar, email, password } = req.body;
+  const { name, avatarToSend, email, password } = req.body;
 
   if (!(name && email && password)) {
     return res
@@ -35,13 +35,13 @@ function signup(req, res) {
   };
 
   const users = readJSONFile("./data/Users.json");
-  const id = users.length + 1;
+  const lastId = users.length > 0 ? users[users.length - 1].id : 1;
 
   const user = {
-    id: id,
+    id: lastId + 1,
     credentials: credentials,
     name: name,
-    avatar: avatar,
+    avatar: avatarToSend,
     admin: false,
   };
 
