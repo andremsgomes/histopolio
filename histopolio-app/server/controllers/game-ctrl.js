@@ -272,7 +272,7 @@ function updatePlayerBadges(unityWS, frontendWSs, dataReceived) {
   let multiplier = 1;
   const player = getPlayerData(
     `./data/${dataReceived.board}/saves/${dataReceived.save}.json`,
-    dataToSend.userId
+    dataReceived.userId
   );
 
   player.badges.forEach((userBadge) => {

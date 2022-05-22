@@ -3,24 +3,25 @@
     "userId": 1,
     "name": "André",
     "email": "andre@up.pt",
-    "points": 539,
-    "position": 31,
-    "numTurns": 2,
-    "totalAnswers": 3,
-    "correctAnswers": 3,
+    "points": 79,
+    "position": 34,
+    "numTurns": 3,
+    "totalAnswers": 4,
+    "correctAnswers": 4,
     "badges": [
-      2
+      2,
+      1
     ]
   },
   {
     "userId": 2,
     "name": "Inês",
     "email": "ines@up.pt",
-    "points": 87,
-    "position": 31,
-    "numTurns": 2,
-    "totalAnswers": 0,
-    "correctAnswers": 0,
+    "points": 127,
+    "position": 34,
+    "numTurns": 3,
+    "totalAnswers": 1,
+    "correctAnswers": 1,
     "badges": [
       2
     ]

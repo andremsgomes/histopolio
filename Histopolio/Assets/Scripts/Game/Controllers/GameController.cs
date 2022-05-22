@@ -558,6 +558,7 @@ public class GameController : MonoBehaviour
         
         player.AddBadge(badgeSprite);
         player.SetScore(points);
+        playerScores[userId] = points;
         player.SetMultiplier(multiplier);
 
         UpdateLeaderboard();

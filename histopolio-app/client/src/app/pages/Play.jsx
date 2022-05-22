@@ -339,13 +339,29 @@ class Play extends Component {
                         </button>
                       </a>
                     ) : (
-                      <h2>Espera pela tua vez!</h2>
+                      <div>
+                        {this.state.storeOpen ? (
+                          <Store
+                            points={this.state.points}
+                            badges={this.state.badges}
+                            userBadges={this.state.userBadges}
+                            onPurchaseClick={this.handleBadgePurchased}
+                            onCloseClick={this.handleCloseStoreClick}
+                          />
+                        ) : (
+                          <Wait
+                            title="Espera pela tua vez!"
+                            points={this.state.points}
+                            rank={this.state.rank}
+                            onStoreClick={this.handleStoreClick}
+                          />
+                        )}
+                      </div>
                     )}
                   </div>
                 )}
               </div>
             )}
-            <p>Rank: {this.state.rank}</p>
           </div>
         ) : (
           <div>
@@ -359,6 +375,7 @@ class Play extends Component {
               />
             ) : (
               <Wait
+                title="Espera pelo início do jogo!"
                 points={this.state.points}
                 rank={this.state.rank}
                 onStoreClick={this.handleStoreClick}
