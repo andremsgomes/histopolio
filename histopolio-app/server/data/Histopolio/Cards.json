@@ -13,6 +13,20 @@
       "points": 10,
       "action": "tile",
       "actionValue": "15"
+    },
+    {
+      "id": 3,
+      "info": "Está um bom dia para tirar fotografia!\nFotografa 5 lâminas consecutivas da aula (que estiveres a realizar) e faz a legenda dos elementos a bold. Envia por mail para rmarcos@icbas.up.pt e ganha 20 pontos!",
+      "points": 0,
+      "action": "none",
+      "actionValue": ""
+    },
+    {
+      "id": 4,
+      "info": "Os vídeos da Estação de Treino estão sem som porque o narrador estava rouco! Avança ou Recua até à Estação do TECIDO EPITELIAL e edita o vídeo colocando-lhe a narração... Ganhas os pontos da Estação +10 por conseguires aquela voz de rádio!",
+      "points": 10,
+      "action": "tile",
+      "actionValue": "5"
     }
   ],
   "chanceCards": [
