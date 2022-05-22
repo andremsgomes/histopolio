@@ -8,6 +8,7 @@ import "react-dice-complete/dist/react-dice-complete.css";
 import Wait from "../components/Wait";
 import Question from "../components/Question";
 import Store from "../components/Store";
+import Content from "../components/Content";
 
 class Play extends Component {
   constructor(props) {
@@ -227,7 +228,7 @@ class Play extends Component {
   rollDoneCallback(num) {
     const dataToSend = {
       type: "dice result",
-      result: num,
+      result: 5,
       rollTime: this.state.rollTime * 1000,
     };
 
@@ -351,20 +352,14 @@ class Play extends Component {
                     points={this.state.points}
                   />
                 ) : (
-                  <div className="text-center">
+                  <div>
                     {this.state.content.length > 0 ? (
-                      <a
-                        href={this.state.content}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <button
-                          className="btn btn-primary btn-lg mt-4"
-                          onClick={this.handleContentClick}
-                        >
-                          Ver conteúdo
-                        </button>
-                      </a>
+                      <Content
+                        content={this.state.content}
+                        onContentClick={this.handleContentClick}
+                        points={this.state.points}
+                        rank={this.state.rank}
+                      />
                     ) : (
                       <div>
                         {this.state.storeOpen ? (
