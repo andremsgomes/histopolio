@@ -2,20 +2,6 @@
   "board": "Histopolio",
   "questions": [
     {
-      "id": 14,
-      "tileId": 24,
-      "question": "Pergunta com imagem",
-      "image": "https://www.linkpicture.com/q/Screenshot-from-2020-11-25-12-03-16.png",
-      "answers": [
-        "Resposta 1",
-        "Resposta muito muito muito muitooooo muito longa 2",
-        "Resposta 3",
-        "Resposta 4",
-        "Resposta 5"
-      ],
-      "correctAnswer": "2"
-    },
-    {
       "id": 15,
       "tileId": 26,
       "question": "Pergunta com imagem",
@@ -725,6 +711,28 @@
         "Falso"
       ],
       "correctAnswer": "2"
+    },
+    {
+      "id": 75,
+      "tileId": 24,
+      "question": "Os túbulos T existem no músculo liso.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
+    },
+    {
+      "id": 76,
+      "tileId": 24,
+      "question": "O conceito de “fibras” no tecido muscular é diferente do conjuntivo.",
+      "image": "",
+      "answers": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "correctAnswer": 1
     }
   ]
 }
