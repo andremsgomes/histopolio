@@ -733,6 +733,18 @@
         "Falso"
       ],
       "correctAnswer": 1
+    },
+    {
+      "id": 77,
+      "tileId": 3,
+      "question": "Relacione a imagem com o rótulo correto.",
+      "image": "https://www.linkpicture.com/q/casa3pergunta2.png",
+      "answers": [
+        "Epitélio pseudoestratificado colunar ciliado",
+        "Epitélio simples colunar com prato estriado",
+        "Epitélio estratificado pavimentoso não queratinizado"
+      ],
+      "correctAnswer": 1
     }
   ]
 }
