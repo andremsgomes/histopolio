@@ -755,6 +755,18 @@
         "estriado cardíaco"
       ],
       "correctAnswer": "3"
+    },
+    {
+      "id": 80,
+      "tileId": 3,
+      "question": "Qual das imagens é o epitélio de transição?",
+      "image": "https://www.linkpicture.com/q/casa3pergunta4.png",
+      "answers": [
+        "Imagem 1",
+        "Imagem 2",
+        "Imagem 3"
+      ],
+      "correctAnswer": "2"
     }
   ]
 }
