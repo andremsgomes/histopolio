@@ -8,7 +8,7 @@ public abstract class Tile : MonoBehaviour
     private int id;
     private string tileName;
     protected GameController gameController;
-    private Dictionary<int, Player> players = new Dictionary<int, Player>();
+    protected Dictionary<int, Player> players = new Dictionary<int, Player>();
 
     [SerializeField] private Text tileNameText;     // TODO: meter só no group
 
@@ -65,7 +65,7 @@ public abstract class Tile : MonoBehaviour
     }
 
     // Resize players to fit tile
-    void ResizePlayers()
+    public virtual void ResizePlayers()
     {
         List<Player> playersList = new List<Player>(players.Values);
 
