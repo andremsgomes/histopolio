@@ -182,9 +182,15 @@ public abstract class Tile : MonoBehaviour
                 centerFour(playersList, 8, transform.position.x-0.25f, transform.position.y+0.25f, 0.125f, transform.rotation.z);
                 centerFour(playersList, 12, transform.position.x-0.25f, transform.position.y-0.25f, 0.125f, transform.rotation.z);
             }
+            else {
+                // TODO: mudar
+                foreach (Player player in playersList)
+                {
+                    player.SetScale(new Vector3(1, 1, 1));
+                    player.SetPosition(new Vector3(transform.position.x, transform.position.y, -3));
+                }
+            }
         }
-
-        // TODO: fazer para else
     }
 
     // Center four players

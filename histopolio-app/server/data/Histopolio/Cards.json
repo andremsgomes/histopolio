@@ -50,6 +50,20 @@
       "points": 15,
       "action": "move",
       "actionValue": "1"
+    },
+    {
+      "id": 4,
+      "info": "Foram encontrados 20 PONTOS do Histopólio num cacifo! Como ninguém os reclamou, ficam para ti!\nAvança DUAS casas.",
+      "points": 20,
+      "action": "move",
+      "actionValue": "2"
+    },
+    {
+      "id": 5,
+      "info": "Foram produzidas demasiadas moedas de Histopólio, pelo que é necessário distribuir de forma a premiar o MÉRITO!\nRecebe 20 PONTOS e avança CINCO casas.",
+      "points": 20,
+      "action": "move",
+      "actionValue": "5"
     }
   ],
   "trainCards": [
