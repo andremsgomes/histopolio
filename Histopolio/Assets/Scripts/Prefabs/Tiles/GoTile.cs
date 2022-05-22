@@ -38,6 +38,16 @@ public class GoTile : CardTile
             playersList[0].SetPosition(new Vector3(transform.position.x - 0.35f, transform.position.y - 0.35f, -3));
             playersList[1].SetPosition(new Vector3(transform.position.x + 0.35f, transform.position.y + 0.35f, -3));
         }
+        else if (playersList.Count < 5) {
+            Vector3 scale = new Vector3(0.7f, 0.7f, 1);
+
+            for (int i = 0; i < players.Count; i++)
+            {
+                playersList[i].SetScale(scale);
+            }
+
+            centerFour(playersList, 0, transform.position.x, transform.position.y, 0.4f, 0.7071068f);
+        }
     }
 
     // Get rotation for the camera
