@@ -9,6 +9,7 @@ import Wait from "../components/Wait";
 import Question from "../components/Question";
 import Store from "../components/Store";
 import Content from "../components/Content";
+import Finish from "../components/Finish";
 
 class Play extends Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class Play extends Component {
     this.handleStoreClick = this.handleStoreClick.bind(this);
     this.handleCloseStoreClick = this.handleCloseStoreClick.bind(this);
     this.handleBadgePurchased = this.handleBadgePurchased.bind(this);
+    this.handleFinishTurnReceived = this.handleFinishTurnReceived.bind(this);
+    this.handleContinueClick = this.handleContinueClick.bind(this);
   }
 
   state = {
@@ -32,6 +35,8 @@ class Play extends Component {
     question: null,
     content: "",
     storeOpen: false,
+    finishTurn: false,
+    finishTurnInfo: "",
     badges: [],
     points: 0,
     position: 0,
@@ -119,6 +124,9 @@ class Play extends Component {
       case "content":
         this.handleContentReceived(dataReceived);
         break;
+      case "finish turn":
+        this.handleFinishTurnReceived(dataReceived);
+        break;
       default:
         console.log("Unknown message: " + dataReceived);
     }
@@ -202,6 +210,13 @@ class Play extends Component {
     this.hideDice();
   }
 
+  handleFinishTurnReceived(dataReceived) {
+    this.setState({
+      finishTurn: true,
+      finishTurnInfo: dataReceived["info"],
+    });
+  }
+
   handleAnswer(answerIndex) {
     this.setState({ question: null });
 
@@ -278,6 +293,19 @@ class Play extends Component {
       board: "Histopolio", // TODO: usar url
       save: "Turma1", // TODO: usar url
       badgeId: badgeId,
+    };
+
+    this.sendToServer(JSON.stringify(dataToSend));
+  }
+
+  handleContinueClick() {
+    this.setState({
+      finishTurn: false,
+      finishTurnInfo: "",
+    });
+
+    const dataToSend = {
+      type: "continue",
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -363,21 +391,45 @@ class Play extends Component {
                       />
                     ) : (
                       <div>
-                        {this.state.storeOpen ? (
-                          <Store
-                            points={this.state.points}
-                            badges={this.state.badges}
-                            userBadges={this.state.userBadges}
-                            onPurchaseClick={this.handleBadgePurchased}
-                            onCloseClick={this.handleCloseStoreClick}
-                          />
+                        {this.state.finishTurn ? (
+                          <div>
+                            {this.state.storeOpen ? (
+                              <Store
+                                points={this.state.points}
+                                badges={this.state.badges}
+                                userBadges={this.state.userBadges}
+                                onPurchaseClick={this.handleBadgePurchased}
+                                onCloseClick={this.handleCloseStoreClick}
+                              />
+                            ) : (
+                              <Finish
+                                info={this.state.finishTurnInfo}
+                                onContinueClick={this.handleContinueClick}
+                                points={this.state.points}
+                                rank={this.state.rank}
+                                onStoreClick={this.handleStoreClick}
+                              />
+                            )}
+                          </div>
                         ) : (
-                          <Wait
-                            title="Espera pela tua vez!"
-                            points={this.state.points}
-                            rank={this.state.rank}
-                            onStoreClick={this.handleStoreClick}
-                          />
+                          <div>
+                            {this.state.storeOpen ? (
+                              <Store
+                                points={this.state.points}
+                                badges={this.state.badges}
+                                userBadges={this.state.userBadges}
+                                onPurchaseClick={this.handleBadgePurchased}
+                                onCloseClick={this.handleCloseStoreClick}
+                              />
+                            ) : (
+                              <Wait
+                                title="Espera pela tua vez!"
+                                points={this.state.points}
+                                rank={this.state.rank}
+                                onStoreClick={this.handleStoreClick}
+                              />
+                            )}
+                          </div>
                         )}
                       </div>
                     )}

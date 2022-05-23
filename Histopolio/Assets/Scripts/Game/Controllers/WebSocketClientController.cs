@@ -98,6 +98,9 @@ public class WebSocketClientController : MonoBehaviour
             case "new badge":
                 OnNewBadgeReceived(dataReceived);
                 break;
+            case "continue":
+                OnContinue();
+                break;
             default:
                 Debug.LogError("Unknown message: " + message);
                 break;
@@ -257,5 +260,11 @@ public class WebSocketClientController : MonoBehaviour
     void OnNewBadgeReceived(JObject dataReceived)
     {
         gameController.AddBadgeToPlayer((int)dataReceived["userId"], (int)dataReceived["badgeId"], (int)dataReceived["points"], (int)dataReceived["multiplier"]);
+    }
+
+    // OnContinue is called after player clicks the continue button
+    void OnContinue()
+    {
+        gameController.ChangeCurrentPlayer();
     }
 }

@@ -19,7 +19,7 @@ public class PrisonTile : Tile
     // Perform action when player arrives to tile
     public override void PerformAction() {
         gameController.SendInfoShownMessageToServer();
-        gameController.FinishTurn();
+        gameController.FinishTurn("");
     }
 
     // Get rotation for the camera

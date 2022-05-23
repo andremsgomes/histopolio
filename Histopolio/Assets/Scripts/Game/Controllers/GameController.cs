@@ -185,11 +185,23 @@ public class GameController : MonoBehaviour
     }
 
     // Display finish turn button and hide dice button
-    public void FinishTurn()
+    public void FinishTurn(string info)
     {
         SaveCurrentPlayer();
-        gameUI.DisplayFinishTurn();
+        SendFinishTurn(info);
+
+        // gameUI.DisplayFinishTurn();
         // dice.AllowCoroutine();
+    }
+
+    void SendFinishTurn(string info)
+    {
+        FinishTurnData finishTurnData = new FinishTurnData();
+        finishTurnData.userId = currentPlayer.GetId();
+        finishTurnData.info = info;
+        string message = JsonUtility.ToJson(finishTurnData);
+
+        SendMessageToServer(message);
     }
 
     // FinishQuestion is called after player answers question
@@ -200,8 +212,13 @@ public class GameController : MonoBehaviour
         if (correctAnswer)
             currentPlayer.AddCorrectAnswer();
 
-        if (currentPlayer.GetFinishedBoard() && correctAnswer) {
+        string info = "";
+
+        if (currentPlayer.GetFinishedBoard() && correctAnswer)
+        {
             GiveCurrentPlayerPoints(20);
+
+            info = "Resposta certa! Recebeste " + 20 * currentPlayer.GetMultiplier() + " pontos!";
         }
         else if (!currentPlayer.GetFinishedBoard() && ((((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer)))
         {
@@ -210,9 +227,28 @@ public class GameController : MonoBehaviour
 
             gameUI.SetPlayerScore(currentPlayer.GetScore());
             UpdateLeaderboard();
+
+            if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0) {
+                info = "Resposta certa! Recebeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints() * currentPlayer.GetMultiplier() + " pontos!";
+            }
+            else {
+                info = "Resposta errada! Perdeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints()*(-1) + " pontos!";
+            }
+        }
+        else if (!currentPlayer.GetFinishedBoard()) {
+            if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0) {
+                info = "Resposta errada! Não conseguiste receber pontos desta vez!";
+            }
+            else {
+                info = "Resposta certa! Evitaste perder pontos!";
+            }
+        }
+        else
+        {
+            info = "Resposta errada! Não conseguiste receber pontos desta vez!";
         }
 
-        FinishTurn();
+        FinishTurn(info);
     }
 
     // Add card to tile
@@ -555,7 +591,9 @@ public class GameController : MonoBehaviour
         UpdateLeaderboard();
 
         cardController.HideCardMenu();
-        FinishTurn();
+
+        string info = "Parabéns! Recebeste " + ((PointsTile)currentPlayer.GetTile()).GetPoints() * currentPlayer.GetMultiplier() + " pontos!";
+        FinishTurn(info);
     }
 
     // Get board
@@ -582,5 +620,11 @@ public class GameController : MonoBehaviour
             gameUI.SetPlayerScore(currentPlayer.GetScore());
             gameUI.SetBadges(currentPlayer.GetBadges());
         }
+    }
+
+    // Get current player
+    public Player GetCurrentPlayer()
+    {
+        return currentPlayer;
     }
 }

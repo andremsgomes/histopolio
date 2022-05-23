@@ -240,6 +240,18 @@ async function sendUpdateToFrontend(frontendWSs, saveFile) {
   });
 }
 
+async function sendFinishTurnToFrontend(frontendWS, dataReceived) {
+  if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
+    frontendWS.send(JSON.stringify(dataReceived));
+  }
+}
+
+async function sendContinueToUnity(unityWS, dataReceived) {
+  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
+    unityWS.send(JSON.stringify(dataReceived));
+  }
+}
+
 async function sendContentToFrontend(frontendWS, dataReceived) {
   if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
     frontendWS.send(JSON.stringify(dataReceived));
@@ -644,6 +656,8 @@ module.exports = {
   sendInfoShownToFrontend,
   loadGame,
   saveGame,
+  sendFinishTurnToFrontend,
+  sendContinueToUnity,
   sendContentToFrontend,
   sendContentViewedToUnity,
   updatePlayerBadges,

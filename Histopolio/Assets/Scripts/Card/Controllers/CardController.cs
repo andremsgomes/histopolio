@@ -78,7 +78,14 @@ public class CardController : MonoBehaviour
                 gameController.MovePlayerTo(int.Parse(actionValue));
                 break;
             default:
-                gameController.FinishTurn();
+                string info = "";
+                if (points < 0) {
+                    info = "Perdeste " + points + " pontos!";
+                }
+                else if (points > 0)
+                    info = "Parabéns! Recebeste " + points * gameController.GetCurrentPlayer().GetMultiplier() + " pontos!";
+
+                gameController.FinishTurn(info);
                 break;
         }
     }

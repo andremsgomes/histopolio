@@ -21,7 +21,9 @@ public class GoTile : CardTile
     {
         gameController.GiveCurrentPlayerPoints(20);
         gameController.SendInfoShownMessageToServer();
-        gameController.FinishTurn();
+
+        string info = "Parabéns! Chegaste ao fim! Recebeste " + 20 * gameController.GetCurrentPlayer().GetMultiplier() + " pontos!";
+        gameController.FinishTurn(info);
     }
 
     // Resize players to fit tile
