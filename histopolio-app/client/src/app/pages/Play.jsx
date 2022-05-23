@@ -259,7 +259,7 @@ class Play extends Component {
   rollDoneCallback(num) {
     const dataToSend = {
       type: "dice result",
-      result: num,
+      result: 3,
       rollTime: this.state.rollTime * 1000,
     };
 
@@ -470,7 +470,7 @@ class Play extends Component {
                                       />
                                     ) : (
                                       <Wait
-                                        title="Espera pela tua vez!"
+                                        title="Espera pelo fim da jogada!"
                                         points={this.state.points}
                                         rank={this.state.rank}
                                         storeButton={true}
@@ -490,7 +490,7 @@ class Play extends Component {
               </div>
             ) : (
               <Wait
-                title="Espera pelo fim da jogada!"
+                title="Espera pela tua vez!"
                 points={this.state.points}
                 rank={this.state.rank}
                 storeButton={false}

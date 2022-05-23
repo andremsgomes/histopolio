@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private Image img;
+    [SerializeField] private SpriteRenderer rend;
 
 
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
 
             if (moveSpaces == 0)
             {
+                tile.AddPlayer(this);
                 tile.PerformAction();
             }
         }
@@ -79,6 +81,7 @@ public class Player : MonoBehaviour
     public void Move(int spaces)
     {
         moveSpaces = spaces;
+        tile.RemovePlayer(this);
     }
 
     // Set tile
@@ -283,5 +286,11 @@ public class Player : MonoBehaviour
     public bool GetFinishedBoard()
     {
         return finishedBoard;
+    }
+
+    // Set order in layer
+    public void SetOrder(int order)
+    {
+        rend.sortingOrder = order;
     }
 }
