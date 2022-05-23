@@ -16,12 +16,6 @@ async function sendQuestionToFrontend(frontendWS, dataReceived) {
   }
 }
 
-async function sendAnswerToUnity(unityWS, dataReceived) {
-  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
-    unityWS.send(JSON.stringify(dataReceived));
-  }
-}
-
 async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
   let playerData = await getPlayerData(saveFilePath, userId);
 
@@ -246,7 +240,7 @@ async function sendFinishTurnToFrontend(frontendWS, dataReceived) {
   }
 }
 
-async function sendContinueToUnity(unityWS, dataReceived) {
+async function sendDataToUnity(unityWS, dataReceived) {
   if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
     unityWS.send(JSON.stringify(dataReceived));
   }
@@ -255,12 +249,6 @@ async function sendContinueToUnity(unityWS, dataReceived) {
 async function sendContentToFrontend(frontendWS, dataReceived) {
   if (frontendWS != null && frontendWS.readyState === WebSocket.OPEN) {
     frontendWS.send(JSON.stringify(dataReceived));
-  }
-}
-
-async function sendContentViewedToUnity(unityWS, dataReceived) {
-  if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
-    unityWS.send(JSON.stringify(dataReceived));
   }
 }
 
@@ -644,7 +632,6 @@ function newBadge(req, res) {
 
 module.exports = {
   sendQuestionToFrontend,
-  sendAnswerToUnity,
   addPlayerToGame,
   removePlayerFromGame,
   sendGameStatusToFrontend,
@@ -657,9 +644,8 @@ module.exports = {
   loadGame,
   saveGame,
   sendFinishTurnToFrontend,
-  sendContinueToUnity,
+  sendDataToUnity,
   sendContentToFrontend,
-  sendContentViewedToUnity,
   updatePlayerBadges,
   getPlayerSavedData,
   getSavedData,

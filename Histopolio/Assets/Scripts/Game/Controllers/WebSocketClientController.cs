@@ -99,7 +99,10 @@ public class WebSocketClientController : MonoBehaviour
                 OnNewBadgeReceived(dataReceived);
                 break;
             case "continue":
-                OnContinue();
+                OnContinueReceived();
+                break;
+            case "next player":
+                OnNextPlayerReceived();
                 break;
             default:
                 Debug.LogError("Unknown message: " + message);
@@ -262,8 +265,14 @@ public class WebSocketClientController : MonoBehaviour
         gameController.AddBadgeToPlayer((int)dataReceived["userId"], (int)dataReceived["badgeId"], (int)dataReceived["points"], (int)dataReceived["multiplier"]);
     }
 
-    // OnContinue is called after player clicks the continue button
-    void OnContinue()
+    // OnContinueReceived is called after player clicks the continue button when a card is showing
+    void OnContinueReceived()
+    {
+        gameController.ContinueCard();
+    }
+
+    // OnNextPlayerReceived is called after a player clicks the continue button to finish his turn
+    void OnNextPlayerReceived()
     {
         gameController.ChangeCurrentPlayer();
     }

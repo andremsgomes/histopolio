@@ -20,7 +20,6 @@ public class GoTile : CardTile
     public override void PerformAction()
     {
         gameController.GiveCurrentPlayerPoints(20);
-        gameController.SendInfoShownMessageToServer();
 
         string info = "Parabéns! Chegaste ao fim! Recebeste " + 20 * gameController.GetCurrentPlayer().GetMultiplier() + " pontos!";
         gameController.FinishTurn(info);

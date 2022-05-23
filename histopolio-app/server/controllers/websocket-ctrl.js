@@ -27,7 +27,7 @@ async function processMessage(ws, data) {
       await authentication(ws, dataReceived);
       break;
     case "answer":
-      await gameController.sendAnswerToUnity(unityWS, dataReceived);
+      await gameController.sendDataToUnity(unityWS, dataReceived);
       break;
     case "load board":
       await loadController.loadBoard(unityWS, dataReceived);
@@ -72,7 +72,7 @@ async function processMessage(ws, data) {
       );
       break;
     case "continue":
-      gameController.sendContinueToUnity(unityWS, dataReceived);
+      gameController.sendDataToUnity(unityWS, dataReceived);
       break;
     case "content":
       gameController.sendContentToFrontend(
@@ -81,7 +81,10 @@ async function processMessage(ws, data) {
       );
       break;
     case "content viewed":
-      gameController.sendContentViewedToUnity(unityWS, dataReceived);
+      gameController.sendDataToUnity(unityWS, dataReceived);
+      break;
+    case "next player":
+      gameController.sendDataToUnity(unityWS, dataReceived);
       break;
     case "badge purchased":
       gameController.updatePlayerBadges(unityWS, frontendWSs, dataReceived);

@@ -9,7 +9,7 @@ import Wait from "../components/Wait";
 import Question from "../components/Question";
 import Store from "../components/Store";
 import Content from "../components/Content";
-import Finish from "../components/Finish";
+import Continue from "../components/Continue";
 
 class Play extends Component {
   constructor(props) {
@@ -20,11 +20,13 @@ class Play extends Component {
     this.handleDiceClick = this.handleDiceClick.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
     this.handleContentClick = this.handleContentClick.bind(this);
+    this.handleInfoShownReceived = this.handleInfoShownReceived.bind(this);
     this.handleStoreClick = this.handleStoreClick.bind(this);
     this.handleCloseStoreClick = this.handleCloseStoreClick.bind(this);
     this.handleBadgePurchased = this.handleBadgePurchased.bind(this);
     this.handleFinishTurnReceived = this.handleFinishTurnReceived.bind(this);
     this.handleContinueClick = this.handleContinueClick.bind(this);
+    this.handleFinishClick = this.handleFinishClick.bind(this);
   }
 
   state = {
@@ -34,6 +36,7 @@ class Play extends Component {
     diceRolled: false,
     question: null,
     content: "",
+    cardInfo: false,
     storeOpen: false,
     finishTurn: false,
     finishTurnInfo: "",
@@ -113,7 +116,7 @@ class Play extends Component {
         this.handleTurnReceived();
         break;
       case "info shown":
-        this.hideDice();
+        this.handleInfoShownReceived();
         break;
       case "question":
         this.handleQuestionReceived(dataReceived);
@@ -178,6 +181,14 @@ class Play extends Component {
     });
   }
 
+  handleInfoShownReceived() {
+    this.setState({
+      cardInfo: true,
+    });
+
+    this.hideDice();
+  }
+
   hideDice() {
     this.setState({
       showDice: false,
@@ -215,6 +226,8 @@ class Play extends Component {
       finishTurn: true,
       finishTurnInfo: dataReceived["info"],
     });
+
+    this.hideDice();
   }
 
   handleAnswer(answerIndex) {
@@ -300,12 +313,24 @@ class Play extends Component {
 
   handleContinueClick() {
     this.setState({
+      cardInfo: false,
+    });
+
+    const dataToSend = {
+      type: "continue",
+    };
+
+    this.sendToServer(JSON.stringify(dataToSend));
+  }
+
+  handleFinishClick() {
+    this.setState({
       finishTurn: false,
       finishTurnInfo: "",
     });
 
     const dataToSend = {
-      type: "continue",
+      type: "next player",
     };
 
     this.sendToServer(JSON.stringify(dataToSend));
@@ -402,32 +427,46 @@ class Play extends Component {
                                 onCloseClick={this.handleCloseStoreClick}
                               />
                             ) : (
-                              <Finish
+                              <Continue
                                 info={this.state.finishTurnInfo}
-                                onContinueClick={this.handleContinueClick}
+                                onContinueClick={this.handleFinishClick}
                                 points={this.state.points}
                                 rank={this.state.rank}
+                                storeButton={true}
                                 onStoreClick={this.handleStoreClick}
                               />
                             )}
                           </div>
                         ) : (
                           <div>
-                            {this.state.storeOpen ? (
-                              <Store
-                                points={this.state.points}
-                                badges={this.state.badges}
-                                userBadges={this.state.userBadges}
-                                onPurchaseClick={this.handleBadgePurchased}
-                                onCloseClick={this.handleCloseStoreClick}
-                              />
-                            ) : (
-                              <Wait
-                                title="Espera pela tua vez!"
+                            {this.state.cardInfo ? (
+                              <Continue
+                                info={this.state.finishTurnInfo}
+                                onContinueClick={this.handleContinueClick}
                                 points={this.state.points}
                                 rank={this.state.rank}
+                                storeButton={false}
                                 onStoreClick={this.handleStoreClick}
                               />
+                            ) : (
+                              <div>
+                                {this.state.storeOpen ? (
+                                  <Store
+                                    points={this.state.points}
+                                    badges={this.state.badges}
+                                    userBadges={this.state.userBadges}
+                                    onPurchaseClick={this.handleBadgePurchased}
+                                    onCloseClick={this.handleCloseStoreClick}
+                                  />
+                                ) : (
+                                  <Wait
+                                    title="Espera pela tua vez!"
+                                    points={this.state.points}
+                                    rank={this.state.rank}
+                                    onStoreClick={this.handleStoreClick}
+                                  />
+                                )}
+                              </div>
                             )}
                           </div>
                         )}

@@ -581,7 +581,7 @@ public class GameController : MonoBehaviour
         cardController.ShowChanceCard();
     }
 
-    // Hide card menu
+    // Hide card menu and give points
     public void ContinueTrainCard()
     {
         currentPlayer.ReceivePointsFromTile();
@@ -594,6 +594,12 @@ public class GameController : MonoBehaviour
 
         string info = "Parabéns! Recebeste " + ((PointsTile)currentPlayer.GetTile()).GetPoints() * currentPlayer.GetMultiplier() + " pontos!";
         FinishTurn(info);
+    }
+
+    // Hide card menu and continue
+    public void ContinueCard()
+    {
+        cardController.Continue();
     }
 
     // Get board

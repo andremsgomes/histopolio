@@ -18,7 +18,6 @@ public class ParkingTile : Tile
 
     // Perform action when player arrives to tile
     public override void PerformAction() {
-        gameController.SendInfoShownMessageToServer();
         gameController.FinishTurn("");
     }
 

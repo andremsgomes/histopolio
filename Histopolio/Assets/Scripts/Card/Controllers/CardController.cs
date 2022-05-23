@@ -66,6 +66,7 @@ public class CardController : MonoBehaviour
 
     // Continue turn
     public void Continue() {
+        cardUI.HideCardMenu();
         gameController.GiveCurrentPlayerPoints(points);
 
         switch (action)
@@ -77,7 +78,6 @@ public class CardController : MonoBehaviour
                 gameController.MovePlayerTo(int.Parse(actionValue));
                 break;
             default:
-                gameController.SendInfoShownMessageToServer();
                 string info = "";
                 if (points < 0) {
                     info = "Perdeste " + points + " pontos!";
@@ -109,7 +109,8 @@ public class CardController : MonoBehaviour
         actionValue = communityCards[index].actionValue;
         cardUI.SetInfo(communityCards[index].info);
 
-        ShowCardMenu(true);
+        ShowCardMenu(false);
+        gameController.SendInfoShownMessageToServer();
     }
 
     // Show random chance card
@@ -121,7 +122,8 @@ public class CardController : MonoBehaviour
         actionValue = chanceCards[index].actionValue;
         cardUI.SetInfo(chanceCards[index].info);
 
-        ShowCardMenu(true);
+        ShowCardMenu(false);
+        gameController.SendInfoShownMessageToServer();
     }
 
     // Get points
