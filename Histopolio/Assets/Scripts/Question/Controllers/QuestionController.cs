@@ -8,6 +8,7 @@ public class QuestionController : MonoBehaviour
     private QuestionUI questionUI;
     private int correctAnswer;
     private GameController gameController;
+    private List<QuestionData> questions = new List<QuestionData>();
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class QuestionController : MonoBehaviour
     public void LoadQuestions(QuestionsData questionsData) {
         foreach (QuestionData question in questionsData.questions) {
             gameController.AddQuestion(question);
+            questions.Add(question);
         }
 
         Debug.Log("Questions loaded");
@@ -38,6 +40,11 @@ public class QuestionController : MonoBehaviour
         correctAnswer = questionData.correctAnswer;
 
         SendQuestionToServer(questionData);
+    }
+
+    public void LoadRandomQuestion() {
+        int index = Random.Range(0,questions.Count);
+        LoadQuestion(questions[index]);
     }
 
     // Check if answer is correct

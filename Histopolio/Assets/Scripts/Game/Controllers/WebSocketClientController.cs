@@ -213,7 +213,7 @@ public class WebSocketClientController : MonoBehaviour
             badges.Add(badge);
         }
 
-        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"], (int)dataReceived["points"], (int)dataReceived["position"], (int)dataReceived["numTurns"], (int)dataReceived["totalAnswers"], (int)dataReceived["correctAnswers"], (string)dataReceived["avatar"], badges, (int)dataReceived["multiplier"]);
+        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"], (int)dataReceived["points"], (int)dataReceived["position"], (int)dataReceived["numTurns"], (int)dataReceived["totalAnswers"], (int)dataReceived["correctAnswers"], (string)dataReceived["avatar"], badges, (int)dataReceived["multiplier"], (bool)dataReceived["finishedBoard"]);
     }
 
     // OnDiceResultReceived is called when the dice result is received

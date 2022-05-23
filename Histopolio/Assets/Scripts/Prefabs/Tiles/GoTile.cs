@@ -16,6 +16,13 @@ public class GoTile : CardTile
 
     }
 
+    // Perform action when player arrives to tile
+    public override void PerformAction() {
+        gameController.GiveCurrentPlayerPoints(20);
+        gameController.SendInfoShownMessageToServer();
+        gameController.FinishTurn();
+    }
+
     // Resize players to fit tile
     public override void ResizePlayers()
     {

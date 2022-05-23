@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private int correctAnswers;
     private List<Sprite> badges = new List<Sprite>();
     private int multiplier;
+    private bool finishedBoard;
 
     [SerializeField] private float speed;
     [SerializeField] private Image img;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveSpaces != 0)
+        if (!finishedBoard && moveSpaces != 0)
         {
             if (moveSpaces > 0)
                 MoveTo(gameController.GetTile(position + 1));
@@ -65,6 +66,11 @@ public class Player : MonoBehaviour
             {
                 SetPosition(position - 1);
                 moveSpaces++;
+            }
+
+            if (tile.GetId() == 0) {
+                finishedBoard = true;
+                moveSpaces = 0;
             }
         }
     }
@@ -265,5 +271,17 @@ public class Player : MonoBehaviour
     public void SetPosition(Vector3 position)
     {
         transform.position = position;
+    }
+
+    // Set finished board
+    public void SetFinishedBoard(bool finishedBoard)
+    {
+        this.finishedBoard = finishedBoard;
+    }
+
+    // Get finished board
+    public bool GetFinishedBoard()
+    {
+        return finishedBoard;
     }
 }

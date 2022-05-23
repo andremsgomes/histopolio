@@ -7,4 +7,5 @@ public class SavePlayerData {
     public int numTurns;
     public int totalAnswers;
     public int correctAnswers;
+    public bool finishedBoard;
 }

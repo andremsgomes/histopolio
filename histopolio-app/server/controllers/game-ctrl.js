@@ -99,6 +99,7 @@ function addPlayerToGame(unityWS, dataReceived) {
       totalAnswers: 0,
       correctAnswers: 0,
       badges: [],
+      finishedBoard: false,
     };
 
     let players = readJSONFile(gameSaveFilePath);
@@ -127,6 +128,7 @@ function addPlayerToGame(unityWS, dataReceived) {
     correctAnswers: player.correctAnswers,
     badges: player.badges,
     multiplier: multiplier,
+    finishedBoard: player.finishedBoard,
   };
 
   if (unityWS != null && unityWS.readyState === WebSocket.OPEN) {
@@ -203,6 +205,7 @@ function saveGame(frontendWSs, dataReceived) {
       player.numTurns = dataReceived["numTurns"];
       player.totalAnswers = dataReceived["totalAnswers"];
       player.correctAnswers = dataReceived["correctAnswers"];
+      player.finishedBoard = dataReceived["finishedBoard"];
     }
 
     return player;

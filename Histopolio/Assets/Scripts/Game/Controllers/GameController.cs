@@ -133,6 +133,7 @@ public class GameController : MonoBehaviour
         savePlayerData.numTurns = currentPlayer.GetNumTurns() + 1;
         savePlayerData.totalAnswers = currentPlayer.GetTotalAnswers();
         savePlayerData.correctAnswers = currentPlayer.GetCorrectAnswers();
+        savePlayerData.finishedBoard = currentPlayer.GetFinishedBoard();
         string message = JsonUtility.ToJson(savePlayerData);
 
         SendMessageToServer(message);
@@ -157,11 +158,20 @@ public class GameController : MonoBehaviour
         gameUI.SetPlayerScore(currentPlayer.GetScore());
         gameUI.SetBadges(currentPlayer.GetBadges());
 
-        PlayerTurnData playerTurnData = new PlayerTurnData();
-        playerTurnData.userId = currentPlayer.GetId();
-        string message = JsonUtility.ToJson(playerTurnData);
+        if (!currentPlayer.GetFinishedBoard())
+        {
+            // play dice
+            PlayerTurnData playerTurnData = new PlayerTurnData();
+            playerTurnData.userId = currentPlayer.GetId();
+            string message = JsonUtility.ToJson(playerTurnData);
 
-        SendMessageToServer(message);
+            SendMessageToServer(message);
+        }
+        else
+        {
+            // ask random question once finished board
+            questionController.LoadRandomQuestion();
+        }
     }
 
     // Give current player points
@@ -190,7 +200,10 @@ public class GameController : MonoBehaviour
         if (correctAnswer)
             currentPlayer.AddCorrectAnswer();
 
-        if ((((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer))
+        if (currentPlayer.GetFinishedBoard() && correctAnswer) {
+            GiveCurrentPlayerPoints(20);
+        }
+        else if (!currentPlayer.GetFinishedBoard() && ((((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer)))
         {
             currentPlayer.ReceivePointsFromTile();
             playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
@@ -330,7 +343,7 @@ public class GameController : MonoBehaviour
     }
 
     // Add player to the game
-    public void AddPlayer(int id, string name, int points, int position, int numTurns, int totalAnswers, int correctAnswers, string avatarURL, List<int> badges, int multiplier)
+    public void AddPlayer(int id, string name, int points, int position, int numTurns, int totalAnswers, int correctAnswers, string avatarURL, List<int> badges, int multiplier, bool finishedBoard)
     {
         if (currentPlayer != null && id == currentPlayer.GetId())
         {
@@ -358,6 +371,7 @@ public class GameController : MonoBehaviour
 
             newPlayer.SetBadges(playerBadgeSprites);
             newPlayer.SetMultiplier(multiplier);
+            newPlayer.SetFinishedBoard(finishedBoard);
 
             IEnumerator coroutine = LoadAvatar(avatarURL, newPlayer);
             StartCoroutine(coroutine);
@@ -555,7 +569,7 @@ public class GameController : MonoBehaviour
     {
         Player player = players[userId];
         Sprite badgeSprite = badgeSprites[badgeId];
-        
+
         player.AddBadge(badgeSprite);
         player.SetScore(points);
         playerScores[userId] = points;
@@ -563,7 +577,8 @@ public class GameController : MonoBehaviour
 
         UpdateLeaderboard();
 
-        if (currentPlayer.GetId() == userId) {
+        if (currentPlayer.GetId() == userId)
+        {
             gameUI.SetPlayerScore(currentPlayer.GetScore());
             gameUI.SetBadges(currentPlayer.GetBadges());
         }

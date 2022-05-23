@@ -8,7 +8,8 @@
     "numTurns": 0,
     "totalAnswers": 0,
     "correctAnswers": 0,
-    "badges": []
+    "badges": [],
+    "finishedBoard": false
   },
   {
     "userId": 3,
@@ -19,7 +20,8 @@
     "numTurns": 0,
     "totalAnswers": 0,
     "correctAnswers": 0,
-    "badges": []
+    "badges": [],
+    "finishedBoard": false
   },
   {
     "userId": 2,
@@ -30,7 +32,8 @@
     "numTurns": 0,
     "totalAnswers": 0,
     "correctAnswers": 0,
-    "badges": []
+    "badges": [],
+    "finishedBoard": false
   },
   {
     "userId": 5,
@@ -41,7 +44,8 @@
     "numTurns": 0,
     "totalAnswers": 0,
     "correctAnswers": 0,
-    "badges": []
+    "badges": [],
+    "finishedBoard": false
   },
   {
     "userId": 6,
@@ -52,6 +56,7 @@
     "numTurns": 0,
     "totalAnswers": 0,
     "correctAnswers": 0,
-    "badges": []
+    "badges": [],
+    "finishedBoard": false
   }
 ]
