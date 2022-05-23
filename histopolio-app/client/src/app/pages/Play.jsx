@@ -336,6 +336,7 @@ class Play extends Component {
                     <button
                       className="btn btn-lg btn-primary mt-4"
                       onClick={this.handleStoreClick}
+                      disabled={this.state.diceRolled}
                     >
                       Comprar troféus
                     </button>
