@@ -67,7 +67,6 @@ public class CardController : MonoBehaviour
     // Continue turn
     public void Continue() {
         gameController.GiveCurrentPlayerPoints(points);
-        gameController.SendInfoShownMessageToServer();
 
         switch (action)
         {
@@ -78,6 +77,7 @@ public class CardController : MonoBehaviour
                 gameController.MovePlayerTo(int.Parse(actionValue));
                 break;
             default:
+                gameController.SendInfoShownMessageToServer();
                 string info = "";
                 if (points < 0) {
                     info = "Perdeste " + points + " pontos!";
