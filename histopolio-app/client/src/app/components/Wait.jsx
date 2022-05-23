@@ -10,9 +10,14 @@ function Wait(props) {
           Tens {props.points} ponto{props.points !== 1 && "s"}
         </h5>
       </div>
-      <button className="btn btn-lg btn-primary mt-4" onClick={props.onStoreClick}>
-        Comprar troféus
-      </button>
+      {props.storeButton && (
+        <button
+          className="btn btn-lg btn-primary mt-4"
+          onClick={props.onStoreClick}
+        >
+          Comprar troféus
+        </button>
+      )}
     </div>
   );
 }

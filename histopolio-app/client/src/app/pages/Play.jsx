@@ -31,6 +31,7 @@ class Play extends Component {
 
   state = {
     gameStarted: false,
+    playerTurn: false,
     showDice: false,
     rollTime: 0,
     diceRolled: false,
@@ -177,6 +178,7 @@ class Play extends Component {
 
   handleTurnReceived() {
     this.setState({
+      playerTurn: true,
       showDice: true,
     });
   }
@@ -199,6 +201,7 @@ class Play extends Component {
 
   handleQuestionReceived(dataReceived) {
     this.setState({
+      playerTurn: true,
       question: dataReceived["questionData"],
     });
 
@@ -327,6 +330,7 @@ class Play extends Component {
     this.setState({
       finishTurn: false,
       finishTurnInfo: "",
+      playerTurn: false,
     });
 
     const dataToSend = {
@@ -351,104 +355,74 @@ class Play extends Component {
         </nav>
         {this.state.gameStarted ? (
           <div>
-            {this.state.showDice ? (
+            {this.state.playerTurn ? (
               <div>
-                {this.state.storeOpen ? (
-                  <Store
-                    points={this.state.points}
-                    badges={this.state.badges}
-                    userBadges={this.state.userBadges}
-                    onPurchaseClick={this.handleBadgePurchased}
-                    onCloseClick={this.handleCloseStoreClick}
-                  />
-                ) : (
-                  <div className="text-center page-center">
-                    <h2>Lança o dado!</h2>
-                    <div className="mt-4" onClick={this.handleDiceClick}>
-                      <ReactDice
-                        numDice={1}
-                        faceColor="#ffF"
-                        dotColor="#000000"
-                        outline={true}
-                        dieSize={200}
-                        rollTime={this.state.rollTime}
-                        rollDone={(num) => this.rollDoneCallback(num)}
-                        disableIndividual={true}
-                        ref={(dice) => (this.reactDice = dice)}
+                {this.state.showDice ? (
+                  <div>
+                    {this.state.storeOpen ? (
+                      <Store
+                        points={this.state.points}
+                        badges={this.state.badges}
+                        userBadges={this.state.userBadges}
+                        onPurchaseClick={this.handleBadgePurchased}
+                        onCloseClick={this.handleCloseStoreClick}
                       />
-                    </div>
-                    <div className="mt-4">
-                      {this.state.rank !== 0 && (
-                        <h4>Estás em {this.state.rank}º lugar</h4>
-                      )}
-                      <h5>
-                        Tens {this.state.points} ponto
-                        {this.state.points !== 1 && "s"}
-                      </h5>
-                    </div>
-                    <button
-                      className="btn btn-lg btn-primary mt-4"
-                      onClick={this.handleStoreClick}
-                      disabled={this.state.diceRolled}
-                    >
-                      Comprar troféus
-                    </button>
+                    ) : (
+                      <div className="text-center page-center">
+                        <h2>Lança o dado!</h2>
+                        <div className="mt-4" onClick={this.handleDiceClick}>
+                          <ReactDice
+                            numDice={1}
+                            faceColor="#ffF"
+                            dotColor="#000000"
+                            outline={true}
+                            dieSize={200}
+                            rollTime={this.state.rollTime}
+                            rollDone={(num) => this.rollDoneCallback(num)}
+                            disableIndividual={true}
+                            ref={(dice) => (this.reactDice = dice)}
+                          />
+                        </div>
+                        <div className="mt-4">
+                          {this.state.rank !== 0 && (
+                            <h4>Estás em {this.state.rank}º lugar</h4>
+                          )}
+                          <h5>
+                            Tens {this.state.points} ponto
+                            {this.state.points !== 1 && "s"}
+                          </h5>
+                        </div>
+                        <button
+                          className="btn btn-lg btn-primary mt-4"
+                          onClick={this.handleStoreClick}
+                          disabled={this.state.diceRolled}
+                        >
+                          Comprar troféus
+                        </button>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            ) : (
-              <div>
-                {this.state.question ? (
-                  <Question
-                    question={this.state.question}
-                    onAnswerClick={this.handleAnswer}
-                    rank={this.state.rank}
-                    points={this.state.points}
-                  />
                 ) : (
                   <div>
-                    {this.state.content.length > 0 ? (
-                      <Content
-                        content={this.state.content}
-                        onContentClick={this.handleContentClick}
-                        points={this.state.points}
+                    {this.state.question ? (
+                      <Question
+                        question={this.state.question}
+                        onAnswerClick={this.handleAnswer}
                         rank={this.state.rank}
+                        points={this.state.points}
                       />
                     ) : (
                       <div>
-                        {this.state.finishTurn ? (
-                          <div>
-                            {this.state.storeOpen ? (
-                              <Store
-                                points={this.state.points}
-                                badges={this.state.badges}
-                                userBadges={this.state.userBadges}
-                                onPurchaseClick={this.handleBadgePurchased}
-                                onCloseClick={this.handleCloseStoreClick}
-                              />
-                            ) : (
-                              <Continue
-                                info={this.state.finishTurnInfo}
-                                onContinueClick={this.handleFinishClick}
-                                points={this.state.points}
-                                rank={this.state.rank}
-                                storeButton={true}
-                                onStoreClick={this.handleStoreClick}
-                              />
-                            )}
-                          </div>
+                        {this.state.content.length > 0 ? (
+                          <Content
+                            content={this.state.content}
+                            onContentClick={this.handleContentClick}
+                            points={this.state.points}
+                            rank={this.state.rank}
+                          />
                         ) : (
                           <div>
-                            {this.state.cardInfo ? (
-                              <Continue
-                                info={this.state.finishTurnInfo}
-                                onContinueClick={this.handleContinueClick}
-                                points={this.state.points}
-                                rank={this.state.rank}
-                                storeButton={false}
-                                onStoreClick={this.handleStoreClick}
-                              />
-                            ) : (
+                            {this.state.finishTurn ? (
                               <div>
                                 {this.state.storeOpen ? (
                                   <Store
@@ -459,12 +433,51 @@ class Play extends Component {
                                     onCloseClick={this.handleCloseStoreClick}
                                   />
                                 ) : (
-                                  <Wait
-                                    title="Espera pela tua vez!"
+                                  <Continue
+                                    info={this.state.finishTurnInfo}
+                                    onContinueClick={this.handleFinishClick}
                                     points={this.state.points}
                                     rank={this.state.rank}
+                                    storeButton={true}
                                     onStoreClick={this.handleStoreClick}
                                   />
+                                )}
+                              </div>
+                            ) : (
+                              <div>
+                                {this.state.cardInfo ? (
+                                  <Continue
+                                    info={this.state.finishTurnInfo}
+                                    onContinueClick={this.handleContinueClick}
+                                    points={this.state.points}
+                                    rank={this.state.rank}
+                                    storeButton={false}
+                                    onStoreClick={this.handleStoreClick}
+                                  />
+                                ) : (
+                                  <div>
+                                    {this.state.storeOpen ? (
+                                      <Store
+                                        points={this.state.points}
+                                        badges={this.state.badges}
+                                        userBadges={this.state.userBadges}
+                                        onPurchaseClick={
+                                          this.handleBadgePurchased
+                                        }
+                                        onCloseClick={
+                                          this.handleCloseStoreClick
+                                        }
+                                      />
+                                    ) : (
+                                      <Wait
+                                        title="Espera pela tua vez!"
+                                        points={this.state.points}
+                                        rank={this.state.rank}
+                                        storeButton={true}
+                                        onStoreClick={this.handleStoreClick}
+                                      />
+                                    )}
+                                  </div>
                                 )}
                               </div>
                             )}
@@ -475,6 +488,14 @@ class Play extends Component {
                   </div>
                 )}
               </div>
+            ) : (
+              <Wait
+                title="Espera pelo fim da jogada!"
+                points={this.state.points}
+                rank={this.state.rank}
+                storeButton={false}
+                onStoreClick={this.handleStoreClick}
+              />
             )}
           </div>
         ) : (
@@ -492,6 +513,7 @@ class Play extends Component {
                 title="Espera pelo início do jogo!"
                 points={this.state.points}
                 rank={this.state.rank}
+                storeButton={true}
                 onStoreClick={this.handleStoreClick}
               />
             )}
