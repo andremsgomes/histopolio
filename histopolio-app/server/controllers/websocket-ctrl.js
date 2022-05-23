@@ -110,6 +110,7 @@ async function authentication(ws, dataReceived) {
   if (dataReceived["platform"] == "unity") {
     unityWS = ws;
     unityDeadCount = 0;
+    gameController.resendGameStatusIfStarted(frontendWSs);
     console.log("Unity connected");
   } else {
     frontendWSs.set(dataReceived["id"], ws);

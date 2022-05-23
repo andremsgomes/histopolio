@@ -1,16 +1,16 @@
 [
   {
     "id": 1,
-    "name": "trofeu muito caro",
-    "multiplier": 10,
-    "cost": 500,
-    "image": "https://drakemall-files-new.s3.eu-central-1.amazonaws.com/Ballon%20D-ck98d7nhx026601xf4rq1ml3y.png"
+    "name": "Microscópio ótico",
+    "multiplier": 2,
+    "cost": 50,
+    "image": "https://www.linkpicture.com/q/trofeu50.png"
   },
   {
     "id": 2,
-    "name": "primeiro trofeu",
-    "multiplier": 2,
-    "cost": 100,
-    "image": "https://www.linkpicture.com/q/badge_8.png"
+    "name": "Microscópio eletrónico",
+    "multiplier": 3,
+    "cost": 90,
+    "image": "https://www.linkpicture.com/q/trofeu90.png"
   }
 ]

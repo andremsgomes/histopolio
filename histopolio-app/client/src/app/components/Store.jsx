@@ -2,7 +2,7 @@ import React from "react";
 
 function Store(props) {
   return (
-    <div className="text-center page-center">
+    <div className="text-center store">
       <h2 className="mt-4">Troféus</h2>
       <h5>Tens {props.points} pontos</h5>
       <div className="row justify-content-center m-4">
@@ -13,6 +13,7 @@ function Store(props) {
                 <img
                   src={badge.image}
                   className="card-img-top"
+                  style={{objectFit: "cover", width: "100%", height: "450px"}}
                   alt={"badge" + badge.id}
                 />
                 <div className="card-body">
@@ -30,7 +31,7 @@ function Store(props) {
                     <p className="card-text mt-4 mb-4 fw-bold">Adquirido</p>
                   ) : (
                     <button
-                      className="btn btn-primary mt-4 mb-3"
+                      className="btn btn-primary mt-4 purchase-button"
                       disabled={badge.cost > props.points}
                       onClick={() =>
                         props.onPurchaseClick(badge.id, badge.cost)
@@ -46,7 +47,7 @@ function Store(props) {
         })}
       </div>
       <button
-        className="btn btn-lg btn-primary mt-4"
+        className="btn btn-lg btn-primary my-4"
         onClick={props.onCloseClick}
       >
         Voltar ao jogo

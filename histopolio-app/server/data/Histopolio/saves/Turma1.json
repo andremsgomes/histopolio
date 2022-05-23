@@ -18,13 +18,14 @@
     "userId": 2,
     "name": "Inês",
     "email": "ines@up.pt",
-    "points": 312,
+    "points": 262,
     "position": 32,
     "numTurns": 16,
     "totalAnswers": 10,
     "correctAnswers": 3,
     "badges": [
-      2
+      2,
+      1
     ],
     "finishedBoard": false
   },

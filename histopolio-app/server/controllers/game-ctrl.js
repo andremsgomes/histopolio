@@ -41,6 +41,14 @@ async function sendGameStatusToFrontend(frontendWS, userId, saveFilePath) {
   }
 }
 
+async function resendGameStatusIfStarted(frontendWSs) {
+  if (gameStarted) {
+    for (id of frontendWSs.keys()) {
+      sendGameStatusToFrontend(frontendWSs.get(id), id, gameSaveFilePath);
+    }
+  }
+}
+
 async function getRank(userId, saveFilePath) {
   const players = readJSONFile(saveFilePath);
 
@@ -635,6 +643,7 @@ module.exports = {
   addPlayerToGame,
   removePlayerFromGame,
   sendGameStatusToFrontend,
+  resendGameStatusIfStarted,
   setGameReady,
   sendEndGameToFrontend,
   endGame,
