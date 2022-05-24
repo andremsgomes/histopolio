@@ -80,8 +80,10 @@ public class Player : MonoBehaviour
     // Move is called after a dice is rolled
     public void Move(int spaces)
     {
-        moveSpaces = spaces;
-        tile.RemovePlayer(this);
+        if (moveSpaces == 0) {
+            moveSpaces = spaces;
+            tile.RemovePlayer(this);
+        }
     }
 
     // Set tile
