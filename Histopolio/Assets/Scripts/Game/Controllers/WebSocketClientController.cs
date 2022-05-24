@@ -11,10 +11,12 @@ public class WebSocketClientController : MonoBehaviour
     private Queue<string> messages = new Queue<string>();
     private string lastMessage = "";
 
+    [SerializeField] private string wsURL;
+
     // Start is called before the first frame update
     void Start()
     {
-        ws = new WebSocket("ws://localhost:8080");   // TODO: mudar para variavel
+        ws = new WebSocket(wsURL);
 
         ws.OnMessage += (sender, e) =>
         {
