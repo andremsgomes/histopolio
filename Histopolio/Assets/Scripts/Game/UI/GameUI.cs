@@ -17,6 +17,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Text[] leaderboardScores = new Text[3];
     [SerializeField] private GameObject badgesContainer;
     [SerializeField] private Badge badgePrefab;
+    [SerializeField] private GameObject inactivePlayer;
+    [SerializeField] private GameObject removePlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,12 @@ public class GameUI : MonoBehaviour
     public void OnCameraChangeClick()
     {
         gameController.ChangeCamera();
+    }
+
+    // OnRemovePlayerClick is called when remove player button is clicked
+    public void OnRemovePlayerClick()
+    {
+        gameController.RemoveCurrentPlayer();
     }
 
     // Set game manager
@@ -94,5 +102,19 @@ public class GameUI : MonoBehaviour
         leaderboardPlaces[index].SetActive(true);
         leaderboardAvatars[index].sprite = avatar; 
         leaderboardScores[index].text = name + " - " + points;
+    }
+
+    // Show inactive player message
+    public void ShowInactivePlayer(bool showButton)
+    {
+        inactivePlayer.SetActive(true);
+        removePlayer.SetActive(showButton);
+    }
+
+    // Hide inactive player message
+    public void HideInactivePlayer()
+    {
+        inactivePlayer.SetActive(false);
+        removePlayer.SetActive(false);
     }
 }

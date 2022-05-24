@@ -12,12 +12,14 @@ public class GameController : MonoBehaviour
     private Dictionary<int, string> playerNames = new Dictionary<int, string>();
     private Dictionary<int, Sprite> playerSprites = new Dictionary<int, Sprite>();
     private Dictionary<int, Sprite> badgeSprites = new Dictionary<int, Sprite>();
+    private HashSet<int> activePlayers = new HashSet<int>();
     private BoardController boardController;
     private CameraController cameraController;
     private WebSocketClientController webSocketClientController;
     private GameUI gameUI;
     private Player currentPlayer;
     private bool gameLoaded = false;
+    private bool gameStarted = false;
     private string board = "Histopolio";
     private string saveFile = "";
 
@@ -158,6 +160,11 @@ public class GameController : MonoBehaviour
         gameUI.SetPlayerScore(currentPlayer.GetScore());
         gameUI.SetBadges(currentPlayer.GetBadges());
 
+        if (activePlayers.Contains(currentPlayer.GetId()))
+            gameUI.HideInactivePlayer();
+        else
+            gameUI.ShowInactivePlayer(players.Count > 2);
+
         if (!currentPlayer.GetFinishedBoard())
         {
             // play dice
@@ -228,18 +235,23 @@ public class GameController : MonoBehaviour
             gameUI.SetPlayerScore(currentPlayer.GetScore());
             UpdateLeaderboard();
 
-            if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0) {
+            if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0)
+            {
                 info = "Resposta certa! Recebeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints() * currentPlayer.GetMultiplier() + " pontos!";
             }
-            else {
-                info = "Resposta errada! Perdeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints()*(-1) + " pontos!";
+            else
+            {
+                info = "Resposta errada! Perdeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints() * (-1) + " pontos!";
             }
         }
-        else if (!currentPlayer.GetFinishedBoard()) {
-            if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0) {
+        else if (!currentPlayer.GetFinishedBoard())
+        {
+            if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0)
+            {
                 info = "Resposta errada! Não conseguiste receber pontos desta vez!";
             }
-            else {
+            else
+            {
                 info = "Resposta certa! Evitaste perder pontos!";
             }
         }
@@ -365,6 +377,7 @@ public class GameController : MonoBehaviour
     // Start new game
     public void StartGame()
     {
+        gameStarted = true;
         SpawnPlayers();
         UpdateLeaderboard();
         gameUI.ShowHUD();
@@ -384,8 +397,10 @@ public class GameController : MonoBehaviour
         if (currentPlayer != null && id == currentPlayer.GetId())
         {
             webSocketClientController.ResendLastMessage();
+            gameUI.HideInactivePlayer();
         }
-        else
+
+        if (!players.ContainsKey(id))
         {
             Player newPlayer = Instantiate(playerPrefab, new Vector3(0, 0, -3), Quaternion.identity);
 
@@ -416,19 +431,38 @@ public class GameController : MonoBehaviour
             playerTurns[id] = newPlayer.GetNumTurns();
             playerScores[id] = newPlayer.GetScore();
             playerNames[id] = newPlayer.GetPlayerName();
+
+            if (gameStarted) {
+                Tile tile = boardController.GetTile(newPlayer.GetPosition());
+
+                tile.AddPlayer(newPlayer);
+                newPlayer.SetTile(tile);
+            }
         }
+
+        activePlayers.Add(id);
     }
 
     // Remove player from the game
-    public void RemovePlayer(int id)
+    public void SetInactivePlayer(int id)
     {
-        if (currentPlayer.GetId() != id)
+        if (currentPlayer != null && id == currentPlayer.GetId())
         {
-            Debug.Log(players[id].GetPlayerName() + " left");
-            Destroy(players[id].gameObject);
-            playerTurns.Remove(id);
-            players.Remove(id);
+            gameUI.ShowInactivePlayer(players.Count > 1);
         }
+
+        activePlayers.Remove(id);
+    }
+
+    // Remove current player
+    public void RemoveCurrentPlayer()
+    {
+        currentPlayer.GetTile().RemovePlayer(currentPlayer);
+        players.Remove(currentPlayer.GetId());
+        playerTurns.Remove(currentPlayer.GetId());
+        Destroy(currentPlayer.gameObject);
+
+        SetCurrentPlayer(players[playerTurns.OrderBy(kvp => kvp.Value).First().Key]);
     }
 
     // Send info shown message

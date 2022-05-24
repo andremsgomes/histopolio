@@ -246,7 +246,7 @@ public class WebSocketClientController : MonoBehaviour
     // OnRemovePlayerReceived is called when a player leaves
     void OnRemovePlayerReceived(JObject dataReceived)
     {
-        gameController.RemovePlayer((int)dataReceived["userId"]);
+        gameController.SetInactivePlayer((int)dataReceived["userId"]);
     }
 
     // Resend last message sent
