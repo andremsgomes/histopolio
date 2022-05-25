@@ -169,6 +169,7 @@ public class GameController : MonoBehaviour
         {
             // play dice
             PlayerTurnData playerTurnData = new PlayerTurnData();
+            playerTurnData.type = "dice";
             playerTurnData.userId = currentPlayer.GetId();
             string message = JsonUtility.ToJson(playerTurnData);
 
@@ -437,6 +438,8 @@ public class GameController : MonoBehaviour
 
                 tile.AddPlayer(newPlayer);
                 newPlayer.SetTile(tile);
+
+                if (!activePlayers.Contains(currentPlayer.GetId())) gameUI.ShowInactivePlayer(true);
             }
         }
 

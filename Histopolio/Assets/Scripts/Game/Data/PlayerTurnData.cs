@@ -1,5 +1,5 @@
 [System.Serializable]
 public class PlayerTurnData {
-    public string type = "turn";
+    public string type;
     public int userId;
 }

@@ -117,6 +117,7 @@ public class WebSocketClientController : MonoBehaviour
     // OnAnswerReceived is called when an answer is received
     void OnAnswerReceived(JObject dataReceived)
     {
+        SendTurnData();
         gameController.CheckAnswerFromServer((int)dataReceived["answer"]);
     }
 
@@ -227,6 +228,7 @@ public class WebSocketClientController : MonoBehaviour
     // OnDiceResultReceived is called when the dice result is received
     void OnDiceResultReceived(JObject dataReceived)
     {
+        SendTurnData();
         gameController.MovePlayer((int)dataReceived["result"]);
     }
 
@@ -252,12 +254,13 @@ public class WebSocketClientController : MonoBehaviour
     // Resend last message sent
     public void ResendLastMessage()
     {
-        SendMessage(lastMessage);
+        if (lastMessage.Length > 0) SendMessage(lastMessage);
     }
 
     // OnContentViewedReceived is called when a player views the content sent
     void OnContentViewedReceived()
     {
+        SendTurnData();
         gameController.ContinueTrainCard();
     }
 
@@ -270,12 +273,25 @@ public class WebSocketClientController : MonoBehaviour
     // OnContinueReceived is called after player clicks the continue button when a card is showing
     void OnContinueReceived()
     {
+        SendTurnData();
         gameController.ContinueCard();
     }
 
     // OnNextPlayerReceived is called after a player clicks the continue button to finish his turn
     void OnNextPlayerReceived()
     {
+        lastMessage = "";
         gameController.ChangeCurrentPlayer();
+    }
+
+    // Send turn data is called after a player message is received
+    void SendTurnData()
+    {
+        PlayerTurnData playerTurnData = new PlayerTurnData();
+        playerTurnData.type = "turn";
+        playerTurnData.userId = gameController.GetCurrentPlayer().GetId();
+
+        string message = JsonUtility.ToJson(playerTurnData);
+        SendMessage(message);
     }
 }
