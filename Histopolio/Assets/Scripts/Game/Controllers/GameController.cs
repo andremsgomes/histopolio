@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
     {
         foreach (Player player in players.Values)
         {
-            Tile tile = boardController.GetTile(player.GetPosition());
+            Tile tile = boardController.GetTileFromPosition(player.GetPosition());
 
             tile.AddPlayer(player);
             player.SetTile(tile);
@@ -122,7 +122,7 @@ public class GameController : MonoBehaviour
         if (tileId >= 40)
             tileId = tileId - 40;
 
-        return boardController.GetTile(tileId);
+        return boardController.GetTileFromPosition(tileId);
     }
 
     // Save current player's position and points
@@ -267,7 +267,7 @@ public class GameController : MonoBehaviour
     // Add card to tile
     public void AddCard(TrainCardData card)
     {
-        ((StationTile)boardController.GetTile(card.tileId)).AddCard(card);
+        // ((StationTile)boardController.GetTile(card.tileId)).AddCard(card);
     }
 
     // Add question to tile
@@ -344,9 +344,9 @@ public class GameController : MonoBehaviour
     }
 
     // Load questions received from server
-    public void LoadQuestionsReceived(QuestionsData questionsData)
+    public void LoadQuestionsReceived(List<QuestionData> questions)
     {
-        questionController.LoadQuestions(questionsData);
+        questionController.LoadQuestions(questions);
     }
 
     // Load cards received from server
@@ -434,7 +434,7 @@ public class GameController : MonoBehaviour
             playerNames[id] = newPlayer.GetPlayerName();
 
             if (gameStarted) {
-                Tile tile = boardController.GetTile(newPlayer.GetPosition());
+                Tile tile = boardController.GetTileFromPosition(newPlayer.GetPosition());
 
                 tile.AddPlayer(newPlayer);
                 newPlayer.SetTile(tile);

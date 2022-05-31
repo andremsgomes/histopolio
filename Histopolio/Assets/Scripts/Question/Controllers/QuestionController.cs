@@ -23,8 +23,8 @@ public class QuestionController : MonoBehaviour
     }
 
     // Load questions from file
-    public void LoadQuestions(QuestionsData questionsData) {
-        foreach (QuestionData question in questionsData.questions) {
+    public void LoadQuestions(List<QuestionData> questionsData) {
+        foreach (QuestionData question in questionsData) {
             gameController.AddQuestion(question);
             questions.Add(question);
         }

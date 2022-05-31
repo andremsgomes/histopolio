@@ -168,7 +168,7 @@ public class WebSocketClientController : MonoBehaviour
 
         gameController.LoadBoardReceived(tiles);
 
-        // RequestQuestionsData(boardData.name);
+        RequestQuestionsData(gameController.GetBoard());
     }
 
     // Request questions data from server
@@ -180,10 +180,17 @@ public class WebSocketClientController : MonoBehaviour
     // OnQuestionsReceived is called when the questions data is received
     void OnQuestionsReceived(JObject dataReceived)
     {
-        QuestionsData questionsData = JsonUtility.FromJson<QuestionsData>(Newtonsoft.Json.JsonConvert.SerializeObject(dataReceived["questions"]));
-        gameController.LoadQuestionsReceived(questionsData);
+        List<QuestionData> questions = new List<QuestionData>();
 
-        RequestCardsData(questionsData.board);
+        foreach (JObject question in dataReceived["questions"].ToObject<JArray>())
+        {
+            QuestionData questionData = JsonUtility.FromJson<QuestionData>(Newtonsoft.Json.JsonConvert.SerializeObject(question));
+            questions.Add(questionData);
+        }
+
+        gameController.LoadQuestionsReceived(questions);
+
+        // RequestCardsData(questionsData.board);
     }
 
     // Request cards data from server

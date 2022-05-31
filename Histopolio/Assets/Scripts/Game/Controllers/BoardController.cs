@@ -6,6 +6,7 @@ using System.IO;
 public class BoardController : MonoBehaviour
 {
     private Tile[] tiles;
+    private Dictionary<string, Tile> tilesDictionary = new Dictionary<string, Tile>();
     private GameController gameController;
 
     [SerializeField] private GroupPropertyTile groupPropertyTilePrefab;
@@ -32,10 +33,15 @@ public class BoardController : MonoBehaviour
 
     }
 
-    // Get tile from tile number
-    public Tile GetTile(int tileId)
+    // Get tile from tile id
+    public Tile GetTile(string tileId)
     {
-        return tiles[tileId];
+        return tilesDictionary[tileId];
+    }
+
+    public Tile GetTileFromPosition(int position)
+    {
+        return tiles[position];
     }
 
     // Get all tiles
@@ -130,6 +136,8 @@ public class BoardController : MonoBehaviour
                 ((PayTile)tiles[tile.boardPosition]).SetPoints(tile.points);
             else if (tile.type == "train")
                 ((StationTile)tiles[tile.boardPosition]).SetPoints(tile.points);
+
+            tilesDictionary.Add(tile._id, tiles[tile.boardPosition]);
         }
 
         BoardBase boardBase = Instantiate(boardBasePrefab, new Vector3(4, 5.3f), Quaternion.identity);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class TileData {
+    public string _id;
     public int boardPosition;
     public string name;
     public string type;
