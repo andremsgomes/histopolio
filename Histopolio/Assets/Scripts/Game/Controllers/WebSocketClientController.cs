@@ -158,10 +158,17 @@ public class WebSocketClientController : MonoBehaviour
     // OnBoardReceived is callend when the board data is received
     void OnBoardReceived(JObject dataReceived)
     {
-        BoardData boardData = JsonUtility.FromJson<BoardData>(Newtonsoft.Json.JsonConvert.SerializeObject(dataReceived["board"]));
-        gameController.LoadBoardReceived(boardData);
+        List<TileData> tiles = new List<TileData>();
 
-        RequestQuestionsData(boardData.name);
+        foreach (JObject tile in dataReceived["board"].ToObject<JArray>())
+        {
+            TileData tileData = JsonUtility.FromJson<TileData>(Newtonsoft.Json.JsonConvert.SerializeObject(tile));
+            tiles.Add(tileData);
+        }
+
+        gameController.LoadBoardReceived(tiles);
+
+        // RequestQuestionsData(boardData.name);
     }
 
     // Request questions data from server

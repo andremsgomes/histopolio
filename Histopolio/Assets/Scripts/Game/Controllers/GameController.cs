@@ -317,7 +317,7 @@ public class GameController : MonoBehaviour
     public void SendQuestionToServer(QuestionData questionData)
     {
         QuestionSendData questionSendData = new QuestionSendData();
-        questionSendData.userId = currentPlayer.GetId();
+        // questionSendData.userId = currentPlayer.GetId();         TODO: dbmudar
         questionSendData.questionData = questionData;
 
         string message = JsonUtility.ToJson(questionSendData);
@@ -334,13 +334,13 @@ public class GameController : MonoBehaviour
     // Request board data from server
     public void RequestBoardData()
     {
-        webSocketClientController.RequestBoardData("Histopolio");
+        webSocketClientController.RequestBoardData("Histopólio");
     }
 
     // Load board received from server
-    public void LoadBoardReceived(BoardData boardData)
+    public void LoadBoardReceived(List<TileData> tiles)
     {
-        boardController.LoadBoard(boardData);
+        boardController.LoadBoard(tiles);
     }
 
     // Load questions received from server
