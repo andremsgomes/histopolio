@@ -242,14 +242,14 @@ public class WebSocketClientController : MonoBehaviour
     // OnSaveFilesReceived is called when the save files are received
     void OnSaveFilesReceived(JObject dataReceived)
     {
-        List<string> files = new List<string>();
+        List<string> saves = new List<string>();
 
-        foreach (string file in dataReceived["files"])
+        foreach (JObject save in dataReceived["files"].ToObject<JArray>())
         {
-            files.Add(file);
+            saves.Add((string)save["name"]);
         }
 
-        gameController.ShowSaveFiles(files);
+        gameController.ShowSaveFiles(saves);
     }
 
     // OnRemovePlayerReceived is called when a player leaves

@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private Player currentPlayer;
     private bool gameLoaded = false;
     private bool gameStarted = false;
-    private string board = "Histopolio";
+    private string board = "Histopólio";
     private string saveFile = "";
 
     [Header("Controllers")]
@@ -481,13 +481,13 @@ public class GameController : MonoBehaviour
     // Send new game message to server
     public void SendNewGameMessage()
     {
-        webSocketClientController.SendBoardRequest("new game", "Histopolio");
+        webSocketClientController.SendBoardRequest("new game", "Histopólio");
     }
 
     // Send load save files message to server
     public void SendLoadSavesMessage()
     {
-        webSocketClientController.SendBoardRequest("load saves", "Histopolio");
+        webSocketClientController.SendBoardRequest("load saves", "Histopólio");
     }
 
     // Show save files on menu

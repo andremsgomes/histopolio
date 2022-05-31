@@ -30,7 +30,7 @@ public class SaveSlot : MonoBehaviour
     // Set file name
     public void SetFileName(string fileName) {
         this.fileName = fileName;
-        this.fileText.text = fileName.Substring(0, fileName.IndexOf(".json"));
+        this.fileText.text = fileName;
     }
 
     // OnButtonClick is called when the button is clicked

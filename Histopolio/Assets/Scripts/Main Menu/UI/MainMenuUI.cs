@@ -71,7 +71,7 @@ public class MainMenuUI : MonoBehaviour
     public void OnGoClick() {
         mainMenuController.NewGame();
 
-        string fileName = newGameField.text + ".json";
+        string fileName = newGameField.text;
         mainMenuController.LoadSaveFile(fileName);
         
         initialMenu.SetActive(false);
