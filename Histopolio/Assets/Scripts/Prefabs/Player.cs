@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Tile tile;
     private GameController gameController;
-    private int id;
+    private string id;
     private string playerName;
     private int score;
     private int position;
@@ -99,13 +99,13 @@ public class Player : MonoBehaviour
     }
 
     // Set Player id
-    public void SetId(int id)
+    public void SetId(string id)
     {
         this.id = id;
     }
 
     // Get player id
-    public int GetId()
+    public string GetId()
     {
         return id;
     }

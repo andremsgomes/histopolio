@@ -6,13 +6,13 @@ using Newtonsoft.Json.Linq;
 
 public class GameController : MonoBehaviour
 {
-    private Dictionary<int, Player> players = new Dictionary<int, Player>();
-    private Dictionary<int, int> playerTurns = new Dictionary<int, int>();
-    private Dictionary<int, int> playerScores = new Dictionary<int, int>();
-    private Dictionary<int, string> playerNames = new Dictionary<int, string>();
-    private Dictionary<int, Sprite> playerSprites = new Dictionary<int, Sprite>();
-    private Dictionary<int, Sprite> badgeSprites = new Dictionary<int, Sprite>();
-    private HashSet<int> activePlayers = new HashSet<int>();
+    private Dictionary<string, Player> players = new Dictionary<string, Player>();
+    private Dictionary<string, int> playerTurns = new Dictionary<string, int>();
+    private Dictionary<string, int> playerScores = new Dictionary<string, int>();
+    private Dictionary<string, string> playerNames = new Dictionary<string, string>();
+    private Dictionary<string, Sprite> playerSprites = new Dictionary<string, Sprite>();
+    private Dictionary<string, Sprite> badgeSprites = new Dictionary<string, Sprite>();
+    private HashSet<string> activePlayers = new HashSet<string>();
     private BoardController boardController;
     private CameraController cameraController;
     private WebSocketClientController webSocketClientController;
@@ -265,9 +265,9 @@ public class GameController : MonoBehaviour
     }
 
     // Add card to tile
-    public void AddCard(TrainCardData card)
+    public void AddCard(CardData card)
     {
-        // ((StationTile)boardController.GetTile(card.tileId)).AddCard(card);
+        ((StationTile)boardController.GetTile(card.tileId)).AddCard(card);
     }
 
     // Add question to tile
@@ -284,7 +284,7 @@ public class GameController : MonoBehaviour
     }
 
     // Show card menu
-    public void PrepareCard(TrainCardData card)
+    public void PrepareCard(CardData card)
     {
         ContentData contentData = new ContentData();
         contentData.userId = currentPlayer.GetId();
@@ -317,7 +317,7 @@ public class GameController : MonoBehaviour
     public void SendQuestionToServer(QuestionData questionData)
     {
         QuestionSendData questionSendData = new QuestionSendData();
-        // questionSendData.userId = currentPlayer.GetId();         TODO: dbmudar
+        questionSendData.userId = currentPlayer.GetId();
         questionSendData.questionData = questionData;
 
         string message = JsonUtility.ToJson(questionSendData);
@@ -350,9 +350,9 @@ public class GameController : MonoBehaviour
     }
 
     // Load cards received from server
-    public void LoadCardsReceived(CardsData cardsData)
+    public void LoadCardsReceived(List<CardData> cards)
     {
-        cardController.LoadCards(cardsData);
+        cardController.LoadCards(cards);
     }
 
     // Load badges received from server
@@ -371,7 +371,7 @@ public class GameController : MonoBehaviour
             yield return www;
 
             Sprite sprite = CreateSquareSprite(www);
-            badgeSprites[(int)badge["id"]] = sprite;
+            badgeSprites[(string)badge["_id"]] = sprite;
         }
     }
 
@@ -393,7 +393,7 @@ public class GameController : MonoBehaviour
     }
 
     // Add player to the game
-    public void AddPlayer(int id, string name, int points, int position, int numTurns, int totalAnswers, int correctAnswers, string avatarURL, List<int> badges, int multiplier, bool finishedBoard)
+    public void AddPlayer(string id, string name, int points, int position, int numTurns, int totalAnswers, int correctAnswers, string avatarURL, List<string> badges, int multiplier, bool finishedBoard)
     {
         if (currentPlayer != null && id == currentPlayer.GetId())
         {
@@ -416,7 +416,7 @@ public class GameController : MonoBehaviour
             newPlayer.SetCorrectAnswers(correctAnswers);
 
             List<Sprite> playerBadgeSprites = new List<Sprite>();
-            foreach (int badge in badges)
+            foreach (string badge in badges)
             {
                 playerBadgeSprites.Add(badgeSprites[badge]);
             }
@@ -447,7 +447,7 @@ public class GameController : MonoBehaviour
     }
 
     // Remove player from the game
-    public void SetInactivePlayer(int id)
+    public void SetInactivePlayer(string id)
     {
         if (currentPlayer != null && id == currentPlayer.GetId())
         {
@@ -527,8 +527,8 @@ public class GameController : MonoBehaviour
     {
         foreach (JObject player in players)
         {
-            playerScores[(int)player["userId"]] = (int)player["points"];
-            playerNames[(int)player["userId"]] = (string)player["name"];
+            playerScores[(string)player["userId"]] = (int)player["points"];
+            playerNames[(string)player["userId"]] = (string)player["name"];
         }
 
         IEnumerator coroutine = LoadAvatars(players);
@@ -538,7 +538,7 @@ public class GameController : MonoBehaviour
     // Load avatars for leaderboard
     IEnumerator LoadAvatars(JArray players)
     {
-        List<KeyValuePair<int, int>> sortedScores = playerScores.OrderByDescending(kvp => kvp.Value).ToList();
+        List<KeyValuePair<string, int>> sortedScores = playerScores.OrderByDescending(kvp => kvp.Value).ToList();
 
         int leaderboardLength = 3;
         if (sortedScores.Count < leaderboardLength) leaderboardLength = sortedScores.Count;
@@ -547,14 +547,14 @@ public class GameController : MonoBehaviour
         {
             for (int i = 0; i < leaderboardLength; i++)
             {
-                if ((int)player["userId"] == sortedScores[i].Key)
+                if ((string)player["userId"] == sortedScores[i].Key)
                 {
                     // Load avatar
                     WWW www = new WWW((string)player["avatar"]);
                     yield return www;
 
                     Sprite sprite = CreateSquareSprite(www);
-                    playerSprites[(int)player["userId"]] = sprite;
+                    playerSprites[(string)player["userId"]] = sprite;
 
                     break;
                 }
@@ -595,7 +595,7 @@ public class GameController : MonoBehaviour
     // Update leaderboard
     void UpdateLeaderboard()
     {
-        List<KeyValuePair<int, int>> sortedScores = playerScores.OrderByDescending(kvp => kvp.Value).ToList();
+        List<KeyValuePair<string, int>> sortedScores = playerScores.OrderByDescending(kvp => kvp.Value).ToList();
 
         int leaderboardLength = 3;
         if (sortedScores.Count < leaderboardLength) leaderboardLength = sortedScores.Count;
@@ -646,7 +646,7 @@ public class GameController : MonoBehaviour
     }
 
     // Add badge to player
-    public void AddBadgeToPlayer(int userId, int badgeId, int points, int multiplier)
+    public void AddBadgeToPlayer(string userId, string badgeId, int points, int multiplier)
     {
         Player player = players[userId];
         Sprite badgeSprite = badgeSprites[badgeId];

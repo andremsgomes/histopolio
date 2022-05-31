@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CardTile : Tile
 {
-    private List<TrainCardData> cards = new List<TrainCardData>();
+    private List<CardData> cards = new List<CardData>();
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public abstract class CardTile : Tile
     }
 
     // Add card
-    public void AddCard(TrainCardData card) {
+    public void AddCard(CardData card) {
         cards.Add(card);
     }
 

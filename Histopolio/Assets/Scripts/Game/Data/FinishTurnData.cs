@@ -1,6 +1,6 @@
 [System.Serializable]
 public class FinishTurnData {
     public string type = "finish turn";
-    public int userId;
+    public string userId;
     public string info;
 }

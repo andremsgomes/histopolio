@@ -8,7 +8,7 @@ public abstract class Tile : MonoBehaviour
     private int id;
     private string tileName;
     protected GameController gameController;
-    protected Dictionary<int, Player> players = new Dictionary<int, Player>();
+    protected Dictionary<string, Player> players = new Dictionary<string, Player>();
 
     [SerializeField] private Text tileNameText;     // TODO: meter só no group
 

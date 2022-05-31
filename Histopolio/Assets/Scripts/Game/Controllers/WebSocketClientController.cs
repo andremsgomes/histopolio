@@ -190,7 +190,7 @@ public class WebSocketClientController : MonoBehaviour
 
         gameController.LoadQuestionsReceived(questions);
 
-        // RequestCardsData(questionsData.board);
+        RequestCardsData(gameController.GetBoard());
     }
 
     // Request cards data from server
@@ -202,8 +202,15 @@ public class WebSocketClientController : MonoBehaviour
     // OnCardsReceived is called when the cards data is received
     void OnCardsReceived(JObject dataReceived)
     {
-        CardsData cardsData = JsonUtility.FromJson<CardsData>(Newtonsoft.Json.JsonConvert.SerializeObject(dataReceived["cards"]));
-        gameController.LoadCardsReceived(cardsData);
+        List<CardData> cards = new List<CardData>();
+
+        foreach (JObject card in dataReceived["cards"].ToObject<JArray>())
+        {
+            CardData cardData = JsonUtility.FromJson<CardData>(Newtonsoft.Json.JsonConvert.SerializeObject(card));
+            cards.Add(cardData);
+        }
+
+        gameController.LoadCardsReceived(cards);
 
         RequestBadgesData(gameController.GetBoard());
     }
@@ -229,14 +236,14 @@ public class WebSocketClientController : MonoBehaviour
     // OnJoinGameReceived is called when a request to join the game is received
     void OnJoinGameReceived(JObject dataReceived)
     {
-        List<int> badges = new List<int>();
+        List<string> badges = new List<string>();
 
-        foreach (int badge in dataReceived["badges"])
+        foreach (string badge in dataReceived["badges"])
         {
             badges.Add(badge);
         }
 
-        gameController.AddPlayer((int)dataReceived["userId"], (string)dataReceived["name"], (int)dataReceived["points"], (int)dataReceived["position"], (int)dataReceived["numTurns"], (int)dataReceived["totalAnswers"], (int)dataReceived["correctAnswers"], (string)dataReceived["avatar"], badges, (int)dataReceived["multiplier"], (bool)dataReceived["finishedBoard"]);
+        gameController.AddPlayer((string)dataReceived["userId"], (string)dataReceived["name"], (int)dataReceived["points"], (int)dataReceived["position"], (int)dataReceived["numTurns"], (int)dataReceived["totalAnswers"], (int)dataReceived["correctAnswers"], (string)dataReceived["avatar"], badges, (int)dataReceived["multiplier"], (bool)dataReceived["finishedBoard"]);
     }
 
     // OnDiceResultReceived is called when the dice result is received
@@ -262,7 +269,7 @@ public class WebSocketClientController : MonoBehaviour
     // OnRemovePlayerReceived is called when a player leaves
     void OnRemovePlayerReceived(JObject dataReceived)
     {
-        gameController.SetInactivePlayer((int)dataReceived["userId"]);
+        gameController.SetInactivePlayer((string)dataReceived["userId"]);
     }
 
     // Resend last message sent
@@ -281,7 +288,7 @@ public class WebSocketClientController : MonoBehaviour
     // OnNewBadgeReceived is called when a player buys a badge
     void OnNewBadgeReceived(JObject dataReceived)
     {
-        gameController.AddBadgeToPlayer((int)dataReceived["userId"], (int)dataReceived["badgeId"], (int)dataReceived["points"], (int)dataReceived["multiplier"]);
+        gameController.AddBadgeToPlayer((string)dataReceived["userId"], (string)dataReceived["badgeId"], (int)dataReceived["points"], (int)dataReceived["multiplier"]);
     }
 
     // OnContinueReceived is called after player clicks the continue button when a card is showing

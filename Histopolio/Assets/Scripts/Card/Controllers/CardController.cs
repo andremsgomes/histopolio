@@ -10,8 +10,8 @@ public class CardController : MonoBehaviour
     private string action;
     private string actionValue;
     private GameController gameController;
-    private List<DeckCardData> communityCards = new List<DeckCardData>();
-    private List<DeckCardData> chanceCards = new List<DeckCardData>();
+    private List<CardData> communityCards = new List<CardData>();
+    private List<CardData> chanceCards = new List<CardData>();
 
     // Start is called before the first frame update
     void Start()
@@ -38,27 +38,24 @@ public class CardController : MonoBehaviour
     }
 
     // Load cards from file
-    public void LoadCards(CardsData cardsData) {
-        foreach (DeckCardData card in cardsData.communityCards)
+    public void LoadCards(List<CardData> cards) {
+        foreach (CardData card in cards)
         {   
-            communityCards.Add(card);
-        }
-
-        foreach (DeckCardData card in cardsData.chanceCards)
-        {   
-            chanceCards.Add(card);
-        }
-
-        foreach (TrainCardData card in cardsData.trainCards)
-        {
-            gameController.AddCard(card);
+            if (card.type == "train")
+                gameController.AddCard(card);
+            else if (card.subtype == "chance") {
+                chanceCards.Add(card);
+            }
+            else {
+                communityCards.Add(card);
+            }
         }
 
         Debug.Log("Cards loaded");
     }
 
     // Load, set, and show info from card data
-    public void LoadCard(TrainCardData cardData) {
+    public void LoadCard(CardData cardData) {
         action = "none";
         actionValue = "";
         cardUI.SetInfo(cardData.info);
