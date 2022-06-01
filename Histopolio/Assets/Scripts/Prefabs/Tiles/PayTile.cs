@@ -6,7 +6,7 @@ public class PayTile : QuestionTile
 {
     // Set points
     public override void SetPoints(int points) {
-        this.points = -1*points;
-        pointsText.text = "- " + points;
+        this.points = points;
+        pointsText.text = points;
     }
 }
