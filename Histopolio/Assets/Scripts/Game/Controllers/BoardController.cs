@@ -136,6 +136,10 @@ public class BoardController : MonoBehaviour
                 ((PayTile)tiles[tile.boardPosition]).SetPoints(tile.points);
             else if (tile.type == "train")
                 ((StationTile)tiles[tile.boardPosition]).SetPoints(tile.points);
+            else if (tile.type == "prison")
+                ((PrisonTile)tiles[tile.boardPosition]).SetPoints(20);     // TODO: mudar!!
+            else if (tile.type == "parking")
+                ((ParkingTile)tiles[tile.boardPosition]).SetPoints(20);     // TODO: mudar!!
 
             tilesDictionary.Add(tile._id, tiles[tile.boardPosition]);
         }

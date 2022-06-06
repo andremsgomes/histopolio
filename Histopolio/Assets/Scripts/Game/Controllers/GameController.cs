@@ -163,7 +163,7 @@ public class GameController : MonoBehaviour
         if (activePlayers.Contains(currentPlayer.GetId()))
             gameUI.HideInactivePlayer();
         else
-            gameUI.ShowInactivePlayer(players.Count > 2);
+            gameUI.ShowInactivePlayer(players.Count > 1);
 
         if (!currentPlayer.GetFinishedBoard())
         {
@@ -274,6 +274,13 @@ public class GameController : MonoBehaviour
     public void AddQuestion(QuestionData question)
     {
         ((QuestionTile)boardController.GetTile(question.tileId)).AddQuestion(question);
+
+        if (boardController.GetTile(question.tileId).GetId() < 10) {
+            ((QuestionTile)boardController.GetTileFromPosition(10)).AddQuestion(question);
+        }
+        else if (boardController.GetTile(question.tileId).GetId() < 20) {
+            ((QuestionTile)boardController.GetTileFromPosition(20)).AddQuestion(question);
+        }
     }
 
     // Load question to send to server

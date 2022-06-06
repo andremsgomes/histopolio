@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParkingTile : Tile
+public class ParkingTile : QuestionTile
 {
     // Start is called before the first frame update
     void Start()
@@ -16,9 +16,9 @@ public class ParkingTile : Tile
         
     }
 
-    // Perform action when player arrives to tile
-    public override void PerformAction() {
-        gameController.FinishTurn("");
+    // Set points
+    public override void SetPoints(int points) {
+        this.points = points;
     }
 
     // Resize players to fit tile
