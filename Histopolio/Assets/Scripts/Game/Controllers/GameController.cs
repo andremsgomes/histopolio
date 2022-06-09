@@ -157,7 +157,6 @@ public class GameController : MonoBehaviour
 
         gameUI.SetPlayerNameText(currentPlayer.GetPlayerName());
         gameUI.SetAvatar(currentPlayer.GetAvatar());
-        gameUI.SetPlayerScore(currentPlayer.GetScore());
         gameUI.SetBadges(currentPlayer.GetBadges());
 
         if (activePlayers.Contains(currentPlayer.GetId()))
@@ -188,7 +187,6 @@ public class GameController : MonoBehaviour
         currentPlayer.AddPoints(points * currentPlayer.GetMultiplier());
         playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
 
-        gameUI.SetPlayerScore(currentPlayer.GetScore());
         UpdateLeaderboard();
     }
 
@@ -233,7 +231,6 @@ public class GameController : MonoBehaviour
             currentPlayer.ReceivePointsFromTile();
             playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
 
-            gameUI.SetPlayerScore(currentPlayer.GetScore());
             UpdateLeaderboard();
 
             if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0)
@@ -631,7 +628,6 @@ public class GameController : MonoBehaviour
         currentPlayer.ReceivePointsFromTile();
         playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
 
-        gameUI.SetPlayerScore(currentPlayer.GetScore());
         UpdateLeaderboard();
 
         cardController.HideCardMenu();
@@ -667,7 +663,6 @@ public class GameController : MonoBehaviour
 
         if (currentPlayer.GetId() == userId)
         {
-            gameUI.SetPlayerScore(currentPlayer.GetScore());
             gameUI.SetBadges(currentPlayer.GetBadges());
         }
     }

@@ -9,7 +9,6 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private Text playerNameText;
     [SerializeField] private Image avatar;
-    [SerializeField] private Text playerScoreText;
     [SerializeField] private GameObject turnButton;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject[] leaderboardPlaces = new GameObject[3];
@@ -57,11 +56,6 @@ public class GameUI : MonoBehaviour
     // Set current player avatar
     public void SetAvatar(Sprite avatar) {
         this.avatar.sprite = avatar;
-    }
-
-    // Set current player score
-    public void SetPlayerScore(int score) {
-        playerScoreText.text = score.ToString() + " Pontos";
     }
 
     // Set current player badges
