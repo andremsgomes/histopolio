@@ -295,7 +295,7 @@ public class WebSocketClientController : MonoBehaviour
     void OnContinueReceived()
     {
         SendTurnData();
-        gameController.ContinueCard();
+        gameController.Continue();
     }
 
     // OnNextPlayerReceived is called after a player clicks the continue button to finish his turn

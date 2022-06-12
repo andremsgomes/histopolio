@@ -226,7 +226,7 @@ public class GameController : MonoBehaviour
 
             info = "Resposta certa! Recebeste " + 20 * currentPlayer.GetMultiplier() + " pontos!";
         }
-        else if (!currentPlayer.GetFinishedBoard() && ((((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer)))
+        else if (!currentPlayer.GetFinishedBoard() && ((((QuestionTile)currentPlayer.GetTile()).GetPoints() >= 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer)))
         {
             currentPlayer.ReceivePointsFromTile();
             playerScores[currentPlayer.GetId()] = currentPlayer.GetScore();
@@ -237,9 +237,13 @@ public class GameController : MonoBehaviour
             {
                 info = "Resposta certa! Recebeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints() * currentPlayer.GetMultiplier() + " pontos!";
             }
-            else
+            else if (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0)
             {
                 info = "Resposta errada! Perdeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints() * (-1) + " pontos!";
+            }
+            else
+            {
+                info = "Resposta certa! Evistaste recuar para a " + boardController.GetTileFromPosition(10).GetTileName() + "!";
             }
         }
         else if (!currentPlayer.GetFinishedBoard())
@@ -248,9 +252,13 @@ public class GameController : MonoBehaviour
             {
                 info = "Resposta errada! Não conseguiste receber pontos desta vez!";
             }
-            else
+            else if (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0)
             {
                 info = "Resposta certa! Evitaste perder pontos!";
+            }
+            else
+            {
+                info = "Resposta errada! Terás que recuar para a " + boardController.GetTileFromPosition(10).GetTileName() + "!";
             }
         }
         else
@@ -258,7 +266,15 @@ public class GameController : MonoBehaviour
             info = "Resposta errada! Não conseguiste receber pontos desta vez!";
         }
 
-        FinishTurn(info);
+        if (!correctAnswer && currentPlayer.GetTile().GetId() == 30)
+        {
+            // If answer wrong on go to prison tile send info
+            SendInfoShownMessageToServer(info);
+        }
+        else
+        {
+            FinishTurn(info);
+        }
     }
 
     // Add card to tile
@@ -272,11 +288,23 @@ public class GameController : MonoBehaviour
     {
         ((QuestionTile)boardController.GetTile(question.tileId)).AddQuestion(question);
 
-        if (boardController.GetTile(question.tileId).GetId() < 10) {
+        int tilePosition = boardController.GetTile(question.tileId).GetId();
+
+        if (tilePosition < 10)
+        {
+            // Add to prison tile
             ((QuestionTile)boardController.GetTileFromPosition(10)).AddQuestion(question);
         }
-        else if (boardController.GetTile(question.tileId).GetId() < 20) {
+        else if (tilePosition < 20)
+        {
+            // Add to parking tile
             ((QuestionTile)boardController.GetTileFromPosition(20)).AddQuestion(question);
+        }
+
+        if (tilePosition == 4 || tilePosition == 12 || tilePosition == 28)
+        {
+            // Add to go to prison tile
+            ((QuestionTile)boardController.GetTileFromPosition(30)).AddQuestion(question);
         }
     }
 
@@ -437,7 +465,8 @@ public class GameController : MonoBehaviour
             playerScores[id] = newPlayer.GetScore();
             playerNames[id] = newPlayer.GetPlayerName();
 
-            if (gameStarted) {
+            if (gameStarted)
+            {
                 Tile tile = boardController.GetTileFromPosition(newPlayer.GetPosition());
 
                 tile.AddPlayer(newPlayer);
@@ -473,9 +502,10 @@ public class GameController : MonoBehaviour
     }
 
     // Send info shown message
-    public void SendInfoShownMessageToServer()
+    public void SendInfoShownMessageToServer(string info)
     {
         InfoShownData infoShownData = new InfoShownData();
+        infoShownData.info = info;
         infoShownData.userId = currentPlayer.GetId();
         string message = JsonUtility.ToJson(infoShownData);
 
@@ -636,10 +666,14 @@ public class GameController : MonoBehaviour
         FinishTurn(info);
     }
 
-    // Hide card menu and continue
-    public void ContinueCard()
+    // Continue action
+    public void Continue()
     {
-        cardController.Continue();
+        // If in go to prison tile
+        if (currentPlayer.GetTile().GetId() == 30)
+            MovePlayerTo(10);
+        else
+            cardController.Continue();  // If card is showing
     }
 
     // Get board
