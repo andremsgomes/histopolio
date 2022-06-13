@@ -350,6 +350,7 @@ public class GameController : MonoBehaviour
     {
         QuestionSendData questionSendData = new QuestionSendData();
         questionSendData.userId = currentPlayer.GetId();
+        questionSendData.tile = "Casa " + currentPlayer.GetTile().GetId() + " - " + currentPlayer.GetTile().GetTileName();
         questionSendData.questionData = questionData;
 
         string message = JsonUtility.ToJson(questionSendData);
