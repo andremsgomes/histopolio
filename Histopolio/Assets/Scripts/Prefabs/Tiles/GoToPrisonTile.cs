@@ -17,8 +17,8 @@ public class GoToPrisonTile : QuestionTile
     }
 
     // Set points
-    public override void SetPoints() {
-        this.points = 0;
+    public override void SetPoints(int points) {
+        this.points = points;
     }
 
     // Resize players to fit tile
