@@ -111,4 +111,9 @@ public class GameUI : MonoBehaviour
         inactivePlayer.SetActive(false);
         removePlayer.SetActive(false);
     }
+
+    // OnCloseClick is called when the close button is clicked
+    public void OnCloseClick() {
+        Application.Quit();
+    }
 }
