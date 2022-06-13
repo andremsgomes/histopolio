@@ -230,7 +230,7 @@ public abstract class Tile : MonoBehaviour
     public void AddPlayer(Player player)
     {
         players[player.GetId()] = player;
-        player.SetOrder(0);
+        player.SetOrder(1);
         ResizePlayers();
     }
 
@@ -241,7 +241,7 @@ public abstract class Tile : MonoBehaviour
         
         player.SetScale(new Vector3(1, 1, 1));
         player.SetPosition(new Vector3(transform.position.x, transform.position.y, -3));
-        player.SetOrder(1);
+        player.SetOrder(3);
 
         ResizePlayers();
     }

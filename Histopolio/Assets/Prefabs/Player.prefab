@@ -420,7 +420,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
   m_Color: {r: 0, g: 0.43529412, b: 0.7529412, a: 1}
   m_FlipX: 0
@@ -446,4 +446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   img: {fileID: 3038378922855370039}
-  rend: {fileID: 6864163245862061794}
+  playerRend: {fileID: 6864163245862061794}
+  contentRend: {fileID: 8698249216508576262}
+  canvas: {fileID: 6490837987878450002}

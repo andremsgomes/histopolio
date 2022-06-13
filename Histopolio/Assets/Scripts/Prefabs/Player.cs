@@ -21,7 +21,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private Image img;
-    [SerializeField] private SpriteRenderer rend;
+    [SerializeField] private SpriteRenderer playerRend;
+    [SerializeField] private SpriteRenderer contentRend;
+    [SerializeField] private Canvas canvas;
 
 
     // Start is called before the first frame update
@@ -293,6 +295,8 @@ public class Player : MonoBehaviour
     // Set order in layer
     public void SetOrder(int order)
     {
-        rend.sortingOrder = order;
+        playerRend.sortingOrder = order;
+        contentRend.sortingOrder = order+1;
+        canvas.sortingOrder = order+1;
     }
 }
