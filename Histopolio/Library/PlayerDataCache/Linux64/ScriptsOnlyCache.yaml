@@ -34,6 +34,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -90,77 +91,77 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1478}
     - Class: 114
-      Script: {instanceID: 1748}
+      Script: {instanceID: 1758}
     - Class: 114
-      Script: {instanceID: 1772}
+      Script: {instanceID: 1782}
     - Class: 114
-      Script: {instanceID: 1804}
+      Script: {instanceID: 1814}
     - Class: 114
-      Script: {instanceID: 1860}
+      Script: {instanceID: 1870}
     - Class: 114
-      Script: {instanceID: 1958}
+      Script: {instanceID: 1968}
     - Class: 114
-      Script: {instanceID: 2272}
+      Script: {instanceID: 2282}
     - Class: 114
-      Script: {instanceID: 2312}
+      Script: {instanceID: 2322}
     - Class: 114
-      Script: {instanceID: 2334}
+      Script: {instanceID: 2344}
     - Class: 114
-      Script: {instanceID: 2516}
+      Script: {instanceID: 2526}
     - Class: 114
-      Script: {instanceID: 2666}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 2692}
+      Script: {instanceID: 2702}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2850}
     - Class: 114
-      Script: {instanceID: 3050}
+      Script: {instanceID: 3060}
     - Class: 114
-      Script: {instanceID: 3078}
+      Script: {instanceID: 3088}
     - Class: 114
-      Script: {instanceID: 3158}
+      Script: {instanceID: 3168}
     - Class: 114
-      Script: {instanceID: 3218}
+      Script: {instanceID: 3228}
     - Class: 114
-      Script: {instanceID: 3338}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 3356}
+      Script: {instanceID: 3366}
     - Class: 114
-      Script: {instanceID: 3426}
+      Script: {instanceID: 3436}
     - Class: 114
-      Script: {instanceID: 3484}
+      Script: {instanceID: 3494}
     - Class: 114
-      Script: {instanceID: 3714}
+      Script: {instanceID: 3724}
     - Class: 114
-      Script: {instanceID: 3780}
+      Script: {instanceID: 3790}
     - Class: 114
-      Script: {instanceID: 3868}
+      Script: {instanceID: 3878}
     - Class: 114
-      Script: {instanceID: 4036}
+      Script: {instanceID: 4046}
     - Class: 114
-      Script: {instanceID: 4040}
+      Script: {instanceID: 4050}
     - Class: 114
-      Script: {instanceID: 4136}
+      Script: {instanceID: 4146}
     - Class: 114
-      Script: {instanceID: 4200}
+      Script: {instanceID: 4210}
     - Class: 114
-      Script: {instanceID: 4220}
+      Script: {instanceID: 4230}
     - Class: 114
-      Script: {instanceID: 4646}
+      Script: {instanceID: 4656}
     - Class: 114
-      Script: {instanceID: 4662}
+      Script: {instanceID: 4672}
     - Class: 114
-      Script: {instanceID: 4744}
+      Script: {instanceID: 4754}
     - Class: 114
-      Script: {instanceID: 4804}
+      Script: {instanceID: 4814}
     - Class: 114
-      Script: {instanceID: 4926}
+      Script: {instanceID: 4936}
     - Class: 114
-      Script: {instanceID: 4988}
+      Script: {instanceID: 4998}
     - Class: 114
-      Script: {instanceID: 5086}
+      Script: {instanceID: 5096}
     - Class: 114
-      Script: {instanceID: 5160}
+      Script: {instanceID: 5170}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -308,7 +309,7 @@ ScriptsOnlyBuild:
     className: QuestionUI
   - hash:
       serializedVersion: 2
-      Hash: 9009bdfd864cfa3b50f0cad488b32721
+      Hash: 306de623ffd8c004347f988a07677191
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GoToPrisonTile
@@ -812,7 +813,7 @@ ScriptsOnlyBuild:
     className: BoardBase
   - hash:
       serializedVersion: 2
-      Hash: 31db5978f11067291efa1bef42954485
+      Hash: aa400ab7299db9e62875ac8c3ac00e78
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameUI
