@@ -191,20 +191,21 @@ public class GameController : MonoBehaviour
     }
 
     // Display finish turn button and hide dice button
-    public void FinishTurn(string info)
+    public void FinishTurn(string info, string bodyColor = null)
     {
         SaveCurrentPlayer();
-        SendFinishTurn(info);
+        SendFinishTurn(info, bodyColor);
 
         // gameUI.DisplayFinishTurn();
         // dice.AllowCoroutine();
     }
 
-    void SendFinishTurn(string info)
+    void SendFinishTurn(string info, string bodyColor = null)
     {
         FinishTurnData finishTurnData = new FinishTurnData();
         finishTurnData.userId = currentPlayer.GetId();
         finishTurnData.info = info;
+        finishTurnData.bodyColor = bodyColor;
         string message = JsonUtility.ToJson(finishTurnData);
 
         SendMessageToServer(message);
@@ -219,12 +220,14 @@ public class GameController : MonoBehaviour
             currentPlayer.AddCorrectAnswer();
 
         string info = "";
+        string bodyColor = null;
 
         if (currentPlayer.GetFinishedBoard() && correctAnswer)
         {
             GiveCurrentPlayerPoints(20);
 
             info = "Resposta certa! Recebeste " + 20 * currentPlayer.GetMultiplier() + " pontos!";
+            bodyColor = "#00c800";
         }
         else if (!currentPlayer.GetFinishedBoard() && ((((QuestionTile)currentPlayer.GetTile()).GetPoints() >= 0 && correctAnswer) || (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0 && !correctAnswer)))
         {
@@ -236,14 +239,17 @@ public class GameController : MonoBehaviour
             if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0)
             {
                 info = "Resposta certa! Recebeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints() * currentPlayer.GetMultiplier() + " pontos!";
+                bodyColor = "#00c800";
             }
             else if (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0)
             {
                 info = "Resposta errada! Perdeste " + ((QuestionTile)currentPlayer.GetTile()).GetPoints() * (-1) + " pontos!";
+                bodyColor = "#dc0000";
             }
             else
             {
                 info = "Resposta certa! Evistaste recuar para a " + boardController.GetTileFromPosition(10).GetTileName() + "!";
+                bodyColor = "#00c800";
             }
         }
         else if (!currentPlayer.GetFinishedBoard())
@@ -251,29 +257,33 @@ public class GameController : MonoBehaviour
             if (((QuestionTile)currentPlayer.GetTile()).GetPoints() > 0)
             {
                 info = "Resposta errada! Não conseguiste receber pontos desta vez!";
+                bodyColor = "#dc0000";
             }
             else if (((QuestionTile)currentPlayer.GetTile()).GetPoints() < 0)
             {
                 info = "Resposta certa! Evitaste perder pontos!";
+                bodyColor = "#00c800";
             }
             else
             {
                 info = "Resposta errada! Terás que recuar para a " + boardController.GetTileFromPosition(10).GetTileName() + "!";
+                bodyColor = "#dc0000";
             }
         }
         else
         {
             info = "Resposta errada! Não conseguiste receber pontos desta vez!";
+            bodyColor = "#dc0000";
         }
 
         if (!correctAnswer && currentPlayer.GetTile().GetId() == 30)
         {
             // If answer wrong on go to prison tile send info
-            SendInfoShownMessageToServer(info);
+            SendInfoShownMessageToServer(info, bodyColor);
         }
         else
         {
-            FinishTurn(info);
+            FinishTurn(info, bodyColor);
         }
     }
 
@@ -503,10 +513,11 @@ public class GameController : MonoBehaviour
     }
 
     // Send info shown message
-    public void SendInfoShownMessageToServer(string info)
+    public void SendInfoShownMessageToServer(string info = "", string bodyColor = null)
     {
         InfoShownData infoShownData = new InfoShownData();
         infoShownData.info = info;
+        infoShownData.bodyColor = bodyColor;
         infoShownData.userId = currentPlayer.GetId();
         string message = JsonUtility.ToJson(infoShownData);
 
