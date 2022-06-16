@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GameController : MonoBehaviour
     private bool gameStarted = false;
     private string board = "Histopólio";
     private string saveFile = "";
+    int sessionCode = 1000;
 
     [Header("Controllers")]
     [SerializeField] private QuestionController questionController;
@@ -424,7 +426,7 @@ public class GameController : MonoBehaviour
         gameStarted = true;
         SpawnPlayers();
         UpdateLeaderboard();
-        gameUI.ShowHUD();
+        gameUI.ShowHUD(sessionCode);
 
         Debug.Log("Game Started");
     }
@@ -545,11 +547,14 @@ public class GameController : MonoBehaviour
     // Load data from save file
     public void LoadSaveFile(string fileName)
     {
+        SetSessionCode();
+
         saveFile = fileName;
 
         LoadFileData loadFileData = new LoadFileData();
         loadFileData.board = board;
         loadFileData.file = saveFile;
+        loadFileData.sessionCode = sessionCode;
         string message = JsonUtility.ToJson(loadFileData);
 
         SendMessageToServer(message);
@@ -717,5 +722,19 @@ public class GameController : MonoBehaviour
     public Player GetCurrentPlayer()
     {
         return currentPlayer;
+    }
+
+    // Set the session code with a random number
+    void SetSessionCode()
+    {
+        Random rd = new Random();
+
+        sessionCode = rd.Next(1000, 9999);
+    }
+
+    // Get session code
+    public int GetSessionCode()
+    {
+        return sessionCode;
     }
 }

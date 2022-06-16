@@ -66,6 +66,6 @@ public class MainMenuController : MonoBehaviour
     public void LoadSaveFile(string fileName) {
         gameController.LoadSaveFile(fileName);
         mainMenuUI.HideSavesMenu();
-        mainMenuUI.ShowJoinMenu(gameController.GetBoard(), fileName);
+        mainMenuUI.ShowJoinMenu(gameController.GetBoard(), fileName, gameController.GetSessionCode());
     }
 }

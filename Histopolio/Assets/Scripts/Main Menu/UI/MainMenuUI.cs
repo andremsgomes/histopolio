@@ -21,6 +21,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject playersContainer;
     [SerializeField] private JoinPlayer joinPlayerPrefab;
     [SerializeField] private Text title;
+    [SerializeField] private Text sessionCodeText;
 
     [Header("Saves Menu")]
     [SerializeField] private GameObject savesMenu;
@@ -100,8 +101,9 @@ public class MainMenuUI : MonoBehaviour
     }
 
     // Show join menu
-    public void ShowJoinMenu(string board, string save) {
+    public void ShowJoinMenu(string board, string save, int sessionCode) {
         joinMenu.SetActive(true);
         title.text = board + " - " + save;
+        sessionCodeText.text = "Código de acesso: " + sessionCode;
     }
 }

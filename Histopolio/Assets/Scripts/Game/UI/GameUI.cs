@@ -8,6 +8,7 @@ public class GameUI : MonoBehaviour
     private GameController gameController;
 
     [SerializeField] private Text playerNameText;
+    [SerializeField] private Text sessionCodeText;
     [SerializeField] private Image avatar;
     [SerializeField] private GameObject turnButton;
     [SerializeField] private GameObject HUD;
@@ -22,13 +23,13 @@ public class GameUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // OnCameraChangeClick is called when camera change button is clicked
@@ -44,24 +45,29 @@ public class GameUI : MonoBehaviour
     }
 
     // Set game manager
-    public void SetGameController(GameController gameController) {
+    public void SetGameController(GameController gameController)
+    {
         this.gameController = gameController;
     }
 
     // Set current player name text
-    public void SetPlayerNameText(string name) {
+    public void SetPlayerNameText(string name)
+    {
         playerNameText.text = name;
     }
 
     // Set current player avatar
-    public void SetAvatar(Sprite avatar) {
+    public void SetAvatar(Sprite avatar)
+    {
         this.avatar.sprite = avatar;
     }
 
     // Set current player badges
-    public void SetBadges(List<Sprite> badges) {
+    public void SetBadges(List<Sprite> badges)
+    {
         // Remove previous badges
-        foreach (Transform child in badgesContainer.transform) {
+        foreach (Transform child in badgesContainer.transform)
+        {
             GameObject.Destroy(child.gameObject);
         }
 
@@ -74,27 +80,32 @@ public class GameUI : MonoBehaviour
     }
 
     // OnFinishTurnClick is called when finish turn button is clicked
-    public void OnFinishTurnClick() {
+    public void OnFinishTurnClick()
+    {
         turnButton.SetActive(false);
         gameController.ChangeCurrentPlayer();
         // gameController.ShowDice();
     }
 
     // DisplayFinishTurn is called after player moved
-    public void DisplayFinishTurn() {
+    public void DisplayFinishTurn()
+    {
         // gameController.HideDice();
         turnButton.SetActive(true);
     }
 
     // Show HUD
-    public void ShowHUD() {
+    public void ShowHUD(int sessionCode)
+    {
+        sessionCodeText.text = "Código de acesso: " + sessionCode;
         HUD.SetActive(true);
     }
 
     // Show place in leaderboard
-    public void UpdateLeaderboard(int index, Sprite avatar, string name, int points) {
+    public void UpdateLeaderboard(int index, Sprite avatar, string name, int points)
+    {
         leaderboardPlaces[index].SetActive(true);
-        leaderboardAvatars[index].sprite = avatar; 
+        leaderboardAvatars[index].sprite = avatar;
         leaderboardScores[index].text = name + " - " + points;
     }
 
@@ -113,7 +124,8 @@ public class GameUI : MonoBehaviour
     }
 
     // OnCloseClick is called when the close button is clicked
-    public void OnCloseClick() {
+    public void OnCloseClick()
+    {
         Application.Quit();
     }
 }
