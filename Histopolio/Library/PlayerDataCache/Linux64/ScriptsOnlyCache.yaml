@@ -34,7 +34,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -83,85 +82,85 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1472}
-    - Class: 114
       Script: {instanceID: 1474}
     - Class: 114
       Script: {instanceID: 1476}
     - Class: 114
       Script: {instanceID: 1478}
     - Class: 114
-      Script: {instanceID: 1758}
+      Script: {instanceID: 1480}
     - Class: 114
-      Script: {instanceID: 1782}
+      Script: {instanceID: 1748}
     - Class: 114
-      Script: {instanceID: 1814}
+      Script: {instanceID: 1772}
     - Class: 114
-      Script: {instanceID: 1870}
+      Script: {instanceID: 1804}
     - Class: 114
-      Script: {instanceID: 1968}
+      Script: {instanceID: 1860}
     - Class: 114
-      Script: {instanceID: 2282}
+      Script: {instanceID: 1958}
     - Class: 114
-      Script: {instanceID: 2322}
+      Script: {instanceID: 2272}
     - Class: 114
-      Script: {instanceID: 2344}
+      Script: {instanceID: 2312}
     - Class: 114
-      Script: {instanceID: 2526}
+      Script: {instanceID: 2334}
     - Class: 114
-      Script: {instanceID: 2676}
+      Script: {instanceID: 2516}
     - Class: 114
-      Script: {instanceID: 2702}
+      Script: {instanceID: 2666}
     - Class: 114
-      Script: {instanceID: 2850}
+      Script: {instanceID: 2692}
     - Class: 114
-      Script: {instanceID: 3060}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 3088}
+      Script: {instanceID: 3050}
     - Class: 114
-      Script: {instanceID: 3168}
+      Script: {instanceID: 3078}
     - Class: 114
-      Script: {instanceID: 3228}
+      Script: {instanceID: 3158}
     - Class: 114
-      Script: {instanceID: 3348}
+      Script: {instanceID: 3218}
     - Class: 114
-      Script: {instanceID: 3366}
+      Script: {instanceID: 3338}
     - Class: 114
-      Script: {instanceID: 3436}
+      Script: {instanceID: 3356}
     - Class: 114
-      Script: {instanceID: 3494}
+      Script: {instanceID: 3426}
     - Class: 114
-      Script: {instanceID: 3724}
+      Script: {instanceID: 3484}
     - Class: 114
-      Script: {instanceID: 3790}
+      Script: {instanceID: 3714}
     - Class: 114
-      Script: {instanceID: 3878}
+      Script: {instanceID: 3780}
     - Class: 114
-      Script: {instanceID: 4046}
+      Script: {instanceID: 3868}
     - Class: 114
-      Script: {instanceID: 4050}
+      Script: {instanceID: 4036}
     - Class: 114
-      Script: {instanceID: 4146}
+      Script: {instanceID: 4040}
     - Class: 114
-      Script: {instanceID: 4210}
+      Script: {instanceID: 4136}
     - Class: 114
-      Script: {instanceID: 4230}
+      Script: {instanceID: 4200}
     - Class: 114
-      Script: {instanceID: 4656}
+      Script: {instanceID: 4220}
     - Class: 114
-      Script: {instanceID: 4672}
+      Script: {instanceID: 4646}
     - Class: 114
-      Script: {instanceID: 4754}
+      Script: {instanceID: 4662}
     - Class: 114
-      Script: {instanceID: 4814}
+      Script: {instanceID: 4744}
     - Class: 114
-      Script: {instanceID: 4936}
+      Script: {instanceID: 4804}
     - Class: 114
-      Script: {instanceID: 4998}
+      Script: {instanceID: 4926}
     - Class: 114
-      Script: {instanceID: 5096}
+      Script: {instanceID: 4988}
     - Class: 114
-      Script: {instanceID: 5170}
+      Script: {instanceID: 5086}
+    - Class: 114
+      Script: {instanceID: 5160}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -537,7 +536,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 0850835c96b65ec5c83ae8be33f5f5b9
+      Hash: 6176a1242ae8092c298ac4bc8250dc60
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenuUI
@@ -783,7 +782,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 4fb5fcdeea70d9f21264922cac191420
+      Hash: 99fa8d555bc704c45741ada75dbf92f9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -813,7 +812,7 @@ ScriptsOnlyBuild:
     className: BoardBase
   - hash:
       serializedVersion: 2
-      Hash: aa400ab7299db9e62875ac8c3ac00e78
+      Hash: f485c117530827b49ce82b6e4593fcbf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameUI

@@ -362,7 +362,13 @@ public class GameController : MonoBehaviour
     {
         QuestionSendData questionSendData = new QuestionSendData();
         questionSendData.userId = currentPlayer.GetId();
-        questionSendData.tile = "Casa " + currentPlayer.GetTile().GetId() + " - " + currentPlayer.GetTile().GetTileName();
+
+        int points = 20;
+        if (currentPlayer.GetTile().GetId() != 0) {
+            points = ((QuestionTile)currentPlayer.GetTile()).GetPoints();
+        }
+
+        questionSendData.tile = "Casa " + currentPlayer.GetTile().GetId() + " - " + currentPlayer.GetTile().GetTileName() + " (" + points + " pontos)";
         questionSendData.questionData = questionData;
 
         string message = JsonUtility.ToJson(questionSendData);

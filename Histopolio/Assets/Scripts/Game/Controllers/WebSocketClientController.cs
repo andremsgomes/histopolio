@@ -38,6 +38,9 @@ public class WebSocketClientController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ws.ReadyState == WebSocketState.Closed)
+            ConnectWebSocket();
+        
         while (messages.Count > 0)
         {
             ProcessMessage(messages.Dequeue());

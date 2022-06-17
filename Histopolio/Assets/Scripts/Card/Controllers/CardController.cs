@@ -107,7 +107,7 @@ public class CardController : MonoBehaviour
         cardUI.SetInfo(communityCards[index].info);
 
         ShowCardMenu(false);
-        gameController.SendInfoShownMessageToServer();
+        gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
     }
 
     // Show random chance card
@@ -120,7 +120,7 @@ public class CardController : MonoBehaviour
         cardUI.SetInfo(chanceCards[index].info);
 
         ShowCardMenu(false);
-        gameController.SendInfoShownMessageToServer();
+        gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
     }
 
     // Get points
