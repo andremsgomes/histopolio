@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     private Player currentPlayer;
     private bool gameLoaded = false;
     private bool gameStarted = false;
-    private string board = "Histopólio";
+    private string board = "";
     private string saveFile = "";
     int sessionCode = 1000;
 
@@ -149,6 +149,7 @@ public class GameController : MonoBehaviour
         currentPlayer.AddTurn();
         playerTurns[currentPlayer.GetId()] = currentPlayer.GetNumTurns();
 
+        currentPlayer.SetGlow(false);
         SetCurrentPlayer(players[playerTurns.OrderBy(kvp => kvp.Value).First().Key]);
     }
 
@@ -156,6 +157,7 @@ public class GameController : MonoBehaviour
     void SetCurrentPlayer(Player player)
     {
         currentPlayer = player;
+        currentPlayer.SetGlow(true);
 
         gameUI.SetPlayerNameText(currentPlayer.GetPlayerName());
         gameUI.SetAvatar(currentPlayer.GetAvatar());
@@ -364,7 +366,8 @@ public class GameController : MonoBehaviour
         questionSendData.userId = currentPlayer.GetId();
 
         int points = 20;
-        if (currentPlayer.GetTile().GetId() != 0) {
+        if (currentPlayer.GetTile().GetId() != 0)
+        {
             points = ((QuestionTile)currentPlayer.GetTile()).GetPoints();
         }
 
@@ -383,9 +386,10 @@ public class GameController : MonoBehaviour
     }
 
     // Request board data from server
-    public void RequestBoardData()
+    public void RequestBoardData(string board)
     {
-        webSocketClientController.RequestBoardData("Histopólio");
+        this.board = board;
+        webSocketClientController.RequestBoardData(board);
     }
 
     // Load board received from server
@@ -535,13 +539,13 @@ public class GameController : MonoBehaviour
     // Send new game message to server
     public void SendNewGameMessage()
     {
-        webSocketClientController.SendBoardRequest("new game", "Histopólio");
+        webSocketClientController.SendBoardRequest("new game", board);
     }
 
     // Send load save files message to server
     public void SendLoadSavesMessage()
     {
-        webSocketClientController.SendBoardRequest("load saves", "Histopólio");
+        webSocketClientController.SendBoardRequest("load saves", board);
     }
 
     // Show save files on menu
@@ -742,5 +746,23 @@ public class GameController : MonoBehaviour
     public int GetSessionCode()
     {
         return sessionCode;
+    }
+
+    // Send Login message to server
+    public void Login(string email, string password)
+    {
+        LoginData loginData = new LoginData();
+        loginData.email = email;
+        loginData.password = password;
+
+        string message = JsonUtility.ToJson(loginData);
+
+        SendMessageToServer(message);
+    }
+
+    // Show boards menu
+    public void ShowBoardsMenu(List<string> boards)
+    {
+        mainMenuController.ShowBoardsMenu(boards);
     }
 }

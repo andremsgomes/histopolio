@@ -449,3 +449,4 @@ MonoBehaviour:
   playerRend: {fileID: 6864163245862061794}
   contentRend: {fileID: 8698249216508576262}
   canvas: {fileID: 6490837987878450002}
+  mask: {fileID: 5116219530752477258}

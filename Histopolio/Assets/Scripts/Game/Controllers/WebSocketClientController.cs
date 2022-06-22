@@ -40,7 +40,7 @@ public class WebSocketClientController : MonoBehaviour
     {
         if (ws.ReadyState == WebSocketState.Closed)
             ConnectWebSocket();
-        
+
         while (messages.Count > 0)
         {
             ProcessMessage(messages.Dequeue());
@@ -67,6 +67,9 @@ public class WebSocketClientController : MonoBehaviour
 
         switch (command)
         {
+            case "boards":
+                OnBoardsReceived(dataReceived);
+                break;
             case "answer":
                 OnAnswerReceived(dataReceived);
                 break;
@@ -115,6 +118,19 @@ public class WebSocketClientController : MonoBehaviour
         }
 
         message = null;
+    }
+
+    // OnBoardsReceived is called when the user successfully logins
+    void OnBoardsReceived(JObject dataReceived)
+    {
+        List<string> boards = new List<string>();
+
+        foreach (string board in dataReceived["boards"])
+        {
+            boards.Add(board);
+        }
+
+        gameController.ShowBoardsMenu(boards);
     }
 
     // OnAnswerReceived is called when an answer is received

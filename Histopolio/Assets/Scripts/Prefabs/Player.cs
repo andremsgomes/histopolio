@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer playerRend;
     [SerializeField] private SpriteRenderer contentRend;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private RectTransform mask;
 
 
     // Start is called before the first frame update
@@ -298,5 +299,17 @@ public class Player : MonoBehaviour
         playerRend.sortingOrder = order;
         contentRend.sortingOrder = order+1;
         canvas.sortingOrder = order+1;
+    }
+
+    // Set glow
+    public void SetGlow(bool glow) {
+        if (glow) {
+            mask.sizeDelta = new Vector2(0.9f, 0.9f);
+            contentRend.color = new Color(0.737f, 0.51f, 0, 1);
+        }
+        else {
+            mask.sizeDelta = new Vector2(0.96f, 0.96f);
+            contentRend.color = new Color(0, 0.435f, 0.753f, 1);
+        }
     }
 }
