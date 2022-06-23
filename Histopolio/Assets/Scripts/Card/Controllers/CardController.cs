@@ -16,37 +16,42 @@ public class CardController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Connect with UI
-    public void SetCardComponents() {
+    public void SetCardComponents()
+    {
         cardUI = this.GetComponent<CardUI>();
 
         cardUI.SetCardController(this);
     }
 
     // Set game controller
-    public void SetGameController(GameController gameController) {
+    public void SetGameController(GameController gameController)
+    {
         this.gameController = gameController;
     }
 
     // Load cards from file
-    public void LoadCards(List<CardData> cards) {
+    public void LoadCards(List<CardData> cards)
+    {
         foreach (CardData card in cards)
-        {   
+        {
             if (card.type == "train")
                 gameController.AddCard(card);
-            else if (card.subtype == "chance") {
+            else if (card.subtype == "chance")
+            {
                 chanceCards.Add(card);
             }
-            else {
+            else
+            {
                 communityCards.Add(card);
             }
         }
@@ -55,14 +60,16 @@ public class CardController : MonoBehaviour
     }
 
     // Load, set, and show info from card data
-    public void LoadCard(CardData cardData) {
+    public void LoadCard(CardData cardData)
+    {
         action = "none";
         actionValue = "";
         cardUI.SetInfo(cardData.info);
     }
 
     // Continue turn
-    public void Continue() {
+    public void Continue()
+    {
         cardUI.HideCardMenu();
         gameController.GiveCurrentPlayerPoints(points);
 
@@ -70,13 +77,14 @@ public class CardController : MonoBehaviour
         {
             case "move":
                 gameController.MovePlayer(int.Parse(actionValue));
-                break; 
+                break;
             case "tile":
                 gameController.MovePlayerTo(int.Parse(actionValue));
                 break;
             default:
                 string info = "";
-                if (points < 0) {
+                if (points < 0)
+                {
                     info = "Perdeste " + points + " pontos!";
                 }
                 else if (points > 0)
@@ -88,39 +96,57 @@ public class CardController : MonoBehaviour
     }
 
     // Activate card menu
-    public void ShowCardMenu(bool showButton) {
+    public void ShowCardMenu(bool showButton)
+    {
         cardUI.ShowCardMenu(showButton);
     }
 
     // Deactivate card menu
-    public void HideCardMenu() {
+    public void HideCardMenu()
+    {
         cardUI.HideCardMenu();
     }
 
     // Show random community card
-    public void ShowCommunityCard() {
-        int index = Random.Range(0, communityCards.Count);
-        
-        points = communityCards[index].points;
-        action = communityCards[index].action;
-        actionValue = communityCards[index].actionValue;
-        cardUI.SetInfo(communityCards[index].info);
+    public void ShowCommunityCard()
+    {
+        if (communityCards.Count > 0)
+        {
+            int index = Random.Range(0, communityCards.Count);
 
-        ShowCardMenu(false);
-        gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
+            points = communityCards[index].points;
+            action = communityCards[index].action;
+            actionValue = communityCards[index].actionValue;
+            cardUI.SetInfo(communityCards[index].info);
+
+            ShowCardMenu(false);
+            gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
+        }
+        else
+        {
+            gameController.FinishTurn();
+        }
     }
 
     // Show random chance card
-    public void ShowChanceCard() {
-        int index = Random.Range(0, chanceCards.Count);
-        
-        points = chanceCards[index].points;
-        action = chanceCards[index].action;
-        actionValue = chanceCards[index].actionValue;
-        cardUI.SetInfo(chanceCards[index].info);
+    public void ShowChanceCard()
+    {
+        if (chanceCards.Count > 0)
+        {
+            int index = Random.Range(0, chanceCards.Count);
 
-        ShowCardMenu(false);
-        gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
+            points = chanceCards[index].points;
+            action = chanceCards[index].action;
+            actionValue = chanceCards[index].actionValue;
+            cardUI.SetInfo(chanceCards[index].info);
+
+            ShowCardMenu(false);
+            gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
+        }
+        else
+        {
+            gameController.FinishTurn();
+        }
     }
 
     // Get points

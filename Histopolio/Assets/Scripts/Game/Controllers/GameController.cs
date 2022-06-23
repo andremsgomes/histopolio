@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     private bool gameStarted = false;
     private string board = "";
     private string saveFile = "";
+    private string adminId = "";
     int sessionCode = 1000;
 
     [Header("Controllers")]
@@ -131,6 +132,7 @@ public class GameController : MonoBehaviour
     void SaveCurrentPlayer()
     {
         SavePlayerData savePlayerData = new SavePlayerData();
+        savePlayerData.adminId = adminId;
         savePlayerData.userId = currentPlayer.GetId();
         savePlayerData.points = currentPlayer.GetScore();
         savePlayerData.position = currentPlayer.GetTile().GetId();
@@ -195,7 +197,7 @@ public class GameController : MonoBehaviour
     }
 
     // Display finish turn button and hide dice button
-    public void FinishTurn(string info, string bodyColor = null)
+    public void FinishTurn(string info = "", string bodyColor = null)
     {
         SaveCurrentPlayer();
         SendFinishTurn(info, bodyColor);
@@ -562,6 +564,7 @@ public class GameController : MonoBehaviour
         saveFile = fileName;
 
         LoadFileData loadFileData = new LoadFileData();
+        loadFileData.adminId = adminId;
         loadFileData.board = board;
         loadFileData.file = saveFile;
         loadFileData.sessionCode = sessionCode;
@@ -624,9 +627,9 @@ public class GameController : MonoBehaviour
 
         gameLoaded = true;
 
-        SimpleData simpleData = new SimpleData();
-        simpleData.type = "ready";
-        string message = JsonUtility.ToJson(simpleData);
+        ReadyData readyData = new ReadyData();
+        readyData.adminId = adminId;
+        string message = JsonUtility.ToJson(readyData);
 
         SendMessageToServer(message);
     }
@@ -764,5 +767,17 @@ public class GameController : MonoBehaviour
     public void ShowBoardsMenu(List<string> boards)
     {
         mainMenuController.ShowBoardsMenu(boards);
+    }
+
+    // Set admin id
+    public void SetAdminId(string adminId)
+    {
+        this.adminId = adminId;
+    }
+
+    // Get admin id
+    public string GetAdminId()
+    {
+        return adminId;
     }
 }

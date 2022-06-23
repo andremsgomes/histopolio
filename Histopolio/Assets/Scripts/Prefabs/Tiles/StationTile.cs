@@ -27,9 +27,15 @@ public class StationTile : PointsTile
 
     // Draw a random card
     public override void PerformAction() {
-        int index = Random.Range(0,cards.Count);
+        if (cards.Count > 0) {
+            int index = Random.Range(0,cards.Count);
         
-        gameController.PrepareCard(cards[index]);
+            gameController.PrepareCard(cards[index]);
+        }
+        else
+        {
+            gameController.FinishTurn();
+        }
     }
 
     // Add card

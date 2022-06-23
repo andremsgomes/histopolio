@@ -13,18 +13,20 @@ public class QuestionController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // Load questions from file
-    public void LoadQuestions(List<QuestionData> questionsData) {
-        foreach (QuestionData question in questionsData) {
+    public void LoadQuestions(List<QuestionData> questionsData)
+    {
+        foreach (QuestionData question in questionsData)
+        {
             gameController.AddQuestion(question);
             questions.Add(question);
         }
@@ -33,7 +35,8 @@ public class QuestionController : MonoBehaviour
     }
 
     // Load, set, and show question from question data
-    public void LoadQuestion(QuestionData questionData) {
+    public void LoadQuestion(QuestionData questionData)
+    {
         questionUI.SetQuestion(questionData.question);
         questionUI.SetAnswers(questionData.answers);
 
@@ -42,37 +45,50 @@ public class QuestionController : MonoBehaviour
         SendQuestionToServer(questionData);
     }
 
-    public void LoadRandomQuestion() {
-        int index = Random.Range(0,questions.Count);
-        LoadQuestion(questions[index]);
+    public void LoadRandomQuestion()
+    {
+        if (questions.Count > 0)
+        {
+            int index = Random.Range(0, questions.Count);
+            LoadQuestion(questions[index]);
+        }
+        else
+        {
+            gameController.FinishTurn();
+        }
     }
 
     // Check if answer is correct
-    public void CheckAnswer(int answer) {
+    public void CheckAnswer(int answer)
+    {
         questionUI.HideQuestionMenu();
 
         gameController.FinishQuestion(answer == correctAnswer);
     }
 
     // Set game manager
-    public void SetGameController(GameController gameController) {
+    public void SetGameController(GameController gameController)
+    {
         this.gameController = gameController;
     }
 
     // Connect with UI
-    public void SetQuestionComponents() {
+    public void SetQuestionComponents()
+    {
         questionUI = this.GetComponent<QuestionUI>();
 
         questionUI.SetQuestionController(this);
     }
 
     // Activate question menu
-    public void ShowQuestionMenu() {
+    public void ShowQuestionMenu()
+    {
         questionUI.ShowQuestionMenu();
     }
 
     // Send question to the server
-    void SendQuestionToServer(QuestionData questionData) {
+    void SendQuestionToServer(QuestionData questionData)
+    {
         gameController.SendQuestionToServer(questionData);
     }
 }

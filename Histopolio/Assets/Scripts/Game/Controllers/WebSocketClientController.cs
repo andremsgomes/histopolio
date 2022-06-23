@@ -31,7 +31,19 @@ public class WebSocketClientController : MonoBehaviour
     {
         ws.Connect();
 
-        string id = JsonUtility.ToJson(new IdentificationData());
+        if (gameController.GetAdminId().Length > 0)
+        {
+            SendId();
+        }
+    }
+
+    // Send identification
+    void SendId()
+    {
+        IdentificationData identificationData = new IdentificationData();
+        identificationData.adminId = gameController.GetAdminId();
+
+        string id = JsonUtility.ToJson(identificationData);
         ws.Send(id);
     }
 
@@ -67,8 +79,8 @@ public class WebSocketClientController : MonoBehaviour
 
         switch (command)
         {
-            case "boards":
-                OnBoardsReceived(dataReceived);
+            case "auth":
+                OnAuthReceived(dataReceived);
                 break;
             case "answer":
                 OnAnswerReceived(dataReceived);
@@ -120,9 +132,12 @@ public class WebSocketClientController : MonoBehaviour
         message = null;
     }
 
-    // OnBoardsReceived is called when the user successfully logins
-    void OnBoardsReceived(JObject dataReceived)
+    // OnAuthReceived is called when the user successfully logins
+    void OnAuthReceived(JObject dataReceived)
     {
+        gameController.SetAdminId((string)dataReceived["adminId"]);
+        SendId();
+
         List<string> boards = new List<string>();
 
         foreach (string board in dataReceived["boards"])
@@ -161,6 +176,7 @@ public class WebSocketClientController : MonoBehaviour
     {
         BoardSendData boardSendData = new BoardSendData();
         boardSendData.type = type;
+        boardSendData.adminId = gameController.GetAdminId();
         boardSendData.board = board;
 
         string boardSendDataString = JsonUtility.ToJson(boardSendData);

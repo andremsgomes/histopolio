@@ -2,4 +2,5 @@
 public class IdentificationData {
     public string type = "identification";
     public string platform = "unity";
+    public string adminId;
 }

@@ -1,6 +1,7 @@
 [System.Serializable]
 public class SavePlayerData {
     public string type = "save";
+    public string adminId;
     public string userId;
     public int points;
     public int position;
