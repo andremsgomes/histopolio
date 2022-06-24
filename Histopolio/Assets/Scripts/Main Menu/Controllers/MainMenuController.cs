@@ -68,7 +68,13 @@ public class MainMenuController : MonoBehaviour
     {
         gameController.LoadSaveFile(fileName);
         mainMenuUI.HideSavesMenu();
-        mainMenuUI.ShowJoinMenu(gameController.GetBoard(), fileName, gameController.GetSessionCode());
+        mainMenuUI.ShowJoinMenu(gameController.GetBoard(), fileName);
+    }
+
+    // Show session code
+    public void ShowSessionCode(int sessionCode)
+    {
+        mainMenuUI.ShowSessionCode(sessionCode);
     }
 
     // Perform login

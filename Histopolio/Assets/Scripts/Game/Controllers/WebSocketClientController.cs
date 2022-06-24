@@ -109,8 +109,8 @@ public class WebSocketClientController : MonoBehaviour
             case "remove player":
                 OnRemovePlayerReceived(dataReceived);
                 break;
-            case "players":
-                OnPlayersReceived(dataReceived);
+            case "session":
+                OnSessionReceived(dataReceived);
                 break;
             case "content viewed":
                 OnContentViewedReceived();
@@ -262,9 +262,10 @@ public class WebSocketClientController : MonoBehaviour
         gameController.LoadBadges(dataReceived["badges"].ToObject<JArray>());
     }
 
-    // OnPlayersReceived is called when the players data is received
-    void OnPlayersReceived(JObject dataReceived)
+    // OnSessionReceived is called when the players data is received
+    void OnSessionReceived(JObject dataReceived)
     {
+        gameController.SetSessionCode((int)dataReceived["sessionCode"]);
         gameController.LoadLeaderboard(dataReceived["players"].ToObject<JArray>());
     }
 

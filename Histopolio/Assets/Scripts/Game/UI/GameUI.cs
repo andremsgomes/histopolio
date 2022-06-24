@@ -9,6 +9,7 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private Text playerNameText;
     [SerializeField] private Text sessionCodeText;
+    [SerializeField] private Text tileText;
     [SerializeField] private Image avatar;
     [SerializeField] private GameObject turnButton;
     [SerializeField] private GameObject HUD;
@@ -127,5 +128,11 @@ public class GameUI : MonoBehaviour
     public void OnCloseClick()
     {
         Application.Quit();
+    }
+
+    // Set tile text
+    public void SetTileText(int position, string tileName)
+    {
+        tileText.text = "Casa " + position + " - " + tileName;
     }
 }

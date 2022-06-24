@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
@@ -155,6 +154,12 @@ public class GameController : MonoBehaviour
         SetCurrentPlayer(players[playerTurns.OrderBy(kvp => kvp.Value).First().Key]);
     }
 
+    // Set tile text on ui
+    public void SetTileText(int position, string tile)
+    {
+        gameUI.SetTileText(position, tile);
+    }
+
     // Set current player
     void SetCurrentPlayer(Player player)
     {
@@ -169,6 +174,8 @@ public class GameController : MonoBehaviour
             gameUI.HideInactivePlayer();
         else
             gameUI.ShowInactivePlayer(players.Count > 1);
+
+        gameUI.SetTileText(currentPlayer.GetTile().GetId(), currentPlayer.GetTile().GetTileName());
 
         if (!currentPlayer.GetFinishedBoard())
         {
@@ -559,15 +566,12 @@ public class GameController : MonoBehaviour
     // Load data from save file
     public void LoadSaveFile(string fileName)
     {
-        SetSessionCode();
-
         saveFile = fileName;
 
         LoadFileData loadFileData = new LoadFileData();
         loadFileData.adminId = adminId;
         loadFileData.board = board;
         loadFileData.file = saveFile;
-        loadFileData.sessionCode = sessionCode;
         string message = JsonUtility.ToJson(loadFileData);
 
         SendMessageToServer(message);
@@ -738,11 +742,10 @@ public class GameController : MonoBehaviour
     }
 
     // Set the session code with a random number
-    void SetSessionCode()
+    public void SetSessionCode(int code)
     {
-        Random rd = new Random();
-
-        sessionCode = rd.Next(1000, 9999);
+        sessionCode = code;
+        mainMenuController.ShowSessionCode(sessionCode);
     }
 
     // Get session code

@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
             if (moveSpaces == 0)
             {
                 tile.AddPlayer(this);
+                gameController.SetTileText(tile.GetId(), tile.GetTileName());
                 tile.PerformAction();
             }
         }

@@ -35,13 +35,10 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -92,79 +89,79 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1480}
     - Class: 114
-      Script: {instanceID: 1752}
+      Script: {instanceID: 1748}
     - Class: 114
-      Script: {instanceID: 1776}
+      Script: {instanceID: 1772}
     - Class: 114
-      Script: {instanceID: 1808}
+      Script: {instanceID: 1804}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1834}
     - Class: 114
-      Script: {instanceID: 1866}
+      Script: {instanceID: 1862}
     - Class: 114
-      Script: {instanceID: 1964}
+      Script: {instanceID: 1960}
     - Class: 114
-      Script: {instanceID: 2278}
+      Script: {instanceID: 2274}
     - Class: 114
-      Script: {instanceID: 2318}
+      Script: {instanceID: 2314}
     - Class: 114
-      Script: {instanceID: 2340}
+      Script: {instanceID: 2336}
     - Class: 114
-      Script: {instanceID: 2522}
+      Script: {instanceID: 2518}
     - Class: 114
-      Script: {instanceID: 2672}
+      Script: {instanceID: 2668}
     - Class: 114
-      Script: {instanceID: 2698}
+      Script: {instanceID: 2694}
     - Class: 114
-      Script: {instanceID: 2846}
+      Script: {instanceID: 2842}
     - Class: 114
-      Script: {instanceID: 3056}
+      Script: {instanceID: 3052}
     - Class: 114
-      Script: {instanceID: 3084}
+      Script: {instanceID: 3080}
     - Class: 114
-      Script: {instanceID: 3164}
+      Script: {instanceID: 3160}
     - Class: 114
-      Script: {instanceID: 3224}
+      Script: {instanceID: 3220}
     - Class: 114
-      Script: {instanceID: 3344}
+      Script: {instanceID: 3340}
     - Class: 114
-      Script: {instanceID: 3362}
+      Script: {instanceID: 3358}
     - Class: 114
-      Script: {instanceID: 3432}
+      Script: {instanceID: 3428}
     - Class: 114
-      Script: {instanceID: 3490}
+      Script: {instanceID: 3486}
     - Class: 114
-      Script: {instanceID: 3720}
+      Script: {instanceID: 3716}
     - Class: 114
-      Script: {instanceID: 3788}
+      Script: {instanceID: 3784}
     - Class: 114
-      Script: {instanceID: 3876}
+      Script: {instanceID: 3872}
+    - Class: 114
+      Script: {instanceID: 4040}
     - Class: 114
       Script: {instanceID: 4044}
     - Class: 114
-      Script: {instanceID: 4048}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 4144}
+      Script: {instanceID: 4204}
     - Class: 114
-      Script: {instanceID: 4208}
+      Script: {instanceID: 4224}
     - Class: 114
-      Script: {instanceID: 4228}
+      Script: {instanceID: 4650}
     - Class: 114
-      Script: {instanceID: 4654}
+      Script: {instanceID: 4666}
     - Class: 114
-      Script: {instanceID: 4670}
+      Script: {instanceID: 4748}
     - Class: 114
-      Script: {instanceID: 4752}
+      Script: {instanceID: 4808}
     - Class: 114
-      Script: {instanceID: 4812}
+      Script: {instanceID: 4930}
     - Class: 114
-      Script: {instanceID: 4934}
+      Script: {instanceID: 4992}
     - Class: 114
-      Script: {instanceID: 4996}
+      Script: {instanceID: 5090}
     - Class: 114
-      Script: {instanceID: 5094}
-    - Class: 114
-      Script: {instanceID: 5168}
+      Script: {instanceID: 5164}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -822,7 +819,7 @@ ScriptsOnlyBuild:
     className: BoardBase
   - hash:
       serializedVersion: 2
-      Hash: f485c117530827b49ce82b6e4593fcbf
+      Hash: 16424c5d6d775d801b2b80e4e3ec8aa9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameUI

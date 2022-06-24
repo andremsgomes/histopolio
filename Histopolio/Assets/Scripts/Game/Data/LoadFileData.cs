@@ -4,5 +4,4 @@ public class LoadFileData {
     public string adminId;
     public string board;
     public string file;
-    public int sessionCode;
 }

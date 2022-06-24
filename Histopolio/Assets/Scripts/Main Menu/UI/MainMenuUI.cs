@@ -123,10 +123,15 @@ public class MainMenuUI : MonoBehaviour
     }
 
     // Show join menu
-    public void ShowJoinMenu(string board, string save, int sessionCode)
+    public void ShowJoinMenu(string board, string save)
     {
         joinMenu.SetActive(true);
         title.text = board + " - " + save;
+    }
+
+    // Show session code
+    public void ShowSessionCode(int sessionCode)
+    {
         sessionCodeText.text = "Código de acesso: " + sessionCode;
     }
 
