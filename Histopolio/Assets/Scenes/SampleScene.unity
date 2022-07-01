@@ -3233,6 +3233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 1618855926351996973, guid: f5dffd3a3292bb92e87827636fab997a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4675459429311390931, guid: f5dffd3a3292bb92e87827636fab997a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3316,6 +3320,14 @@ PrefabInstance:
     - target: {fileID: 4675459429311390931, guid: f5dffd3a3292bb92e87827636fab997a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220180471393293401, guid: f5dffd3a3292bb92e87827636fab997a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220180471393293401, guid: f5dffd3a3292bb92e87827636fab997a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5dffd3a3292bb92e87827636fab997a, type: 3}

@@ -348,7 +348,7 @@ public class GameController : MonoBehaviour
 
         SendMessageToServer(message);
 
-        cardController.LoadCard(card);
+        cardController.LoadCard(card, currentPlayer.GetTile().GetTileName());
         cardController.ShowCardMenu(false);
     }
 
@@ -677,13 +677,13 @@ public class GameController : MonoBehaviour
     // Show random community card
     public void ShowCommunityCard()
     {
-        cardController.ShowCommunityCard();
+        cardController.ShowCommunityCard(currentPlayer.GetTile().GetTileName());
     }
 
     // Show random chance card
     public void ShowChanceCard()
     {
-        cardController.ShowChanceCard();
+        cardController.ShowChanceCard(currentPlayer.GetTile().GetTileName());
     }
 
     // Hide card menu and give points

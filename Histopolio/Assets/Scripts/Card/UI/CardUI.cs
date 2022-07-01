@@ -10,6 +10,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject continueButton;
     [SerializeField] private Text info;
+    [SerializeField] private Text tile;
 
     // Start is called before the first frame update
     void Start()
@@ -48,5 +49,10 @@ public class CardUI : MonoBehaviour
     // Hide card menu
     public void HideCardMenu() {
         menu.SetActive(false);
+    }
+
+    // Set tile name
+    public void SetTile(string tile) {
+        this.tile.text = tile;
     }
 }

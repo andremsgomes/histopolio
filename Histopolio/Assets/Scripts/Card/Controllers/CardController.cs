@@ -60,11 +60,12 @@ public class CardController : MonoBehaviour
     }
 
     // Load, set, and show info from card data
-    public void LoadCard(CardData cardData)
+    public void LoadCard(CardData cardData, string tile)
     {
         action = "none";
         actionValue = "";
         cardUI.SetInfo(cardData.info);
+        cardUI.SetTile("Estação de Treino - " + tile);
     }
 
     // Continue turn
@@ -108,7 +109,7 @@ public class CardController : MonoBehaviour
     }
 
     // Show random community card
-    public void ShowCommunityCard()
+    public void ShowCommunityCard(string tile)
     {
         if (communityCards.Count > 0)
         {
@@ -118,6 +119,7 @@ public class CardController : MonoBehaviour
             action = communityCards[index].action;
             actionValue = communityCards[index].actionValue;
             cardUI.SetInfo(communityCards[index].info);
+            cardUI.SetTile(tile);
 
             ShowCardMenu(false);
             gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
@@ -129,7 +131,7 @@ public class CardController : MonoBehaviour
     }
 
     // Show random chance card
-    public void ShowChanceCard()
+    public void ShowChanceCard(string tile)
     {
         if (chanceCards.Count > 0)
         {
@@ -139,6 +141,7 @@ public class CardController : MonoBehaviour
             action = chanceCards[index].action;
             actionValue = chanceCards[index].actionValue;
             cardUI.SetInfo(chanceCards[index].info);
+            cardUI.SetTile(tile);
 
             ShowCardMenu(false);
             gameController.SendInfoShownMessageToServer("Vê a carta que te saíu no ecrã de jogo!");
