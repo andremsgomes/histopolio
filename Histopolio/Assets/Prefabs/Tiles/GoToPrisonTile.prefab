@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileNameText: {fileID: 3746574983635790486}
+  pointsText: {fileID: 0}
 --- !u!1 &1586067106943286139
 GameObject:
   m_ObjectHideFlags: 0

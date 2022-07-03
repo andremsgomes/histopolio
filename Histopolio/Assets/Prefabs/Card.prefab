@@ -107,6 +107,7 @@ MonoBehaviour:
   menu: {fileID: 1618855926351996973}
   continueButton: {fileID: 6367358706210047274}
   info: {fileID: 262677772304650969}
+  tile: {fileID: 8980027877097257138}
 --- !u!1 &1926891374313333167
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +428,7 @@ RectTransform:
   m_GameObject: {fileID: 7768322963834748352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 4675459429311390931}
   m_RootOrder: 0
@@ -435,7 +436,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 400}
-  m_SizeDelta: {x: 4000, y: 500}
+  m_SizeDelta: {x: 6000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2695674049046627091
 CanvasRenderer:

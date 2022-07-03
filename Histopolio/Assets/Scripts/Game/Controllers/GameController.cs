@@ -106,16 +106,16 @@ public class GameController : MonoBehaviour
     }
 
     // Move player after rolled dice or drawn card
-    public void MovePlayer(int diceResult)
+    public void MovePlayer(int diceResult, bool tileAction = true)
     {
-        currentPlayer.Move(diceResult);
+        currentPlayer.Move(diceResult, tileAction);
     }
 
     // Move player to tile
-    public void MovePlayerTo(int tile)
+    public void MovePlayerTo(int tile, bool tileAction = true)
     {
         int spaces = tile - currentPlayer.GetTile().GetId();
-        MovePlayer(spaces);
+        MovePlayer(spaces, tileAction);
     }
 
     // Get tile with tile id
@@ -705,7 +705,7 @@ public class GameController : MonoBehaviour
     {
         // If in go to prison tile
         if (currentPlayer.GetTile().GetId() == 30)
-            MovePlayerTo(10);
+            MovePlayerTo(10, false);
         else
             cardController.Continue();  // If card is showing
     }

@@ -20,11 +20,12 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Badge badgePrefab;
     [SerializeField] private GameObject inactivePlayer;
     [SerializeField] private GameObject removePlayer;
+    [SerializeField] private Text podiumText;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        podiumText.text = "Histopódio";
     }
 
     // Update is called once per frame

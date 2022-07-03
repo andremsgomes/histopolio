@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private List<Sprite> badges = new List<Sprite>();
     private int multiplier;
     private bool finishedBoard;
+    private bool tileAction = true;
 
     [SerializeField] private float speed;
     [SerializeField] private Image img;
@@ -47,7 +48,12 @@ public class Player : MonoBehaviour
             {
                 tile.AddPlayer(this);
                 gameController.SetTileText(tile.GetId(), tile.GetTileName());
-                tile.PerformAction();
+
+                if (tileAction) 
+                    tile.PerformAction();
+                else {
+                    gameController.FinishTurn();
+                }
             }
         }
     }
@@ -82,11 +88,12 @@ public class Player : MonoBehaviour
     }
 
     // Move is called after a dice is rolled
-    public void Move(int spaces)
+    public void Move(int spaces, bool tileAction = true)
     {
         if (moveSpaces == 0) {
             moveSpaces = spaces;
             tile.RemovePlayer(this);
+            this.tileAction = tileAction;
         }
     }
 

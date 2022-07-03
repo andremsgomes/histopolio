@@ -237,7 +237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Points
+  m_Text: +20
 --- !u!1 &4631652739605805000
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.7
-  m_Text: "Esta\xE7ao De Treino"
+  m_Text: "Esta\xE7\xE3o de Treino"
 --- !u!1 &5870375965832424784
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +596,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.7
-  m_Text: ' as adjnd ajdnsa'
+  m_Text: Tecido Epitelial
 --- !u!1 &8155352548901771281
 GameObject:
   m_ObjectHideFlags: 0
